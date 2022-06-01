@@ -1,19 +1,27 @@
 package cs350s22.component.ui.parser;
 
+import java.io.IOException;
+
 public class Parser {
     private final A_ParserHelper parserHelper;
-    private final string commandtext;
-
+    private final String commandtext;
+    private String userInput; 
     public Parser(A_ParserHelper parserHelper, String commandtext) throws IOException {
         //not sure if we need this
         this.parserHelper = parserHelper;
         this.commandtext = commandtext;
+		this.userInput = "";
     }
 
     public void parse() throws IOException{
-        //makes it so we seperate words from empty spaces (" ")
-        String wholeCommand = this.commandtext.toUpperCase();
-        String[] command = this.wholeCommand.split(" ");
+        
+    	
+    	//makes it so we seperate words from empty spaces (" ")
+        this.userInput = this.commandtext.toUpperCase();
+        String[] command = this.userInput.split(" ");
+        String verb = command[0]; 
+        System.out.println("The command is: " + userInput);
+        String subject = command[1]; 
 
             //switch statement
             //for each command starter (first word)
