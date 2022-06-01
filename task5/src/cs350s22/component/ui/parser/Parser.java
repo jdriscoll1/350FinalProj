@@ -12,7 +12,23 @@ public class Parser {
         this.commandtext = commandtext;
 		this.userInput = "";
     }
+    
+    //Write out the Pseudo code and comit that change
+    //Goal: 
+    private void A1() {
+    	
+    	//Our goal is to create an actuator with identifer id and optional membership in groups and optional embeedded sensors id based on values 
+    	//crate an actuator object that takes in:
+    	
+    	//1) Get the sensors by calling get() with id on SymbolTable<A_Sensor>
+    		//Q: How do we call Symbol Table? 
+    	
+    	//2) create an ActuatorPrototype object with the arguments 
+    	
+    	//3) add it to SymbolTable<A_Actuator>.
 
+    	
+    }
     public void parse() throws IOException{
         
     	
@@ -29,7 +45,7 @@ public class Parser {
                 case "CREATE": System.out.println("DO Something");
                     switch(command[1]) {
                         case "ACTUATOR":
-                            System.out.println("DO Something else");
+                            A1();
                             break;
                         case "CONTROLLER":
                             System.out.println("DO Something else");
