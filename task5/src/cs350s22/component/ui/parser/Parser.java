@@ -13,6 +13,7 @@ public class Parser {
 		this.userInput = "";
     }
 
+    
     public void parse() throws IOException{
         
     	
@@ -28,6 +29,8 @@ public class Parser {
             switch (command[0]) {
                 case "CREATE": System.out.println("DO Something");
                     switch(command[1]) {
+                    
+                    	//Situation A1
                         case "ACTUATOR":
                             System.out.println("DO Something else");
                             break;
