@@ -1,2 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<qualifiedTypeNameHistroy/>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="java.io.IOException"/>
+    <fullyQualifiedTypeName name="cs350s22.test.ActuatorPrototype"/>
+    <fullyQualifiedTypeName name="cs350s22.support.Identifier"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="cs350s22.component.sensor.A_Sensor"/>
+</qualifiedTypeNameHistroy>

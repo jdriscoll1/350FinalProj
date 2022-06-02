@@ -1,6 +1,11 @@
 package cs350s22.component.ui.parser;
 
 import java.io.IOException;
+import java.util.List;
+
+import cs350s22.component.sensor.A_Sensor;
+import cs350s22.support.Identifier;
+import cs350s22.test.ActuatorPrototype;
 
 public class Parser {
     private final A_ParserHelper parserHelper;
@@ -12,8 +17,56 @@ public class Parser {
         this.commandtext = commandtext;
 		this.userInput = "";
     }
-
     
+    //Write out the Pseudo code and comit that change
+    //Goal: 
+    private void A1(String[] command) {
+    	for(String c : command) {
+    		System.out.println(c);
+    		
+    	}
+    	//Our goal is to create an actuator with identifer id and optional membership in groups and optional embedded sensors id based on values 
+    	//crrate an actuator object that takes in:
+    	
+    	//We have to be able to parse the command and know its parameters 
+    	
+    	//1) Get the sensors by calling get() with id on SymbolTable<A_Sensor>
+    		//Q: How do we call Symbol Table? 
+    	 
+    	
+    	//Let's make a parser
+    	
+    	 Identifier id = null;  
+    	 List<Identifier> groups = null; //Optional 
+		 double accelerationLeadin = 0.0; 
+		 double accelerationLeadout = 0.0;
+		 double accelerationRelax = 0.0;
+		 double velocityLimit = 0.0;
+		 double valueInitial = 0.0;
+		 double valueMin = 0.0;
+		 double valueMax = 0.0;
+		 double inflectionJerkThreshold = 0;
+		 List<A_Sensor> sensors = null; //Optional
+    	
+    	//2) create an ActuatorPrototype object with the arguments 
+    	ActuatorPrototype a = new ActuatorPrototype(
+    			
+    			 id,
+    			 groups,
+    			 accelerationLeadin,
+    			 accelerationLeadout,
+    			 accelerationRelax,
+    			 velocityLimit,
+    			 valueInitial,
+    			 valueMin,
+    			 valueMax,
+    			 inflectionJerkThreshold,
+    			 sensors);
+    	
+    	
+    	//3) add it to SymbolTable<A_Actuator>.
+
+    }
     public void parse() throws IOException{
         
     	
@@ -32,7 +85,7 @@ public class Parser {
                     
                     	//Situation A1
                         case "ACTUATOR":
-                            System.out.println("DO Something else");
+                            A1(command);
                             break;
                         case "CONTROLLER":
                             System.out.println("DO Something else");
