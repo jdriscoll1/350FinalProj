@@ -4,6 +4,4 @@ bin/
 tmp/
 *.class
 *.jar 
-
-
-
+*.jdk
