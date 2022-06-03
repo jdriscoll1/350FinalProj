@@ -2,7 +2,9 @@ package cs350s22.component.ui.parser;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Scanner;
 
+import cs350s22.component.*;
 import cs350s22.component.sensor.A_Sensor;
 import cs350s22.support.Identifier;
 import cs350s22.test.ActuatorPrototype;
@@ -19,12 +21,9 @@ public class Parser {
     }
     
     //Write out the Pseudo code and comit that change
-    //Goal: 
-    private void A1(String[] command) {
-    	for(String c : command) {
-    		System.out.println(c);
-    		
-    	}
+    //TODO: Complete this command
+    private void A1(String command) {
+
     	//Our goal is to create an actuator with identifer id and optional membership in groups and optional embedded sensors id based on values 
     	//crrate an actuator object that takes in:
     	
@@ -47,6 +46,33 @@ public class Parser {
 		 double valueMax = 0.0;
 		 double inflectionJerkThreshold = 0;
 		 List<A_Sensor> sensors = null; //Optional
+		 
+		 Scanner sc = new Scanner(command); 
+		 while(sc.hasNext()) {
+			 
+			 String s = sc.next(); 
+			 System.out.println(s);
+			 switch(s) {
+			 	case("LINEAR"):
+			 		String id_str = sc.next();
+			 		
+			 		//SymbolTable<Identifier>.getComponents(id_str); 
+			 		
+			 	
+			 	case("SENSORS"):
+			 		System.out.println("THIS IS SENSORS");
+			 		break; 
+			 	case("GROUPS"):
+			 		break; 
+			 	case(""):
+			 		break ;
+			 	
+			 
+			 
+			 }
+			 
+			 
+		 }
     	
     	//2) create an ActuatorPrototype object with the arguments 
     	ActuatorPrototype a = new ActuatorPrototype(
@@ -85,7 +111,13 @@ public class Parser {
                     
                     	//Situation A1
                         case "ACTUATOR":
-                            A1(command);
+                        	StringBuffer sb = new StringBuffer();
+                            for(int i = 2; i < command.length; i++) {
+                               sb.append(command[i] + " ");
+                            }
+                            String str = sb.toString();
+                            System.out.println(str);
+                            A1(str);
                             break;
                         case "CONTROLLER":
                             System.out.println("DO Something else");
