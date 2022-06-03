@@ -72,10 +72,11 @@ public class Parser {
 			 }
 			 
 			 
+			 
 		 }
     	
     	//2) create an ActuatorPrototype object with the arguments 
-    	ActuatorPrototype a = new ActuatorPrototype(
+    	/*ActuatorPrototype a = new ActuatorPrototype(
     			
     			 id,
     			 groups,
@@ -87,7 +88,8 @@ public class Parser {
     			 valueMin,
     			 valueMax,
     			 inflectionJerkThreshold,
-    			 sensors);
+    			 sensors);*/
+    	System.out.println("Exits Method");
     	
     	
     	//3) add it to SymbolTable<A_Actuator>.
@@ -101,7 +103,7 @@ public class Parser {
         String[] command = this.userInput.split(" ");
         String verb = command[0]; 
         System.out.println("The command is: " + userInput);
-        String subject = command[1]; 
+
 
             //switch statement
             //for each command starter (first word)
@@ -171,7 +173,9 @@ public class Parser {
                     }
                     break;
 
-                case "@EXIT": System.out.println("DO Something");
+                case "@EXIT": 
+        
+                	parserHelper.exit();
                     break;
 
                 case "@RUN": System.out.println("DO Something");
