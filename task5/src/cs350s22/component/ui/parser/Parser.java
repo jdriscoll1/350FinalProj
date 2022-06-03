@@ -180,7 +180,7 @@ public class Parser {
                     break;
 
                 case "@RUN": 
-                	parserHelper.run(sc);
+                	//parserHelper.run(sc);
                     break;
 
                 case "@CONFIGURE": System.out.println("DO Something");
