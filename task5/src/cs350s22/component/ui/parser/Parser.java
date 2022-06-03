@@ -95,7 +95,7 @@ public class Parser {
 
     }
 
-    public void parse() throws IOException{
+    public void parse() throws IOException, ParseException{
         
     	
     	//makes it so we seperate words from empty spaces (" ")
@@ -180,7 +180,7 @@ public class Parser {
                     break;
 
                 case "@RUN": 
-                	parserHelper.run(sc);
+                	parserHelper.run(sc.next());
                     break;
 
                 case "@CONFIGURE": System.out.println("DO Something");
