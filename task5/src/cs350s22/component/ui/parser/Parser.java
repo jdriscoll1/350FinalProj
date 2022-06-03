@@ -178,7 +178,8 @@ public class Parser {
                 	parserHelper.exit();
                     break;
 
-                case "@RUN": System.out.println("DO Something");
+                case "@RUN": 
+                	parserHelper.run(sc);
                     break;
 
                 case "@CONFIGURE": System.out.println("DO Something");
