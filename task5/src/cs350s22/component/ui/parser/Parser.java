@@ -6,6 +6,7 @@ import java.util.Scanner;
 
 import cs350s22.component.*;
 import cs350s22.component.sensor.A_Sensor;
+import cs350s22.support.Clock;
 import cs350s22.support.Identifier;
 import cs350s22.test.ActuatorPrototype;
 
@@ -164,8 +165,13 @@ public class Parser {
                         case "ONESTEP":
                             System.out.println("DO Something else");
                             break;
+                        //E3
                         case "SET":
-                        	
+                        	//Rate
+                        	sc.next();
+                        	String value = sc.next(); 
+                        	Clock c1 = Clock.getInstance(); 
+                        	c1.setRate(Integer.parseInt(value));
                             System.out.println("DO Something else");
                             break;
                         default:
