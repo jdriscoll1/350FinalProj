@@ -95,6 +95,20 @@ public class Parser {
     	//3) add it to SymbolTable<A_Actuator>.
 
     }
+    private void B1(Scanner sc) {
+		
+		
+	}
+    
+    private void B2(Scanner sc) {
+		
+		
+	}
+    
+    private void MAPPERcommands(Scanner sc) {//MAPPER command also C1 C2 C3 C4
+		
+		
+	}
 
     public void parse() throws IOException, ParseException{
         
@@ -123,13 +137,13 @@ public class Parser {
                             A1(sc);
                             break;
                         case "CONTROLLER":
-                            System.out.println("DO Something else");
+                            B1(sc);
                             break;
                         case "DEPENDENCY":
-                            System.out.println("DO Something else");
+                            B2(sc);
                             break;
                         case "MAPPER":
-                            System.out.println("DO Something else");
+                            MAPPERcommands(sc);
                             break;
                         case "REPORTER":
                             System.out.println("DO Something else");
@@ -154,7 +168,7 @@ public class Parser {
                             System.out.println("not valid first word");
                     }
                     break;
-                case "@CLOCK": System.out.println("DO Something");
+                case "@CLOCK":
                     switch(sc.next()) {
                         case "PAUSE":
                         	Clock c1 = Clock.getInstance(); 
@@ -206,7 +220,6 @@ public class Parser {
                     }
                     break;
                 case "BUILD": 
-                	System.out.println("DO Something");
                     switch(sc.next()) {
                         case "NETWORK":
                             System.out.println("DO Something else");
@@ -221,4 +234,6 @@ public class Parser {
 
         }
     }
+
+	
 }
