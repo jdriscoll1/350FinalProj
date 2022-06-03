@@ -157,11 +157,16 @@ public class Parser {
                 case "@CLOCK": System.out.println("DO Something");
                     switch(sc.next()) {
                         case "PAUSE":
-                            System.out.println("DO Something else");
+                        	Clock c1 = Clock.getInstance(); 
+                        	c1.isActive(false);
+                        	System.out.println("Paused");//REMOVE COMMENT WHEN DONE WITH FULL THING (@CLOCK)
                             break;
                         case "RESUME":
-                            System.out.println("DO Something else");
+                        	Clock c2 = Clock.getInstance(); 
+                        	c2.isActive(true);
+                        	System.out.println("Resumed");//REMOVE COMMENT WHEN DONE (@CLOCK)
                             break;
+                            
                         case "ONESTEP":
                             System.out.println("DO Something else");
                             break;
@@ -170,8 +175,8 @@ public class Parser {
                         	//Rate
                         	sc.next();
                         	String value = sc.next(); 
-                        	Clock c1 = Clock.getInstance(); 
-                        	c1.setRate(Integer.parseInt(value));
+                        	Clock c3 = Clock.getInstance(); 
+                        	c3.setRate(Integer.parseInt(value));
                             System.out.println("DO Something else");
                             break;
                         default:
