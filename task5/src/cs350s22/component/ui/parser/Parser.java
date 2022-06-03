@@ -22,7 +22,7 @@ public class Parser {
     
     //Write out the Pseudo code and comit that change
     //TODO: Complete this command
-    private void A1(String command) {
+    private void A1(Scanner sc) {
 
     	//Our goal is to create an actuator with identifer id and optional membership in groups and optional embedded sensors id based on values 
     	//crrate an actuator object that takes in:
@@ -47,11 +47,10 @@ public class Parser {
 		 double inflectionJerkThreshold = 0;
 		 List<A_Sensor> sensors = null; //Optional
 		 
-		 Scanner sc = new Scanner(command); 
+		 
 		 while(sc.hasNext()) {
 			 
 			 String s = sc.next(); 
-			 System.out.println(s);
 			 switch(s) {
 			 	case("LINEAR"):
 			 		String id_str = sc.next();
@@ -95,6 +94,7 @@ public class Parser {
     	//3) add it to SymbolTable<A_Actuator>.
 
     }
+
     public void parse() throws IOException{
         
     	
@@ -107,19 +107,19 @@ public class Parser {
 
             //switch statement
             //for each command starter (first word)
-            switch (command[0]) {
-                case "CREATE": System.out.println("DO Something");
-                    switch(command[1]) {
+        
+        	Scanner sc = new Scanner(this.userInput);
+        	
+        	//Takes the first word 
+            switch (sc.next()) {
+            	//if the first word is create
+                case "CREATE": System.out.println("Create Something");
+                    switch(sc.next()) {
                     
-                    	//Situation A1
+                    	//Situation A1 - if the first word is actuator 
                         case "ACTUATOR":
-                        	StringBuffer sb = new StringBuffer();
-                            for(int i = 2; i < command.length; i++) {
-                               sb.append(command[i] + " ");
-                            }
-                            String str = sb.toString();
-                            System.out.println(str);
-                            A1(str);
+                        	
+                            A1(sc);
                             break;
                         case "CONTROLLER":
                             System.out.println("DO Something else");
@@ -145,7 +145,7 @@ public class Parser {
                     }
                     break;
                 case "SEND": System.out.println("DO Something");
-                    switch(command[1]) {
+                    switch(sc.next()) {
                         case "MESSAGE":
                             System.out.println("DO Something else");
                             break;
@@ -154,7 +154,7 @@ public class Parser {
                     }
                     break;
                 case "@CLOCK": System.out.println("DO Something");
-                    switch(command[1]) {
+                    switch(sc.next()) {
                         case "PAUSE":
                             System.out.println("DO Something else");
                             break;
@@ -165,6 +165,7 @@ public class Parser {
                             System.out.println("DO Something else");
                             break;
                         case "SET":
+                        	
                             System.out.println("DO Something else");
                             break;
                         default:
@@ -190,8 +191,9 @@ public class Parser {
                             System.out.println("not valid first word");
                     }
                     break;
-                case "BUILD": System.out.println("DO Something");
-                    switch(command[1]) {
+                case "BUILD": 
+                	System.out.println("DO Something");
+                    switch(sc.next()) {
                         case "NETWORK":
                             System.out.println("DO Something else");
                             break;
