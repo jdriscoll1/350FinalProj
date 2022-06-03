@@ -1,1 +1,9 @@
 /.metadata/
+.settings/
+bin/
+tmp/
+*.class
+*.jar 
+
+
+
