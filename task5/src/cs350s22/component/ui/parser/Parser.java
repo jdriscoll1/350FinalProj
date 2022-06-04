@@ -191,7 +191,7 @@ public class Parser {
                         	String value = sc.next(); 
                         	Clock c3 = Clock.getInstance(); 
                         	c3.setRate(Integer.parseInt(value));
-                            System.out.println("DO Something else");
+                            
                             break;
                         default:
                             System.out.println("not valid first word");
