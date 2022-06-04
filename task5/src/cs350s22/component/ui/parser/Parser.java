@@ -180,9 +180,26 @@ public class Parser {
                         	c2.isActive(true);
                         	System.out.println("Resumed");//REMOVE COMMENT WHEN DONE (@CLOCK)
                             break;
-                            
+                        //E2
                         case "ONESTEP":
-                            System.out.println("DO Something else");
+                            //Get the instance of a clock
+                            Clock c4 = Clock.getInstance();
+                            //if the clock is not active
+                            if(!c4.isActive()) {
+                                //if there's another one
+                                if(sc.hasNext()) {
+                                    //go to the next one
+                                    sc.next();
+                                    //get the next thing
+                                    String count = sc.next();
+                                    //Does the one step command work?
+                                    c4.onestep(Integer.parseInt(count));
+                                }
+                                else {
+                                    //Increment by one
+                                    c4.onestep(1);
+                                }
+                            }
                             break;
                         //E3
                         case "SET":
