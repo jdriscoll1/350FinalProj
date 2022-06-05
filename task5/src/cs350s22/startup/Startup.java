@@ -17,12 +17,13 @@ public class Startup
    {
       Startup startup = new Startup();
       
-      // this command must come first. The filenames do not matter here
-      //startup.parse("@CONFIGURE LOG \"a.txt\" DOT SEQUENCE \"b.txt\" NETWORK \"c.txt\" XML \"d.txt\"");
-      //startup.parse("CREATE ACTUATOR LINEAR myActuator0 ACCELERATION LEADIN 0.1 LEADOUT -0.2 RELAX 0.3 VELOCITY LIMIT 5 VALUE MIN 1 MAX 10 INITIAL 2 JERK LIMIT 3");
-     startup.parse("@RUN file1.txt");
-      // run your tests like this
-      startup.parse("@exit");
+     // this command must come first. The filenames do not matter here
+     //startup.parse("@CONFIGURE LOG \"a.txt\" DOT SEQUENCE \"b.txt\" NETWORK \"c.txt\" XML \"d.txt\"");
+     //startup.parse("CREATE ACTUATOR LINEAR myActuator0 ACCELERATION LEADIN 0.1 LEADOUT -0.2 RELAX 0.3 VELOCITY LIMIT 5 VALUE MIN 1 MAX 10 INITIAL 2 JERK LIMIT 3");
+     //startup.parse("@RUN file1.txt");
+     startup.parse("@CONFIGURE LOG a DOT SEQUENCE b NETWORK c XML str");
+     // run your tests like this
+     startup.parse("@exit");
    }
    
    private void parse(final String parse) throws Exception

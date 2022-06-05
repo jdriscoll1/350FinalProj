@@ -8,6 +8,8 @@ import cs350s22.component.*;
 import cs350s22.component.logger.LoggerMessage;
 import cs350s22.component.logger.LoggerMessageSequencing;
 import cs350s22.component.sensor.A_Sensor;
+import cs350s22.component.ui.CommandLineInterface;
+import cs350s22.message.ping.MessagePing;
 import cs350s22.support.Clock;
 import cs350s22.support.Filespec;
 import cs350s22.support.Identifier;
@@ -113,6 +115,14 @@ public class Parser {
 		
 	}
     
+    private void D1(Scanner sc) {
+    	/*
+    	String str = "";
+    	MessagePing ping = new MessagePing(); 
+    	CommandLineInterface.issueMessage(ping, str);
+    	*/
+    }
+    
     private void E6(Scanner sc) throws IOException {
     	//LOG
     	sc.next();
@@ -130,7 +140,7 @@ public class Parser {
     		sc.next(); 
     	}
     	
-    	//Convert strings to filespecs 
+    	//Convert strings to file specs 
     	Filespec logSpec = new Filespec(logStr); 
     	Filespec dotSpec = new Filespec(dotStr); 
     	Filespec netSpec = new Filespec(netStr); 
