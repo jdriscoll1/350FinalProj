@@ -8,6 +8,10 @@ import cs350s22.component.*;
 import cs350s22.component.logger.LoggerMessage;
 import cs350s22.component.logger.LoggerMessageSequencing;
 import cs350s22.component.sensor.A_Sensor;
+import cs350s22.component.sensor.mapper.A_Mapper;
+import cs350s22.component.sensor.mapper.MapperEquation;
+import cs350s22.component.sensor.mapper.function.equation.EquationPassthrough;
+import cs350s22.component.sensor.mapper.function.equation.EquationScaled;
 import cs350s22.support.Clock;
 import cs350s22.support.Filespec;
 import cs350s22.support.Identifier;
@@ -109,6 +113,27 @@ public class Parser {
 	}
     
     private void MAPPERcommands(Scanner sc) {//MAPPER command also C1 C2 C3 C4
+		//create mapper
+    	SymbolTable<A_Mapper> mapperTable = parserHelper.getSymbolTableMapper();
+        Identifier ID = Identifier.make(sc.next());
+        
+        
+		if(sc.next().matches("EQUATION")) {
+			if(sc.next().matches("PASSTHROUGH")) {
+				EquationPassthrough passMapper = new EquationPassthrough();
+            	MapperEquation eqMapper = new MapperEquation(passMapper);
+            	mapperTable.add(ID, eqMapper);
+			}
+			if(sc.next().matches("SCALE")) {
+				int value = sc.nextInt();
+				
+				EquationScaled scaleMapper = new EquationScaled(value);
+            	MapperEquation equationMapper = new MapperEquation(scaleMapper);
+            	mapperTable.add(ID, equationMapper);
+				
+			}//follow format above should be easy for normalize for C3 maybe a little more complicated for C4
+		}
+		
 		
 		
 	}
