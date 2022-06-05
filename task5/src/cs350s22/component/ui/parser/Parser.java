@@ -5,8 +5,11 @@ import java.util.List;
 import java.util.Scanner;
 
 import cs350s22.component.*;
+import cs350s22.component.logger.LoggerMessage;
+import cs350s22.component.logger.LoggerMessageSequencing;
 import cs350s22.component.sensor.A_Sensor;
 import cs350s22.support.Clock;
+import cs350s22.support.Filespec;
 import cs350s22.support.Identifier;
 import cs350s22.test.ActuatorPrototype;
 
@@ -109,6 +112,33 @@ public class Parser {
 		
 		
 	}
+    
+    private void E6(Scanner sc) throws IOException {
+    	//LOG
+    	sc.next();
+    	String logStr = sc.next();
+    	//DOT
+    	sc.next();
+    	//SEQUENCE
+    	sc.next();
+    	String dotStr = sc.next(); 
+    	sc.next();
+    	//NETWORK
+    	String netStr = sc.next(); 
+    	//XML String 
+    	while(sc.hasNext()) {
+    		sc.next(); 
+    	}
+    	
+    	//Convert strings to filespecs 
+    	Filespec logSpec = new Filespec(logStr); 
+    	Filespec dotSpec = new Filespec(dotStr); 
+    	Filespec netSpec = new Filespec(netStr); 
+    	
+    	LoggerMessage.initialize(logSpec); 
+    	LoggerMessageSequencing.initialize(dotSpec, netSpec); 
+    	
+    }
 
     public void parse() throws IOException, ParseException{
         
@@ -116,7 +146,6 @@ public class Parser {
     	//makes it so we seperate words from empty spaces (" ")
         this.userInput = this.commandtext.toUpperCase();
         String[] command = this.userInput.split(" ");
-        String verb = command[0]; 
         System.out.println("The command is: " + userInput);
 
 
@@ -228,9 +257,9 @@ public class Parser {
                     break;
 
                 case "@CONFIGURE": System.out.println("DO Something");
-                    switch(command[1]) {
+                    switch(sc.next()) {
                         case "LOG":
-                            System.out.println("DO Something else");
+                            E6(sc); 
                             break;
                         default:
                             System.out.println("not valid first word");
