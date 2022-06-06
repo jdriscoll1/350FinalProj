@@ -27,6 +27,7 @@ import cs350s22.component.sensor.mapper.function.interpolator.InterpolatorSpline
 import cs350s22.component.sensor.mapper.function.interpolator.A_Interpolator;
 import cs350s22.component.sensor.mapper.function.interpolator.loader.A_MapLoader;
 import cs350s22.component.sensor.mapper.function.interpolator.loader.MapLoader;
+import cs350s22.component.ui.CommandLineInterface;
 import cs350s22.support.Clock;
 import cs350s22.support.Filespec;
 import cs350s22.support.Identifier;
@@ -180,12 +181,14 @@ public class Parser {
         }
 	}
     
-    private void D1(Scanner sc) {
-    	/*
-    	String str = "";
+    
+    //Sends out a ping from the command line interface
+    private void D1() {
+       	CommandLineInterface cli = parserHelper.getCommandLineInterface(); 
     	MessagePing ping = new MessagePing(); 
-    	CommandLineInterface.issueMessage(ping, str);
-    	*/
+    	cli.issueMessage(ping);
+    	System.out.println("Ping sent");
+    	
     }
     
     private void E6(Scanner sc) throws IOException {
@@ -212,7 +215,7 @@ public class Parser {
     	
     	LoggerMessage.initialize(logSpec); 
     	LoggerMessageSequencing.initialize(dotSpec, netSpec); 
-    	System.out.println("E6 is being called");
+
     	
     }
 
@@ -262,10 +265,16 @@ public class Parser {
                             System.out.println("not valid first word");
                     }
                     break;
-                case "SEND": System.out.println("DO Something");
+                case "SEND": 
                     switch(sc.next()) {
                         case "MESSAGE":
-                            System.out.println("DO Something else");
+                            switch(sc.next()) {
+                            	case "PING":
+                            		D1(); 
+                            
+                            
+                            }
+                            
                             break;
                         default:
                             System.out.println("not valid first word");

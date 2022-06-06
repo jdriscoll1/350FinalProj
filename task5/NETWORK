@@ -3,5 +3,5 @@ seqdiag {
  edge_length = 300;
  span_height = 12;
  default_fontsize = 10;
-===done===
-}
+===tick 1===
+  cli -> myControllerMaster [label="Ping(1) 1"]
