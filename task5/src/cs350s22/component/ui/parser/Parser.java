@@ -191,6 +191,7 @@ public class Parser {
     	
     }
     
+    
     private void E6(Scanner sc) throws IOException {
     	//LOG
     	sc.next();
@@ -216,6 +217,14 @@ public class Parser {
     	LoggerMessage.initialize(logSpec); 
     	LoggerMessageSequencing.initialize(dotSpec, netSpec); 
 
+    	
+    }
+    
+    
+    
+    private void E7() {
+    	Clock c = Clock.getInstance(); 
+    	System.out.println(c.getTick());
     	
     }
 
@@ -281,61 +290,71 @@ public class Parser {
                     }
                     break;
                 case "@CLOCK": System.out.println(java.time.LocalTime.now());
-                    switch(sc.next()) {
-                        case "PAUSE":
-                        	Clock c1 = Clock.getInstance(); 
-                        	c1.isActive(false);
-                        	System.out.println("Paused");//REMOVE COMMENT WHEN DONE WITH FULL THING (@CLOCK)
-                            break;
-                        case "RESUME":
-                        	Clock c2 = Clock.getInstance(); 
-                        	c2.isActive(true);
-                        	System.out.println("Resumed");//REMOVE COMMENT WHEN DONE (@CLOCK)
-                            break;
-                        //E2
-                        case "ONESTEP":
-                            //Get the instance of a clock
-                            Clock c4 = Clock.getInstance();
-                            //if the clock is not active
-                            if(!c4.isActive()) {
-                                //if there's another one
-                                if(sc.hasNext()) {
-                                    //go to the next one
-                                    sc.next();
-                                    //get the next thing
-                                    String count = sc.next();
-                                    //Does the one step command work?
-                                    c4.onestep(Integer.parseInt(count));
-                                }
-                                else {
-                                    //Increment by one
-                                    c4.onestep(1);
-                                }
-                            }
-                            break;
-                        //E3
-                        case "SET":
-                        	//Rate
-                        	sc.next();
-                        	String value = sc.next(); 
-                        	Clock c3 = Clock.getInstance(); 
-                        	c3.setRate(Integer.parseInt(value));
-                            
-                            break;
-                        default:
-                            System.out.println("not valid first word");
-
-                        case "WAIT":
-                            if(sc.next() == "FOR") {
-                                sc.next();
-                                String seconds = sc.next();
-                                TimeUnit.SECONDS.sleep(Long.parseLong(seconds));
-                            }
-                            if(sc.next() == "UNTIL") {
-                                sc.next();
-                                String seconds = sc.next();
-                                TimeUnit.SECONDS.wait(Long.parseLong(seconds));
-                            }
+                	if(sc.hasNext()) {
+	                    switch(sc.next()) {
+	                        case "PAUSE":
+	                        	Clock c1 = Clock.getInstance(); 
+	                        	c1.isActive(false);
+	                        	System.out.println("Paused");//REMOVE COMMENT WHEN DONE WITH FULL THING (@CLOCK)
+	                            break;
+	                        case "RESUME":
+	                        	Clock c2 = Clock.getInstance(); 
+	                        	c2.isActive(true);
+	                        	System.out.println("Resumed");//REMOVE COMMENT WHEN DONE (@CLOCK)
+	                            break;
+	                        //E2
+	                        case "ONESTEP":
+	                            //Get the instance of a clock
+	                            Clock c4 = Clock.getInstance();
+	                            //if the clock is not active
+	                            if(!c4.isActive()) {
+	                                //if there's another one
+	                                if(sc.hasNext()) {
+	                                    //go to the next one
+	                                    sc.next();
+	                                    //get the next thing
+	                                    String count = sc.next();
+	                                    //Does the one step command work?
+	                                    c4.onestep(Integer.parseInt(count));
+	                                }
+	                                else {
+	                                    //Increment by one
+	                                    c4.onestep(1);
+	                                }
+	                            }
+	                            break;
+	                        //E3
+	                        case "SET":
+	                        	//Rate
+	                        	sc.next();
+	                        	String value = sc.next(); 
+	                        	Clock c3 = Clock.getInstance(); 
+	                        	c3.setRate(Integer.parseInt(value));
+	                            
+	                            break;
+	                        default:
+	                            System.out.println("not valid first word");
+	
+	                        case "WAIT":
+	                            if(sc.next() == "FOR") {
+	                                sc.next();
+	                                String seconds = sc.next();
+	                                TimeUnit.SECONDS.sleep(Long.parseLong(seconds));
+	                            }
+	                            if(sc.next() == "UNTIL") {
+	                                sc.next();
+	                                String seconds = sc.next();
+	                                TimeUnit.SECONDS.wait(Long.parseLong(seconds));
+	                            }
+	                    }  
+                    
+                	}
+                	 //Command E7 @CLOCK
+                    else {
+                    	E7(); 
+                    	
+                    	
+                    	
                     }
                     break;
 
