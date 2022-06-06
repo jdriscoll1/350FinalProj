@@ -3,14 +3,30 @@ package cs350s22.component.ui.parser;
 import java.io.IOException;
 import java.util.List;
 import java.util.Scanner;
+
+import java.util.concurrent.TimeUnit;
+
+
 import cs350s22.component.*;
 import cs350s22.component.logger.LoggerMessage;
 import cs350s22.component.logger.LoggerMessageSequencing;
 import cs350s22.message.ping.MessagePing;
 import cs350s22.component.sensor.A_Sensor;
+
 import cs350s22.component.sensor.mapper.*;
+
+import cs350s22.component.sensor.mapper.A_Mapper;
+import cs350s22.component.sensor.mapper.MapperEquation;
+import cs350s22.component.sensor.mapper.MapperInterpolation;
+import cs350s22.component.sensor.mapper.function.equation.EquationNormalized;
 import cs350s22.component.sensor.mapper.function.equation.EquationPassthrough;
 import cs350s22.component.sensor.mapper.function.equation.EquationScaled;
+import cs350s22.component.sensor.mapper.function.interpolator.InterpolationMap;
+import cs350s22.component.sensor.mapper.function.interpolator.InterpolatorLinear;
+import cs350s22.component.sensor.mapper.function.interpolator.InterpolatorSpline;
+import cs350s22.component.sensor.mapper.function.interpolator.A_Interpolator;
+import cs350s22.component.sensor.mapper.function.interpolator.loader.A_MapLoader;
+import cs350s22.component.sensor.mapper.function.interpolator.loader.MapLoader;
 import cs350s22.support.Clock;
 import cs350s22.support.Filespec;
 import cs350s22.support.Identifier;
@@ -111,17 +127,17 @@ public class Parser {
 		
 	}
     
-    private void MAPPERcommands(Scanner sc) {//MAPPER command also C1 C2 C3 C4
+    private void MAPPERcommands(Scanner sc) throws IOException {//MAPPER command also C1 C2 C3 C4
 		//create mapper
     	SymbolTable<A_Mapper> mapperTable = parserHelper.getSymbolTableMapper();
         Identifier ID = Identifier.make(sc.next());
-        
-        
+
+        //C 1-3
 		if(sc.next().matches("EQUATION")) {
 			if(sc.next().matches("PASSTHROUGH")) {
 				EquationPassthrough passMapper = new EquationPassthrough();
-            	MapperEquation eqMapper = new MapperEquation(passMapper);
-            	mapperTable.add(ID, eqMapper);
+            	MapperEquation eqautionMapper = new MapperEquation(passMapper);
+            	mapperTable.add(ID, eqautionMapper);
 			}
 			if(sc.next().matches("SCALE")) {
 				int value = sc.nextInt();
@@ -129,12 +145,39 @@ public class Parser {
 				EquationScaled scaleMapper = new EquationScaled(value);
             	MapperEquation equationMapper = new MapperEquation(scaleMapper);
             	mapperTable.add(ID, equationMapper);
-				
-			}//follow format above should be easy for normalize for C3 maybe a little more complicated for C4
+			}
+            if(sc.next().matches("NORMALIZE")) {
+                int value1 = sc.nextInt();
+                int value2 = sc.nextInt();
+
+                EquationNormalized normalizeMapper = new EquationNormalized(value1, value2);
+                MapperEquation equationMapper = new MapperEquation(normalizeMapper);
+                mapperTable.add(ID, equationMapper);
+            }
 		}
-		
-		
-		
+        //C4
+        if(sc.next().matches("INTERPOLATION")) {
+            if(sc.next().matches("LINEAR")) {
+                sc.next();
+                String definition = sc.next();
+                Filespec filespec = new Filespec(definition);
+                A_MapLoader map = new MapLoader(filespec);
+                InterpolationMap interpolationMap = map.load();
+                InterpolatorLinear interpolatorLinear = new InterpolatorLinear(interpolationMap);
+                MapperInterpolation mapperInterpolation = new MapperInterpolation(interpolatorLinear);
+                mapperTable.add(ID, mapperInterpolation);
+            }
+            if(sc.next().matches("SPLINE")) {
+                sc.next();
+                String definition = sc.next();
+                Filespec filespec = new Filespec(definition);
+                A_MapLoader map = new MapLoader(filespec);
+                InterpolationMap interpolationMap = map.load();
+                InterpolatorSpline interpolatorSpline = new InterpolatorSpline(interpolationMap);
+                MapperInterpolation mapperInterpolation = new MapperInterpolation(interpolatorSpline);
+                mapperTable.add(ID, mapperInterpolation);
+            }
+        }
 	}
     
     private void D1(Scanner sc) {
@@ -169,17 +212,16 @@ public class Parser {
     	
     	LoggerMessage.initialize(logSpec); 
     	LoggerMessageSequencing.initialize(dotSpec, netSpec); 
+    	System.out.println("E6 is being called");
     	
     }
 
-    public void parse() throws IOException, ParseException{
-        
-    	
+    public void parse() throws IOException, ParseException, InterruptedException {
+
     	//makes it so we seperate words from empty spaces (" ")
         this.userInput = this.commandtext.toUpperCase();
         String[] command = this.userInput.split(" ");
         System.out.println("The command is: " + userInput);
-
 
             //switch statement
             //for each command starter (first word)
@@ -229,7 +271,7 @@ public class Parser {
                             System.out.println("not valid first word");
                     }
                     break;
-                case "@CLOCK":
+                case "@CLOCK": System.out.println(java.time.LocalTime.now());
                     switch(sc.next()) {
                         case "PAUSE":
                         	Clock c1 = Clock.getInstance(); 
@@ -274,6 +316,17 @@ public class Parser {
                         default:
                             System.out.println("not valid first word");
 
+                        case "WAIT":
+                            if(sc.next() == "FOR") {
+                                sc.next();
+                                String seconds = sc.next();
+                                TimeUnit.SECONDS.sleep(Long.parseLong(seconds));
+                            }
+                            if(sc.next() == "UNTIL") {
+                                sc.next();
+                                String seconds = sc.next();
+                                TimeUnit.SECONDS.wait(Long.parseLong(seconds));
+                            }
                     }
                     break;
 
@@ -308,7 +361,6 @@ public class Parser {
                         //defaults if not one of the options
                         default:
                             System.out.println("not valid first word");
-
 
         }
     }

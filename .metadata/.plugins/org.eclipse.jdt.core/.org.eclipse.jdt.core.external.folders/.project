@@ -10,7 +10,12 @@
 	</natures>
 	<linkedResources>
 		<link>
-			<name>.link1</name>
+			<name>.link2</name>
+			<type>2</type>
+			<location>C:/Users/Jordan/Downloads</location>
+		</link>
+		<link>
+			<name>.link3</name>
 			<type>2</type>
 			<location>C:/Users/Jordan/Test-Folder/School/Classes/350/task5/task5</location>
 		</link>
