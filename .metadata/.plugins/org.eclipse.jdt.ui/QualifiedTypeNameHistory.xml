@@ -4,5 +4,11 @@
     <fullyQualifiedTypeName name="cs350s22.test.ActuatorPrototype"/>
     <fullyQualifiedTypeName name="cs350s22.support.Identifier"/>
     <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="cs350s22.component.ui.CommandLineInterface"/>
+    <fullyQualifiedTypeName name="cs350s22.message.ping.MessagePing"/>
     <fullyQualifiedTypeName name="cs350s22.component.sensor.A_Sensor"/>
+    <fullyQualifiedTypeName name="cs350s22.component.sensor.mapper.function.equation.EquationPassthrough"/>
+    <fullyQualifiedTypeName name="cs350s22.component.sensor.mapper.function.equation.EquationScaled"/>
+    <fullyQualifiedTypeName name="cs350s22.component.logger.LoggerMessage"/>
+    <fullyQualifiedTypeName name="cs350s22.component.logger.LoggerMessageSequencing"/>
 </qualifiedTypeNameHistroy>
