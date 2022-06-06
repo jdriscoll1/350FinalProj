@@ -121,8 +121,8 @@ public class Parser {
 		if(sc.next().matches("EQUATION")) {
 			if(sc.next().matches("PASSTHROUGH")) {
 				EquationPassthrough passMapper = new EquationPassthrough();
-            	MapperEquation eqMapper = new MapperEquation(passMapper);
-            	mapperTable.add(ID, eqMapper);
+            	MapperEquation eqautionMapper = new MapperEquation(passMapper);
+            	mapperTable.add(ID, eqautionMapper);
 			}
 			if(sc.next().matches("SCALE")) {
 				int value = sc.nextInt();
