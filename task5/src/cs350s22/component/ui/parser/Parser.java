@@ -1,6 +1,7 @@
 package cs350s22.component.ui.parser;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -10,6 +11,9 @@ import java.util.concurrent.TimeUnit;
 import cs350s22.component.*;
 import cs350s22.component.logger.LoggerMessage;
 import cs350s22.component.logger.LoggerMessageSequencing;
+import cs350s22.message.A_Message;
+import cs350s22.message.actuator.MessageActuatorReportPosition;
+import cs350s22.message.actuator.MessageActuatorRequestPosition;
 import cs350s22.message.ping.MessagePing;
 import cs350s22.component.sensor.A_Sensor;
 
@@ -190,7 +194,65 @@ public class Parser {
     	System.out.println("Ping sent");
     	
     }
-    
+    //D2-3
+    private void D2_3(Scanner sc) {
+    	CommandLineInterface cli = parserHelper.getCommandLineInterface(); 
+    	boolean isID = false; 
+    	
+    	//All the ids & groups 
+    	ArrayList<Identifier> listOutput;  
+    	ArrayList<Identifier> ids = new ArrayList<Identifier>(); 
+    	ArrayList<Identifier> groups = new ArrayList<Identifier>(); 
+    	
+    	//The current word being parsed
+    	String curr = ""; 
+    	String output = ""; 
+    	
+    	//Loop until it finds position 
+    	while(!curr.equals("POSITION")) {
+    		//Grab the current word
+    		curr = sc.next(); 
+    		if(curr.equals("ID")) {
+    			if(output.equals("")) {
+    				output = "ID"; 
+    			}
+    			isID = true; 
+    			
+    		}
+    		else if(curr.equals("GROUPS")) {
+    			if(output.equals("")) {
+    				output = "GROUPS"; 
+    			}
+    			isID = false; 
+    			
+    		}
+    		else {
+    			//Convert string 2 identifier 
+    			Identifier id = Identifier.make(curr); 
+    			
+    			//If it's an ID add it to id, else ad dit to groups 
+    			if(isID) {
+    				
+    				ids.add(id); 
+    			}
+    			else {
+    				groups.add(id); 
+    				
+    			}
+    		}
+    	}
+    	listOutput = (output.equals("ID")) ? ids : groups; 
+    	
+    	//POSITION
+    	sc.next(); 
+    	
+    	boolean isRequest = (sc.next().equals("REQUEST")); 
+    	double value = sc.nextDouble(); 
+
+    	//Create Message Actuator 
+    	A_Message message = (isRequest) ?  new MessageActuatorRequestPosition(listOutput, value) : new MessageActuatorReportPosition(listOutput); 
+    	cli.issueMessage(message);
+    }
     
     private void E6(Scanner sc) throws IOException {
     	//LOG

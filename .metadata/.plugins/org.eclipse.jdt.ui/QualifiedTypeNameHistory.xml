@@ -4,11 +4,15 @@
     <fullyQualifiedTypeName name="cs350s22.test.ActuatorPrototype"/>
     <fullyQualifiedTypeName name="cs350s22.support.Identifier"/>
     <fullyQualifiedTypeName name="java.util.List"/>
-    <fullyQualifiedTypeName name="cs350s22.component.ui.CommandLineInterface"/>
     <fullyQualifiedTypeName name="cs350s22.message.ping.MessagePing"/>
     <fullyQualifiedTypeName name="cs350s22.component.sensor.A_Sensor"/>
     <fullyQualifiedTypeName name="cs350s22.component.sensor.mapper.function.equation.EquationPassthrough"/>
     <fullyQualifiedTypeName name="cs350s22.component.sensor.mapper.function.equation.EquationScaled"/>
     <fullyQualifiedTypeName name="cs350s22.component.logger.LoggerMessage"/>
     <fullyQualifiedTypeName name="cs350s22.component.logger.LoggerMessageSequencing"/>
+    <fullyQualifiedTypeName name="cs350s22.component.ui.CommandLineInterface"/>
+    <fullyQualifiedTypeName name="java.util.ArrayList"/>
+    <fullyQualifiedTypeName name="cs350s22.message.A_Message"/>
+    <fullyQualifiedTypeName name="cs350s22.message.actuator.MessageActuatorRequestPosition"/>
+    <fullyQualifiedTypeName name="cs350s22.message.actuator.MessageActuatorReportPosition"/>
 </qualifiedTypeNameHistroy>
