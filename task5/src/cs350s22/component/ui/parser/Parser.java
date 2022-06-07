@@ -307,7 +307,7 @@ public class Parser {
     	String posId = sc.next(); 
     	
     	//The current group which is being added to 
-    	ArrayList<Identifier> currGroup; 
+    	ArrayList<Identifier> currGroup = new ArrayList<Identifier>(); 
     	
     	//List of groups 
     	ArrayList<Identifier> groups = new ArrayList<Identifier>(); 
@@ -325,15 +325,15 @@ public class Parser {
     	while(sc.hasNext()) {
     		String curr = sc.next(); 
     		//First check if it is any of the stars, if it is, set that to the current 
-    		if(curr.equals("GROUPS")) {
+    		if(curr.equals("GROUPS") || curr.equals("GROUP")) {
     			currObj = Object.Group; 
     			currGroup = groups; 
     		}
-    		else if(curr.equals("REPORTS")) {
+    		else if(curr.equals("REPORTERS") || curr.equals("REPORTER")) {
     			currObj = Object.Reporter;
     			currGroup = reporters; 
     		}
-    		else if(curr.equals("WATCHDOGS")) {
+    		else if(curr.equals("WATCHDOGS") || curr.equals("WATCHDOG")) {
     			currObj = Object.Watchdog; 
     			currGroup = watchdogs; 
     		}
@@ -343,14 +343,30 @@ public class Parser {
     			
     		}
     		else {
-    			Identifer id = Identifier.make("curr"); 
+    			Identifier id = Identifier.make(curr); 
     			currGroup.add(id); 
     			
     		}
     		
     		
     	}
-    	
+    	System.out.println("Groups\n");
+    	for(Identifier i : groups) {
+    		System.out.println(i + "\n"); 
+    	}
+    	System.out.println("Mapper\n");
+    	for(Identifier i : mapper) {
+    		System.out.println(i + "\n"); 
+    	}
+    	System.out.println("Reporters\n");
+    	for(Identifier i : reporters) {
+    		System.out.println(i + "\n"); 
+    	}
+    	System.out.println("Watchdogs\n");
+    	for(Identifier i : watchdogs) {
+    		System.out.println(i + "\n");
+    		
+    	}
     	//Now we reach the point where it will reach one group, and the next following ones will be that one until 
     	
     	

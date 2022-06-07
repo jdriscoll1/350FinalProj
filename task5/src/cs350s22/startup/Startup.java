@@ -26,7 +26,9 @@ public class Startup
      startup.parse("@CONFIGURE LOG a DOT SEQUENCE b NETWORK c XML str");
      //startup.parse("SEND MESSAGE PING");
      //startup.parse("@CLOCK");
-     startup.parse("SEND MESSAGE ID myActuator1 GROUPS myActuators1 myActuators2 POSITION REPORT 30");
+     
+     //startup.parse("SEND MESSAGE ID myActuator1 GROUPS myActuators1 myActuators2 POSITION REPORT 30");
+     startup.parse("CREATE SENSOR POSITION mySensor16 WATCHDOGS myWatchdog1 myWatchdog2 MAPPER myMapper1");
      // run your tests like this
      startup.parse("@exit");
    }
