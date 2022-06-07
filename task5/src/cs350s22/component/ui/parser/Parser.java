@@ -47,7 +47,11 @@ public class Parser {
         this.commandtext = commandtext;
 		this.userInput = "";
     }
-    
+    //Enum stating which is being added 
+    private enum Object {
+    	Group, Reporter, Watchdog, Mapper 
+    	
+    }
     //Write out the Pseudo code and comit that change
     //TODO: Complete this command
     private void A1(Scanner sc) {
@@ -290,6 +294,68 @@ public class Parser {
     	
     }
 
+    //Create Sensor (Speed | Position)
+    private void H1(Scanner sc) {
+    	
+    	 
+    	// The current id being added to 
+    	Object currObj; 
+    	//(POSITION | SPEED)
+    	boolean isPosition = sc.next().equals("POSITION");
+    	
+    	//The id of the postition 
+    	String posId = sc.next(); 
+    	
+    	//The current group which is being added to 
+    	ArrayList<Identifier> currGroup; 
+    	
+    	//List of groups 
+    	ArrayList<Identifier> groups = new ArrayList<Identifier>(); 
+    	
+    	//List of reporters
+    	ArrayList<Identifier> reporters = new ArrayList<Identifier>(); 
+    	
+    	//List of watchdogs 
+    	ArrayList<Identifier> watchdogs = new ArrayList<Identifier>(); 
+    	
+    	//List of mappers 
+    	ArrayList<Identifier> mapper = new ArrayList<Identifier>(); 
+
+    	//The List of things to consider: Groups, Reporters, Watchdogs, Mapper 
+    	while(sc.hasNext()) {
+    		String curr = sc.next(); 
+    		//First check if it is any of the stars, if it is, set that to the current 
+    		if(curr.equals("GROUPS")) {
+    			currObj = Object.Group; 
+    			currGroup = groups; 
+    		}
+    		else if(curr.equals("REPORTS")) {
+    			currObj = Object.Reporter;
+    			currGroup = reporters; 
+    		}
+    		else if(curr.equals("WATCHDOGS")) {
+    			currObj = Object.Watchdog; 
+    			currGroup = watchdogs; 
+    		}
+    		else if(curr.equals("MAPPER")) {
+    			currObj = Object.Mapper; 
+    			currGroup = mapper; 
+    			
+    		}
+    		else {
+    			Identifer id = Identifier.make("curr"); 
+    			currGroup.add(id); 
+    			
+    		}
+    		
+    		
+    	}
+    	
+    	//Now we reach the point where it will reach one group, and the next following ones will be that one until 
+    	
+    	
+    	
+    }
     public void parse() throws IOException, ParseException, InterruptedException {
 
     	//makes it so we seperate words from empty spaces (" ")
@@ -326,7 +392,7 @@ public class Parser {
                             System.out.println("DO Something else");
                             break;
                         case "SENSOR":
-                            System.out.println("DO Something else");
+                            H1(sc); 
                             break;
                         case "WATCHDOG":
                             System.out.println("DO Something else");
