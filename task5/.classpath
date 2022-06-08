@@ -6,6 +6,6 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/Jordan/Downloads/cs350-project-v0_2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Kevin/Desktop/GROUP PROJECT/cs350-project-v0_2.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

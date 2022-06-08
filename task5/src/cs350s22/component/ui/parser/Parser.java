@@ -43,6 +43,9 @@ public class Parser {
     private final A_ParserHelper parserHelper;
     private final String commandtext;
     private String userInput; 
+    private List<A_Sensor> sensors = new ArrayList<A_Sensor>();
+    private List<Identifier> IDList = new ArrayList<Identifier>();
+    
     public Parser(A_ParserHelper parserHelper, String commandtext) throws IOException {
         //not sure if we need this
         this.parserHelper = parserHelper;
@@ -57,6 +60,7 @@ public class Parser {
     //Write out the Pseudo code and comit that change
     //TODO: Complete this command
     private void A1(Scanner sc) {
+    	
 
     	//Our goal is to create an actuator with identifer id and optional membership in groups and optional embedded sensors id based on values 
     	//crrate an actuator object that takes in:
@@ -69,44 +73,148 @@ public class Parser {
     	
     	//Let's make a parser
     	
-    	 Identifier id = null;  
+    	 
     	 List<Identifier> groups = null; //Optional 
 		 double accelerationLeadin = 0.0; 
 		 double accelerationLeadout = 0.0;
 		 double accelerationRelax = 0.0;
 		 double velocityLimit = 0.0;
-		 double valueInitial = 0.0;
+		 double velocityInitial = 0.0;
 		 double valueMin = 0.0;
 		 double valueMax = 0.0;
 		 double inflectionJerkThreshold = 0;
-		 List<A_Sensor> sensors = null; //Optional
-		 
-		 
-		 while(sc.hasNext()) {
-			 
-			 String s = sc.next(); 
-			 switch(s) {
-			 	case("LINEAR"):
-			 		String id_str = sc.next();
-			 		
-			 		//SymbolTable<Identifier>.getComponents(id_str); 
-			 		
-			 	
-			 	case("SENSORS"):
-			 		System.out.println("THIS IS SENSORS");
-			 		break; 
-			 	case("GROUPS"):
-			 		break; 
-			 	case(""):
-			 		break ;
-			 	
+		 //List<A_Sensor> sensors = null; //Optional
+	     String[] command = this.userInput.split(" ");
+	     Identifier ID = Identifier.make(command[3]);
+	     
+	     
+	    
+	     
+			if (command[2].matches("LINEAR") | command[2].matches("ROTARY")) {
+				IDList.add(ID);
+				
+				
+				// if no group and no sensor
+				if (command[4].matches("ACCELERATION")) {
+					if (command[5].matches("LEADIN")) {
+						accelerationLeadin = Double.parseDouble(command[6]);
+
+						if (command[7].matches("LEADOUT")) {
+							accelerationLeadout = Double.parseDouble(command[8]);
+
+							if (command[9].matches("RELAX")) {
+								accelerationRelax = Double.parseDouble(command[10]);
+
+								if (command[11].matches("VELOCITY")) {
+									if (command[12].matches("LIMIT")) {
+										velocityLimit = Double.parseDouble(command[13]);
+
+										if (command[14].matches("VALUE")) {
+											if (command[15].matches("MIN")) {
+												valueMin = Double.parseDouble(command[16]);
+												
+												if (command[17].matches("MAX")) {
+													valueMax = Double.parseDouble(command[18]);
+
+													if (command[19].matches("INITIAL")) {
+														velocityInitial = Double.parseDouble(command[20]);
+
+														if (command[21].matches("JERK")) {
+															if (command[22].matches("LIMIT")) {
+																inflectionJerkThreshold = Double
+																		.parseDouble(command[23]);
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+				//end of no group and no sensor
+				
+				//if full thing all variables
+				if (command[4].matches("GROUPS")) {
+					// NOT SURE WHAT TO DO IF GROUP
+
+					if (command[5].matches("SENSORS") | command[5].matches("SENSOR")) {
+						sensors.add(parserHelper.getSymbolTableSensor().get(Identifier.make(command[6])));
+					}
+
+					if (command[7].matches("ACCELERATION")) {
+
+						if (command[8].matches("LEADIN")) {
+							accelerationLeadin = Double.parseDouble(command[9]);
+
+							if (command[10].matches("LEADOUT")) {
+								accelerationLeadout = Double.parseDouble(command[11]);
+
+								if (command[12].matches("RELAX")) {
+									accelerationRelax = Double.parseDouble(command[13]);
+
+									if (command[14].matches("VELOCITY")) {
+										if (command[15].matches("LIMIT")) {
+											velocityLimit = Double.parseDouble(command[16]);
+											
+											if (command[17].matches("VALUE")) {
+												if (command[18].matches("MIN")) {
+													valueMin = Double.parseDouble(command[19]);
+
+													if (command[20].matches("MAX")) {
+														valueMax = Double.parseDouble(command[21]);
+
+														if (command[22].matches("INITIAL")) {
+															velocityInitial = Double.parseDouble(command[23]);
+
+															if (command[24].matches("JERK")) {
+																if (command[25].matches("LIMIT")) {
+																	inflectionJerkThreshold = Double.parseDouble(command[26]);
+																	
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+
+		
+//		 while(sc.hasNext()) {
+//			 
+//			 String s = sc.next(); 
+//			 switch(s) {
+//			 	case("LINEAR"):
+//			 		String id_str = sc.next();
+//			 		
+//			 		//SymbolTable<Identifier>.getComponents(id_str); 
+//			 		
+//			 	
+//			 	case("SENSORS"):
+//			 		System.out.println("THIS IS SENSORS");
+//			 		break; 
+//			 	case("GROUPS"):
+//			 		break; 
+//			 	case(""):
+//			 		break ;
+//			 	
 			 
 			 
 			 }
 			 
 			 
 			 
-		 }
+		 
     	
     	//2) create an ActuatorPrototype object with the arguments 
     	/*ActuatorPrototype a = new ActuatorPrototype(
@@ -122,14 +230,13 @@ public class Parser {
     			 valueMax,
     			 inflectionJerkThreshold,
     			 sensors);*/
-    	System.out.println("Exits Method");
+    	//System.out.println("Exits Method");
     	
     	
     	//3) add it to SymbolTable<A_Actuator>.
 
-    }
-    private void B1(Scanner sc) {
-		
+    
+    private void B1(Scanner sc) {		
 		
 	}
     
