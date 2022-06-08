@@ -415,7 +415,7 @@ public class Parser {
     	System.out.println("Ping sent");
     }
 
-    //D2-3
+    //TO-DO: Add Stars & Squares 
     private void D2_3(Scanner sc) {
     	CommandLineInterface cli = parserHelper.getCommandLineInterface(); 
     	boolean isID = false; 
@@ -457,8 +457,7 @@ public class Parser {
     				ids.add(id); 
     			}
     			else {
-    				groups.add(id); 
-    				
+    				groups.add(id); 	
     			}
     		}
     	}
