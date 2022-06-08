@@ -53,7 +53,7 @@ public class Parser {
     private final A_ParserHelper parserHelper;
     private final String commandtext;
     private String userInput; 
-    private List<A_Sensor> sensors = new ArrayList<A_Sensor>();
+   // private List<A_Sensor> sensors = new ArrayList<A_Sensor>();
     private List<Identifier> IDList = new ArrayList<Identifier>();
     
     public Parser(A_ParserHelper parserHelper, String commandtext) throws IOException {
@@ -80,7 +80,7 @@ public class Parser {
     	//Let's make a parser
     	
     	 
-    	 List<Identifier> groups = null; //Optional 
+    	 //List<Identifier> groups = null; //Optional 
 		 double accelerationLeadin = 0.0; 
 		 double accelerationLeadout = 0.0;
 		 double accelerationRelax = 0.0;
@@ -90,213 +90,300 @@ public class Parser {
 		 double valueMax = 0.0;
 		 double inflectionJerkThreshold = 0;
 		 //List<A_Sensor> sensors = null; //Optional
-	     String[] command = this.userInput.split(" ");
-	     Identifier ID = Identifier.make(command[3]);
-	     
-	     
-	    //Stars & Squares
+	     //String[] command = this.userInput.split(" ");
+//	     Identifier ID = Identifier.make(sc.next());
+	     ArrayList<Identifier> group = new ArrayList<Identifier>(); 
+	     ArrayList<Identifier> currGroup = new ArrayList<Identifier>(); 
+	     ArrayList<Identifier> sensors = new ArrayList<Identifier>(); 
+
+	    
 	    //First boolean linear or rotary 
 	    //Take the id next
 	    //Stars and Squares groups & sensors
 	    //Linearly 
-	     
-	     
-	     
-			if (command[2].matches("LINEAR") || command[2].matches("ROTARY")) {
-				IDList.add(ID);
-				
-				
-				// if no group and no sensor
-				if (command[4].matches("ACCELERATION")) {
-					if (command[5].matches("LEADIN")) {
-						accelerationLeadin = Double.parseDouble(command[6]);
+		boolean groupsFlag = false;
+		boolean sensorFlag = false;
 
-						if (command[7].matches("LEADOUT")) {
-							accelerationLeadout = Double.parseDouble(command[8]);
+		// CREATE ACTURATRO is already done
 
-							if (command[9].matches("RELAX")) {
-								accelerationRelax = Double.parseDouble(command[10]);
+		// Check if it is a linear or rotary access
+		boolean isLinear = sc.next().equals("LINEAR");
 
-								if (command[11].matches("VELOCITY")) {
-									if (command[12].matches("LIMIT")) {
-										velocityLimit = Double.parseDouble(command[13]);
+		String id = sc.next();
+		// IDList.add(id);
+		// Stars & Square Loop
+		while (sc.hasNext()) {
+			String curr = sc.next();
 
-										if (command[14].matches("VALUE")) {
-											if (command[15].matches("MIN")) {
-												valueMin = Double.parseDouble(command[16]);
-												
-												if (command[17].matches("MAX")) {
-													valueMax = Double.parseDouble(command[18]);
-
-													if (command[19].matches("INITIAL")) {
-														velocityInitial = Double.parseDouble(command[20]);
-
-														if (command[21].matches("JERK")) {
-															if (command[22].matches("LIMIT")) {
-																inflectionJerkThreshold = Double
-																		.parseDouble(command[23]);
-															}
-														}
-													}
-												}
-											}
-										}
-									}
-								}
-							}
-						}
-					}
-				}
-				//end of no group and no sensor
-				
-				//if has group no sensor
-				if (command[4].matches("GROUPS")) {
-					//group
-					if (command[5].matches("ACCELERATION")) {
-						if (command[6].matches("LEADIN")) {
-							accelerationLeadin = Double.parseDouble(command[7]);
-
-							if (command[8].matches("LEADOUT")) {
-								accelerationLeadout = Double.parseDouble(command[9]);
-
-								if (command[10].matches("RELAX")) {
-									accelerationRelax = Double.parseDouble(command[11]);
-
-									if (command[12].matches("VELOCITY")) {
-										if (command[13].matches("LIMIT")) {
-											velocityLimit = Double.parseDouble(command[14]);
-
-											if (command[15].matches("VALUE")) {
-												if (command[16].matches("MIN")) {
-													valueMin = Double.parseDouble(command[17]);
-
-													if (command[18].matches("MAX")) {
-														valueMax = Double.parseDouble(command[21]);
-
-														if (command[19].matches("INITIAL")) {
-															velocityInitial = Double.parseDouble(command[20]);
-
-															if (command[21].matches("JERK")) {
-																if (command[22].matches("LIMIT")) {
-																	inflectionJerkThreshold = Double
-																			.parseDouble(command[23]);
-
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									}
-								}
-							}
-						}
-					}
-				}
-				// end if group with no sensor
-				
-				// if no group with sensor
-				if (command[4].matches("SENSORS") | command[4].matches("SENSOR")) {
-					sensors.add(parserHelper.getSymbolTableSensor().get(Identifier.make(command[5])));
-					if (command[6].matches("ACCELERATION")) {
-
-						if (command[7].matches("LEADIN")) {
-							accelerationLeadin = Double.parseDouble(command[8]);
-
-							if (command[9].matches("LEADOUT")) {
-								accelerationLeadout = Double.parseDouble(command[10]);
-
-								if (command[11].matches("RELAX")) {
-									accelerationRelax = Double.parseDouble(command[12]);
-
-									if (command[13].matches("VELOCITY")) {
-										if (command[14].matches("LIMIT")) {
-											velocityLimit = Double.parseDouble(command[15]);
-
-											if (command[16].matches("VALUE")) {
-												if (command[17].matches("MIN")) {
-													valueMin = Double.parseDouble(command[18]);
-
-													if (command[19].matches("MAX")) {
-														valueMax = Double.parseDouble(command[20]);
-
-														if (command[21].matches("INITIAL")) {
-															velocityInitial = Double.parseDouble(command[23]);
-
-															if (command[22].matches("JERK")) {
-																if (command[23].matches("LIMIT")) {
-																	inflectionJerkThreshold = Double
-																			.parseDouble(command[24]);
-
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									}
-								}
-							}
-						}
-					}
-				}
-				// end no group with sensor
-				
-				//if full thing all variables
-				if (command[4].matches("GROUPS")) {
-					// NOT SURE WHAT TO DO IF GROUP
-
-					if (command[5].matches("SENSORS") | command[5].matches("SENSOR")) {
-						sensors.add(parserHelper.getSymbolTableSensor().get(Identifier.make(command[6])));
-					}
-
-					if (command[7].matches("ACCELERATION")) {
-
-						if (command[8].matches("LEADIN")) {
-							accelerationLeadin = Double.parseDouble(command[9]);
-
-							if (command[10].matches("LEADOUT")) {
-								accelerationLeadout = Double.parseDouble(command[11]);
-
-								if (command[12].matches("RELAX")) {
-									accelerationRelax = Double.parseDouble(command[13]);
-
-									if (command[14].matches("VELOCITY")) {
-										if (command[15].matches("LIMIT")) {
-											velocityLimit = Double.parseDouble(command[16]);
-											
-											if (command[17].matches("VALUE")) {
-												if (command[18].matches("MIN")) {
-													valueMin = Double.parseDouble(command[19]);
-
-													if (command[20].matches("MAX")) {
-														valueMax = Double.parseDouble(command[21]);
-
-														if (command[22].matches("INITIAL")) {
-															velocityInitial = Double.parseDouble(command[23]);
-
-															if (command[24].matches("JERK")) {
-																if (command[25].matches("LIMIT")) {
-																	inflectionJerkThreshold = Double.parseDouble(command[26]);
-																	
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									}
-								}
-							}
-						}
-					}
-				}
+			// If it reaches star 1
+			if (curr.equals("GROUPS") || curr.equals("GROUP")) {
+				currGroup = group;
+				groupsFlag = true;
 			}
 
-		
+			// if it reaches star 2
+			else if (curr.matches("SENSORS") | curr.matches("SENSOR")) {
+				currGroup = sensors;
+				sensorFlag = true;
+			}
+			// If it reaches ACCELERATION{
+			// break
+			else if (curr.matches("ACCELERATION")) {
+				break;
+			}
+			// Add it to the list
+		}
+
+		if (sc.next().matches("LEADIN")) {
+			accelerationLeadin = Double.parseDouble(sc.next());
+		} else {
+			System.out.println("invalid");
+		}
+
+		if (sc.next().matches("LEADOUT")) {
+			accelerationLeadout = Double.parseDouble(sc.next());
+		} else {
+			System.out.println("invalid");
+		}
+
+		if (sc.next().matches("RELAX")) {
+			accelerationRelax = Double.parseDouble(sc.next());
+		} else {
+			System.out.println("invalid");
+		}
+		if (sc.next().matches("VELOCITY")) {
+			if (sc.next().matches("LIMIT")) {
+				velocityLimit = Double.parseDouble(sc.next());
+			} else {
+				System.out.println("invalid");
+			}
+		} else {
+			System.out.println("invalid");
+		}
+		if (sc.next().matches("VALUE")) {
+			if (sc.next().matches("MIN")) {
+				valueMin = Double.parseDouble(sc.next());
+			} else {
+				System.out.println("invalid");
+			}
+		} else {
+			System.out.println("invalid");
+		}
+		if (sc.next().matches("MAX")) {
+			valueMax = Double.parseDouble(sc.next());
+		} else {
+			System.out.println("invalid");
+		}
+		if (sc.next().matches("INITIAL")) {
+			velocityInitial = Double.parseDouble(sc.next());
+		} else {
+			System.out.println("invalid");
+		}
+		if (sc.next().matches("JERK")) {
+			if (sc.next().matches("LIMIT")) {
+				inflectionJerkThreshold = Double.parseDouble(sc.next());
+			} else {
+				System.out.println("invalid");
+			}
+		} else {
+			System.out.println("invalid");
+		}
+
+//			if (command[2].matches("LINEAR") || command[2].matches("ROTARY")) {
+//				IDList.add(ID);
+//				
+//				
+//				// if no group and no sensor
+//				if (command[4].matches("ACCELERATION")) {
+//					if (command[5].matches("LEADIN")) {
+//						accelerationLeadin = Double.parseDouble(command[6]);
+//
+//						if (command[7].matches("LEADOUT")) {
+//							accelerationLeadout = Double.parseDouble(command[8]);
+//
+//							if (command[9].matches("RELAX")) {
+//								accelerationRelax = Double.parseDouble(command[10]);
+//
+//								if (command[11].matches("VELOCITY")) {
+//									if (command[12].matches("LIMIT")) {
+//										velocityLimit = Double.parseDouble(command[13]);
+//
+//										if (command[14].matches("VALUE")) {
+//											if (command[15].matches("MIN")) {
+//												valueMin = Double.parseDouble(command[16]);
+//												
+//												if (command[17].matches("MAX")) {
+//													valueMax = Double.parseDouble(command[18]);
+//
+//													if (command[19].matches("INITIAL")) {
+//														velocityInitial = Double.parseDouble(command[20]);
+//
+//														if (command[21].matches("JERK")) {
+//															if (command[22].matches("LIMIT")) {
+//																inflectionJerkThreshold = Double
+//																		.parseDouble(command[23]);
+//															}
+//														}
+//													}
+//												}
+//											}
+//										}
+//									}
+//								}
+//							}
+//						}
+//					}
+//				}
+//				//end of no group and no sensor
+//				
+//				//if has group no sensor
+//				if (command[4].matches("GROUPS")) {
+//					//group
+//					if (command[5].matches("ACCELERATION")) {
+//						if (command[6].matches("LEADIN")) {
+//							accelerationLeadin = Double.parseDouble(command[7]);
+//
+//							if (command[8].matches("LEADOUT")) {
+//								accelerationLeadout = Double.parseDouble(command[9]);
+//
+//								if (command[10].matches("RELAX")) {
+//									accelerationRelax = Double.parseDouble(command[11]);
+//
+//									if (command[12].matches("VELOCITY")) {
+//										if (command[13].matches("LIMIT")) {
+//											velocityLimit = Double.parseDouble(command[14]);
+//
+//											if (command[15].matches("VALUE")) {
+//												if (command[16].matches("MIN")) {
+//													valueMin = Double.parseDouble(command[17]);
+//
+//													if (command[18].matches("MAX")) {
+//														valueMax = Double.parseDouble(command[21]);
+//
+//														if (command[19].matches("INITIAL")) {
+//															velocityInitial = Double.parseDouble(command[20]);
+//
+//															if (command[21].matches("JERK")) {
+//																if (command[22].matches("LIMIT")) {
+//																	inflectionJerkThreshold = Double
+//																			.parseDouble(command[23]);
+//
+//																}
+//															}
+//														}
+//													}
+//												}
+//											}
+//										}
+//									}
+//								}
+//							}
+//						}
+//					}
+//				}
+//				// end if group with no sensor
+//				
+//				// if no group with sensor
+//				if (command[4].matches("SENSORS") | command[4].matches("SENSOR")) {
+//					sensors.add(parserHelper.getSymbolTableSensor().get(Identifier.make(command[5])));
+//					if (command[6].matches("ACCELERATION")) {
+//
+//						if (command[7].matches("LEADIN")) {
+//							accelerationLeadin = Double.parseDouble(command[8]);
+//
+//							if (command[9].matches("LEADOUT")) {
+//								accelerationLeadout = Double.parseDouble(command[10]);
+//
+//								if (command[11].matches("RELAX")) {
+//									accelerationRelax = Double.parseDouble(command[12]);
+//
+//									if (command[13].matches("VELOCITY")) {
+//										if (command[14].matches("LIMIT")) {
+//											velocityLimit = Double.parseDouble(command[15]);
+//
+//											if (command[16].matches("VALUE")) {
+//												if (command[17].matches("MIN")) {
+//													valueMin = Double.parseDouble(command[18]);
+//
+//													if (command[19].matches("MAX")) {
+//														valueMax = Double.parseDouble(command[20]);
+//
+//														if (command[21].matches("INITIAL")) {
+//															velocityInitial = Double.parseDouble(command[23]);
+//
+//															if (command[22].matches("JERK")) {
+//																if (command[23].matches("LIMIT")) {
+//																	inflectionJerkThreshold = Double
+//																			.parseDouble(command[24]);
+//
+//																}
+//															}
+//														}
+//													}
+//												}
+//											}
+//										}
+//									}
+//								}
+//							}
+//						}
+//					}
+//				}
+//				// end no group with sensor
+//				
+//				//if full thing all variables
+//				if (command[4].matches("GROUPS")) {
+//					// NOT SURE WHAT TO DO IF GROUP
+//
+//					if (command[5].matches("SENSORS") | command[5].matches("SENSOR")) {
+//						sensors.add(parserHelper.getSymbolTableSensor().get(Identifier.make(command[6])));
+//					}
+//
+//					if (command[7].matches("ACCELERATION")) {
+//
+//						if (command[8].matches("LEADIN")) {
+//							accelerationLeadin = Double.parseDouble(command[9]);
+//
+//							if (command[10].matches("LEADOUT")) {
+//								accelerationLeadout = Double.parseDouble(command[11]);
+//
+//								if (command[12].matches("RELAX")) {
+//									accelerationRelax = Double.parseDouble(command[13]);
+//
+//									if (command[14].matches("VELOCITY")) {
+//										if (command[15].matches("LIMIT")) {
+//											velocityLimit = Double.parseDouble(command[16]);
+//											
+//											if (command[17].matches("VALUE")) {
+//												if (command[18].matches("MIN")) {
+//													valueMin = Double.parseDouble(command[19]);
+//
+//													if (command[20].matches("MAX")) {
+//														valueMax = Double.parseDouble(command[21]);
+//
+//														if (command[22].matches("INITIAL")) {
+//															velocityInitial = Double.parseDouble(command[23]);
+//
+//															if (command[24].matches("JERK")) {
+//																if (command[25].matches("LIMIT")) {
+//																	inflectionJerkThreshold = Double.parseDouble(command[26]);
+//																	
+//																}
+//															}
+//														}
+//													}
+//												}
+//											}
+//										}
+//									}
+//								}
+//							}
+//						}
+//					}
+//				}
+//			}
+//
+//		
 //		 while(sc.hasNext()) {
 //			 
 //			 String s = sc.next(); 
