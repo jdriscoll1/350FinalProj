@@ -505,7 +505,7 @@ public class Parser {
 
     //Create Sensor (Speed | Position)
     private void H1(Scanner sc) {
-    	
+    	/***************** PARSING  ***********/
     	//(POSITION | SPEED)
     	boolean isPosition = sc.next().equals("POSITION");
     	
@@ -527,6 +527,12 @@ public class Parser {
     	//List of mappers 
     	ArrayList<Identifier> mapper = new ArrayList<Identifier>(); 
 
+    	//Check if each one is specified
+    	boolean groupsFlag= false;
+    	boolean reporterFlag = false; 
+    	boolean watchdogFlag = false; 
+    	boolean mapperFlag = false; 
+    	
     	//The List of things to consider: Groups, Reporters, Watchdogs, Mapper 
     	while(sc.hasNext()) {
     		String curr = sc.next(); 
@@ -534,16 +540,19 @@ public class Parser {
     		//First check if it is any of the stars, if it is, set that to the current 
     		if(curr.equals("GROUPS") || curr.equals("GROUP")) {
     			currGroup = groups; 
+    			groupsFlag = true; 
     		}
     		else if(curr.equals("REPORTERS") || curr.equals("REPORTER")) {
     			currGroup = reporters; 
+    			reporterFlag = true; 
     		}
     		else if(curr.equals("WATCHDOGS") || curr.equals("WATCHDOG")) {
     			currGroup = watchdogs; 
+    			watchdogFlag = true; 
     		}
     		else if(curr.equals("MAPPER")) {
     			currGroup = mapper; 
-    			
+    			mapperFlag = true; 
     		}
     		//If it's not any of the stars, it's a square 
     		else {
@@ -551,6 +560,10 @@ public class Parser {
     			currGroup.add(id); 
     			
     		}
+    		
+    		/*******EXECUTING************/
+    		//To be done later because it requires methods yet to be created 
+    		
     		
     		
     	}
@@ -572,6 +585,59 @@ public class Parser {
     		
     	}
     	//Now we reach the point where it will reach one group, and the next following ones will be that one until 
+    	
+    	
+    	
+    }
+    //Create a watchdog
+    private void I1(Scanner sc) {
+    	//The watchdog's id
+    	String id = ""; 
+    	//TThe mode of the watch dog(instantaneous? Average? etc..)
+    	String mode = ""; 
+    	
+    	double lowThreshold = 0; 
+    	double highThreshold = 0;
+    	double grace = 0; 
+    	
+    	
+    	//CREATE WATCHDOG already accounted for 
+   
+    	//ACCELERATION
+    	sc.next(); 
+    	
+    	id = sc.next(); 
+    	
+    	//MODE
+    	sc.next(); 
+    	
+    	mode = sc.next(); 
+    	
+    	//THRESHOLD 
+    	sc.next(); 
+    	
+    	//LOW
+    	sc.next(); 
+    
+    	lowThreshold = sc.nextDouble(); 
+    	
+    	//HIGH
+    	sc.next(); 
+    	
+    	highThreshold = sc.nextDouble(); 
+    	
+    	//GRACE is optional 
+    	if(sc.hasNext()) {
+    		//GRACE
+    		sc.next(); 
+    		
+    		grace = sc.nextDouble(); 
+    		
+    		
+    		
+    		
+    	}
+    	
     	
     	
     	
@@ -615,7 +681,7 @@ public class Parser {
                             H1(sc); 
                             break;
                         case "WATCHDOG":
-                            System.out.println("DO Something else");
+                            I1(sc); 
                             break;
 
                         default:
