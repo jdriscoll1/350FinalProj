@@ -6,18 +6,16 @@ import java.util.List;
 import java.util.Scanner;
 
 import java.util.concurrent.TimeUnit;
-
-
 import cs350s22.component.*;
 import cs350s22.component.A_Component;
 import cs350s22.component.logger.LoggerMessage;
 import cs350s22.component.logger.LoggerMessageSequencing;
+import cs350s22.component.sensor.reporter.ReporterFrequency;
 import cs350s22.message.A_Message;
 import cs350s22.message.actuator.MessageActuatorReportPosition;
 import cs350s22.message.actuator.MessageActuatorRequestPosition;
 import cs350s22.message.ping.MessagePing;
 import cs350s22.component.sensor.A_Sensor;
-
 import cs350s22.component.sensor.mapper.*;
 import cs350s22.component.controller.A_Controller;
 import cs350s22.component.actuator.A_Actuator;
@@ -43,6 +41,8 @@ import cs350s22.component.sensor.watchdog.mode.A_WatchdogMode;
 import cs350s22.component.sensor.watchdog.mode.WatchdogModeAverage;
 import cs350s22.component.sensor.watchdog.mode.WatchdogModeInstantaneous;
 import cs350s22.component.sensor.watchdog.mode.WatchdogModeStandardDeviation;
+import cs350s22.component.sensor.reporter.ReporterChange;
+import cs350s22.component.sensor.reporter.ReporterFrequency;
 import cs350s22.component.ui.CommandLineInterface;
 import cs350s22.support.Clock;
 import cs350s22.support.Filespec;
@@ -384,7 +384,6 @@ public class Parser {
 		}
         //C4
 		else if(sc.next().matches("INTERPOLATION")) {
-
             if(sc.next().matches("LINEAR")) {
                 sc.next();
                 String definition = sc.next();
@@ -408,15 +407,14 @@ public class Parser {
         }
 	}
     
-    
     //Sends out a ping from the command line interface
     private void D1() {
        	CommandLineInterface cli = parserHelper.getCommandLineInterface(); 
     	MessagePing ping = new MessagePing(); 
     	cli.issueMessage(ping);
     	System.out.println("Ping sent");
-    	
     }
+
     //D2-3
     private void D2_3(Scanner sc) {
     	CommandLineInterface cli = parserHelper.getCommandLineInterface(); 
@@ -500,18 +498,95 @@ public class Parser {
     	Filespec netSpec = new Filespec(netStr); 
     	
     	LoggerMessage.initialize(logSpec); 
-    	LoggerMessageSequencing.initialize(dotSpec, netSpec); 
-
-    	
+    	LoggerMessageSequencing.initialize(dotSpec, netSpec);
     }
-    
-    
-    
+
     private void E7() {
     	Clock c = Clock.getInstance(); 
     	System.out.println(c.getTick());
-    	
     }
+
+	//F1 Network Commands
+	private void F1(Scanner sc) {
+		//COMPONENT
+		if(sc.next().equals("COMPONENT")) {
+			Identifier ID = Identifier.make(sc.next());
+			SymbolTable<A_Controller> controllerTable = parserHelper.getSymbolTableController();
+			SymbolTable<A_Sensor> sensorTable = parserHelper.getSymbolTableSensor();
+			A_Component component1 = controllerTable.get(ID);
+			A_Component component2 = sensorTable.get(ID);
+			parserHelper.getControllerMaster().addComponent(component1);
+			parserHelper.getControllerMaster().addComponent(component2);
+		}
+		//COMPONENTS
+		if(sc.next().equals("COMPONENTS")) {
+			Identifier ID = Identifier.make(sc.next());
+			SymbolTable<A_Controller> controllerTable = parserHelper.getSymbolTableController();
+			SymbolTable<A_Actuator> actuatorTable = parserHelper.getSymbolTableActuator();
+			SymbolTable<A_Sensor> sensorTable = parserHelper.getSymbolTableSensor();
+			A_Component component1 = controllerTable.get(ID);
+			A_Component component2 = actuatorTable.get(ID);
+			A_Component component3 = sensorTable.get(ID);
+			parserHelper.getControllerMaster().addComponent(component1);
+			parserHelper.getControllerMaster().addComponent(component2);
+			parserHelper.getControllerMaster().addComponent(component3);
+		}
+		System.out.println(parserHelper.getNetwork().generateXML());
+	}
+
+	//G1 and G2 Reporter Commands
+	private void G1_2(Scanner sc) {
+		//CHANGE
+		if(sc.next().equals("CHANGE")) {
+			Identifier ID = Identifier.make(sc.next());
+			//NOTIFY
+			sc.next();
+			//IDS
+			sc.next();
+			//get the list of ids to notify
+			List<Identifier> ids = Identifier.makeListEmpty();
+			List<Identifier> groups = Identifier.makeListEmpty();
+			while(!sc.next().equals("GROUPS")) {
+				ids.add(Identifier.make(sc.next()));
+			}
+			while(!sc.next().equals("DELTA")) {
+				groups.add(Identifier.make(sc.next()));
+			}
+			//DELTA
+			sc.next();
+			//get the delta value
+			int delta = Integer.parseInt(sc.next());
+			ReporterChange reporterChange = new ReporterChange(ids, groups, delta);
+
+			//add to the symbol table
+			parserHelper.getSymbolTableReporter().add(ID, reporterChange);
+		}
+		//FREQUENCY
+		if(sc.next().equals("FREQUENCY")) {
+			Identifier ID = Identifier.make(sc.next());
+			//NOTIFY
+			sc.next();
+			//IDS
+			sc.next();
+			//get the list of ids to notify
+			List<Identifier> ids = Identifier.makeListEmpty();
+			List<Identifier> groups = Identifier.makeListEmpty();
+			while(!sc.next().equals("GROUPS")) {
+				ids.add(Identifier.make(sc.next()));
+			}
+			while(!sc.next().equals("FREQUENCY")) {
+				groups.add(Identifier.make(sc.next()));
+			}
+			//FREQUENCY
+			sc.next();
+			//get the frequency value
+			int frequency = Integer.parseInt(sc.next());
+			ReporterFrequency reporterFrequency = new ReporterFrequency(ids, groups, frequency);
+
+			//add to the symbol table
+			parserHelper.getSymbolTableReporter().add(ID, reporterFrequency);
+		}
+	}
 
     //Create Sensor (Speed | Position)
     private void H1(Scanner sc) {
@@ -895,29 +970,8 @@ public class Parser {
 							//WITH
 							sc.next();
 							//COMPONENT
-							if(sc.next() == "COMPONENT") {
-								Identifier ID = Identifier.make(sc.next());
-								SymbolTable<A_Controller> controllerTable = parserHelper.getSymbolTableController();
-								SymbolTable<A_Sensor> sensorTable = parserHelper.getSymbolTableSensor();
-								A_Component component1 = controllerTable.get(ID);
-								A_Component component2 = sensorTable.get(ID);
-								parserHelper.getControllerMaster().addComponent(component1);
-								parserHelper.getControllerMaster().addComponent(component2);
-							}
-							//COMPONENTS
-							else {
-								Identifier ID = Identifier.make(sc.next());
-								SymbolTable<A_Controller> controllerTable = parserHelper.getSymbolTableController();
-								SymbolTable<A_Actuator> actuatorTable = parserHelper.getSymbolTableActuator();
-								SymbolTable<A_Sensor> sensorTable = parserHelper.getSymbolTableSensor();
-								A_Component component1 = controllerTable.get(ID);
-								A_Component component2 = actuatorTable.get(ID);
-								A_Component component3 = sensorTable.get(ID);
-								parserHelper.getControllerMaster().addComponent(component1);
-								parserHelper.getControllerMaster().addComponent(component2);
-								parserHelper.getControllerMaster().addComponent(component3);
-							}
-							System.out.println(parserHelper.getNetwork().generateXML());
+							F1(sc);
+
                             break;
                     }
                     break;
