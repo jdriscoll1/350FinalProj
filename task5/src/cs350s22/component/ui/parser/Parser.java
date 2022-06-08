@@ -14,7 +14,6 @@ import cs350s22.component.logger.LoggerMessage;
 import cs350s22.component.logger.LoggerMessageSequencing;
 import cs350s22.message.A_Message;
 import cs350s22.message.actuator.MessageActuatorReportPosition;
-import cs350s22.message.actuator.MessageActuatorRequestPosition;
 import cs350s22.message.ping.MessagePing;
 import cs350s22.component.sensor.A_Sensor;
 
@@ -52,11 +51,7 @@ public class Parser {
         this.commandtext = commandtext;
 		this.userInput = "";
     }
-    //Enum stating which is being added 
-    private enum Object {
-    	Group, Reporter, Watchdog, Mapper 
-    	
-    }
+   
     //Write out the Pseudo code and comit that change
     //TODO: Complete this command
     private void A1(Scanner sc) {
@@ -88,9 +83,15 @@ public class Parser {
 	     Identifier ID = Identifier.make(command[3]);
 	     
 	     
-	    
+	    //Stars & Squares
+	    //First boolean linear or rotary 
+	    //Take the id next
+	    //Stars and Squares groups & sensors
+	    //Linearly 
 	     
-			if (command[2].matches("LINEAR") | command[2].matches("ROTARY")) {
+	     
+	     
+			if (command[2].matches("LINEAR") || command[2].matches("ROTARY")) {
 				IDList.add(ID);
 				
 				
@@ -502,9 +503,6 @@ public class Parser {
     //Create Sensor (Speed | Position)
     private void H1(Scanner sc) {
     	
-    	 
-    	// The current id being added to 
-    	Object currObj; 
     	//(POSITION | SPEED)
     	boolean isPosition = sc.next().equals("POSITION");
     	
@@ -529,24 +527,22 @@ public class Parser {
     	//The List of things to consider: Groups, Reporters, Watchdogs, Mapper 
     	while(sc.hasNext()) {
     		String curr = sc.next(); 
+    		
     		//First check if it is any of the stars, if it is, set that to the current 
     		if(curr.equals("GROUPS") || curr.equals("GROUP")) {
-    			currObj = Object.Group; 
     			currGroup = groups; 
     		}
     		else if(curr.equals("REPORTERS") || curr.equals("REPORTER")) {
-    			currObj = Object.Reporter;
     			currGroup = reporters; 
     		}
     		else if(curr.equals("WATCHDOGS") || curr.equals("WATCHDOG")) {
-    			currObj = Object.Watchdog; 
     			currGroup = watchdogs; 
     		}
     		else if(curr.equals("MAPPER")) {
-    			currObj = Object.Mapper; 
     			currGroup = mapper; 
     			
     		}
+    		//If it's not any of the stars, it's a square 
     		else {
     			Identifier id = Identifier.make(curr); 
     			currGroup.add(id); 
