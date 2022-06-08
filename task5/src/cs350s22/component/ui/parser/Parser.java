@@ -649,7 +649,7 @@ public class Parser {
     	}
     	
     	//Create a watchdog mode object
-    	A_WatchdogMode w_mode; 
+    	A_WatchdogMode w_mode = null; 
     	switch(mode) {
     		case("STANDARD"):
     			w_mode = new WatchdogModeStandardDeviation(); 
@@ -668,14 +668,15 @@ public class Parser {
     	
     	WatchdogAcceleration w; 
     	if(graceSet) {
-    		w = new WatchdogAcceleration(lowThreshold, highThreshold, , grace); 
+    		w = new WatchdogAcceleration(lowThreshold, highThreshold, w_mode, grace); 
     	}
     	else {
-    		w = new WatchdogAcceleration(lowThreshold, highThreshold, );
+    		w = new WatchdogAcceleration(lowThreshold, highThreshold, w_mode);
     		
     	}
     	Identifier tableID = Identifier.make(id); 
     	table.add(tableID, w);
+    	 
     	
     	
     	
