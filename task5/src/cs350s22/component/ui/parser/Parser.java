@@ -14,6 +14,7 @@ import cs350s22.component.logger.LoggerMessage;
 import cs350s22.component.logger.LoggerMessageSequencing;
 import cs350s22.message.A_Message;
 import cs350s22.message.actuator.MessageActuatorReportPosition;
+import cs350s22.message.actuator.MessageActuatorRequestPosition;
 import cs350s22.message.ping.MessagePing;
 import cs350s22.component.sensor.A_Sensor;
 
@@ -340,37 +341,39 @@ public class Parser {
 		
 		
 	}
-    
+    //TO DO: REPLACE sc.next with pre-declared string (ask Kevin for clarification)
     private void MAPPERcommands(Scanner sc) throws IOException {//MAPPER command also C1 C2 C3 C4
 		//create mapper
     	SymbolTable<A_Mapper> mapperTable = parserHelper.getSymbolTableMapper();
         Identifier ID = Identifier.make(sc.next()); 
-        
+
         //C 1-3
 		if(sc.next().matches("EQUATION")) {
-			if(sc.next().matches("PASSTHROUGH")) {
+			String PLEASE_RENAME_THIS_KELSEY_OR_KEVIN = sc.next(); 
+			if(PLEASE_RENAME_THIS_KELSEY_OR_KEVIN.matches("PASSTHROUGH")) {
 				EquationPassthrough passMapper = new EquationPassthrough();
             	MapperEquation eqautionMapper = new MapperEquation(passMapper);
             	mapperTable.add(ID, eqautionMapper);
 			}
-			if(sc.next().matches("SCALE")) {
+			else if(PLEASE_RENAME_THIS_KELSEY_OR_KEVIN.matches("SCALE")) {
 				int value = sc.nextInt();
 				
 				EquationScaled scaleMapper = new EquationScaled(value);
             	MapperEquation equationMapper = new MapperEquation(scaleMapper);
             	mapperTable.add(ID, equationMapper);
 			}
-            if(sc.next().matches("NORMALIZE")) {
+			else if(PLEASE_RENAME_THIS_KELSEY_OR_KEVIN.matches("NORMALIZE")) {
                 int value1 = sc.nextInt();
                 int value2 = sc.nextInt();
 
                 EquationNormalized normalizeMapper = new EquationNormalized(value1, value2);
                 MapperEquation equationMapper = new MapperEquation(normalizeMapper);
                 mapperTable.add(ID, equationMapper);
+                System.out.println("Work??? Do you??");
             }
 		}
         //C4
-        if(sc.next().matches("INTERPOLATION")) {
+		else if(sc.next().matches("INTERPOLATION")) {
 
             if(sc.next().matches("LINEAR")) {
                 sc.next();
