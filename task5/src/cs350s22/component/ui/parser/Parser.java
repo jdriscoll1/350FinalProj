@@ -137,6 +137,101 @@ public class Parser {
 				}
 				//end of no group and no sensor
 				
+				//if has group no sensor
+				if (command[4].matches("GROUPS")) {
+					//group
+					if (command[5].matches("ACCELERATION")) {
+						if (command[6].matches("LEADIN")) {
+							accelerationLeadin = Double.parseDouble(command[7]);
+
+							if (command[8].matches("LEADOUT")) {
+								accelerationLeadout = Double.parseDouble(command[9]);
+
+								if (command[10].matches("RELAX")) {
+									accelerationRelax = Double.parseDouble(command[11]);
+
+									if (command[12].matches("VELOCITY")) {
+										if (command[13].matches("LIMIT")) {
+											velocityLimit = Double.parseDouble(command[14]);
+
+											if (command[15].matches("VALUE")) {
+												if (command[16].matches("MIN")) {
+													valueMin = Double.parseDouble(command[17]);
+
+													if (command[18].matches("MAX")) {
+														valueMax = Double.parseDouble(command[21]);
+
+														if (command[19].matches("INITIAL")) {
+															velocityInitial = Double.parseDouble(command[20]);
+
+															if (command[21].matches("JERK")) {
+																if (command[22].matches("LIMIT")) {
+																	inflectionJerkThreshold = Double
+																			.parseDouble(command[23]);
+
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+				// end if group with no sensor
+				
+				// if no group with sensor
+				if (command[4].matches("SENSORS") | command[4].matches("SENSOR")) {
+					sensors.add(parserHelper.getSymbolTableSensor().get(Identifier.make(command[5])));
+					if (command[6].matches("ACCELERATION")) {
+
+						if (command[7].matches("LEADIN")) {
+							accelerationLeadin = Double.parseDouble(command[8]);
+
+							if (command[9].matches("LEADOUT")) {
+								accelerationLeadout = Double.parseDouble(command[10]);
+
+								if (command[11].matches("RELAX")) {
+									accelerationRelax = Double.parseDouble(command[12]);
+
+									if (command[13].matches("VELOCITY")) {
+										if (command[14].matches("LIMIT")) {
+											velocityLimit = Double.parseDouble(command[15]);
+
+											if (command[16].matches("VALUE")) {
+												if (command[17].matches("MIN")) {
+													valueMin = Double.parseDouble(command[18]);
+
+													if (command[19].matches("MAX")) {
+														valueMax = Double.parseDouble(command[20]);
+
+														if (command[21].matches("INITIAL")) {
+															velocityInitial = Double.parseDouble(command[23]);
+
+															if (command[22].matches("JERK")) {
+																if (command[23].matches("LIMIT")) {
+																	inflectionJerkThreshold = Double
+																			.parseDouble(command[24]);
+
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+				// end no group with sensor
+				
 				//if full thing all variables
 				if (command[4].matches("GROUPS")) {
 					// NOT SURE WHAT TO DO IF GROUP
@@ -248,8 +343,8 @@ public class Parser {
     private void MAPPERcommands(Scanner sc) throws IOException {//MAPPER command also C1 C2 C3 C4
 		//create mapper
     	SymbolTable<A_Mapper> mapperTable = parserHelper.getSymbolTableMapper();
-        Identifier ID = Identifier.make(sc.next());
-
+        Identifier ID = Identifier.make(sc.next()); 
+        
         //C 1-3
 		if(sc.next().matches("EQUATION")) {
 			if(sc.next().matches("PASSTHROUGH")) {
@@ -275,6 +370,7 @@ public class Parser {
 		}
         //C4
         if(sc.next().matches("INTERPOLATION")) {
+
             if(sc.next().matches("LINEAR")) {
                 sc.next();
                 String definition = sc.next();
