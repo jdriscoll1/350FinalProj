@@ -559,6 +559,8 @@ public class Parser {
 
 			//add to the symbol table
 			parserHelper.getSymbolTableReporter().add(ID, reporterChange);
+			
+			
 		}
 		//FREQUENCY
 		if(sc.next().equals("FREQUENCY")) {
@@ -584,6 +586,7 @@ public class Parser {
 
 			//add to the symbol table
 			parserHelper.getSymbolTableReporter().add(ID, reporterFrequency);
+			System.out.println("Frequency has been hit and all of the important things were done");
 		}
 	}
 
@@ -624,19 +627,19 @@ public class Parser {
     		//First check if it is any of the stars, if it is, set that to the current 
     		if(curr.equals("GROUPS") || curr.equals("GROUP")) {
     			currGroup = groups; 
-    			groupsFlag = true; 
+   
     		}
     		else if(curr.equals("REPORTERS") || curr.equals("REPORTER")) {
     			currGroup = reporters; 
-    			reporterFlag = true; 
+  
     		}
     		else if(curr.equals("WATCHDOGS") || curr.equals("WATCHDOG")) {
     			currGroup = watchdogs; 
-    			watchdogFlag = true; 
+   
     		}
     		else if(curr.equals("MAPPER")) {
     			currGroup = mapper; 
-    			mapperFlag = true; 
+    
     		}
     		//If it's not any of the stars, it's a square 
     		else {
@@ -645,8 +648,12 @@ public class Parser {
     			
     		}
     		
+    		
+    		
     		/*******EXECUTING************/
-    		//To be done later because it requires methods yet to be created 
+    		//Grab the Necessary Reporters watchdogs and mappers
+    		if(groups.size() > 0) {}
+    		//Create the sensor 
     		
     		
     		
