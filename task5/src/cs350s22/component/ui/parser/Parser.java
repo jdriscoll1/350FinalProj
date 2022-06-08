@@ -33,6 +33,12 @@ import cs350s22.component.sensor.mapper.function.interpolator.InterpolatorSpline
 import cs350s22.component.sensor.mapper.function.interpolator.A_Interpolator;
 import cs350s22.component.sensor.mapper.function.interpolator.loader.A_MapLoader;
 import cs350s22.component.sensor.mapper.function.interpolator.loader.MapLoader;
+import cs350s22.component.sensor.watchdog.A_Watchdog;
+import cs350s22.component.sensor.watchdog.WatchdogAcceleration;
+import cs350s22.component.sensor.watchdog.mode.A_WatchdogMode;
+import cs350s22.component.sensor.watchdog.mode.WatchdogModeAverage;
+import cs350s22.component.sensor.watchdog.mode.WatchdogModeInstantaneous;
+import cs350s22.component.sensor.watchdog.mode.WatchdogModeStandardDeviation;
 import cs350s22.component.ui.CommandLineInterface;
 import cs350s22.support.Clock;
 import cs350s22.support.Filespec;
@@ -598,8 +604,9 @@ public class Parser {
     	
     	double lowThreshold = 0; 
     	double highThreshold = 0;
-    	double grace = 0; 
     	
+    	boolean graceSet = false; 
+    	int grace = 0; 
     	
     	//CREATE WATCHDOG already accounted for 
    
@@ -612,6 +619,11 @@ public class Parser {
     	sc.next(); 
     	
     	mode = sc.next(); 
+    	if(mode.equals("STANDARD")) {
+    		//Deviation
+    		sc.next(); 
+    		
+    	}
     	
     	//THRESHOLD 
     	sc.next(); 
@@ -630,13 +642,41 @@ public class Parser {
     	if(sc.hasNext()) {
     		//GRACE
     		sc.next(); 
-    		
-    		grace = sc.nextDouble(); 
-    		
-    		
+    		graceSet = true; 
+    		grace = sc.nextInt(); 
     		
     		
     	}
+    	
+    	//Create a watchdog mode object
+    	A_WatchdogMode w_mode; 
+    	switch(mode) {
+    		case("STANDARD"):
+    			w_mode = new WatchdogModeStandardDeviation(); 
+    			break; 
+    		case("AVERAGE"):
+    			w_mode = new WatchdogModeAverage(); 
+    			break; 
+    		
+    		case("INSTANTANEOUS"):
+    			w_mode = new WatchdogModeInstantaneous(); 
+    			break; 
+    	}
+    	
+    	//Get the watchdog symbol table 
+    	SymbolTable<A_Watchdog> table  = parserHelper.getSymbolTableWatchdog(); 
+    	
+    	WatchdogAcceleration w; 
+    	if(graceSet) {
+    		w = new WatchdogAcceleration(lowThreshold, highThreshold, , grace); 
+    	}
+    	else {
+    		w = new WatchdogAcceleration(lowThreshold, highThreshold, );
+    		
+    	}
+    	Identifier tableID = Identifier.make(id); 
+    	table.add(tableID, w);
+    	
     	
     	
     	
