@@ -26,8 +26,8 @@ public class Startup
      //startup.parse("CREATE MAPPER myMapper EQUATION NORMALIZE 10 20");
      //startup.parse("SEND MESSAGE PING");
      //startup.parse("@CLOCK");
-      startup.parse("CREATE WATCHDOG ACCELERATION myWatchdog1 MODE STANDARD DEVIATION THRESHOLD LOW 1 HIGH 3 GRACE 5");
-
+     // startup.parse("CREATE WATCHDOG NOTCH myWatchdog2 MODE AVERAGE 10 THRESHOLD LOW 1 HIGH 3 GRACE 4");
+     // startup.parse("CREATE WATCHDOG LOW myWatchdog1 MODE STANDARD DEVIATION THRESHOLD 3 GRACE 4");
      //startup.parse("SEND MESSAGE ID myActuator1 GROUPS myActuators1 myActuators2 POSITION REPORT 30");
      //startup.parse("CREATE SENSOR POSITION mySensor16 WATCHDOGS myWatchdog1 myWatchdog2 MAPPER myMapper1");
      // run your tests like this

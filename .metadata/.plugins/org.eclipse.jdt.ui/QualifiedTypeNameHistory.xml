@@ -15,4 +15,11 @@
     <fullyQualifiedTypeName name="cs350s22.message.A_Message"/>
     <fullyQualifiedTypeName name="cs350s22.message.actuator.MessageActuatorRequestPosition"/>
     <fullyQualifiedTypeName name="cs350s22.message.actuator.MessageActuatorReportPosition"/>
+    <fullyQualifiedTypeName name="cs350s22.component.sensor.watchdog.WatchdogAcceleration"/>
+    <fullyQualifiedTypeName name="cs350s22.component.sensor.watchdog.mode.WatchdogModeStandardDeviation"/>
+    <fullyQualifiedTypeName name="cs350s22.component.sensor.watchdog.mode.WatchdogModeAverage"/>
+    <fullyQualifiedTypeName name="cs350s22.component.sensor.watchdog.mode.WatchdogModeInstantaneous"/>
+    <fullyQualifiedTypeName name="cs350s22.component.sensor.watchdog.WatchdogBand"/>
+    <fullyQualifiedTypeName name="cs350s22.component.sensor.watchdog.WatchdogNotch"/>
+    <fullyQualifiedTypeName name="cs350s22.component.sensor.watchdog.WatchdogLow"/>
 </qualifiedTypeNameHistroy>

@@ -36,6 +36,7 @@ import cs350s22.component.sensor.mapper.function.interpolator.loader.MapLoader;
 import cs350s22.component.sensor.watchdog.A_Watchdog;
 import cs350s22.component.sensor.watchdog.WatchdogAcceleration;
 import cs350s22.component.sensor.watchdog.WatchdogBand;
+import cs350s22.component.sensor.watchdog.WatchdogHigh;
 import cs350s22.component.sensor.watchdog.WatchdogLow;
 import cs350s22.component.sensor.watchdog.WatchdogNotch;
 import cs350s22.component.sensor.watchdog.mode.A_WatchdogMode;
@@ -606,6 +607,11 @@ public class Parser {
     	//TThe mode of the watch dog(instantaneous? Average? etc..)
     	String mode = ""; 
     	
+    	//A potential number corresponding with the mode 
+    	int modeNum = 0; 
+    	
+    	boolean modeNumFlag = false; 
+    	
     	//The Low and High Threshold 
     	double lowThreshold = 0; 
     	double highThreshold = 0;
@@ -636,12 +642,22 @@ public class Parser {
     		
     	}
     	
+    	//There may be an integer here, if there is, it is necessary to take it 
+    	if(sc.hasNextDouble()) {
+    		modeNumFlag = true; 
+    		modeNum = sc.nextInt(); 
+    		
+    	}
+    	
     	//THRESHOLD 
     	sc.next(); 
+    	
+    	
     	
     	if(!I3) {
 	    	//LOW
 	    	sc.next(); 
+	    	
 	    
 	    	lowThreshold = sc.nextDouble(); 
 	    	
@@ -669,10 +685,10 @@ public class Parser {
     	A_WatchdogMode w_mode = null; 
     	switch(mode) {
     		case("STANDARD"):
-    			w_mode = new WatchdogModeStandardDeviation(); 
+    			w_mode = (modeNumFlag) ? new WatchdogModeStandardDeviation(modeNum) : new WatchdogModeStandardDeviation(); 
     			break; 
     		case("AVERAGE"):
-    			w_mode = new WatchdogModeAverage(); 
+    			w_mode = (modeNumFlag) ? new WatchdogModeAverage(modeNum) : new WatchdogModeAverage(); 
     			break; 
     		
     		case("INSTANTANEOUS"):
@@ -697,10 +713,10 @@ public class Parser {
     			w = (graceSet) ? new WatchdogNotch(lowThreshold, highThreshold, w_mode, grace) : new WatchdogNotch(lowThreshold, highThreshold, w_mode);
     			break;
     		case("LOW"):
-    			w = (graceSet) ? new WatchdogLow(threshold, w_mode) : new WatchdogLow(threshold, w_mode, grace); 
+    			w = (graceSet) ? new WatchdogLow(threshold, w_mode, grace) : new WatchdogLow(threshold, w_mode); 
     			break; 
     		case("HIGH"):
-    			
+    			w = (graceSet) ? new WatchdogHigh(threshold, w_mode, grace) : new WatchdogHigh(threshold, w_mode); 
     			break; 
     			
     		
@@ -711,6 +727,7 @@ public class Parser {
     	
     	Identifier tableID = Identifier.make(id); 
     	table.add(tableID, w);
+    	System.out.println(table.get(tableID));
     	 
     	
     	
