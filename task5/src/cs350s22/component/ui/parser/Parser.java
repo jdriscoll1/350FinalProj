@@ -35,6 +35,9 @@ import cs350s22.component.sensor.mapper.function.interpolator.loader.A_MapLoader
 import cs350s22.component.sensor.mapper.function.interpolator.loader.MapLoader;
 import cs350s22.component.sensor.watchdog.A_Watchdog;
 import cs350s22.component.sensor.watchdog.WatchdogAcceleration;
+import cs350s22.component.sensor.watchdog.WatchdogBand;
+import cs350s22.component.sensor.watchdog.WatchdogLow;
+import cs350s22.component.sensor.watchdog.WatchdogNotch;
 import cs350s22.component.sensor.watchdog.mode.A_WatchdogMode;
 import cs350s22.component.sensor.watchdog.mode.WatchdogModeAverage;
 import cs350s22.component.sensor.watchdog.mode.WatchdogModeInstantaneous;
@@ -595,23 +598,31 @@ public class Parser {
     	
     	
     }
+    
     //Create a watchdog
-    private void I1(Scanner sc) {
+    private void I(Scanner sc) {
     	//The watchdog's id
     	String id = ""; 
     	//TThe mode of the watch dog(instantaneous? Average? etc..)
     	String mode = ""; 
     	
+    	//The Low and High Threshold 
     	double lowThreshold = 0; 
     	double highThreshold = 0;
+    	
+    	//Only for case in I3
+    	double threshold = 0; 
     	
     	boolean graceSet = false; 
     	int grace = 0; 
     	
     	//CREATE WATCHDOG already accounted for 
    
-    	//ACCELERATION
-    	sc.next(); 
+    	//Watchdog Type
+    	String watchdogType = sc.next(); 
+    	
+    	//If it's type is low or high, 
+    	boolean I3 = (watchdogType.equals("LOW") || watchdogType.equals("HIGH")); 
     	
     	id = sc.next(); 
     	
@@ -628,16 +639,22 @@ public class Parser {
     	//THRESHOLD 
     	sc.next(); 
     	
-    	//LOW
-    	sc.next(); 
-    
-    	lowThreshold = sc.nextDouble(); 
-    	
-    	//HIGH
-    	sc.next(); 
-    	
-    	highThreshold = sc.nextDouble(); 
-    	
+    	if(!I3) {
+	    	//LOW
+	    	sc.next(); 
+	    
+	    	lowThreshold = sc.nextDouble(); 
+	    	
+	    	//HIGH
+	    	sc.next(); 
+	    	
+	    	highThreshold = sc.nextDouble(); 
+    	}
+    	else {
+    		
+    		threshold = sc.nextDouble(); 
+    		
+    	}
     	//GRACE is optional 
     	if(sc.hasNext()) {
     		//GRACE
@@ -666,14 +683,32 @@ public class Parser {
     	//Get the watchdog symbol table 
     	SymbolTable<A_Watchdog> table  = parserHelper.getSymbolTableWatchdog(); 
     	
-    	WatchdogAcceleration w; 
-    	if(graceSet) {
-    		w = new WatchdogAcceleration(lowThreshold, highThreshold, w_mode, grace); 
-    	}
-    	else {
-    		w = new WatchdogAcceleration(lowThreshold, highThreshold, w_mode);
+    	A_Watchdog w = null; 
+    	switch(watchdogType){
+    
+    		case("ACCELERATION"):
+    			w = (graceSet) ? new WatchdogAcceleration(lowThreshold, highThreshold, w_mode, grace) : new WatchdogAcceleration(lowThreshold, highThreshold, w_mode); 
+    			break;
+    			
+    		case("BAND"):
+    			w = (graceSet) ? new WatchdogBand(lowThreshold, highThreshold, w_mode, grace) : new WatchdogBand(lowThreshold, highThreshold, w_mode); 
+    			break; 
+    		case("NOTCH"):
+    			w = (graceSet) ? new WatchdogNotch(lowThreshold, highThreshold, w_mode, grace) : new WatchdogNotch(lowThreshold, highThreshold, w_mode);
+    			break;
+    		case("LOW"):
+    			w = (graceSet) ? new WatchdogLow(threshold, w_mode) : new WatchdogLow(threshold, w_mode, grace); 
+    			break; 
+    		case("HIGH"):
+    			
+    			break; 
+    			
+    		
     		
     	}
+    	
+    		
+    	
     	Identifier tableID = Identifier.make(id); 
     	table.add(tableID, w);
     	 
@@ -681,6 +716,10 @@ public class Parser {
     	
     	
     	
+    	
+    }
+    
+    public void I2(Scanner sc) {
     	
     }
     public void parse() throws IOException, ParseException, InterruptedException {
@@ -722,7 +761,7 @@ public class Parser {
                             H1(sc); 
                             break;
                         case "WATCHDOG":
-                            I1(sc); 
+                            I(sc); 
                             break;
 
                         default:
