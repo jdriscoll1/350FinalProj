@@ -9,6 +9,7 @@ import java.util.concurrent.TimeUnit;
 
 
 import cs350s22.component.*;
+import cs350s22.component.A_Component;
 import cs350s22.component.logger.LoggerMessage;
 import cs350s22.component.logger.LoggerMessageSequencing;
 import cs350s22.message.A_Message;
@@ -18,7 +19,8 @@ import cs350s22.message.ping.MessagePing;
 import cs350s22.component.sensor.A_Sensor;
 
 import cs350s22.component.sensor.mapper.*;
-
+import cs350s22.component.controller.A_Controller;
+import cs350s22.component.actuator.A_Actuator;
 import cs350s22.component.sensor.mapper.A_Mapper;
 import cs350s22.component.sensor.mapper.MapperEquation;
 import cs350s22.component.sensor.mapper.MapperInterpolation;
@@ -525,7 +527,32 @@ public class Parser {
                 case "BUILD": 
                     switch(sc.next()) {
                         case "NETWORK":
-                            System.out.println("DO Something else");
+							//WITH
+							sc.next();
+							//COMPONENT
+							if(sc.next() == "COMPONENT") {
+								Identifier ID = Identifier.make(sc.next());
+								SymbolTable<A_Controller> controllerTable = parserHelper.getSymbolTableController();
+								SymbolTable<A_Sensor> sensorTable = parserHelper.getSymbolTableSensor();
+								A_Component component1 = controllerTable.get(ID);
+								A_Component component2 = sensorTable.get(ID);
+								parserHelper.getControllerMaster().addComponent(component1);
+								parserHelper.getControllerMaster().addComponent(component2);
+							}
+							//COMPONENTS
+							else {
+								Identifier ID = Identifier.make(sc.next());
+								SymbolTable<A_Controller> controllerTable = parserHelper.getSymbolTableController();
+								SymbolTable<A_Actuator> actuatorTable = parserHelper.getSymbolTableActuator();
+								SymbolTable<A_Sensor> sensorTable = parserHelper.getSymbolTableSensor();
+								A_Component component1 = controllerTable.get(ID);
+								A_Component component2 = actuatorTable.get(ID);
+								A_Component component3 = sensorTable.get(ID);
+								parserHelper.getControllerMaster().addComponent(component1);
+								parserHelper.getControllerMaster().addComponent(component2);
+								parserHelper.getControllerMaster().addComponent(component3);
+							}
+							System.out.println(parserHelper.getNetwork().generateXML());
                             break;
                     }
                     break;
