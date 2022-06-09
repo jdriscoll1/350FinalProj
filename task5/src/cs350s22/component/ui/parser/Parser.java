@@ -52,278 +52,148 @@ import cs350s22.test.ActuatorPrototype;
 import cs350s22.test.MySensor;
 
 public class Parser {
-	private final A_ParserHelper parserHelper;
-	private final String commandtext;
-	private String userInput;
-	private List<A_Sensor> sensors = new ArrayList<A_Sensor>();
-	private List<Identifier> IDList = new ArrayList<Identifier>();
-
-	public Parser(A_ParserHelper parserHelper, String commandtext) throws IOException {
-		// not sure if we need this
-		this.parserHelper = parserHelper;
-		this.commandtext = commandtext;
+		
+    private final A_ParserHelper parserHelper;
+    private final String commandtext;
+    private String userInput; 
+   // private List<A_Sensor> sensors = new ArrayList<A_Sensor>();
+    private List<Identifier> IDList = new ArrayList<Identifier>();
+    
+    public Parser(A_ParserHelper parserHelper, String commandtext) throws IOException {
+        //not sure if we need this
+        this.parserHelper = parserHelper;
+        this.commandtext = commandtext;
 		this.userInput = "";
-	}
+    }
+   
+    //Write out the Pseudo code and comit that change
+    //TODO: Complete this command
+    private void A1(Scanner sc) {
+    	
 
-	// Write out the Pseudo code and comit that change
-	// TODO: Complete this command
-	private void A1(Scanner sc) {
+    	//Our goal is to create an actuator with identifer id and optional membership in groups and optional embedded sensors id based on values 
+    	//crrate an actuator object that takes in:
+    	
+    	//We have to be able to parse the command and know its parameters 
+    	
+    	//1) Get the sensors by calling get() with id on SymbolTable<A_Sensor>
+    		//Q: How do we call Symbol Table? 
+    	 
+    	
+    	//Let's make a parser
+    	
+    	 
+    	 //List<Identifier> groups = null; //Optional 
+		 double accelerationLeadin = 0.0; 
+		 double accelerationLeadout = 0.0;
+		 double accelerationRelax = 0.0;
+		 double velocityLimit = 0.0;
+		 double velocityInitial = 0.0;
+		 double valueMin = 0.0;
+		 double valueMax = 0.0;
+		 double inflectionJerkThreshold = 0;
+		 //List<A_Sensor> sensors = null; //Optional
+	     //String[] command = this.userInput.split(" ");
+//	     Identifier ID = Identifier.make(sc.next());
+	     ArrayList<Identifier> group = new ArrayList<Identifier>(); 
+	     ArrayList<Identifier> currGroup = new ArrayList<Identifier>(); 
+	     ArrayList<Identifier> sensors = new ArrayList<Identifier>(); 
 
-		// Our goal is to create an actuator with identifer id and optional membership
-		// in groups and optional embedded sensors id based on values
-		// crrate an actuator object that takes in:
+	    
+	    //First boolean linear or rotary 
+	    //Take the id next
+	    //Stars and Squares groups & sensors
+	    //Linearly 
+		boolean groupsFlag = false;
+		boolean sensorFlag = false;
 
-		// We have to be able to parse the command and know its parameters
+		// CREATE ACTURATRO is already done
 
-		// 1) Get the sensors by calling get() with id on SymbolTable<A_Sensor>
-		// Q: How do we call Symbol Table?
+		// Check if it is a linear or rotary access
+		boolean isLinear = sc.next().equals("LINEAR");
 
-		// Let's make a parser
+		String id = sc.next();
+		// IDList.add(id);
+		// Stars & Square Loop
+		while (sc.hasNext()) {
+			String curr = sc.next();
 
-		List<Identifier> groups = null; // Optional
-		double accelerationLeadin = 0.0;
-		double accelerationLeadout = 0.0;
-		double accelerationRelax = 0.0;
-		double velocityLimit = 0.0;
-		double velocityInitial = 0.0;
-		double valueMin = 0.0;
-		double valueMax = 0.0;
-		double inflectionJerkThreshold = 0;
-		// List<A_Sensor> sensors = null; //Optional
-		String[] command = this.userInput.split(" ");
-		Identifier ID = Identifier.make(command[3]);
-
-		// Stars & Squares
-		// First boolean linear or rotary
-		// Take the id next
-		// Stars and Squares groups & sensors
-		// Linearly
-
-		if (command[2].matches("LINEAR") || command[2].matches("ROTARY")) {
-			IDList.add(ID);
-
-			// if no group and no sensor
-			if (command[4].matches("ACCELERATION")) {
-				if (command[5].matches("LEADIN")) {
-					accelerationLeadin = Double.parseDouble(command[6]);
-
-					if (command[7].matches("LEADOUT")) {
-						accelerationLeadout = Double.parseDouble(command[8]);
-
-						if (command[9].matches("RELAX")) {
-							accelerationRelax = Double.parseDouble(command[10]);
-
-							if (command[11].matches("VELOCITY")) {
-								if (command[12].matches("LIMIT")) {
-									velocityLimit = Double.parseDouble(command[13]);
-
-									if (command[14].matches("VALUE")) {
-										if (command[15].matches("MIN")) {
-											valueMin = Double.parseDouble(command[16]);
-
-											if (command[17].matches("MAX")) {
-												valueMax = Double.parseDouble(command[18]);
-
-												if (command[19].matches("INITIAL")) {
-													velocityInitial = Double.parseDouble(command[20]);
-
-													if (command[21].matches("JERK")) {
-														if (command[22].matches("LIMIT")) {
-															inflectionJerkThreshold = Double.parseDouble(command[23]);
-														}
-													}
-												}
-											}
-										}
-									}
-								}
-							}
-						}
-					}
-				}
+			// If it reaches star 1
+			if (curr.equals("GROUPS") || curr.equals("GROUP")) {
+				currGroup = group;
+				groupsFlag = true;
 			}
-			// end of no group and no sensor
-
-			// if has group no sensor
-			if (command[4].matches("GROUPS")) {
-				// group
-				if (command[5].matches("ACCELERATION")) {
-					if (command[6].matches("LEADIN")) {
-						accelerationLeadin = Double.parseDouble(command[7]);
-
-						if (command[8].matches("LEADOUT")) {
-							accelerationLeadout = Double.parseDouble(command[9]);
-
-							if (command[10].matches("RELAX")) {
-								accelerationRelax = Double.parseDouble(command[11]);
-
-								if (command[12].matches("VELOCITY")) {
-									if (command[13].matches("LIMIT")) {
-										velocityLimit = Double.parseDouble(command[14]);
-
-										if (command[15].matches("VALUE")) {
-											if (command[16].matches("MIN")) {
-												valueMin = Double.parseDouble(command[17]);
-
-												if (command[18].matches("MAX")) {
-													valueMax = Double.parseDouble(command[21]);
-
-													if (command[19].matches("INITIAL")) {
-														velocityInitial = Double.parseDouble(command[20]);
-
-														if (command[21].matches("JERK")) {
-															if (command[22].matches("LIMIT")) {
-																inflectionJerkThreshold = Double
-																		.parseDouble(command[23]);
-
-															}
-														}
-													}
-												}
-											}
-										}
-									}
-								}
-							}
-						}
-					}
-				}
+			// if it reaches star 2
+			else if (curr.matches("SENSORS") | curr.matches("SENSOR")) {
+				currGroup = sensors;
+				sensorFlag = true;
 			}
-			// end if group with no sensor
-
-			// if no group with sensor
-			if (command[4].matches("SENSORS") | command[4].matches("SENSOR")) {
-				sensors.add(parserHelper.getSymbolTableSensor().get(Identifier.make(command[5])));
-				if (command[6].matches("ACCELERATION")) {
-
-					if (command[7].matches("LEADIN")) {
-						accelerationLeadin = Double.parseDouble(command[8]);
-
-						if (command[9].matches("LEADOUT")) {
-							accelerationLeadout = Double.parseDouble(command[10]);
-
-							if (command[11].matches("RELAX")) {
-								accelerationRelax = Double.parseDouble(command[12]);
-
-								if (command[13].matches("VELOCITY")) {
-									if (command[14].matches("LIMIT")) {
-										velocityLimit = Double.parseDouble(command[15]);
-
-										if (command[16].matches("VALUE")) {
-											if (command[17].matches("MIN")) {
-												valueMin = Double.parseDouble(command[18]);
-
-												if (command[19].matches("MAX")) {
-													valueMax = Double.parseDouble(command[20]);
-
-													if (command[21].matches("INITIAL")) {
-														velocityInitial = Double.parseDouble(command[23]);
-
-														if (command[22].matches("JERK")) {
-															if (command[23].matches("LIMIT")) {
-																inflectionJerkThreshold = Double
-																		.parseDouble(command[24]);
-
-															}
-														}
-													}
-												}
-											}
-										}
-									}
-								}
-							}
-						}
-					}
-				}
+			// If it reaches ACCELERATION{
+			// break
+			else if (curr.matches("ACCELERATION")) {
+				break;
 			}
-			// end no group with sensor
-
-			// if full thing all variables
-			if (command[4].matches("GROUPS")) {
-				// NOT SURE WHAT TO DO IF GROUP
-
-				if (command[5].matches("SENSORS") | command[5].matches("SENSOR")) {
-					sensors.add(parserHelper.getSymbolTableSensor().get(Identifier.make(command[6])));
-				}
-
-				if (command[7].matches("ACCELERATION")) {
-
-					if (command[8].matches("LEADIN")) {
-						accelerationLeadin = Double.parseDouble(command[9]);
-
-						if (command[10].matches("LEADOUT")) {
-							accelerationLeadout = Double.parseDouble(command[11]);
-
-							if (command[12].matches("RELAX")) {
-								accelerationRelax = Double.parseDouble(command[13]);
-
-								if (command[14].matches("VELOCITY")) {
-									if (command[15].matches("LIMIT")) {
-										velocityLimit = Double.parseDouble(command[16]);
-
-										if (command[17].matches("VALUE")) {
-											if (command[18].matches("MIN")) {
-												valueMin = Double.parseDouble(command[19]);
-
-												if (command[20].matches("MAX")) {
-													valueMax = Double.parseDouble(command[21]);
-
-													if (command[22].matches("INITIAL")) {
-														velocityInitial = Double.parseDouble(command[23]);
-
-														if (command[24].matches("JERK")) {
-															if (command[25].matches("LIMIT")) {
-																inflectionJerkThreshold = Double
-																		.parseDouble(command[26]);
-
-															}
-														}
-													}
-												}
-											}
-										}
-									}
-								}
-							}
-						}
-					}
-				}
-			}
+			// Add it to the list
 		}
 
-//		 while(sc.hasNext()) {
-//			 
-//			 String s = sc.next(); 
-//			 switch(s) {
-//			 	case("LINEAR"):
-//			 		String id_str = sc.next();
-//			 		
-//			 		//SymbolTable<Identifier>.getComponents(id_str); 
-//			 		
-//			 	
-//			 	case("SENSORS"):
-//			 		System.out.println("THIS IS SENSORS");
-//			 		break; 
-//			 	case("GROUPS"):
-//			 		break; 
-//			 	case(""):
-//			 		break ;
-//			 	
+		if (sc.next().matches("LEADIN")) {
+			accelerationLeadin = Double.parseDouble(sc.next());
+		} else {
+			System.out.println("invalid");
+		}
+
+		if (sc.next().matches("LEADOUT")) {
+			accelerationLeadout = Double.parseDouble(sc.next());
+		} else {
+			System.out.println("invalid");
+		}
+
+		if (sc.next().matches("RELAX")) {
+			accelerationRelax = Double.parseDouble(sc.next());
+		} else {
+			System.out.println("invalid");
+		}
+		if (sc.next().matches("VELOCITY")) {
+			if (sc.next().matches("LIMIT")) {
+				velocityLimit = Double.parseDouble(sc.next());
+			} else {
+				System.out.println("invalid");
+			}
+		} else {
+			System.out.println("invalid");
+		}
+		if (sc.next().matches("VALUE")) {
+			if (sc.next().matches("MIN")) {
+				valueMin = Double.parseDouble(sc.next());
+			} else {
+				System.out.println("invalid");
+			}
+		} else {
+			System.out.println("invalid");
+		}
+		if (sc.next().matches("MAX")) {
+			valueMax = Double.parseDouble(sc.next());
+		} else {
+			System.out.println("invalid");
+		}
+		if (sc.next().matches("INITIAL")) {
+			velocityInitial = Double.parseDouble(sc.next());
+		} else {
+			System.out.println("invalid");
+		}
+		if (sc.next().matches("JERK")) {
+			if (sc.next().matches("LIMIT")) {
+				inflectionJerkThreshold = Double.parseDouble(sc.next());
+			} else {
+				System.out.println("invalid");
+			}
+		} else {
+			System.out.println("invalid");
+		}
 
 	}
 
-	// 2) create an ActuatorPrototype object with the arguments
-	/*
-	 * ActuatorPrototype a = new ActuatorPrototype(
-	 * 
-	 * id, groups, accelerationLeadin, accelerationLeadout, accelerationRelax,
-	 * velocityLimit, valueInitial, valueMin, valueMax, inflectionJerkThreshold,
-	 * sensors);
-	 */
-	// System.out.println("Exits Method");
-
-	// 3) add it to SymbolTable<A_Actuator>.
+	
 
 	private void B1(Scanner sc) {
 
@@ -488,31 +358,61 @@ public class Parser {
 
 	// F1 Network Commands
 	private void F1(Scanner sc) {
-		// COMPONENT
-		if (sc.next().equals("COMPONENT")) {
-			Identifier ID = Identifier.make(sc.next());
-			SymbolTable<A_Controller> controllerTable = parserHelper.getSymbolTableController();
-			SymbolTable<A_Sensor> sensorTable = parserHelper.getSymbolTableSensor();
-			A_Component component1 = controllerTable.get(ID);
-			A_Component component2 = sensorTable.get(ID);
-			parserHelper.getControllerMaster().addComponent(component1);
-			parserHelper.getControllerMaster().addComponent(component2);
+
+		//COMPONENT
+		String s = sc.next();
+		switch(s) {
+			case ("COMPONENT"):
+				Identifier ID = Identifier.make(sc.next());
+				SymbolTable<A_Controller> controllerTable = parserHelper.getSymbolTableController();
+				SymbolTable<A_Sensor> sensorTable = parserHelper.getSymbolTableSensor();
+
+				//if the component exist, add it
+				if(controllerTable.contains(ID) && sensorTable.contains(ID)) {
+					A_Component component1 = controllerTable.get(ID);
+					A_Component component2 = sensorTable.get(ID);
+					parserHelper.getControllerMaster().addComponent(component1);
+					parserHelper.getControllerMaster().addComponent(component2);
+
+					System.out.println("Componet has been added");
+					System.out.println(parserHelper.getNetwork().generateXML());
+				}
+				else {
+					System.out.println("Component does not exist, please create it before adding to the network");
+				}
+				break;
+
+			case ("COMPONENTS"):
+				Identifier ID2 = Identifier.make(sc.next());
+				Identifier ID3 = Identifier.make(sc.next());
+				SymbolTable<A_Controller> controllerTable2 = parserHelper.getSymbolTableController();
+				SymbolTable<A_Actuator> actuatorTable2 = parserHelper.getSymbolTableActuator();
+				SymbolTable<A_Sensor> sensorTable2 = parserHelper.getSymbolTableSensor();
+
+				//if the components exist, add it
+				if((controllerTable2.contains(ID2) && sensorTable2.contains(ID2))
+						&& (actuatorTable2.contains(ID3) && sensorTable2.contains(ID3))) {
+					A_Component components1 = controllerTable2.get(ID2);
+					A_Component components2 = sensorTable2.get(ID2);
+					parserHelper.getControllerMaster().addComponent(components1);
+					parserHelper.getControllerMaster().addComponent(components2);
+
+					A_Component components3 = actuatorTable2.get(ID3);
+					A_Component components4 = sensorTable2.get(ID3);
+					parserHelper.getControllerMaster().addComponent(components3);
+					parserHelper.getControllerMaster().addComponent(components4);
+
+					System.out.println("Componets have been added");
+					System.out.println(parserHelper.getNetwork().generateXML());
+				}
+				else {
+					System.out.println("Components do not exist, please create them before adding to the network");
+				}
+				break;
+
 		}
-		// COMPONENTS
-		if (sc.next().equals("COMPONENTS")) {
-			Identifier ID = Identifier.make(sc.next());
-			SymbolTable<A_Controller> controllerTable = parserHelper.getSymbolTableController();
-			SymbolTable<A_Actuator> actuatorTable = parserHelper.getSymbolTableActuator();
-			SymbolTable<A_Sensor> sensorTable = parserHelper.getSymbolTableSensor();
-			A_Component component1 = controllerTable.get(ID);
-			A_Component component2 = actuatorTable.get(ID);
-			A_Component component3 = sensorTable.get(ID);
-			parserHelper.getControllerMaster().addComponent(component1);
-			parserHelper.getControllerMaster().addComponent(component2);
-			parserHelper.getControllerMaster().addComponent(component3);
-		}
-		System.out.println(parserHelper.getNetwork().generateXML());
 	}
+
 
 	// G1 and G2 Reporter Commands
 	private void G1_2(Scanner sc) {
@@ -569,6 +469,84 @@ public class Parser {
 			System.out.println("Frequency has been hit and all of the important things were done");
 		}
 	}
+	
+	//G1 Reporter Commands
+	private void G1(Scanner sc) {
+		//CHANGE
+		Identifier ID = Identifier.make(sc.next());
+		//NOTIFY
+		sc.next();
+		//IDS
+		sc.next();
+
+		//get the list of ids to notify
+		ArrayList<Identifier> ids = new ArrayList<Identifier>();
+		ArrayList<Identifier> groups = new ArrayList<Identifier>();
+
+		//Adding IDs or Groups to the lists
+		String scannerItem = sc.next();
+		while( (!scannerItem.equals("GROUPS")) && (!scannerItem.equals("DELTA")) ) {
+			ids.add(Identifier.make(scannerItem));
+			scannerItem = sc.next();
+		}
+
+		if(scannerItem.equals("GROUPS")) {
+			scannerItem = sc.next();
+			while(!scannerItem.equals("DELTA")) {
+				groups.add(Identifier.make(scannerItem));
+				scannerItem = sc.next();
+			}
+		}
+
+		//get the delta value
+		scannerItem = sc.next();
+		int delta = Integer.parseInt(scannerItem);
+		ReporterChange reporterChange = new ReporterChange(ids, groups, delta);
+
+		//add to the symbol table
+		parserHelper.getSymbolTableReporter().add(ID, reporterChange);
+		System.out.println("Delta has changed with " + delta);
+	}
+
+	//G2 Reporter Commands
+	private void G2(Scanner sc) {
+		//FREQUENCY
+		Identifier ID = Identifier.make(sc.next());
+		System.out.println(ID.toString());
+		//NOTIFY
+		sc.next();
+		//IDS
+		sc.next();
+
+		//get the list of ids to notify
+		ArrayList<Identifier> ids = new ArrayList<Identifier>();
+		ArrayList<Identifier> groups = new ArrayList<Identifier>();
+
+		//Adding IDs or Groups to the lists
+		String scannerItem = sc.next();
+		while( (!scannerItem.equals("GROUPS")) && (!scannerItem.equals("FREQUENCY")) ) {
+			ids.add(Identifier.make(scannerItem));
+			scannerItem = sc.next();
+		}
+
+		if(scannerItem.equals("GROUPS")) {
+			scannerItem = sc.next();
+			while(!scannerItem.equals("FREQUENCY")) {
+				groups.add(Identifier.make(scannerItem));
+				scannerItem = sc.next();
+			}
+		}
+
+		//get the frequency value
+		scannerItem = sc.next();
+		int frequency = Integer.parseInt(scannerItem);
+		ReporterChange reporterFrequency = new ReporterChange(ids, groups, frequency);
+
+		//add to the symbol table
+		parserHelper.getSymbolTableReporter().add(ID, reporterFrequency);
+		System.out.println("Frequency has changed with " + frequency);
+	}
+
 
 	// Create Sensor (Speed | Position)
 	private void H1(Scanner sc) {
@@ -672,219 +650,303 @@ public class Parser {
 
 	}
 
-	// Create a watchdog
-	private void I(Scanner sc) {
-		// The watchdog's id
-		String id = "";
-		// TThe mode of the watch dog(instantaneous? Average? etc..)
-		String mode = "";
+	
 
-		// A potential number corresponding with the mode
-		int modeNum = 0;
 
-		boolean modeNumFlag = false;
+  
+    //Create a watchdog
+    private void I(Scanner sc) {
+    	//The watchdog's id
+    	String id = ""; 
+    	//TThe mode of the watch dog(instantaneous? Average? etc..)
+    	String mode = ""; 
+    	
+    	//A potential number corresponding with the mode 
+    	int modeNum = 0; 
+    	
+    	boolean modeNumFlag = false; 
+    	
+    	//The Low and High Threshold 
+    	double lowThreshold = 0; 
+    	double highThreshold = 0;
+    	
+    	//Only for case in I3
+    	double threshold = 0; 
+    	
+    	boolean graceSet = false; 
+    	int grace = 0; 
+    	
+    	//CREATE WATCHDOG already accounted for 
+   
+    	//Watchdog Type
+    	String watchdogType = sc.next(); 
+    	
+    	//If it's type is low or high, 
+    	boolean I3 = (watchdogType.equals("LOW") || watchdogType.equals("HIGH")); 
+    	
+    	id = sc.next(); 
+    	
+    	//MODE
+    	sc.next(); 
+    	
+    	mode = sc.next(); 
+    	if(mode.equals("STANDARD")) {
+    		//Deviation
+    		sc.next(); 
+    		
+    	}
+    	
+    	//There may be an integer here, if there is, it is necessary to take it 
+    	if(sc.hasNextDouble()) {
+    		modeNumFlag = true; 
+    		modeNum = sc.nextInt(); 
+    		
+    	}
+    	
+    	//THRESHOLD 
+    	sc.next(); 
+    	
+    	
+    	
+    	if(!I3) {
+	    	//LOW
+	    	sc.next(); 
+	    	
+	    
+	    	lowThreshold = sc.nextDouble(); 
+	    	
+	    	//HIGH
+	    	sc.next(); 
+	    	
+	    	highThreshold = sc.nextDouble(); 
+    	}
+    	else {
+    		
+    		threshold = sc.nextDouble(); 
+    		
+    	}
+    	//GRACE is optional 
+    	if(sc.hasNext()) {
+    		//GRACE
+    		sc.next(); 
+    		graceSet = true; 
+    		grace = sc.nextInt(); 
+    		
+    		
+    	}
+    	
+    	//Create a watchdog mode object
+    	A_WatchdogMode w_mode = null; 
+    	switch(mode) {
+    		case("STANDARD"):
+    			w_mode = (modeNumFlag) ? new WatchdogModeStandardDeviation(modeNum) : new WatchdogModeStandardDeviation(); 
+    			break; 
+    		case("AVERAGE"):
+    			w_mode = (modeNumFlag) ? new WatchdogModeAverage(modeNum) : new WatchdogModeAverage(); 
+    			break; 
+    		
+    		case("INSTANTANEOUS"):
+    			w_mode = new WatchdogModeInstantaneous(); 
+    			break; 
+    	}
+    	
+    	//Get the watchdog symbol table 
+    	SymbolTable<A_Watchdog> table  = parserHelper.getSymbolTableWatchdog(); 
+    	
+    	A_Watchdog w = null; 
+    	switch(watchdogType){
+    
+    		case("ACCELERATION"):
+    			w = (graceSet) ? new WatchdogAcceleration(lowThreshold, highThreshold, w_mode, grace) : new WatchdogAcceleration(lowThreshold, highThreshold, w_mode); 
+    			break;
+    			
+    		case("BAND"):
+    			w = (graceSet) ? new WatchdogBand(lowThreshold, highThreshold, w_mode, grace) : new WatchdogBand(lowThreshold, highThreshold, w_mode); 
+    			break; 
+    		case("NOTCH"):
+    			w = (graceSet) ? new WatchdogNotch(lowThreshold, highThreshold, w_mode, grace) : new WatchdogNotch(lowThreshold, highThreshold, w_mode);
+    			break;
+    		case("LOW"):
+    			w = (graceSet) ? new WatchdogLow(threshold, w_mode, grace) : new WatchdogLow(threshold, w_mode); 
+    			break; 
+    		case("HIGH"):
+    			w = (graceSet) ? new WatchdogHigh(threshold, w_mode, grace) : new WatchdogHigh(threshold, w_mode); 
+    			break; 
+    			
+    		
+    		
+    	}
+    	
+    		
+    	
+    	Identifier tableID = Identifier.make(id); 
+    	table.add(tableID, w);
+    	System.out.println(table.get(tableID));
+    	 
+    	
+    	
+    	
+    	
+    	
+    }
+ 
+    public void parse() throws IOException, ParseException, InterruptedException {
 
-		// The Low and High Threshold
-		double lowThreshold = 0;
-		double highThreshold = 0;
+    	//makes it so we seperate words from empty spaces (" ")
 
-		// Only for case in I3
-		double threshold = 0;
+        String[] command = this.userInput.split(" ");
+        System.out.println("The command is: " + userInput);
 
-		boolean graceSet = false;
-		int grace = 0;
+            //switch statement
+            //for each command starter (first word)
+        
+        	Scanner sc = new Scanner(this.userInput);
+        	
+        	//Takes the first word 
+            switch (sc.next()) {
+            	//if the first word is create
+                case "CREATE": System.out.println("Create Something");
+                    switch(sc.next()) {
+                    
+                    	//Situation A1 - if the first word is actuator 
+                        case "ACTUATOR":
+                            A1(sc);
+                            break;
+                        case "CONTROLLER":
+                            B1(sc);
+                            break;
+                        case "DEPENDENCY":
+                            B2(sc);
+                            break;
+                        case "MAPPER":
+                            MAPPERcommands(sc);
+                            break;
+                        case "REPORTER":
+							switch(sc.next()) {
+								case "CHANGE":
+									G1(sc);
+									break;
+								case "FREQUENCY":
+									G2(sc);
+									break;
+							}
+                            break;
+                        case "SENSOR":
+                            H1(sc); 
+                            break;
+                        case "WATCHDOG":
+                            I(sc); 
+                            break;
 
-		// CREATE WATCHDOG already accounted for
+                        default:
+                            System.out.println("not valid first word");
+                    }
+                    break;
+                case "SEND": 
+                    switch(sc.next()) {
+                        case "MESSAGE":
+                            switch(sc.next()) {
+                            	case "PING":
+                            		D1(); 
+                            
+                            
+                            }
+                            
+                            break;
+                        default:
+                            System.out.println("not valid first word");
+                    }
+                    break;
+                case "@CLOCK": System.out.println(java.time.LocalTime.now());
+                	if(sc.hasNext()) {
+	                    switch(sc.next()) {
+							//E1
+	                        case "PAUSE":
+	                        	Clock c1 = Clock.getInstance(); 
+	                        	c1.isActive(false);
+	                        	System.out.println("Paused");//REMOVE COMMENT WHEN DONE WITH FULL THING (@CLOCK)
+	                            break;
+	                        case "RESUME":
+	                        	Clock c2 = Clock.getInstance(); 
+	                        	c2.isActive(true);
+	                        	System.out.println("Resumed");//REMOVE COMMENT WHEN DONE (@CLOCK)
+	                            break;
+	                        //E2
+	                        case "ONESTEP":
+	                            //Get the instance of a clock
+	                            Clock c3 = Clock.getInstance();
+	                            //if the clock is not active
+	                            if(!c3.isActive()) {
+	                                //if there's another one
+	                                if(sc.hasNext()) {
+	                                    String count = sc.next();
+	                                    //Does the one step command work?
+										c3.onestep(Integer.parseInt(count));
+	                                }
+	                                else {
+	                                    //Increment by one
+										c3.onestep(1);
+	                                }
+	                            }
+	                            break;
+	                        //E3
+	                        case "SET":
+	                        	//Rate
+	                        	sc.next();
+	                        	String value = sc.next(); 
+	                        	Clock c4 = Clock.getInstance();
+								c4.setRate(Integer.parseInt(value));
+	                            break;
+	                        default:
+	                            System.out.println("not valid first word");
+	
+	                        case "WAIT":
+								switch(sc.next()) {
+									case "FOR":
+										String seconds = sc.next();
+										Clock c5 = Clock.getInstance();
+										c5.waitFor(Double.parseDouble(seconds));
+										break;
+									case "UNTIL":
+										String seconds2 = sc.next();
+										Clock c6 = Clock.getInstance();
+										c6.waitUntil(Double.parseDouble(seconds2));
+										break;
+								}
+	                    }  
+                    
+                	}
+                	 //Command E7 @CLOCK
+                    else {
+                    	E7();
+                    }
+                    break;
 
-		// Watchdog Type
-		String watchdogType = sc.next();
+                case "@EXIT": 
+        
+                	parserHelper.exit();
+                    break;
 
-		// If it's type is low or high,
-		boolean I3 = (watchdogType.equals("LOW") || watchdogType.equals("HIGH"));
+                case "@RUN": 
 
-		id = sc.next();
+                	parserHelper.run(sc.next());
 
-		// MODE
-		sc.next();
+                    break;
 
-		mode = sc.next();
-		if (mode.equals("STANDARD")) {
-			// Deviation
-			sc.next();
-
-		}
-
-		// There may be an integer here, if there is, it is necessary to take it
-		if (sc.hasNextDouble()) {
-			modeNumFlag = true;
-			modeNum = sc.nextInt();
-
-		}
-
-		// THRESHOLD
-		sc.next();
-
-		if (!I3) {
-			// LOW
-			sc.next();
-
-			lowThreshold = sc.nextDouble();
-
-			// HIGH
-			sc.next();
-
-			highThreshold = sc.nextDouble();
-		} else {
-
-			threshold = sc.nextDouble();
-
-		}
-		// GRACE is optional
-		if (sc.hasNext()) {
-			// GRACE
-			sc.next();
-			graceSet = true;
-			grace = sc.nextInt();
-
-		}
-
-		// Create a watchdog mode object
-		A_WatchdogMode w_mode = null;
-		switch (mode) {
-		case ("STANDARD"):
-			w_mode = (modeNumFlag) ? new WatchdogModeStandardDeviation(modeNum) : new WatchdogModeStandardDeviation();
-			break;
-		case ("AVERAGE"):
-			w_mode = (modeNumFlag) ? new WatchdogModeAverage(modeNum) : new WatchdogModeAverage();
-			break;
-
-		case ("INSTANTANEOUS"):
-			w_mode = new WatchdogModeInstantaneous();
-			break;
-		}
-
-		// Get the watchdog symbol table
-		SymbolTable<A_Watchdog> table = parserHelper.getSymbolTableWatchdog();
-
-		A_Watchdog w = null;
-		switch (watchdogType) {
-
-		case ("ACCELERATION"):
-			w = (graceSet) ? new WatchdogAcceleration(lowThreshold, highThreshold, w_mode, grace)
-					: new WatchdogAcceleration(lowThreshold, highThreshold, w_mode);
-			break;
-
-		case ("BAND"):
-			w = (graceSet) ? new WatchdogBand(lowThreshold, highThreshold, w_mode, grace)
-					: new WatchdogBand(lowThreshold, highThreshold, w_mode);
-			break;
-		case ("NOTCH"):
-			w = (graceSet) ? new WatchdogNotch(lowThreshold, highThreshold, w_mode, grace)
-					: new WatchdogNotch(lowThreshold, highThreshold, w_mode);
-			break;
-		case ("LOW"):
-			w = (graceSet) ? new WatchdogLow(threshold, w_mode, grace) : new WatchdogLow(threshold, w_mode);
-			break;
-		case ("HIGH"):
-			w = (graceSet) ? new WatchdogHigh(threshold, w_mode, grace) : new WatchdogHigh(threshold, w_mode);
-			break;
-
-		}
-
-		Identifier tableID = Identifier.make(id);
-		table.add(tableID, w);
-		System.out.println(table.get(tableID));
-
-	}
-
-	public void I2(Scanner sc) {
-
-	}
-
-	public void parse() throws IOException, ParseException, InterruptedException {
-
-		// makes it so we seperate words from empty spaces (" ")
-		this.userInput = this.commandtext.toUpperCase();
-		String[] command = this.userInput.split(" ");
-		System.out.println("The command is: " + userInput);
-
-		// switch statement
-		// for each command starter (first word)
-
-		Scanner sc = new Scanner(this.userInput);
-
-		// Takes the first word
-		switch (sc.next()) {
-		// if the first word is create
-		case "CREATE":
-			System.out.println("Create Something");
-			switch (sc.next()) {
-
-			// Situation A1 - if the first word is actuator
-			case "ACTUATOR":
-
-				A1(sc);
-				break;
-			case "CONTROLLER":
-				B1(sc);
-				break;
-			case "DEPENDENCY":
-				B2(sc);
-				break;
-			case "MAPPER":
-				MAPPERcommands(sc);
-				break;
-			case "REPORTER":
-				System.out.println("DO Something else");
-				break;
-			case "SENSOR":
-				H1(sc);
-				break;
-			case "WATCHDOG":
-				I(sc);
-				break;
-
-			default:
-				System.out.println("not valid first word");
-			}
-			break;
-		case "SEND":
-			switch (sc.next()) {
-			case "MESSAGE":
-				switch (sc.next()) {
-				case "PING":
-					D1();
-
-				}
-
-				break;
-			default:
-				System.out.println("not valid first word");
-			}
-			break;
-		case "@CLOCK":
-			System.out.println(java.time.LocalTime.now());
-			if (sc.hasNext()) {
-				switch (sc.next()) {
-				case "PAUSE":
-					Clock c1 = Clock.getInstance();
-					c1.isActive(false);
-					System.out.println("Paused");// REMOVE COMMENT WHEN DONE WITH FULL THING (@CLOCK)
-					break;
-				case "RESUME":
-					Clock c2 = Clock.getInstance();
-					c2.isActive(true);
-					System.out.println("Resumed");// REMOVE COMMENT WHEN DONE (@CLOCK)
-					break;
-				// E2
-				case "ONESTEP":
-					// Get the instance of a clock
-					Clock c4 = Clock.getInstance();
-					// if the clock is not active
-					if (!c4.isActive()) {
-						// if there's another one
-						if (sc.hasNext()) {
-							// go to the next one
+                case "@CONFIGURE": System.out.println("DO Something");
+                    switch(sc.next()) {
+                        case "LOG":
+                            E6(sc); 
+                            break;
+                        default:
+                            System.out.println("not valid first word");
+                    }
+                    break;
+                case "BUILD": 
+                    switch(sc.next()) {
+                        case "NETWORK":
+							//WITH
+>>>>>>> 64bd118fb02fadce879733d17f2ee262e7a2aaba
 							sc.next();
 							// get the next thing
 							String count = sc.next();
