@@ -190,6 +190,8 @@ public class Parser {
 		} else {
 			System.out.println("invalid");
 		}
+		
+		//Actuator Incomplete
 
 	}
 
@@ -229,7 +231,7 @@ public class Parser {
 				EquationNormalized normalizeMapper = new EquationNormalized(value1, value2);
 				MapperEquation equationMapper = new MapperEquation(normalizeMapper);
 				mapperTable.add(ID, equationMapper);
-				System.out.println("Work??? Do you??");
+				
 			}
 		}
 		// C4
@@ -546,7 +548,6 @@ public class Parser {
 			}
 			// If it's not any of the stars, it's a square
 			else {
-				System.out.println("Add " + curr);
 				currGroup.add(Identifier.make(curr));
 
 			}
@@ -715,7 +716,7 @@ public class Parser {
 
 		Identifier tableID = Identifier.make(id);
 		table.add(tableID, w);
-		System.out.println(table.get(tableID));
+	
 
 	}
 
@@ -724,7 +725,7 @@ public class Parser {
 	  public void parse() throws IOException, ParseException, InterruptedException {
 
 	    	//makes it so we seperate words from empty spaces (" ")
-	        this.userInput = this.commandtext.toUpperCase();
+	        this.userInput = this.commandtext;
 	        String[] command = this.userInput.split(" ");
 	        System.out.println("The command is: " + userInput);
 
@@ -736,7 +737,7 @@ public class Parser {
 	        	//Takes the first word 
 	            switch (sc.next()) {
 	            	//if the first word is create
-	                case "CREATE": System.out.println("Create Something");
+	                case "CREATE": 
 	                    switch(sc.next()) {
 	                    
 	                    	//Situation A1 - if the first word is actuator 
