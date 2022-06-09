@@ -1024,6 +1024,7 @@ public class Parser {
                 case "@CLOCK": System.out.println(java.time.LocalTime.now());
                 	if(sc.hasNext()) {
 	                    switch(sc.next()) {
+							//E1
 	                        case "PAUSE":
 	                        	Clock c1 = Clock.getInstance(); 
 	                        	c1.isActive(false);
@@ -1037,21 +1038,18 @@ public class Parser {
 	                        //E2
 	                        case "ONESTEP":
 	                            //Get the instance of a clock
-	                            Clock c4 = Clock.getInstance();
+	                            Clock c3 = Clock.getInstance();
 	                            //if the clock is not active
-	                            if(!c4.isActive()) {
+	                            if(!c3.isActive()) {
 	                                //if there's another one
 	                                if(sc.hasNext()) {
-	                                    //go to the next one
-	                                    sc.next();
-	                                    //get the next thing
 	                                    String count = sc.next();
 	                                    //Does the one step command work?
-	                                    c4.onestep(Integer.parseInt(count));
+										c3.onestep(Integer.parseInt(count));
 	                                }
 	                                else {
 	                                    //Increment by one
-	                                    c4.onestep(1);
+										c3.onestep(1);
 	                                }
 	                            }
 	                            break;
@@ -1060,24 +1058,25 @@ public class Parser {
 	                        	//Rate
 	                        	sc.next();
 	                        	String value = sc.next(); 
-	                        	Clock c3 = Clock.getInstance(); 
-	                        	c3.setRate(Integer.parseInt(value));
-	                            
+	                        	Clock c4 = Clock.getInstance();
+								c4.setRate(Integer.parseInt(value));
 	                            break;
 	                        default:
 	                            System.out.println("not valid first word");
 	
 	                        case "WAIT":
-	                            if(sc.next() == "FOR") {
-	                                sc.next();
-	                                String seconds = sc.next();
-	                                TimeUnit.SECONDS.sleep(Long.parseLong(seconds));
-	                            }
-	                            if(sc.next() == "UNTIL") {
-	                                sc.next();
-	                                String seconds = sc.next();
-	                                TimeUnit.SECONDS.wait(Long.parseLong(seconds));
-	                            }
+								switch(sc.next()) {
+									case "FOR":
+										String seconds = sc.next();
+										Clock c5 = Clock.getInstance();
+										c5.waitFor(Double.parseDouble(seconds));
+										break;
+									case "UNTIL":
+										String seconds2 = sc.next();
+										Clock c6 = Clock.getInstance();
+										c6.waitUntil(Double.parseDouble(seconds2));
+										break;
+								}
 	                    }  
                     
                 	}
