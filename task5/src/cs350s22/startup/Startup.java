@@ -28,7 +28,7 @@ public class Startup
      //startup.parse("@CLOCK");
      // startup.parse("CREATE WATCHDOG NOTCH myWatchdog2 MODE AVERAGE 10 THRESHOLD LOW 1 HIGH 3 GRACE 4");
      //startup.parse("CREATE WATCHDOG LOW myWatchdog1 MODE STANDARD DEVIATION THRESHOLD 3 GRACE 4");
-     startup.parse("CREATE REPORTER FREQUENCY myReporter6 NOTIFY IDS myActuator1 myActuator2 GROUPS myGroup3 FREQUENCY 4");
+     startup.parse("CREATE SENSOR POSITION mySensor16 GROUP myGroup1 REPORTERS myReporter1 WATCHDOGS myWatchdog1 myWatchdog2 MAPPER myMapper1");
      //startup.parse("CREATE SENSOR POSITION mySensor16 WATCHDOGS myWatchdog1 myWatchdog2 MAPPER myMapper1");
      // run your tests like this
      startup.parse("@exit");
