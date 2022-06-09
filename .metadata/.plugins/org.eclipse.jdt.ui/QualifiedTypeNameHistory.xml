@@ -22,4 +22,6 @@
     <fullyQualifiedTypeName name="cs350s22.component.sensor.watchdog.WatchdogBand"/>
     <fullyQualifiedTypeName name="cs350s22.component.sensor.watchdog.WatchdogNotch"/>
     <fullyQualifiedTypeName name="cs350s22.component.sensor.watchdog.WatchdogLow"/>
+    <fullyQualifiedTypeName name="cs350s22.test.MySensor"/>
+    <fullyQualifiedTypeName name="cs350s22.component.sensor.reporter.A_Reporter"/>
 </qualifiedTypeNameHistroy>

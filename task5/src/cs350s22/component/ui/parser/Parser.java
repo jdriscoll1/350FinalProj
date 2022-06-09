@@ -414,62 +414,6 @@ public class Parser {
 	}
 
 
-	// G1 and G2 Reporter Commands
-	private void G1_2(Scanner sc) {
-		// CHANGE
-		if (sc.next().equals("CHANGE")) {
-			Identifier ID = Identifier.make(sc.next());
-			// NOTIFY
-			sc.next();
-			// IDS
-			sc.next();
-			// get the list of ids to notify
-			List<Identifier> ids = Identifier.makeListEmpty();
-			List<Identifier> groups = Identifier.makeListEmpty();
-			while (!sc.next().equals("GROUPS")) {
-				ids.add(Identifier.make(sc.next()));
-			}
-			while (!sc.next().equals("DELTA")) {
-				groups.add(Identifier.make(sc.next()));
-			}
-			// DELTA
-			sc.next();
-			// get the delta value
-			int delta = Integer.parseInt(sc.next());
-			ReporterChange reporterChange = new ReporterChange(ids, groups, delta);
-
-			// add to the symbol table
-			parserHelper.getSymbolTableReporter().add(ID, reporterChange);
-
-		}
-		// FREQUENCY
-		if (sc.next().equals("FREQUENCY")) {
-			Identifier ID = Identifier.make(sc.next());
-			// NOTIFY
-			sc.next();
-			// IDS
-			sc.next();
-			// get the list of ids to notify
-			List<Identifier> ids = Identifier.makeListEmpty();
-			List<Identifier> groups = Identifier.makeListEmpty();
-			while (!sc.next().equals("GROUPS")) {
-				ids.add(Identifier.make(sc.next()));
-			}
-			while (!sc.next().equals("FREQUENCY")) {
-				groups.add(Identifier.make(sc.next()));
-			}
-			// FREQUENCY
-			sc.next();
-			// get the frequency value
-			int frequency = Integer.parseInt(sc.next());
-			ReporterFrequency reporterFrequency = new ReporterFrequency(ids, groups, frequency);
-
-			// add to the symbol table
-			parserHelper.getSymbolTableReporter().add(ID, reporterFrequency);
-			System.out.println("Frequency has been hit and all of the important things were done");
-		}
-	}
-	
 	//G1 Reporter Commands
 	private void G1(Scanner sc) {
 		//CHANGE
@@ -650,385 +594,303 @@ public class Parser {
 
 	}
 
+	// Create a watchdog
+	private void I(Scanner sc) {
+		// The watchdog's id
+		String id = "";
+		// TThe mode of the watch dog(instantaneous? Average? etc..)
+		String mode = "";
+
+		// A potential number corresponding with the mode
+		int modeNum = 0;
+
+		boolean modeNumFlag = false;
+
+		// The Low and High Threshold
+		double lowThreshold = 0;
+		double highThreshold = 0;
+
+		// Only for case in I3
+		double threshold = 0;
+
+		boolean graceSet = false;
+		int grace = 0;
+
+		// CREATE WATCHDOG already accounted for
+
+		// Watchdog Type
+		String watchdogType = sc.next();
+
+		// If it's type is low or high,
+		boolean I3 = (watchdogType.equals("LOW") || watchdogType.equals("HIGH"));
+
+		id = sc.next();
+
+		// MODE
+		sc.next();
+
+		mode = sc.next();
+		if (mode.equals("STANDARD")) {
+			// Deviation
+			sc.next();
+
+		}
+
+		// There may be an integer here, if there is, it is necessary to take it
+		if (sc.hasNextDouble()) {
+			modeNumFlag = true;
+			modeNum = sc.nextInt();
+
+		}
+
+		// THRESHOLD
+		sc.next();
+
+		if (!I3) {
+			// LOW
+			sc.next();
+
+			lowThreshold = sc.nextDouble();
+
+			// HIGH
+			sc.next();
+
+			highThreshold = sc.nextDouble();
+		} else {
+
+			threshold = sc.nextDouble();
+
+		}
+		// GRACE is optional
+		if (sc.hasNext()) {
+			// GRACE
+			sc.next();
+			graceSet = true;
+			grace = sc.nextInt();
+
+		}
+
+		// Create a watchdog mode object
+		A_WatchdogMode w_mode = null;
+		switch (mode) {
+		case ("STANDARD"):
+			w_mode = (modeNumFlag) ? new WatchdogModeStandardDeviation(modeNum) : new WatchdogModeStandardDeviation();
+			break;
+		case ("AVERAGE"):
+			w_mode = (modeNumFlag) ? new WatchdogModeAverage(modeNum) : new WatchdogModeAverage();
+			break;
+
+		case ("INSTANTANEOUS"):
+			w_mode = new WatchdogModeInstantaneous();
+			break;
+		}
+
+		// Get the watchdog symbol table
+		SymbolTable<A_Watchdog> table = parserHelper.getSymbolTableWatchdog();
+
+		A_Watchdog w = null;
+		switch (watchdogType) {
+
+		case ("ACCELERATION"):
+			w = (graceSet) ? new WatchdogAcceleration(lowThreshold, highThreshold, w_mode, grace)
+					: new WatchdogAcceleration(lowThreshold, highThreshold, w_mode);
+			break;
+
+		case ("BAND"):
+			w = (graceSet) ? new WatchdogBand(lowThreshold, highThreshold, w_mode, grace)
+					: new WatchdogBand(lowThreshold, highThreshold, w_mode);
+			break;
+		case ("NOTCH"):
+			w = (graceSet) ? new WatchdogNotch(lowThreshold, highThreshold, w_mode, grace)
+					: new WatchdogNotch(lowThreshold, highThreshold, w_mode);
+			break;
+		case ("LOW"):
+			w = (graceSet) ? new WatchdogLow(threshold, w_mode, grace) : new WatchdogLow(threshold, w_mode);
+			break;
+		case ("HIGH"):
+			w = (graceSet) ? new WatchdogHigh(threshold, w_mode, grace) : new WatchdogHigh(threshold, w_mode);
+			break;
+
+		}
+
+		Identifier tableID = Identifier.make(id);
+		table.add(tableID, w);
+		System.out.println(table.get(tableID));
+
+	}
+
 	
-
-
-  
-    //Create a watchdog
-    private void I(Scanner sc) {
-    	//The watchdog's id
-    	String id = ""; 
-    	//TThe mode of the watch dog(instantaneous? Average? etc..)
-    	String mode = ""; 
-    	
-    	//A potential number corresponding with the mode 
-    	int modeNum = 0; 
-    	
-    	boolean modeNumFlag = false; 
-    	
-    	//The Low and High Threshold 
-    	double lowThreshold = 0; 
-    	double highThreshold = 0;
-    	
-    	//Only for case in I3
-    	double threshold = 0; 
-    	
-    	boolean graceSet = false; 
-    	int grace = 0; 
-    	
-    	//CREATE WATCHDOG already accounted for 
-   
-    	//Watchdog Type
-    	String watchdogType = sc.next(); 
-    	
-    	//If it's type is low or high, 
-    	boolean I3 = (watchdogType.equals("LOW") || watchdogType.equals("HIGH")); 
-    	
-    	id = sc.next(); 
-    	
-    	//MODE
-    	sc.next(); 
-    	
-    	mode = sc.next(); 
-    	if(mode.equals("STANDARD")) {
-    		//Deviation
-    		sc.next(); 
-    		
-    	}
-    	
-    	//There may be an integer here, if there is, it is necessary to take it 
-    	if(sc.hasNextDouble()) {
-    		modeNumFlag = true; 
-    		modeNum = sc.nextInt(); 
-    		
-    	}
-    	
-    	//THRESHOLD 
-    	sc.next(); 
-    	
-    	
-    	
-    	if(!I3) {
-	    	//LOW
-	    	sc.next(); 
-	    	
-	    
-	    	lowThreshold = sc.nextDouble(); 
-	    	
-	    	//HIGH
-	    	sc.next(); 
-	    	
-	    	highThreshold = sc.nextDouble(); 
-    	}
-    	else {
-    		
-    		threshold = sc.nextDouble(); 
-    		
-    	}
-    	//GRACE is optional 
-    	if(sc.hasNext()) {
-    		//GRACE
-    		sc.next(); 
-    		graceSet = true; 
-    		grace = sc.nextInt(); 
-    		
-    		
-    	}
-    	
-    	//Create a watchdog mode object
-    	A_WatchdogMode w_mode = null; 
-    	switch(mode) {
-    		case("STANDARD"):
-    			w_mode = (modeNumFlag) ? new WatchdogModeStandardDeviation(modeNum) : new WatchdogModeStandardDeviation(); 
-    			break; 
-    		case("AVERAGE"):
-    			w_mode = (modeNumFlag) ? new WatchdogModeAverage(modeNum) : new WatchdogModeAverage(); 
-    			break; 
-    		
-    		case("INSTANTANEOUS"):
-    			w_mode = new WatchdogModeInstantaneous(); 
-    			break; 
-    	}
-    	
-    	//Get the watchdog symbol table 
-    	SymbolTable<A_Watchdog> table  = parserHelper.getSymbolTableWatchdog(); 
-    	
-    	A_Watchdog w = null; 
-    	switch(watchdogType){
-    
-    		case("ACCELERATION"):
-    			w = (graceSet) ? new WatchdogAcceleration(lowThreshold, highThreshold, w_mode, grace) : new WatchdogAcceleration(lowThreshold, highThreshold, w_mode); 
-    			break;
-    			
-    		case("BAND"):
-    			w = (graceSet) ? new WatchdogBand(lowThreshold, highThreshold, w_mode, grace) : new WatchdogBand(lowThreshold, highThreshold, w_mode); 
-    			break; 
-    		case("NOTCH"):
-    			w = (graceSet) ? new WatchdogNotch(lowThreshold, highThreshold, w_mode, grace) : new WatchdogNotch(lowThreshold, highThreshold, w_mode);
-    			break;
-    		case("LOW"):
-    			w = (graceSet) ? new WatchdogLow(threshold, w_mode, grace) : new WatchdogLow(threshold, w_mode); 
-    			break; 
-    		case("HIGH"):
-    			w = (graceSet) ? new WatchdogHigh(threshold, w_mode, grace) : new WatchdogHigh(threshold, w_mode); 
-    			break; 
-    			
-    		
-    		
-    	}
-    	
-    		
-    	
-    	Identifier tableID = Identifier.make(id); 
-    	table.add(tableID, w);
-    	System.out.println(table.get(tableID));
-    	 
-    	
-    	
-    	
-    	
-    	
-    }
  
-    public void parse() throws IOException, ParseException, InterruptedException {
+	  public void parse() throws IOException, ParseException, InterruptedException {
 
-    	//makes it so we seperate words from empty spaces (" ")
+	    	//makes it so we seperate words from empty spaces (" ")
+	        this.userInput = this.commandtext.toUpperCase();
+	        String[] command = this.userInput.split(" ");
+	        System.out.println("The command is: " + userInput);
 
-        String[] command = this.userInput.split(" ");
-        System.out.println("The command is: " + userInput);
-
-            //switch statement
-            //for each command starter (first word)
-        
-        	Scanner sc = new Scanner(this.userInput);
-        	
-        	//Takes the first word 
-            switch (sc.next()) {
-            	//if the first word is create
-                case "CREATE": System.out.println("Create Something");
-                    switch(sc.next()) {
-                    
-                    	//Situation A1 - if the first word is actuator 
-                        case "ACTUATOR":
-                            A1(sc);
-                            break;
-                        case "CONTROLLER":
-                            B1(sc);
-                            break;
-                        case "DEPENDENCY":
-                            B2(sc);
-                            break;
-                        case "MAPPER":
-                            MAPPERcommands(sc);
-                            break;
-                        case "REPORTER":
-							switch(sc.next()) {
-								case "CHANGE":
-									G1(sc);
-									break;
-								case "FREQUENCY":
-									G2(sc);
-									break;
-							}
-                            break;
-                        case "SENSOR":
-                            H1(sc); 
-                            break;
-                        case "WATCHDOG":
-                            I(sc); 
-                            break;
-
-                        default:
-                            System.out.println("not valid first word");
-                    }
-                    break;
-                case "SEND": 
-                    switch(sc.next()) {
-                        case "MESSAGE":
-                            switch(sc.next()) {
-                            	case "PING":
-                            		D1(); 
-                            
-                            
-                            }
-                            
-                            break;
-                        default:
-                            System.out.println("not valid first word");
-                    }
-                    break;
-                case "@CLOCK": System.out.println(java.time.LocalTime.now());
-                	if(sc.hasNext()) {
+	            //switch statement
+	            //for each command starter (first word)
+	        
+	        	Scanner sc = new Scanner(this.userInput);
+	        	
+	        	//Takes the first word 
+	            switch (sc.next()) {
+	            	//if the first word is create
+	                case "CREATE": System.out.println("Create Something");
 	                    switch(sc.next()) {
-							//E1
-	                        case "PAUSE":
-	                        	Clock c1 = Clock.getInstance(); 
-	                        	c1.isActive(false);
-	                        	System.out.println("Paused");//REMOVE COMMENT WHEN DONE WITH FULL THING (@CLOCK)
+	                    
+	                    	//Situation A1 - if the first word is actuator 
+	                        case "ACTUATOR":
+	                            A1(sc);
 	                            break;
-	                        case "RESUME":
-	                        	Clock c2 = Clock.getInstance(); 
-	                        	c2.isActive(true);
-	                        	System.out.println("Resumed");//REMOVE COMMENT WHEN DONE (@CLOCK)
+	                        case "CONTROLLER":
+	                            B1(sc);
 	                            break;
-	                        //E2
-	                        case "ONESTEP":
-	                            //Get the instance of a clock
-	                            Clock c3 = Clock.getInstance();
-	                            //if the clock is not active
-	                            if(!c3.isActive()) {
-	                                //if there's another one
-	                                if(sc.hasNext()) {
-	                                    String count = sc.next();
-	                                    //Does the one step command work?
-										c3.onestep(Integer.parseInt(count));
-	                                }
-	                                else {
-	                                    //Increment by one
-										c3.onestep(1);
-	                                }
+	                        case "DEPENDENCY":
+	                            B2(sc);
+	                            break;
+	                        case "MAPPER":
+	                            MAPPERcommands(sc);
+	                            break;
+	                        case "REPORTER":
+								switch(sc.next()) {
+									case "CHANGE":
+										G1(sc);
+										break;
+									case "FREQUENCY":
+										G2(sc);
+										break;
+								}
+	                            break;
+	                        case "SENSOR":
+	                            H1(sc); 
+	                            break;
+	                        case "WATCHDOG":
+	                            I(sc); 
+	                            break;
+
+	                        default:
+	                            System.out.println("not valid first word");
+	                    }
+	                    break;
+	                case "SEND": 
+	                    switch(sc.next()) {
+	                        case "MESSAGE":
+	                        	String next = sc.next(); 
+	                            if(next.equals("PING")) {
+	                            	D1(); 
 	                            }
-	                            break;
-	                        //E3
-	                        case "SET":
-	                        	//Rate
-	                        	sc.next();
-	                        	String value = sc.next(); 
-	                        	Clock c4 = Clock.getInstance();
-								c4.setRate(Integer.parseInt(value));
+	                            else {
+	                            	D2_3(sc); 
+	                            	
+	                            }
 	                            break;
 	                        default:
 	                            System.out.println("not valid first word");
-	
-	                        case "WAIT":
-								switch(sc.next()) {
-									case "FOR":
-										String seconds = sc.next();
-										Clock c5 = Clock.getInstance();
-										c5.waitFor(Double.parseDouble(seconds));
-										break;
-									case "UNTIL":
-										String seconds2 = sc.next();
-										Clock c6 = Clock.getInstance();
-										c6.waitUntil(Double.parseDouble(seconds2));
-										break;
-								}
-	                    }  
-                    
-                	}
-                	 //Command E7 @CLOCK
-                    else {
-                    	E7();
-                    }
-                    break;
+	                    }
+	                    break;
+	                case "@CLOCK": System.out.println(java.time.LocalTime.now());
+	                	if(sc.hasNext()) {
+		                    switch(sc.next()) {
+								//E1
+		                        case "PAUSE":
+		                        	Clock c1 = Clock.getInstance(); 
+		                        	c1.isActive(false);
+		                        	System.out.println("Paused");//REMOVE COMMENT WHEN DONE WITH FULL THING (@CLOCK)
+		                            break;
+		                        case "RESUME":
+		                        	Clock c2 = Clock.getInstance(); 
+		                        	c2.isActive(true);
+		                        	System.out.println("Resumed");//REMOVE COMMENT WHEN DONE (@CLOCK)
+		                            break;
+		                        //E2
+		                        case "ONESTEP":
+		                            //Get the instance of a clock
+		                            Clock c3 = Clock.getInstance();
+		                            //if the clock is not active
+		                            if(!c3.isActive()) {
+		                                //if there's another one
+		                                if(sc.hasNext()) {
+		                                    String count = sc.next();
+		                                    //Does the one step command work?
+											c3.onestep(Integer.parseInt(count));
+		                                }
+		                                else {
+		                                    //Increment by one
+											c3.onestep(1);
+		                                }
+		                            }
+		                            break;
+		                        //E3
+		                        case "SET":
+		                        	//Rate
+		                        	sc.next();
+		                        	String value = sc.next(); 
+		                        	Clock c4 = Clock.getInstance();
+									c4.setRate(Integer.parseInt(value));
+		                            break;
+		                        default:
+		                            System.out.println("not valid first word");
+		
+		                        case "WAIT":
+									switch(sc.next()) {
+										case "FOR":
+											String seconds = sc.next();
+											Clock c5 = Clock.getInstance();
+											c5.waitFor(Double.parseDouble(seconds));
+											break;
+										case "UNTIL":
+											String seconds2 = sc.next();
+											Clock c6 = Clock.getInstance();
+											c6.waitUntil(Double.parseDouble(seconds2));
+											break;
+									}
+		                    }  
+	                    
+	                	}
+	                	 //Command E7 @CLOCK
+	                    else {
+	                    	E7();
+	                    }
+	                    break;
 
-                case "@EXIT": 
-        
-                	parserHelper.exit();
-                    break;
+	                case "@EXIT": 
+	        
+	                	parserHelper.exit();
+	                    break;
 
-                case "@RUN": 
+	                case "@RUN": 
 
-                	parserHelper.run(sc.next());
+	                	parserHelper.run(sc.next());
 
-                    break;
+	                    break;
 
-                case "@CONFIGURE": System.out.println("DO Something");
-                    switch(sc.next()) {
-                        case "LOG":
-                            E6(sc); 
-                            break;
-                        default:
-                            System.out.println("not valid first word");
-                    }
-                    break;
-                case "BUILD": 
-                    switch(sc.next()) {
-                        case "NETWORK":
-							//WITH
->>>>>>> 64bd118fb02fadce879733d17f2ee262e7a2aaba
-							sc.next();
-							// get the next thing
-							String count = sc.next();
-							// Does the one step command work?
-							c4.onestep(Integer.parseInt(count));
-						} else {
-							// Increment by one
-							c4.onestep(1);
-						}
-					}
-					break;
-				// E3
-				case "SET":
-					// Rate
-					sc.next();
-					String value = sc.next();
-					Clock c3 = Clock.getInstance();
-					c3.setRate(Integer.parseInt(value));
+	                case "@CONFIGURE": System.out.println("DO Something");
+	                    switch(sc.next()) {
+	                        case "LOG":
+	                            E6(sc); 
+	                            break;
+	                        default:
+	                            System.out.println("not valid first word");
+	                    }
+	                    break;
+	                case "BUILD": 
+	                    switch(sc.next()) {
+	                        case "NETWORK":
+								//WITH
+								sc.next();
+								//COMPONENT
+								F1(sc);
 
-					break;
-				default:
-					System.out.println("not valid first word");
+	                            break;
+	                    }
+	                    break;
 
-				case "WAIT":
-					if (sc.next() == "FOR") {
-						sc.next();
-						String seconds = sc.next();
-						TimeUnit.SECONDS.sleep(Long.parseLong(seconds));
-					}
-					if (sc.next() == "UNTIL") {
-						sc.next();
-						String seconds = sc.next();
-						TimeUnit.SECONDS.wait(Long.parseLong(seconds));
-					}
-				}
+	                        //defaults if not one of the options
+	                        default:
+	                            System.out.println("not valid first word");
 
-			}
-			// Command E7 @CLOCK
-			else {
-				E7();
-
-			}
-			break;
-
-		case "@EXIT":
-
-			parserHelper.exit();
-			break;
-
-		case "@RUN":
-
-			parserHelper.run(sc.next());
-
-			break;
-
-		case "@CONFIGURE":
-			System.out.println("DO Something");
-			switch (sc.next()) {
-			case "LOG":
-				E6(sc);
-				break;
-			default:
-				System.out.println("not valid first word");
-			}
-			break;
-		case "BUILD":
-			switch (sc.next()) {
-			case "NETWORK":
-				// WITH
-				sc.next();
-				// COMPONENT
-				F1(sc);
-
-				break;
-			}
-			break;
-
-		// defaults if not one of the options
-		default:
-			System.out.println("not valid first word");
-
-		}
-	}
+	        }
+	    }
 
 }
