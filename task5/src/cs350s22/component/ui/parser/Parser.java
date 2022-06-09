@@ -444,7 +444,10 @@ public class Parser {
 		sc.next();
 
 		boolean isRequest = (sc.next().equals("REQUEST"));
-		double value = sc.nextDouble();
+		double value = 0; 
+		if(sc.hasNext()) {
+			value = sc.nextDouble();
+		}
 
 		// Create Message Actuator
 		A_Message message = (isRequest) ? new MessageActuatorRequestPosition(listOutput, value)
