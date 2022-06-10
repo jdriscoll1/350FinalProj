@@ -12,6 +12,7 @@ public class Startup {
 	
 	//Goal: create a linear actuator with some configurations 
 	public static void A1() throws Exception {
+		
 		startup.parse("CREATE ACTUATOR LINEAR act1 ACCELERATION LEADIN 0.1 LEADOUT -0.2 RELAX 0.3 VELOCITY LIMIT 5 VALUE MIN 1 MAX 20 INITIAL 2 JERK LIMIT 3"); 
 		startup.parse("@EXIT");
 		
@@ -25,7 +26,8 @@ public class Startup {
 	
 	public static void main(final String[] arguments) throws Exception {
 		
-		
+		// this command must come first. The filenames do not matter here
+		startup.parse("@CONFIGURE LOG a.txt DOT SEQUENCE b.txt NETWORK c.txt XML d.txt");
 		startup.A1();
 
 	}
