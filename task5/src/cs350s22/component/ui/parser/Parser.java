@@ -124,7 +124,7 @@ public class Parser {
 				groupsFlag = true;
 			}
 			// if it reaches star 2
-			else if (curr.matches("SENSORS") | curr.matches("SENSOR")) {
+			else if (curr.matches("SENSORS") || curr.matches("SENSOR")) {
 				currGroup = sensors;
 				sensorFlag = true;
 			}
@@ -346,6 +346,11 @@ public class Parser {
 			
 			
 		}
+		
+	}
+	
+	private void H2(Scanner sc) {
+		
 		
 	}
 
