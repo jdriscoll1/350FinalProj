@@ -197,14 +197,6 @@ public class Parser {
 
 	
 
-	private void B1(Scanner sc) {
-
-	}
-
-	private void B2(Scanner sc) {
-
-	}
-
 	// TO DO: REPLACE sc.next with pre-declared string (ask Kevin for clarification)
 	private void MAPPERcommands(Scanner sc) throws IOException {// MAPPER command also C1 C2 C3 C4
 		// create mapper
@@ -264,7 +256,6 @@ public class Parser {
 		CommandLineInterface cli = parserHelper.getCommandLineInterface();
 		MessagePing ping = new MessagePing();
 		cli.issueMessage(ping);
-		System.out.println("Ping sent");
 	}
 
 	// SEND MESSAGE Already Accounted For 
@@ -349,10 +340,7 @@ public class Parser {
 		
 	}
 	
-	private void H2(Scanner sc) {
-		
-		
-	}
+
 
 	private void E6(Scanner sc) throws IOException {
 		// LOG
@@ -621,6 +609,11 @@ public class Parser {
 
 
 	}
+	
+	private void H2(Scanner sc) {
+		
+		
+	}
 
 	// Create a watchdog
 	private void I(Scanner sc) {
@@ -770,12 +763,6 @@ public class Parser {
 	                    	//Situation A1 - if the first word is actuator 
 	                        case "ACTUATOR":
 	                            A1(sc);
-	                            break;
-	                        case "CONTROLLER":
-	                            B1(sc);
-	                            break;
-	                        case "DEPENDENCY":
-	                            B2(sc);
 	                            break;
 	                        case "MAPPER":
 	                            MAPPERcommands(sc);
