@@ -323,9 +323,30 @@ public class Parser {
 		ArrayList<Identifier> listOutput = null; 
 		listOutput = (ids.size() > 0) ? ids : groups; 
 		// Create Message Actuator
-		A_Message message = (isRequest) ? new MessageActuatorRequestPosition(listOutput, value)
-				: new MessageActuatorReportPosition(listOutput);
-		cli.issueMessage(message);
+
+		
+		if(!isRequest) {
+			if(ids.size() > 0) {
+				
+				cli.issueMessage(new MessageActuatorRequestPosition(ids, value)); 
+				
+			}
+			if(groups.size() > 0) {
+				cli.issueMessage(new MessageActuatorRequestPosition(groups, value, 0)); 
+			}
+			
+		}
+		else {
+			if(ids.size() > 0) {
+				cli.issueMessage(new MessageActuatorReportPosition(ids)); 
+			}
+			if(groups.size() > 0) {
+				cli.issueMessage(new MessageActuatorReportPosition(groups, 0)); 
+			}
+			
+			
+		}
+		
 	}
 
 	private void E6(Scanner sc) throws IOException {

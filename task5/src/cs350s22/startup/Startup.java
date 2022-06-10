@@ -58,7 +58,7 @@ public class Startup
       //startup.parse("CREATE REPORTER FREQUENCY myReporter6 NOTIFY myActuator1 myActuator2 FREQUENCY 3");
       //startup.parse("BUILD NETWORK WITH COMPONENT myController");
       //startup.parse("BUILD NETWORK WITH COMPONENTS myController1 myActuator1");
-      startup.parse("CREATE SENSOR POSITION mySensor16 WATCHDOGS myWatchdog1 MAPPER myMapper1");
+      startup.parse("SEND MESSAGE ID myActuator1 GROUPS myActuators1 myActuators2 POSITION REPORT");
       // run your tests like this
       startup.parse("@EXIT");
 
