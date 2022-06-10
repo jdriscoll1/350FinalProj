@@ -97,7 +97,8 @@ public class Parser {
 //	     Identifier ID = Identifier.make(sc.next());
 	     List<Identifier> group = new ArrayList<Identifier>(); 
 	     List<Identifier> currGroup = new ArrayList<Identifier>(); 
-	     List<Identifier> sensors = new ArrayList<Identifier>(); 
+	     List<A_Sensor> currsensors= new ArrayList<>(); 
+	     List<A_Sensor> sensors = new ArrayList<>(); 
 
 	    
 	    //First boolean linear or rotary 
@@ -126,7 +127,7 @@ public class Parser {
 			}
 			// if it reaches star 2
 			else if (curr.matches("SENSORS") || curr.matches("SENSOR")) {
-				currGroup = sensors;
+				currsensors = sensors;
 				sensorFlag = true;
 				Sensor.add(parserHelper.getSymbolTableSensor().get(Identifier.make(curr)));
 			}
@@ -193,8 +194,8 @@ public class Parser {
 			System.out.println("invalid");
 		}
 		//FIX SENSOR DATA TYPE
-		//ActuatorPrototype actuator = new ActuatorPrototype(id, group, accelerationLeadin, accelerationLeadout, accelerationRelax, velocityLimit, velocityInitial, valueMin, valueMax, inflectionJerkThreshold, sensors);
-		
+		ActuatorPrototype actuator = new ActuatorPrototype(id, group, accelerationLeadin, accelerationLeadout, accelerationRelax, velocityLimit, velocityInitial, valueMin, valueMax, inflectionJerkThreshold, sensors);
+		parserHelper.getSymbolTableActuator().add(id, actuator);
 		//Actuator Incomplete
 
 	}
