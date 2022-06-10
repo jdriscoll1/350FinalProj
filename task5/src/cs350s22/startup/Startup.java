@@ -47,11 +47,10 @@ public class Startup {
 
 	}
 
-	private void parse(final String parse) throws Exception {
-		System.out.println("PARSE> " + parse);
+	   private void parse(final String command) throws Exception
+	   {
+	      System.out.println("PARSE> " + command);
 
-		Parser parser = new Parser(_parserHelper, parse);
-
-		parser.parse();
-	}
+	      _parserHelper.schedule(command);
+	   }
 }
