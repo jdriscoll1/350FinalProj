@@ -56,7 +56,7 @@ public class Parser {
     private final A_ParserHelper parserHelper;
     private final String commandtext;
     private String userInput; 
-   // private List<A_Sensor> sensors = new ArrayList<A_Sensor>();
+    private List<A_Sensor> Sensor = new ArrayList<A_Sensor>();
     private List<Identifier> IDList = new ArrayList<Identifier>();
     
     public Parser(A_ParserHelper parserHelper, String commandtext) throws IOException {
@@ -95,9 +95,9 @@ public class Parser {
 		 //List<A_Sensor> sensors = null; //Optional
 	     //String[] command = this.userInput.split(" ");
 //	     Identifier ID = Identifier.make(sc.next());
-	     ArrayList<Identifier> group = new ArrayList<Identifier>(); 
-	     ArrayList<Identifier> currGroup = new ArrayList<Identifier>(); 
-	     ArrayList<Identifier> sensors = new ArrayList<Identifier>(); 
+	     List<Identifier> group = new ArrayList<Identifier>(); 
+	     List<Identifier> currGroup = new ArrayList<Identifier>(); 
+	     List<Identifier> sensors = new ArrayList<Identifier>(); 
 
 	    
 	    //First boolean linear or rotary 
@@ -112,8 +112,9 @@ public class Parser {
 		// Check if it is a linear or rotary access
 		boolean isLinear = sc.next().equals("LINEAR");
 
-		String id = sc.next();
-		// IDList.add(id);
+		Identifier id = Identifier.make(sc.next());
+		//parserHelper.getSymbolTableActuator().add(ID, actuator);
+		IDList.add(id);
 		// Stars & Square Loop
 		while (sc.hasNext()) {
 			String curr = sc.next();
@@ -127,6 +128,7 @@ public class Parser {
 			else if (curr.matches("SENSORS") || curr.matches("SENSOR")) {
 				currGroup = sensors;
 				sensorFlag = true;
+				Sensor.add(parserHelper.getSymbolTableSensor().get(Identifier.make(curr)));
 			}
 			// If it reaches ACCELERATION{
 			// break
@@ -190,10 +192,13 @@ public class Parser {
 		} else {
 			System.out.println("invalid");
 		}
+		//FIX SENSOR DATA TYPE
+		//ActuatorPrototype actuator = new ActuatorPrototype(id, group, accelerationLeadin, accelerationLeadout, accelerationRelax, velocityLimit, velocityInitial, valueMin, valueMax, inflectionJerkThreshold, sensors);
 		
 		//Actuator Incomplete
 
 	}
+    
 
 	
 
