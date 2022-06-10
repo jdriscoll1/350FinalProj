@@ -629,7 +629,26 @@ public class Parser {
 		A_Sensor sensor = sensorTable.get(id); 
 		sensor.setValue(value);
 	}
-
+	
+	//GET SENSOR 
+	private void H3(Scanner sc) {
+		
+		//Parsing
+		String idStr = sc.next(); 
+		Identifier id = Identifier.make(idStr);
+		//VALUE 
+		sc.next();
+		
+		//Execution
+		SymbolTable<A_Sensor> sensorTable = parserHelper.getSymbolTableSensor(); 
+		A_Sensor sensor = sensorTable.get(id); 
+		parserHelper.output(sensor.toString()); 
+		
+		
+		
+		
+		
+	}
 	// Create a watchdog
 	private void I(Scanner sc) {
 		// The watchdog's id
@@ -911,6 +930,15 @@ public class Parser {
 	            			break; 
 	            	
 	            	}
+	            	
+	            case "GET": 
+	            	switch(sc.next()) {
+	            		case "SENSOR":
+	            			H3(sc); 
+	            			break; 
+	            	
+	            	}
+	            	
 	            case "BUILD": 
 	                switch(sc.next()) {
 	                    case "NETWORK":
@@ -928,6 +956,8 @@ public class Parser {
 	                        System.out.println("not valid first word");
 
 	        }
+	        sc.close(); 
 	    }
+	  
 
 }
