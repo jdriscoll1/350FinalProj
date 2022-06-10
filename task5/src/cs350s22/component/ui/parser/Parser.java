@@ -267,60 +267,61 @@ public class Parser {
 		System.out.println("Ping sent");
 	}
 
-	// TO-DO: Add Stars & Squares
+	// SEND MESSAGE Already Accounted For 
 	private void D2_3(Scanner sc) {
-		CommandLineInterface cli = parserHelper.getCommandLineInterface();
-		boolean isID = false;
+		
+		
 
 		// All the ids & groups
-		ArrayList<Identifier> listOutput;
+		ArrayList<Identifier> currList = new ArrayList<Identifier>();
 		ArrayList<Identifier> ids = new ArrayList<Identifier>();
 		ArrayList<Identifier> groups = new ArrayList<Identifier>();
 
 		// The current word being parsed
 		String curr = "";
-		String output = "";
-
-		// Loop until it finds position
-		while (!curr.equals("POSITION")) {
-			// Grab the current word
-			curr = sc.next();
-			if (curr.equals("ID")) {
-				if (output.equals("")) {
-					output = "ID";
-				}
-				isID = true;
-
-			} else if (curr.equals("GROUPS")) {
-				if (output.equals("")) {
-					output = "GROUPS";
-				}
-				isID = false;
-
-			} else {
-				// Convert string 2 identifier
-				Identifier id = Identifier.make(curr);
-
-				// If it's an ID add it to id, else ad dit to groups
-				if (isID) {
-
-					ids.add(id);
-				} else {
-					groups.add(id);
-				}
+		
+		//Stars & Squares
+		while(sc.hasNext()) {
+			curr = sc.next(); 
+			//Star: ID
+			if(curr.equals("ID") || curr.equals("IDS")) {
+				currList = ids;
+				
 			}
+			
+			//Star: 
+			else if(curr.equals("GROUP") || curr.equals("GROUPS")) {
+				currList = groups; 
+				
+			}
+			//exit star 
+			else if(curr.equals("POSITION")) {
+				break; 
+				
+			}
+			//Square 
+			else {
+				
+				currList.add(Identifier.make(curr)); 
+				
+			}
+			
 		}
-		listOutput = (output.equals("ID")) ? ids : groups;
-
-		// POSITION
-		sc.next();
-
+		
+		//Grab the Command Line Interface 
+		CommandLineInterface cli = parserHelper.getCommandLineInterface();
+		
+	
+		//is Request 
 		boolean isRequest = (sc.next().equals("REQUEST"));
 		double value = 0; 
-		if(sc.hasNext()) {
+		
+		//Another way of saying is Request
+		if(sc.hasNextDouble()) {
 			value = sc.nextDouble();
 		}
-
+		ArrayList<Identifier> listOutput = null; 
+		listOutput = (ids.size() > 0) ? ids : groups; 
 		// Create Message Actuator
 		A_Message message = (isRequest) ? new MessageActuatorRequestPosition(listOutput, value)
 				: new MessageActuatorReportPosition(listOutput);

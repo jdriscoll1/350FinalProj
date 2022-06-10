@@ -11469,3 +11469,324 @@ java.io.FileNotFoundException: C:\Users\Jordan\Test-Folder\School\Classes\350\ta
 	at org.eclipse.core.internal.resources.Workspace.save(Workspace.java:2333)
 	at org.eclipse.ui.internal.ide.application.IDEWorkbenchAdvisor.lambda$1(IDEWorkbenchAdvisor.java:509)
 	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:122)
+!SESSION 2022-06-09 13:50:00.993 -----------------------------------------------
+eclipse.buildId=4.18.0.I20201202-1800
+java.version=11.0.6
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+
+!ENTRY org.eclipse.osgi 4 0 2022-06-09 13:50:02.862
+!MESSAGE error loading hook: org.eclipse.objectteams.otequinox.hook.HookConfigurator
+!STACK 0
+java.lang.NoClassDefFoundError: org/eclipse/osgi/baseadaptor/HookConfigurator
+	at java.base/java.lang.ClassLoader.defineClass1(Native Method)
+	at java.base/java.lang.ClassLoader.defineClass(ClassLoader.java:1016)
+	at java.base/java.security.SecureClassLoader.defineClass(SecureClassLoader.java:174)
+	at java.base/java.net.URLClassLoader.defineClass(URLClassLoader.java:550)
+	at java.base/java.net.URLClassLoader$1.run(URLClassLoader.java:458)
+	at java.base/java.net.URLClassLoader$1.run(URLClassLoader.java:452)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at java.base/java.net.URLClassLoader.findClass(URLClassLoader.java:451)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:588)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:521)
+	at java.base/java.lang.Class.forName0(Native Method)
+	at java.base/java.lang.Class.forName(Class.java:315)
+	at org.eclipse.osgi.internal.hookregistry.HookRegistry.loadConfigurators(HookRegistry.java:203)
+	at org.eclipse.osgi.internal.hookregistry.HookRegistry.initialize(HookRegistry.java:118)
+	at org.eclipse.osgi.internal.framework.EquinoxContainer.<init>(EquinoxContainer.java:111)
+	at org.eclipse.osgi.launch.Equinox.<init>(Equinox.java:53)
+	at org.eclipse.osgi.launch.Equinox.<init>(Equinox.java:46)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.startup(EclipseStarter.java:315)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:251)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:653)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:590)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1461)
+Caused by: java.lang.ClassNotFoundException: org.eclipse.osgi.baseadaptor.HookConfigurator
+	at java.base/java.net.URLClassLoader.findClass(URLClassLoader.java:471)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:588)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:521)
+	... 26 more
+
+!ENTRY org.eclipse.jface 2 0 2022-06-09 13:52:07.854
+!MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
+!SUBENTRY 1 org.eclipse.jface 2 0 2022-06-09 13:52:07.854
+!MESSAGE A conflict occurred for CTRL+SHIFT+T:
+Binding(CTRL+SHIFT+T,
+	ParameterizedCommand(Command(org.eclipse.jdt.ui.navigate.open.type,Open Type,
+		Open a type in a Java editor,
+		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@62cb977a,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+Binding(CTRL+SHIFT+T,
+	ParameterizedCommand(Command(org.eclipse.lsp4e.symbolinworkspace,Go to Symbol in Workspace,
+		,
+		Category(org.eclipse.lsp4e.category,Language Servers,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@7db70494,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+!SUBENTRY 1 org.eclipse.jface 2 0 2022-06-09 13:52:07.854
+!MESSAGE A conflict occurred for ALT+SHIFT+Q E:
+Binding(ALT+SHIFT+Q E,
+	ParameterizedCommand(Command(org.eclipse.php.ui.explorer,PHP Script Explorer,
+		Shows the Script Explorer,
+		Category(org.eclipse.ui.category.views,Views,Commands for opening views,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@3f030217,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+Binding(ALT+SHIFT+Q E,
+	ParameterizedCommand(Command(org.eclipse.ui.views.showView,Show View,
+		Shows a particular view,
+		Category(org.eclipse.ui.category.views,Views,Commands for opening views,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@2fca9fae,
+		[Parameter(org.eclipse.ui.views.showView.viewId,View,null,true), Parameter(org.eclipse.ui.views.showView.secondaryId,Secondary Id,null,true), Parameter(org.eclipse.ui.views.showView.makeFast,As FastView,null,true)],,true),[org.eclipse.core.commands.Parameterization@764c0aef]),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+
+!ENTRY org.eclipse.egit.ui 2 0 2022-06-09 13:52:39.323
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Jordan'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.core.resources 4 568 2022-06-09 14:08:28.698
+!MESSAGE Could not write metadata for '/RemoteSystemsTempFiles'.
+!STACK 0
+java.io.FileNotFoundException: C:\Users\Jordan\Test-Folder\School\Classes\350\task5\.metadata\.plugins\org.eclipse.core.resources\.projects\RemoteSystemsTempFiles\.markers.snap (The system cannot find the path specified)
+	at java.base/java.io.FileOutputStream.open0(Native Method)
+	at java.base/java.io.FileOutputStream.open(FileOutputStream.java:298)
+	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:237)
+	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:158)
+	at org.eclipse.core.internal.localstore.SafeChunkyOutputStream.<init>(SafeChunkyOutputStream.java:48)
+	at org.eclipse.core.internal.localstore.SafeChunkyOutputStream.<init>(SafeChunkyOutputStream.java:44)
+	at org.eclipse.core.internal.resources.SaveManager.visitAndSnap(SaveManager.java:1765)
+	at org.eclipse.core.internal.resources.SaveManager.visitAndSnap(SaveManager.java:1846)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1202)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1143)
+	at org.eclipse.core.internal.resources.DelayedSnapshotJob.run(DelayedSnapshotJob.java:55)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2022-06-09 14:12:15.302
+!MESSAGE Exception during deserialization of cached classpath infos. Discaring old state.
+!STACK 0
+java.lang.RuntimeException: java.lang.RuntimeException: com.google.gson.JsonSyntaxException: java.io.EOFException: End of input at line 10 column 69 path $[0].jarFileFingerprint
+	at org.eclipse.recommenders.utils.Throws.throwUnhandledException(Throws.java:47)
+	at org.eclipse.recommenders.utils.gson.GsonUtil.deserialize(GsonUtil.java:121)
+	at org.eclipse.recommenders.internal.rcp.providers.ClasspathEntryInfoProvider.initializeIndex(ClasspathEntryInfoProvider.java:118)
+	at org.eclipse.recommenders.internal.rcp.providers.ClasspathEntryInfoProvider.access$0(ClasspathEntryInfoProvider.java:111)
+	at org.eclipse.recommenders.internal.rcp.providers.ClasspathEntryInfoProvider$1.run(ClasspathEntryInfoProvider.java:104)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: java.lang.RuntimeException: com.google.gson.JsonSyntaxException: java.io.EOFException: End of input at line 10 column 69 path $[0].jarFileFingerprint
+	at org.eclipse.recommenders.utils.Throws.throwUnhandledException(Throws.java:47)
+	at org.eclipse.recommenders.utils.gson.GsonUtil.deserialize(GsonUtil.java:107)
+	at org.eclipse.recommenders.utils.gson.GsonUtil.deserialize(GsonUtil.java:119)
+	... 4 more
+Caused by: com.google.gson.JsonSyntaxException: java.io.EOFException: End of input at line 10 column 69 path $[0].jarFileFingerprint
+	at com.google.gson.Gson.fromJson(Gson.java:898)
+	at com.google.gson.Gson.fromJson(Gson.java:853)
+	at org.eclipse.recommenders.utils.gson.GsonUtil.deserialize(GsonUtil.java:105)
+	... 5 more
+Caused by: java.io.EOFException: End of input at line 10 column 69 path $[0].jarFileFingerprint
+	at com.google.gson.stream.JsonReader.nextNonWhitespace(JsonReader.java:1401)
+	at com.google.gson.stream.JsonReader.doPeek(JsonReader.java:482)
+	at com.google.gson.stream.JsonReader.hasNext(JsonReader.java:414)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:214)
+	at com.google.gson.internal.bind.TypeAdapterRuntimeTypeWrapper.read(TypeAdapterRuntimeTypeWrapper.java:41)
+	at com.google.gson.internal.bind.CollectionTypeAdapterFactory$Adapter.read(CollectionTypeAdapterFactory.java:82)
+	at com.google.gson.internal.bind.CollectionTypeAdapterFactory$Adapter.read(CollectionTypeAdapterFactory.java:61)
+	at com.google.gson.Gson.fromJson(Gson.java:888)
+	... 7 more
+
+!ENTRY org.eclipse.m2e.logback.appender 4 0 2022-06-09 14:12:15.342
+!MESSAGE Failed to open search index.
+!STACK 0
+org.apache.lucene.index.IndexNotFoundException: no segments* file found in org.apache.lucene.store.SimpleFSDirectory@C:\Users\Jordan\Test-Folder\School\Classes\350\task5\.metadata\.plugins\org.eclipse.recommenders.rcp\index lockFactory=org.apache.lucene.store.NativeFSLockFactory@2f6d9f0f: files: []
+	at org.apache.lucene.index.SegmentInfos$FindSegmentsFile.run(SegmentInfos.java:712)
+	at org.apache.lucene.index.DirectoryReader.open(DirectoryReader.java:75)
+	at org.apache.lucene.index.IndexReader.open(IndexReader.java:462)
+	at org.apache.lucene.index.IndexReader.open(IndexReader.java:308)
+	at org.eclipse.recommenders.internal.rcp.repo.ModelRepositoryIndex.open(ModelRepositoryIndex.java:64)
+	at org.eclipse.recommenders.internal.rcp.wiring.RecommendersModule$ServicesInitializer.<init>(RecommendersModule.java:377)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:490)
+	at com.google.inject.internal.DefaultConstructionProxyFactory$1.newInstance(DefaultConstructionProxyFactory.java:85)
+	at com.google.inject.internal.ConstructorInjector.construct(ConstructorInjector.java:85)
+	at com.google.inject.internal.ConstructorBindingImpl$Factory.get(ConstructorBindingImpl.java:254)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter$1.call(ProviderToInternalFactoryAdapter.java:46)
+	at com.google.inject.internal.InjectorImpl.callInContext(InjectorImpl.java:1031)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter.get(ProviderToInternalFactoryAdapter.java:40)
+	at com.google.inject.Scopes$1$1.get(Scopes.java:65)
+	at com.google.inject.internal.InternalFactoryToProviderAdapter.get(InternalFactoryToProviderAdapter.java:40)
+	at com.google.inject.internal.InternalInjectorCreator$1.call(InternalInjectorCreator.java:204)
+	at com.google.inject.internal.InternalInjectorCreator$1.call(InternalInjectorCreator.java:198)
+	at com.google.inject.internal.InjectorImpl.callInContext(InjectorImpl.java:1024)
+	at com.google.inject.internal.InternalInjectorCreator.loadEagerSingletons(InternalInjectorCreator.java:198)
+	at com.google.inject.internal.InternalInjectorCreator.injectDynamically(InternalInjectorCreator.java:179)
+	at com.google.inject.internal.InternalInjectorCreator.build(InternalInjectorCreator.java:109)
+	at com.google.inject.Guice.createInjector(Guice.java:95)
+	at com.google.inject.Guice.createInjector(Guice.java:72)
+	at org.eclipse.recommenders.injection.InjectionService.getInjector(InjectionService.java:47)
+	at org.eclipse.recommenders.injection.ExtensionFactory.<init>(ExtensionFactory.java:28)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:490)
+	at org.eclipse.core.internal.registry.osgi.RegistryStrategyOSGI.createExecutableExtension(RegistryStrategyOSGI.java:204)
+	at org.eclipse.core.internal.registry.ExtensionRegistry.createExecutableExtension(ExtensionRegistry.java:920)
+	at org.eclipse.core.internal.registry.ConfigurationElement.createExecutableExtension(ConfigurationElement.java:246)
+	at org.eclipse.core.internal.registry.ConfigurationElementHandle.createExecutableExtension(ConfigurationElementHandle.java:63)
+	at org.eclipse.jdt.internal.ui.text.java.CompletionProposalComputerDescriptor.createComputer(CompletionProposalComputerDescriptor.java:323)
+	at org.eclipse.jdt.internal.ui.text.java.CompletionProposalComputerDescriptor.getComputer(CompletionProposalComputerDescriptor.java:290)
+	at org.eclipse.jdt.internal.ui.text.java.CompletionProposalComputerDescriptor.sessionStarted(CompletionProposalComputerDescriptor.java:436)
+	at org.eclipse.jdt.internal.ui.text.java.CompletionProposalCategory.sessionStarted(CompletionProposalCategory.java:387)
+	at org.eclipse.jdt.internal.ui.text.java.ContentAssistProcessor$CompletionListener.assistSessionStarted(ContentAssistProcessor.java:124)
+	at org.eclipse.jface.text.contentassist.ContentAssistant.lambda$16(ContentAssistant.java:2525)
+	at java.base/java.util.Collections$SingletonSet.forEach(Collections.java:4797)
+	at org.eclipse.jface.text.contentassist.ContentAssistant.fireSessionBeginEvent(ContentAssistant.java:2522)
+	at org.eclipse.jface.text.contentassist.ContentAssistant.prepareToShowCompletions(ContentAssistant.java:1855)
+	at org.eclipse.jface.text.contentassist.ContentAssistant.access$5(ContentAssistant.java:1846)
+	at org.eclipse.jface.text.contentassist.ContentAssistant$AutoAssistListener.lambda$0(ContentAssistant.java:380)
+	at org.eclipse.swt.widgets.RunnableLock.run(RunnableLock.java:40)
+	at org.eclipse.swt.widgets.Synchronizer.runAsyncMessages(Synchronizer.java:185)
+	at org.eclipse.swt.widgets.Display.runAsyncMessages(Display.java:4001)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3629)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$5.run(PartRenderingEngine.java:1157)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:338)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1046)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:155)
+	at org.eclipse.ui.internal.Workbench.lambda$3(Workbench.java:644)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:338)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:551)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:156)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:152)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:203)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:134)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:401)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:255)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:653)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:590)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1461)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2022-06-09 14:12:17.026
+!MESSAGE 'remote-models (http://download.eclipse.org/recommenders/models/kepler/, releases+snapshots)' did not send ETAG header for 'org.eclipse.recommenders:index:pom:0.0.0'.
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2022-06-09 14:12:18.553
+!MESSAGE 'remote-models (http://download.eclipse.org/recommenders/models/kepler/, releases+snapshots)' did not send ETAG header for 'org.eclipse.recommenders:index:zip:0.0.0'.
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2022-06-09 14:12:18.557
+!MESSAGE Updating index cancelled.
+!STACK 0
+org.sonatype.aether.resolution.DependencyResolutionException: Could not find artifact org.eclipse.recommenders:index:zip:0.0.0 in remote-models (http://download.eclipse.org/recommenders/models/kepler/)
+	at org.sonatype.aether.impl.internal.DefaultRepositorySystem.resolveDependencies(DefaultRepositorySystem.java:375)
+	at org.eclipse.recommenders.internal.rcp.repo.ModelRepository.resolve(ModelRepository.java:226)
+	at org.eclipse.recommenders.internal.rcp.repo.UpdateModelIndexJob.downloadAndUnzipIndex(UpdateModelIndexJob.java:70)
+	at org.eclipse.recommenders.internal.rcp.repo.UpdateModelIndexJob.run(UpdateModelIndexJob.java:48)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: org.sonatype.aether.resolution.ArtifactResolutionException: Could not find artifact org.eclipse.recommenders:index:zip:0.0.0 in remote-models (http://download.eclipse.org/recommenders/models/kepler/)
+	at org.sonatype.aether.impl.internal.DefaultArtifactResolver.resolve(DefaultArtifactResolver.java:538)
+	at org.sonatype.aether.impl.internal.DefaultArtifactResolver.resolveArtifacts(DefaultArtifactResolver.java:216)
+	at org.sonatype.aether.impl.internal.DefaultRepositorySystem.resolveDependencies(DefaultRepositorySystem.java:358)
+	... 4 more
+Caused by: org.sonatype.aether.transfer.ArtifactNotFoundException: Could not find artifact org.eclipse.recommenders:index:zip:0.0.0 in remote-models (http://download.eclipse.org/recommenders/models/kepler/)
+	at org.sonatype.aether.connector.wagon.WagonRepositoryConnector$4.wrap(WagonRepositoryConnector.java:947)
+	at org.sonatype.aether.connector.wagon.WagonRepositoryConnector$4.wrap(WagonRepositoryConnector.java:941)
+	at org.sonatype.aether.connector.wagon.WagonRepositoryConnector$GetTask.run(WagonRepositoryConnector.java:669)
+	at org.sonatype.aether.util.concurrency.RunnableErrorForwarder$1.run(RunnableErrorForwarder.java:60)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+
+!ENTRY org.eclipse.m2e.logback.appender 4 0 2022-06-09 14:12:18.561
+!MESSAGE Failed to open search index.
+!STACK 0
+org.apache.lucene.index.IndexNotFoundException: no segments* file found in org.apache.lucene.store.SimpleFSDirectory@C:\Users\Jordan\Test-Folder\School\Classes\350\task5\.metadata\.plugins\org.eclipse.recommenders.rcp\index lockFactory=org.apache.lucene.store.NativeFSLockFactory@418da45e: files: []
+	at org.apache.lucene.index.SegmentInfos$FindSegmentsFile.run(SegmentInfos.java:712)
+	at org.apache.lucene.index.DirectoryReader.open(DirectoryReader.java:75)
+	at org.apache.lucene.index.IndexReader.open(IndexReader.java:462)
+	at org.apache.lucene.index.IndexReader.open(IndexReader.java:308)
+	at org.eclipse.recommenders.internal.rcp.repo.ModelRepositoryIndex.open(ModelRepositoryIndex.java:64)
+	at org.eclipse.recommenders.internal.rcp.repo.UpdateModelIndexJob.run(UpdateModelIndexJob.java:57)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.eclipse.core.resources 4 568 2022-06-09 14:13:29.362
+!MESSAGE Could not write metadata for '/RemoteSystemsTempFiles'.
+!STACK 0
+java.io.FileNotFoundException: C:\Users\Jordan\Test-Folder\School\Classes\350\task5\.metadata\.plugins\org.eclipse.core.resources\.projects\RemoteSystemsTempFiles\.markers.snap (The system cannot find the path specified)
+	at java.base/java.io.FileOutputStream.open0(Native Method)
+	at java.base/java.io.FileOutputStream.open(FileOutputStream.java:298)
+	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:237)
+	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:158)
+	at org.eclipse.core.internal.localstore.SafeChunkyOutputStream.<init>(SafeChunkyOutputStream.java:48)
+	at org.eclipse.core.internal.localstore.SafeChunkyOutputStream.<init>(SafeChunkyOutputStream.java:44)
+	at org.eclipse.core.internal.resources.SaveManager.visitAndSnap(SaveManager.java:1765)
+	at org.eclipse.core.internal.resources.SaveManager.visitAndSnap(SaveManager.java:1846)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1202)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1143)
+	at org.eclipse.core.internal.resources.DelayedSnapshotJob.run(DelayedSnapshotJob.java:55)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.eclipse.core.resources 4 568 2022-06-09 14:19:35.617
+!MESSAGE Could not write metadata for '/RemoteSystemsTempFiles'.
+!STACK 0
+java.io.FileNotFoundException: C:\Users\Jordan\Test-Folder\School\Classes\350\task5\.metadata\.plugins\org.eclipse.core.resources\.projects\RemoteSystemsTempFiles\.markers.snap (The system cannot find the path specified)
+	at java.base/java.io.FileOutputStream.open0(Native Method)
+	at java.base/java.io.FileOutputStream.open(FileOutputStream.java:298)
+	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:237)
+	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:158)
+	at org.eclipse.core.internal.localstore.SafeChunkyOutputStream.<init>(SafeChunkyOutputStream.java:48)
+	at org.eclipse.core.internal.localstore.SafeChunkyOutputStream.<init>(SafeChunkyOutputStream.java:44)
+	at org.eclipse.core.internal.resources.SaveManager.visitAndSnap(SaveManager.java:1765)
+	at org.eclipse.core.internal.resources.SaveManager.visitAndSnap(SaveManager.java:1846)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1202)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1143)
+	at org.eclipse.core.internal.resources.DelayedSnapshotJob.run(DelayedSnapshotJob.java:55)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.eclipse.core.resources 4 568 2022-06-09 14:24:42.073
+!MESSAGE Could not write metadata for '/RemoteSystemsTempFiles'.
+!STACK 0
+java.io.FileNotFoundException: C:\Users\Jordan\Test-Folder\School\Classes\350\task5\.metadata\.plugins\org.eclipse.core.resources\.projects\RemoteSystemsTempFiles\.markers.snap (The system cannot find the path specified)
+	at java.base/java.io.FileOutputStream.open0(Native Method)
+	at java.base/java.io.FileOutputStream.open(FileOutputStream.java:298)
+	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:237)
+	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:158)
+	at org.eclipse.core.internal.localstore.SafeChunkyOutputStream.<init>(SafeChunkyOutputStream.java:48)
+	at org.eclipse.core.internal.localstore.SafeChunkyOutputStream.<init>(SafeChunkyOutputStream.java:44)
+	at org.eclipse.core.internal.resources.SaveManager.visitAndSnap(SaveManager.java:1765)
+	at org.eclipse.core.internal.resources.SaveManager.visitAndSnap(SaveManager.java:1846)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1202)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1143)
+	at org.eclipse.core.internal.resources.DelayedSnapshotJob.run(DelayedSnapshotJob.java:55)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.eclipse.core.resources 4 568 2022-06-09 16:47:16.609
+!MESSAGE Could not write metadata for '/RemoteSystemsTempFiles'.
+!STACK 0
+java.io.FileNotFoundException: C:\Users\Jordan\Test-Folder\School\Classes\350\task5\.metadata\.plugins\org.eclipse.core.resources\.projects\RemoteSystemsTempFiles\.markers.snap (The system cannot find the path specified)
+	at java.base/java.io.FileOutputStream.open0(Native Method)
+	at java.base/java.io.FileOutputStream.open(FileOutputStream.java:298)
+	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:237)
+	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:158)
+	at org.eclipse.core.internal.localstore.SafeChunkyOutputStream.<init>(SafeChunkyOutputStream.java:48)
+	at org.eclipse.core.internal.localstore.SafeChunkyOutputStream.<init>(SafeChunkyOutputStream.java:44)
+	at org.eclipse.core.internal.resources.SaveManager.visitAndSnap(SaveManager.java:1765)
+	at org.eclipse.core.internal.resources.SaveManager.visitAndSnap(SaveManager.java:1846)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1202)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1143)
+	at org.eclipse.core.internal.resources.DelayedSnapshotJob.run(DelayedSnapshotJob.java:55)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
