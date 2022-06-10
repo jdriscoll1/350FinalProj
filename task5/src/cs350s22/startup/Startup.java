@@ -50,7 +50,7 @@ public class Startup
       //startup.parse("@CLOCK SET RATE 20");
       //startup.parse("@CLOCK WAIT FOR 1.5");
       //startup.parse("@CLOCK WAIT UNTIL 1.5");
-      startup.parse("CREATE WATCHDOG NOTCH myWatchdog1 MODE AVERAGE 10 THRESHOLD LOW 1 HIGH 3 GRACE 4");
+      //startup.parse("CREATE WATCHDOG NOTCH myWatchdog1 MODE AVERAGE 10 THRESHOLD LOW 1 HIGH 3 GRACE 4");
       //startup.parse("CREATE WATCHDOG LOW myWatchdog1 MODE STANDARD DEVIATION THRESHOLD 3 GRACE 4");
       //startup.parse("CREATE REPORTER CHANGE myReporter1 NOTIFY IDS myActuator1 myActuator2 DELTA 3");
       //startup.parse("CREATE REPORTER CHANGE myReporter1 NOTIFY IDS myActuator1 myActuator2 GROUPS myGroup2 myGroup3 DELTA 3");

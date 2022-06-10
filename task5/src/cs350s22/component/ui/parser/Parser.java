@@ -56,8 +56,6 @@ public class Parser {
     private final A_ParserHelper parserHelper;
     private final String commandtext;
     private String userInput; 
-   // private List<A_Sensor> sensors = new ArrayList<A_Sensor>();
-    private List<Identifier> IDList = new ArrayList<Identifier>();
     
     public Parser(A_ParserHelper parserHelper, String commandtext) throws IOException {
         //not sure if we need this
@@ -95,43 +93,48 @@ public class Parser {
 		 //List<A_Sensor> sensors = null; //Optional
 	     //String[] command = this.userInput.split(" ");
 //	     Identifier ID = Identifier.make(sc.next());
-	     ArrayList<Identifier> group = new ArrayList<Identifier>(); 
-	     ArrayList<Identifier> currGroup = new ArrayList<Identifier>(); 
-	     ArrayList<Identifier> sensors = new ArrayList<Identifier>(); 
+	     List<Identifier> group = new ArrayList<Identifier>(); 
+	     List<Identifier> currGroup = new ArrayList<Identifier>(); 
+	     List<Identifier> sensorsID = new ArrayList<Identifier>(); 
 
-	    
-	    //First boolean linear or rotary 
-	    //Take the id next
-	    //Stars and Squares groups & sensors
-	    //Linearly 
-		boolean groupsFlag = false;
-		boolean sensorFlag = false;
-
-		// CREATE ACTURATRO is already done
-
-		// Check if it is a linear or rotary access
+	 	// Check if it is a linear or rotary access
 		boolean isLinear = sc.next().equals("LINEAR");
 
-		String id = sc.next();
-		// IDList.add(id);
+		Identifier id = Identifier.make(sc.next());
+		
+		
+		
+			
+			
+			
+
+		
+		
 		// Stars & Square Loop
 		while (sc.hasNext()) {
+				
 			String curr = sc.next();
 
-			// If it reaches star 1
+			//Star: GROUP or GROUPS 
 			if (curr.equals("GROUPS") || curr.equals("GROUP")) {
 				currGroup = group;
-				groupsFlag = true;
+	
 			}
-			// if it reaches star 2
+			//Star: SENSOR or SENSORS 
 			else if (curr.matches("SENSORS") || curr.matches("SENSOR")) {
-				currGroup = sensors;
-				sensorFlag = true;
+				currGroup = sensorsID; 
 			}
 			// If it reaches ACCELERATION{
 			// break
 			else if (curr.matches("ACCELERATION")) {
 				break;
+			}
+			//Square 
+			else {
+				currGroup.add(Identifier.make(curr));
+				
+				
+				
 			}
 			// Add it to the list
 		}
@@ -191,9 +194,25 @@ public class Parser {
 			System.out.println("invalid");
 		}
 		
+		List<A_Sensor> sensors = new ArrayList<A_Sensor>(); 
+		SymbolTable<A_Sensor> symbolTable = parserHelper.getSymbolTableSensor(); 
+		
+		for(Identifier s : sensorsID) {
+			
+			
+			//What is Sensor vs currsensor vs sensors
+			sensors.add(symbolTable.get(s));
+			
+		}
+		
+		
+		//FIX SENSOR DATA TYPE
+		ActuatorPrototype actuator = new ActuatorPrototype(id, group, accelerationLeadin, accelerationLeadout, accelerationRelax, velocityLimit, velocityInitial, valueMin, valueMax, inflectionJerkThreshold, sensors);
+		parserHelper.getSymbolTableActuator().add(id, actuator);
 		//Actuator Incomplete
 
 	}
+    
 
 	
 
@@ -311,8 +330,7 @@ public class Parser {
 		if(sc.hasNextDouble()) {
 			value = sc.nextDouble();
 		}
-		ArrayList<Identifier> listOutput = null; 
-		listOutput = (ids.size() > 0) ? ids : groups; 
+
 		// Create Message Actuator
 
 		
