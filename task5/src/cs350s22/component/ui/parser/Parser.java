@@ -615,9 +615,24 @@ public class Parser {
 
 	}
 	
+	
+	//Sets a sensors value 
 	private void H2(Scanner sc) {
 		
+		//Parsing
+		//id
+		String idStr = sc.next(); 
+		Identifier id = Identifier.make(idStr); 
 		
+		//VALUE
+		sc.next(); 
+		
+		double value = sc.nextDouble(); 
+		
+		//Execution
+		SymbolTable<A_Sensor> sensorTable = parserHelper.getSymbolTableSensor(); 
+		A_Sensor sensor = sensorTable.get(id); 
+		sensor.setValue(value);
 	}
 
 	// Create a watchdog
@@ -754,161 +769,168 @@ public class Parser {
 	        String[] command = this.userInput.split(" ");
 	        System.out.println("The command is: " + userInput);
 
-	            //switch statement
-	            //for each command starter (first word)
-	        
-	        	Scanner sc = new Scanner(this.userInput);
-	        	
-	        	//Takes the first word 
-	            switch (sc.next()) {
-	            	//if the first word is create
-	                case "CREATE": 
-	                    switch(sc.next()) {
-	                    
-	                    	//Situation A1 - if the first word is actuator 
-	                        case "ACTUATOR":
-	                            A1(sc);
-	                            break;
-	                        case "MAPPER":
-	                            MAPPERcommands(sc);
-	                            break;
-	                        case "REPORTER":
+	        //switch statement
+	        //for each command starter (first word)
+	       
+	       	Scanner sc = new Scanner(this.userInput);
+	       
+	       	//Takes the first word 
+	        switch (sc.next()) {
+	        	//if the first word is create
+	            case "CREATE": 
+	                switch(sc.next()) {
+	                
+	                	//Situation A1 - if the first word is actuator 
+	                    case "ACTUATOR":
+	                        A1(sc);
+	                        break;
+	                    case "MAPPER":
+	                        MAPPERcommands(sc);
+	                        break;
+	                    case "REPORTER":
+							switch(sc.next()) {
+								case "CHANGE":
+									G1(sc);
+									break;
+								case "FREQUENCY":
+									G2(sc);
+									break;
+							}
+	                        break;
+	                    case "SENSOR":
+	                        H1(sc); 
+	                        break;
+	                    case "WATCHDOG":
+	                        I(sc); 
+	                        break;
+
+	                    default:
+	                        System.out.println("not valid first word");
+	                }
+	                break;
+	            case "SEND": 
+	                switch(sc.next()) {
+	                    case "MESSAGE":
+	                    	String next = sc.next(); 
+	                        if(next.equals("PING")) {
+	                        	D1(); 
+	                        }
+	                        else {
+	                        	D2_3(sc); 
+	                        	
+	                        }
+	                        break;
+	                    default:
+	                        System.out.println("not valid first word");
+	                }
+	                break;
+	            case "@CLOCK": System.out.println(java.time.LocalTime.now());
+	            	if(sc.hasNext()) {
+		                switch(sc.next()) {
+							//E1
+		                    case "PAUSE":
+		                    	Clock c1 = Clock.getInstance(); 
+		                    	c1.isActive(false);
+		                    	System.out.println("Paused");//REMOVE COMMENT WHEN DONE WITH FULL THING (@CLOCK)
+		                        break;
+		                    case "RESUME":
+		                    	Clock c2 = Clock.getInstance(); 
+		                    	c2.isActive(true);
+		                    	System.out.println("Resumed");//REMOVE COMMENT WHEN DONE (@CLOCK)
+		                        break;
+		                    //E2
+		                    case "ONESTEP":
+		                        //Get the instance of a clock
+		                        Clock c3 = Clock.getInstance();
+		                        //if the clock is not active
+		                        if(!c3.isActive()) {
+		                            //if there's another one
+		                            if(sc.hasNext()) {
+		                                String count = sc.next();
+		                                //Does the one step command work?
+										c3.onestep(Integer.parseInt(count));
+		                            }
+		                            else {
+		                                //Increment by one
+										c3.onestep(1);
+		                            }
+		                        }
+		                        break;
+		                    //E3
+		                    case "SET":
+		                    	//Rate
+		                    	sc.next();
+		                    	String value = sc.next(); 
+		                    	Clock c4 = Clock.getInstance();
+								c4.setRate(Integer.parseInt(value));
+		                        break;
+		                    default:
+		                        System.out.println("not valid first word");
+		
+		                    case "WAIT":
 								switch(sc.next()) {
-									case "CHANGE":
-										G1(sc);
+									case "FOR":
+										String seconds = sc.next();
+										Clock c5 = Clock.getInstance();
+										c5.waitFor(Double.parseDouble(seconds));
 										break;
-									case "FREQUENCY":
-										G2(sc);
+									case "UNTIL":
+										String seconds2 = sc.next();
+										Clock c6 = Clock.getInstance();
+										c6.waitUntil(Double.parseDouble(seconds2));
 										break;
 								}
-	                            break;
-	                        case "SENSOR":
-	                            H1(sc); 
-	                            break;
-	                        case "WATCHDOG":
-	                            I(sc); 
-	                            break;
+		                }  
+	                
+	            	}
+	            	 //Command E7 @CLOCK
+	                else {
+	                	E7();
+	                }
+	                break;
 
-	                        default:
-	                            System.out.println("not valid first word");
-	                    }
-	                    break;
-	                case "SEND": 
-	                    switch(sc.next()) {
-	                        case "MESSAGE":
-	                        	String next = sc.next(); 
-	                            if(next.equals("PING")) {
-	                            	D1(); 
-	                            }
-	                            else {
-	                            	D2_3(sc); 
-	                            	
-	                            }
-	                            break;
-	                        default:
-	                            System.out.println("not valid first word");
-	                    }
-	                    break;
-	                case "@CLOCK": System.out.println(java.time.LocalTime.now());
-	                	if(sc.hasNext()) {
-		                    switch(sc.next()) {
-								//E1
-		                        case "PAUSE":
-		                        	Clock c1 = Clock.getInstance(); 
-		                        	c1.isActive(false);
-		                        	System.out.println("Paused");//REMOVE COMMENT WHEN DONE WITH FULL THING (@CLOCK)
-		                            break;
-		                        case "RESUME":
-		                        	Clock c2 = Clock.getInstance(); 
-		                        	c2.isActive(true);
-		                        	System.out.println("Resumed");//REMOVE COMMENT WHEN DONE (@CLOCK)
-		                            break;
-		                        //E2
-		                        case "ONESTEP":
-		                            //Get the instance of a clock
-		                            Clock c3 = Clock.getInstance();
-		                            //if the clock is not active
-		                            if(!c3.isActive()) {
-		                                //if there's another one
-		                                if(sc.hasNext()) {
-		                                    String count = sc.next();
-		                                    //Does the one step command work?
-											c3.onestep(Integer.parseInt(count));
-		                                }
-		                                else {
-		                                    //Increment by one
-											c3.onestep(1);
-		                                }
-		                            }
-		                            break;
-		                        //E3
-		                        case "SET":
-		                        	//Rate
-		                        	sc.next();
-		                        	String value = sc.next(); 
-		                        	Clock c4 = Clock.getInstance();
-									c4.setRate(Integer.parseInt(value));
-		                            break;
-		                        default:
-		                            System.out.println("not valid first word");
-		
-		                        case "WAIT":
-									switch(sc.next()) {
-										case "FOR":
-											String seconds = sc.next();
-											Clock c5 = Clock.getInstance();
-											c5.waitFor(Double.parseDouble(seconds));
-											break;
-										case "UNTIL":
-											String seconds2 = sc.next();
-											Clock c6 = Clock.getInstance();
-											c6.waitUntil(Double.parseDouble(seconds2));
-											break;
-									}
-		                    }  
-	                    
-	                	}
-	                	 //Command E7 @CLOCK
-	                    else {
-	                    	E7();
-	                    }
-	                    break;
+	            case "@EXIT": 
+	       
+	            	parserHelper.exit();
+	                break;
 
-	                case "@EXIT": 
-	        
-	                	parserHelper.exit();
-	                    break;
+	            case "@RUN": 
 
-	                case "@RUN": 
+	            	parserHelper.run(sc.next());
 
-	                	parserHelper.run(sc.next());
+	                break;
 
-	                    break;
+	            case "@CONFIGURE": System.out.println("DO Something");
+	                switch(sc.next()) {
+	                    case "LOG":
+	                        E6(sc); 
+	                        break;
+	                    default:
+	                        System.out.println("not valid first word");
+	                }
+	                break;
+	            case "SET":
+	            	switch(sc.next()) {
+	            		case "SENSOR":
+	            			H2(sc); 
+	            			break; 
+	            	
+	            	}
+	            case "BUILD": 
+	                switch(sc.next()) {
+	                    case "NETWORK":
+							//WITH
+							sc.next();
+							//COMPONENT
+							F1(sc);
 
-	                case "@CONFIGURE": System.out.println("DO Something");
-	                    switch(sc.next()) {
-	                        case "LOG":
-	                            E6(sc); 
-	                            break;
-	                        default:
-	                            System.out.println("not valid first word");
-	                    }
-	                    break;
-	                case "BUILD": 
-	                    switch(sc.next()) {
-	                        case "NETWORK":
-								//WITH
-								sc.next();
-								//COMPONENT
-								F1(sc);
+	                        break;
+	                }
+	                break;
 
-	                            break;
-	                    }
-	                    break;
-
-	                        //defaults if not one of the options
-	                        default:
-	                            System.out.println("not valid first word");
+	                    //defaults if not one of the options
+	                    default:
+	                        System.out.println("not valid first word");
 
 	        }
 	    }
