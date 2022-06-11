@@ -23,7 +23,7 @@ public class Startup {
 		//create the actuator with sensors
 		startup.parse("CREATE ACTUATOR LINEAR act1 ACCELERATION LEADIN 0.1 LEADOUT -0.2 RELAX 0.3 VELOCITY LIMIT 5 VALUE MIN 1 MAX 20 INITIAL 2 JERK LIMIT 3");
 
-		startup.parse("CREATE REPORTER CHANGE reporter1 NOTIFY act1 DELTA 15");
+		startup.parse("CREATE REPORTER CHANGE reporter1 ID 0 NOTIFY act1 DELTA 15");
 
 		//create the sensors (SPEED and POSITION)
 		startup.parse("CREATE SENSOR POSITION positionSensor1 REPORTERS reporter1 WATCHDOGS watchdog1 MAPPER map1");

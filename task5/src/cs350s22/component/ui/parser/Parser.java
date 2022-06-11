@@ -450,7 +450,10 @@ public class Parser {
 
 
 	//G1 Reporter Commands
+	
+	//CREATE REPORTER CHANGE already accounted for 
 	private void G1(Scanner sc) {
+		System.out.println("YO MAMA");
 		boolean areGroups = false;
 		//CHANGE
 		Identifier ID = Identifier.make(sc.next());
@@ -489,7 +492,7 @@ public class Parser {
 		parserHelper.getSymbolTableReporter().add(ID, reporterChange);
 
 		//add to the symbol table
-		System.out.println("Delta has changed with " + delta);
+		System.out.println("THIS IS IS A TEST OF THE TESTING SYSTEM");
 	}
 
 	//G2 Reporter Commands
@@ -828,6 +831,7 @@ public class Parser {
 	                        MAPPERcommands(sc);
 	                        break;
 	                    case "REPORTER":
+	                    	System.out.println("YO MAMA!!");
 							switch(sc.next()) {
 								case "CHANGE":
 									G1(sc);
@@ -964,8 +968,10 @@ public class Parser {
 	            			break; 
 	            	
 	            	}
-	            	
+	            	break; 
+	            
 	            case "BUILD": 
+	            	System.out.println(userInput);
 	                switch(sc.next()) {
 	                    case "NETWORK":
 							//WITH
