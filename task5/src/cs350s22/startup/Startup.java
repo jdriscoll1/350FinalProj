@@ -28,6 +28,9 @@ public class Startup {
 
 		//change the position to 15
 		startup.parse("SEND MESSAGE ID act1 POSITION REQUEST 15");
+		startup.parse("@CLOCK WAIT FOR .2");
+		startup.parse("GET SENSOR positionSensor1 VALUE");
+		startup.parse("GET SENSOR speedSensor1 VALUE");
 
 		startup.parse("@EXIT");
 		
