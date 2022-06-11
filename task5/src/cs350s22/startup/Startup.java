@@ -21,9 +21,10 @@ public class Startup {
 		startup.parse("CREATE WATCHDOG BAND watchdog1 MODE INSTANTANEOUS THRESHOLD LOW 0 HIGH 15");
 
 		//create the actuator with sensors
-		startup.parse("CREATE ACTUATOR LINEAR act1 ACCELERATION LEADIN 0.1 LEADOUT -0.2 RELAX 0.3 VELOCITY LIMIT 5 VALUE MIN 1 MAX 20 INITIAL 2 JERK LIMIT 3");
+		startup.parse("CREATE ACTUATOR LINEAR act1 ACCELERATION LEADIN 0.1 LEADOUT -0.2 RELAX 0.3 VELOCITY LIMIT 5 VALUE MIN 1 MAX 20 INITIAL 15 JERK LIMIT 3");
 
-		startup.parse("CREATE REPORTER CHANGE reporter1 ID 0 NOTIFY act1 DELTA 15");
+		//create a reporter for actuator
+		startup.parse("CREATE REPORTER CHANGE reporter1 NOTIFY IDS act1 DELTA 15");
 
 		//create the sensors (SPEED and POSITION)
 		startup.parse("CREATE SENSOR POSITION positionSensor1 REPORTERS reporter1 WATCHDOGS watchdog1 MAPPER map1");
@@ -33,7 +34,7 @@ public class Startup {
 		startup.parse("SEND MESSAGE ID act1 POSITION REQUEST 15");
 		startup.parse("@CLOCK WAIT FOR .2");
 		startup.parse("GET SENSOR positionSensor1 VALUE");
-		startup.parse("GET SENSOR speedSensor1 VALUE");
+		//startup.parse("GET SENSOR speedSensor1 VALUE");
 
 		//startup.parse("@EXIT");
 		
