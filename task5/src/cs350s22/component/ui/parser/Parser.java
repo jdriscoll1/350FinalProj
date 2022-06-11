@@ -398,18 +398,28 @@ public class Parser {
 		String s = sc.next();
 		switch(s) {
 			case ("COMPONENT"):
+				//get the actuator
 				Identifier ID = Identifier.make(sc.next());
-				SymbolTable<A_Controller> controllerTable = parserHelper.getSymbolTableController();
+				SymbolTable<A_Actuator> actuatorTable = parserHelper.getSymbolTableActuator();
 				SymbolTable<A_Sensor> sensorTable = parserHelper.getSymbolTableSensor();
 
 				//if the component exist, add it
-				if(controllerTable.contains(ID) && sensorTable.contains(ID)) {
-					A_Component component1 = controllerTable.get(ID);
-					A_Component component2 = sensorTable.get(ID);
+				if(actuatorTable.contains(ID)) {
+					A_Component component1 = actuatorTable.get(ID);
 					parserHelper.getControllerMaster().addComponent(component1);
-					parserHelper.getControllerMaster().addComponent(component2);
+					System.out.println("Actuator " + component1.getID() + "  has been added");
+					System.out.println(parserHelper.getNetwork().generateXML());
+				}
+				else {
+					System.out.println("Component does not exist, please create it before adding to the network");
+				}
 
-					System.out.println("Componet has been added");
+				//get the sensor
+				Identifier ID2 = Identifier.make(sc.next());
+				if(sensorTable.contains(ID2)) {
+					A_Component component2 = sensorTable.get(ID);
+					parserHelper.getControllerMaster().addComponent(component2);
+					System.out.println("Sensor " + component2.getID() + "  has been added");
 					System.out.println(parserHelper.getNetwork().generateXML());
 				}
 				else {
@@ -418,17 +428,17 @@ public class Parser {
 				break;
 
 			case ("COMPONENTS"):
-				Identifier ID2 = Identifier.make(sc.next());
+				Identifier ID4 = Identifier.make(sc.next());
 				Identifier ID3 = Identifier.make(sc.next());
 				SymbolTable<A_Controller> controllerTable2 = parserHelper.getSymbolTableController();
 				SymbolTable<A_Actuator> actuatorTable2 = parserHelper.getSymbolTableActuator();
 				SymbolTable<A_Sensor> sensorTable2 = parserHelper.getSymbolTableSensor();
 
 				//if the components exist, add it
-				if((controllerTable2.contains(ID2) && sensorTable2.contains(ID2))
+				if((controllerTable2.contains(ID4) && sensorTable2.contains(ID3))
 						&& (actuatorTable2.contains(ID3) && sensorTable2.contains(ID3))) {
-					A_Component components1 = controllerTable2.get(ID2);
-					A_Component components2 = sensorTable2.get(ID2);
+					A_Component components1 = controllerTable2.get(ID3);
+					A_Component components2 = sensorTable2.get(ID3);
 					parserHelper.getControllerMaster().addComponent(components1);
 					parserHelper.getControllerMaster().addComponent(components2);
 
@@ -444,7 +454,6 @@ public class Parser {
 					System.out.println("Components do not exist, please create them before adding to the network");
 				}
 				break;
-
 		}
 	}
 
