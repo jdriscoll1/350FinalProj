@@ -451,6 +451,7 @@ public class Parser {
 
 	//G1 Reporter Commands
 	private void G1(Scanner sc) {
+		boolean areGroups = false;
 		//CHANGE
 		Identifier ID = Identifier.make(sc.next());
 		//NOTIFY
@@ -475,20 +476,25 @@ public class Parser {
 				groups.add(Identifier.make(scannerItem));
 				scannerItem = sc.next();
 			}
+			areGroups = true;
 		}
 
 		//get the delta value
 		scannerItem = sc.next();
 		int delta = Integer.parseInt(scannerItem);
-		ReporterChange reporterChange = new ReporterChange(ids, groups, delta);
+
+		//add with or without groups
+		ReporterChange reporterChange = (areGroups) ? new ReporterChange(ids, groups, delta) : new ReporterChange(ids, delta);
+
+		parserHelper.getSymbolTableReporter().add(ID, reporterChange);
 
 		//add to the symbol table
-		parserHelper.getSymbolTableReporter().add(ID, reporterChange);
 		System.out.println("Delta has changed with " + delta);
 	}
 
 	//G2 Reporter Commands
 	private void G2(Scanner sc) {
+		boolean areGroups = false;
 		//FREQUENCY
 		Identifier ID = Identifier.make(sc.next());
 		System.out.println(ID.toString());
@@ -519,10 +525,12 @@ public class Parser {
 		//get the frequency value
 		scannerItem = sc.next();
 		int frequency = Integer.parseInt(scannerItem);
-		ReporterChange reporterFrequency = new ReporterChange(ids, groups, frequency);
+
+		//add with or without groups
+		ReporterFrequency reporterFrequency = (areGroups) ? new ReporterFrequency(ids, groups, frequency) : new ReporterFrequency(ids, frequency);
+		parserHelper.getSymbolTableReporter().add(ID, reporterFrequency);
 
 		//add to the symbol table
-		parserHelper.getSymbolTableReporter().add(ID, reporterFrequency);
 		System.out.println("Frequency has changed with " + frequency);
 	}
 
