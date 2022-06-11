@@ -13,12 +13,13 @@ public class Startup {
 
 	//Goal: create a linear actuator with some configurations 
 	public static void A1() throws Exception {
-
+		//create network
+		startup.parse("BUILD NETWORK WITH COMPONENT act1");
 		//Create the mapper
 		startup.parse("CREATE MAPPER map1 EQUATION PASSTHROUGH");
 
 		//create a watchdog
-		startup.parse("CREATE WATCHDOG BAND watchdog1 MODE INSTANTANEOUS THRESHOLD LOW 0 HIGH 15");
+		startup.parse("CREATE REPORTER FREQUENCY myReporter1 NOTIFY ID cli FREQUENCY 3");
 
 		//create the actuator with sensors
 		startup.parse("CREATE ACTUATOR LINEAR act1 ACCELERATION LEADIN 0.1 LEADOUT -0.2 RELAX 0.3 VELOCITY LIMIT 5 VALUE MIN 1 MAX 20 INITIAL 15 JERK LIMIT 3");
