@@ -13,7 +13,7 @@ public class Startup {
 
 
 	//Goal: create a linear actuator with some configurations 
-	public static void A1() throws Exception {
+	public static void A2() throws Exception {
 
 		//Create the mapper
 		//startup.parse("CREATE MAPPER map1 EQUATION PASSTHROUGH");
@@ -27,14 +27,11 @@ public class Startup {
 	      startup.parse("CREATE ACTUATOR LINEAR myActuator1 SENSOR mySensor1 ACCELERATION LEADIN 0.1 LEADOUT -0.2 RELAX 0.3 VELOCITY LIMIT 5 VALUE MIN 1 MAX 20 INITIAL 2 JERK LIMIT 3");
 	      
 	      startup.parse("BUILD NETWORK WITH COMPONENT myActuator1");
-	      
-	      startup.parse("SEND MESSAGE PING");
-
-	      startup.parse("SEND MESSAGE ID myActuator1 POSITION REPORT");
-	      
-	      //startup.parse("@CLOCK WAIT FOR 0");
+	      	
 	      startup.parse("SEND MESSAGE ID myActuator1 POSITION REQUEST 15");
+	      
 	      startup.parse("@CLOCK WAIT FOR 0.5");
+	      
 	      startup.parse("SEND MESSAGE ID myActuator1 POSITION REPORT");
 	     
 	      startup.parse("@EXIT");    
@@ -54,7 +51,7 @@ public class Startup {
 		LoggerActuator.initialize(Filespec.make("blah"));
 
 		startup.parse("@CONFIGURE LOG a.txt DOT SEQUENCE b.txt NETWORK c.txt XML d.txt");
-		startup.A1();
+		startup.A2();
 
 	}
 
