@@ -417,7 +417,7 @@ public class Parser {
 				//get the sensor
 				Identifier ID2 = Identifier.make(sc.next());
 				if(sensorTable.contains(ID2)) {
-					A_Component component2 = sensorTable.get(ID);
+					A_Component component2 = sensorTable.get(ID2);
 					parserHelper.getControllerMaster().addComponent(component2);
 					System.out.println("Sensor " + component2.getID() + "  has been added");
 					System.out.println(parserHelper.getNetwork().generateXML());
