@@ -143,58 +143,36 @@ public class Parser {
 
 		if (sc.next().matches("LEADIN")) {
 			accelerationLeadin = Double.parseDouble(sc.next());
-		} else {
-			System.out.println("invalid");
-		}
-
+		} 
 		if (sc.next().matches("LEADOUT")) {
 			accelerationLeadout = Double.parseDouble(sc.next());
-		} else {
-			System.out.println("invalid");
-		}
+		} 
 
 		if (sc.next().matches("RELAX")) {
 			accelerationRelax = Double.parseDouble(sc.next());
-		} else {
-			System.out.println("invalid");
+
 		}
 		if (sc.next().matches("VELOCITY")) {
 			if (sc.next().matches("LIMIT")) {
 				velocityLimit = Double.parseDouble(sc.next());
-			} else {
-				System.out.println("invalid");
-			}
-		} else {
-			System.out.println("invalid");
-		}
+			} 
+		} 
 		if (sc.next().matches("VALUE")) {
 			if (sc.next().matches("MIN")) {
 				valueMin = Double.parseDouble(sc.next());
-			} else {
-				System.out.println("invalid");
-			}
-		} else {
-			System.out.println("invalid");
-		}
+			} 
+		} 
 		if (sc.next().matches("MAX")) {
 			valueMax = Double.parseDouble(sc.next());
-		} else {
-			System.out.println("invalid");
-		}
+		} 
 		if (sc.next().matches("INITIAL")) {
 			velocityInitial = Double.parseDouble(sc.next());
-		} else {
-			System.out.println("invalid");
-		}
+		} 
 		if (sc.next().matches("JERK")) {
 			if (sc.next().matches("LIMIT")) {
 				inflectionJerkThreshold = Double.parseDouble(sc.next());
-			} else {
-				System.out.println("invalid");
-			}
-		} else {
-			System.out.println("invalid");
-		}
+			} 
+		} 
 		
 		List<A_Sensor> sensors = new ArrayList<A_Sensor>(); 
 		SymbolTable<A_Sensor> symbolTable = parserHelper.getSymbolTableSensor(); 
@@ -404,7 +382,7 @@ public class Parser {
 
 	private void E7() {
 		Clock c = Clock.getInstance();
-		System.out.println(c.getTick());
+		parserHelper.output(String.valueOf(c.getTick()));
 	}
 
 	// F1 Network Commands: BUILD NETWORK 
@@ -855,7 +833,7 @@ public class Parser {
 	    	//makes it so we seperate words from empty spaces (" ")
 	        this.userInput = this.commandtext;
 	        String[] command = this.userInput.split(" ");
-	        System.out.println("The command is: " + userInput);
+
 
 	        //switch statement
 	        //for each command starter (first word)
@@ -905,19 +883,17 @@ public class Parser {
 	                        System.out.println("not valid first word");
 	                }
 	                break;
-	            case "@CLOCK": System.out.println(java.time.LocalTime.now());
+	            case "@CLOCK": 
 	            	if(sc.hasNext()) {
 		                switch(sc.next()) {
 							//E1
 		                    case "PAUSE":
 		                    	Clock c1 = Clock.getInstance(); 
 		                    	c1.isActive(false);
-		                    	System.out.println("Paused");//REMOVE COMMENT WHEN DONE WITH FULL THING (@CLOCK)
 		                        break;
 		                    case "RESUME":
 		                    	Clock c2 = Clock.getInstance(); 
 		                    	c2.isActive(true);
-		                    	System.out.println("Resumed");//REMOVE COMMENT WHEN DONE (@CLOCK)
 		                        break;
 		                    //E2
 		                    case "ONESTEP":
@@ -946,7 +922,6 @@ public class Parser {
 								c4.setRate(Integer.parseInt(value));
 		                        break;
 		                    default:
-		                        System.out.println("not valid first word");
 		
 		                    case "WAIT":
 								switch(sc.next()) {
@@ -981,13 +956,12 @@ public class Parser {
 
 	                break;
 
-	            case "@CONFIGURE": System.out.println("DO Something");
+	            case "@CONFIGURE": 
 	                switch(sc.next()) {
 	                    case "LOG":
 	                        E6(sc); 
 	                        break;
-	                    default:
-	                        System.out.println("not valid first word");
+	                  
 	                }
 	                break;
 	            case "SET":
@@ -1008,7 +982,6 @@ public class Parser {
 	            	break; 
 	            
 	            case "BUILD": 
-	            	System.out.println(userInput);
 	                switch(sc.next()) {
 	                    case "NETWORK":
 							F1(sc);
@@ -1016,9 +989,7 @@ public class Parser {
 	                }
 	                break;
 
-	                    //defaults if not one of the options
-	                    default:
-	                        System.out.println("not valid first word");
+	                   
 
 	        }
 	        sc.close(); 
