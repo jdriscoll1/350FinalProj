@@ -425,34 +425,18 @@ public class Parser {
 		SymbolTable<A_Sensor> sensorTable = parserHelper.getSymbolTableSensor(); 
 		for(Identifier id : components) {
 			A_Component c = null; 
-			
-			//Check control table
-			try {
-				
-				c = actTable.get(id);
+			String idStr = id.toString(); 
+			if(idStr.toLowerCase().contains("act")) {
+				c = actTable.get(id); 
 				
 			}
-			catch(Exception e0){
-				//Check actuator table
-				try {
-					c = controlTable.get(id); 
-					
-				}
-				catch(Exception e1) {
-					c = controlTable.get(id); 
-					//Check sensor table
-					try {
-						c = sensorTable.get(id); 
-					}
-						catch(Exception e2) {
-							throw new Exception("ID not found");
-							
-						
-						
-					}
-				}
-				
+			else if(idStr.toLowerCase().contains("sens")) {
+				c = sensorTable.get(id); 
 			}
+			else if(idStr.toLowerCase().contains("cont") || idStr.toLowerCase().contains("ctrl")) {
+				c = controlTable.get(id); 
+				
+			}				
 			controllerList.add(c); 
 		}
 		A_ControllerForwarding ctrlForwarding = parserHelper.getControllerMaster(); 
@@ -461,68 +445,7 @@ public class Parser {
 		parserHelper.getNetwork().generateXML();
 		parserHelper.getNetwork().writeOutput();
 	
-		/*
-		String s = sc.next();
-		switch(s) {
-			case ("COMPONENT"):
-				//get the actuator
-				Identifier ID = Identifier.make(sc.next());
-				SymbolTable<A_Actuator> actuatorTable = parserHelper.getSymbolTableActuator();
-				SymbolTable<A_Sensor> sensorTable = parserHelper.getSymbolTableSensor();
-
-				//if the component exist, add it
-				if(actuatorTable.contains(ID)) {
-					A_Component component1 = actuatorTable.get(ID);
-					parserHelper.getControllerMaster().addComponent(component1);
-					System.out.println("Actuator " + component1.getID() + "  has been added");
-					System.out.println(parserHelper.getNetwork().generateXML());
-				}
-				else {
-					System.out.println("Component does not exist, please create it before adding to the network");
-				}
-
-				//get the sensor
-				Identifier ID2 = Identifier.make(sc.next());
-				if(sensorTable.contains(ID2)) {
-					A_Component component2 = sensorTable.get(ID2);
-					parserHelper.getControllerMaster().addComponent(component2);
-					System.out.println("Sensor " + component2.getID() + "  has been added");
-					System.out.println(parserHelper.getNetwork().generateXML());
-				}
-				else {
-					System.out.println("Component does not exist, please create it before adding to the network");
-				}
-				break;
-
-			case ("COMPONENTS"):
-				Identifier ID4 = Identifier.make(sc.next());
-				Identifier ID3 = Identifier.make(sc.next());
-				SymbolTable<A_Controller> controllerTable2 = parserHelper.getSymbolTableController();
-				SymbolTable<A_Actuator> actuatorTable2 = parserHelper.getSymbolTableActuator();
-				SymbolTable<A_Sensor> sensorTable2 = parserHelper.getSymbolTableSensor();
-
-				//if the components exist, add it
-				if((controllerTable2.contains(ID4) && sensorTable2.contains(ID3))
-						&& (actuatorTable2.contains(ID3) && sensorTable2.contains(ID3))) {
-					A_Component components1 = controllerTable2.get(ID3);
-					A_Component components2 = sensorTable2.get(ID3);
-					parserHelper.getControllerMaster().addComponent(components1);
-					parserHelper.getControllerMaster().addComponent(components2);
-
-					A_Component components3 = actuatorTable2.get(ID3);
-					A_Component components4 = sensorTable2.get(ID3);
-					parserHelper.getControllerMaster().addComponent(components3);
-					parserHelper.getControllerMaster().addComponent(components4);
-
-					System.out.println("Componets have been added");
-					System.out.println(parserHelper.getNetwork().generateXML());
-				}
-				else {
-					System.out.println("Components do not exist, please create them before adding to the network");
-				}
-				break;
-		}
-		*/
+		
 	}
 
 

@@ -25,7 +25,7 @@ public class Startup {
 	      
 	      startup.parse("CREATE ACTUATOR LINEAR myActuator1 SENSOR mySensor1 ACCELERATION LEADIN 0.1 LEADOUT -0.2 RELAX 0.3 VELOCITY LIMIT 5 VALUE MIN 1 MAX 20 INITIAL 2 JERK LIMIT 3");
 	      
-	      startup.parse("BUILD NETWORK WITH COMPONENT myActuator1");
+	      startup.parse("BUILD NETWORK WITH COMPONENT myActuator1 mySensor1");
 	      
 	      startup.parse("SEND MESSAGE PING");
 
