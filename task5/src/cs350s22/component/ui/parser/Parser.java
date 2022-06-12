@@ -349,23 +349,23 @@ public class Parser {
 		
 		if(isRequest) {
 			if(ids.size() > 0) {
-				System.out.println("Does this work?");
+
 				cli.issueMessage(new MessageActuatorRequestPosition(ids, value)); 
 				
 			}
 			if(groups.size() > 0) {
-				System.out.println("Does this work??");
+
 				cli.issueMessage(new MessageActuatorRequestPosition(groups, value, 0)); 
 			}
 			
 		}
 		else {
 			if(ids.size() > 0) {
-				System.out.println("Does this work???");
+
 				cli.issueMessage(new MessageActuatorReportPosition(ids)); 
 			}
 			if(groups.size() > 0) {
-				System.out.println("Does this work????");
+
 				cli.issueMessage(new MessageActuatorReportPosition(groups, 0)); 
 			}
 			
