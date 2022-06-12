@@ -19,29 +19,23 @@ public class Startup {
 		//startup.parse("CREATE MAPPER map1 EQUATION PASSTHROUGH");
 
 		//create a watchdog
-		startup.parse("CREATE REPORTER FREQUENCY myReporter1 NOTIFY ID cli FREQUENCY 3");
 
-		//create the actuator with sensors
-		startup.parse("CREATE ACTUATOR LINEAR act1 ACCELERATION LEADIN 0.1 LEADOUT -0.2 RELAX 0.3 VELOCITY LIMIT 5 VALUE MIN 1 MAX 20 INITIAL 15 JERK LIMIT 3");
+	      
+	      startup.parse("CREATE SENSOR POSITION mySensor1"); // add  REPORTERS myReporter1
+	      
+	      startup.parse("CREATE ACTUATOR LINEAR myActuator1 SENSOR mySensor1 ACCELERATION LEADIN 0.1 LEADOUT -0.2 RELAX 0.3 VELOCITY LIMIT 5 VALUE MIN 1 MAX 20 INITIAL 2 JERK LIMIT 3");
+	      
+	      startup.parse("BUILD NETWORK WITH COMPONENT myActuator1");
+	      
+	      startup.parse("SEND MESSAGE PING");
 
-		//create a reporter for actuator
-		startup.parse("CREATE REPORTER CHANGE reporter1 NOTIFY IDS act1 DELTA 15");
-
-		//create the sensors (SPEED and POSITION)
-		startup.parse("CREATE SENSOR POSITION positionSensor1 REPORTERS reporter1 MAPPER map1");
-		//startup.parse("CREATE SENSOR SPEED speedSensor1 WATCHDOGS watchdog1 MAPPER map1");
-
-		//create network
-		startup.parse("BUILD NETWORK WITH COMPONENT act1 positionSensor1");
-
-		//change the position to 15
-		startup.parse("SEND MESSAGE ID act1 POSITION REQUEST 15");
-		startup.parse("@CLOCK WAIT FOR .2");
-		startup.parse("GET SENSOR positionSensor1 VALUE");
-		//startup.parse("GET SENSOR speedSensor1 VALUE");
-
-		//startup.parse("@EXIT");
-		
+	      startup.parse("SEND MESSAGE ID myActuator1 POSITION REPORT");
+	      startup.parse("@CLOCK WAIT FOR 0.1");
+	      startup.parse("SEND MESSAGE ID myActuator1 POSITION REQUEST 20");
+	      startup.parse("@CLOCK WAIT FOR 0.5");
+	      startup.parse("@EXIT");    
+	      
+	   
 	}
 	
 	public Startup() {

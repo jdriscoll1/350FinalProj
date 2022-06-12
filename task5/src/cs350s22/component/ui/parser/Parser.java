@@ -652,9 +652,21 @@ public class Parser {
 	
 		// Create the new Sensor
 		SymbolTable<A_Sensor> sensorTable = parserHelper.getSymbolTableSensor();
-		
-		MySensor s = new MySensor(id, groups, reporters, watchdogs, mapper);
-	
+		MySensor s = null; 
+		//Constructor 1: groups is not there
+		if(groups.size() == 0) {
+			s = new MySensor(id); 
+			
+			
+		}
+		else if(groups.size() > 0 && reporters.size() > 0 && watchdogs.size() > 0 && mapper == null) {
+			s = new MySensor(id, groups, reporters, watchdogs); 
+		}
+		else if(groups.size() > 0 && reporters.size() > 0 && watchdogs.size() > 0 && mapper != null) {
+			s = new MySensor(id, groups, reporters, watchdogs, mapper); 
+			
+		}
+
 		sensorTable.add(id, s);
 
 
