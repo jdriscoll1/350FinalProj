@@ -847,7 +847,6 @@ public class Parser {
 	                        MAPPERcommands(sc);
 	                        break;
 	                    case "REPORTER":
-	                    	System.out.println("YO MAMA!!");
 							switch(sc.next()) {
 								case "CHANGE":
 									G1(sc);
