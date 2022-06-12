@@ -42,6 +42,16 @@ public class Startup {
 	      startup.parse("@EXIT");   
 
 	}
+
+	public static void B1() throws Exception {
+
+		startup.parse("CREATE SENSOR POSITION mySensor3");
+
+		startup.parse("BUILD NETWORK WITH COMPONENT mySensor3");
+
+		startup.parse("SET SENSOR mySensor3 VALUE 5");
+		startup.parse("GET SENSOR mySensor3 VALUE");
+	}
 	
 	public Startup() {
 		System.out.println("STARTUP");
@@ -54,8 +64,10 @@ public class Startup {
 
 		startup.parse("@CONFIGURE LOG a.txt DOT SEQUENCE b.txt NETWORK c.txt XML d.txt");
 
-		startup.A1();
-		startup.A2();
+		//startup.A1();
+		//startup.A2();
+		startup.B1();
+		//startup.B2();
 		startup.parse("@EXIT");
 
 	}
