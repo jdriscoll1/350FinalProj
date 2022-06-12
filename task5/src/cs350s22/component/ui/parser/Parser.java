@@ -342,7 +342,7 @@ public class Parser {
 		// Create Message Actuator
 
 		
-		if(!isRequest) {
+		if(isRequest) {
 			if(ids.size() > 0) {
 				
 				cli.issueMessage(new MessageActuatorRequestPosition(ids, value)); 

@@ -20,12 +20,13 @@ public class Startup {
 
 		//create a watchdog
 
-	      
+	      startup.parse("CREATE REPORTER FREQUENCY myReporter1 NOTIFY ID cli FREQUENCY 3");
+
 	      startup.parse("CREATE SENSOR POSITION mySensor1"); // add  REPORTERS myReporter1
 	      
 	      startup.parse("CREATE ACTUATOR LINEAR myActuator1 SENSOR mySensor1 ACCELERATION LEADIN 0.1 LEADOUT -0.2 RELAX 0.3 VELOCITY LIMIT 5 VALUE MIN 1 MAX 20 INITIAL 2 JERK LIMIT 3");
 	      
-	      startup.parse("BUILD NETWORK WITH COMPONENT myActuator1 mySensor1");
+	      startup.parse("BUILD NETWORK WITH COMPONENT myActuator1");
 	      
 	      startup.parse("SEND MESSAGE PING");
 
@@ -34,6 +35,7 @@ public class Startup {
 	      startup.parse("SEND MESSAGE ID myActuator1 POSITION REQUEST 20");
 	      startup.parse("@CLOCK WAIT FOR 0.5");
 	      startup.parse("SEND MESSAGE ID myActuator1 POSITION REPORT");
+	     
 	      startup.parse("@EXIT");    
 	      
 	   
