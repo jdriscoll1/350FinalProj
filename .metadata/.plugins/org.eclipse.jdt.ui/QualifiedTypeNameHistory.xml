@@ -24,4 +24,5 @@
     <fullyQualifiedTypeName name="cs350s22.component.sensor.watchdog.WatchdogLow"/>
     <fullyQualifiedTypeName name="cs350s22.test.MySensor"/>
     <fullyQualifiedTypeName name="cs350s22.component.sensor.reporter.A_Reporter"/>
+    <fullyQualifiedTypeName name="cs350s22.component.controller.A_ControllerForwarding"/>
 </qualifiedTypeNameHistroy>

@@ -19,6 +19,7 @@ import cs350s22.message.ping.MessagePing;
 import cs350s22.component.sensor.A_Sensor;
 import cs350s22.component.sensor.mapper.*;
 import cs350s22.component.controller.A_Controller;
+import cs350s22.component.controller.A_ControllerForwarding;
 import cs350s22.component.actuator.A_Actuator;
 import cs350s22.component.sensor.mapper.A_Mapper;
 import cs350s22.component.sensor.mapper.MapperEquation;
@@ -417,6 +418,7 @@ public class Parser {
 			
 		}
 		
+		List<A_Component> controllerList = new ArrayList<A_Component>(); 
 		//Executing
 		SymbolTable<A_Controller> controlTable = parserHelper.getSymbolTableController(); 
 		SymbolTable<A_Actuator> actTable = parserHelper.getSymbolTableActuator(); 
@@ -426,14 +428,14 @@ public class Parser {
 			
 			//Check control table
 			try {
-				c =controlTable.get(id); 
 				
+				c = actTable.get(id);
 				
 			}
 			catch(Exception e0){
 				//Check actuator table
 				try {
-					c = actTable.get(id); 
+					c = controlTable.get(id); 
 					
 				}
 				catch(Exception e1) {
@@ -451,8 +453,14 @@ public class Parser {
 				}
 				
 			}
-			controlTable.get(id); 
+			controllerList.add(c); 
 		}
+		A_ControllerForwarding ctrlForwarding = parserHelper.getControllerMaster(); 
+		ctrlForwarding.addComponents(controllerList);
+		
+		parserHelper.getNetwork().generateXML();
+		parserHelper.getNetwork().writeOutput();
+	
 		/*
 		String s = sc.next();
 		switch(s) {
