@@ -833,8 +833,6 @@ public class Parser {
 	    	//makes it so we seperate words from empty spaces (" ")
 	        this.userInput = this.commandtext;
 	        String[] command = this.userInput.split(" ");
-	        System.out.println("\n\nUser Input: " + this.userInput + "\n\n");
-
 
 	        //switch statement
 	        //for each command starter (first word)
