@@ -14,8 +14,7 @@ public class Startup {
 	//Goal: create a linear actuator with some configurations 
 	public static void A1() throws Exception {
 
-
-		startup.parse("CREATE ACTUATOR LINEAR myActuator1 ACCELERATION LEADIN 0.1 LEADOUT -0.2 RELAX 0.3 VELOCITY LIMIT 5 VALUE MIN 1 MAX 20 INITIAL 2 JERK LIMIT 3");
+		startup.parse("CREATE ACTUATOR LINEAR myActuator1 SENSOR adasd ACCELERATION LEADIN 0.1 LEADOUT -0.2 RELAX 0.3 VELOCITY LIMIT 5 VALUE MIN 1 MAX 20 INITIAL 2 JERK LIMIT 3");
 
 		startup.parse("BUILD NETWORK WITH COMPONENT myActuator1");
 
@@ -52,6 +51,18 @@ public class Startup {
 		startup.parse("SET SENSOR mySensor3 VALUE 5");
 		startup.parse("GET SENSOR mySensor3 VALUE");
 	}
+
+	public static void B2() throws Exception {
+
+		startup.parse("CREATE SENSOR POSITION mySensor4");
+
+		startup.parse("CREATE ACTUATOR LINEAR myActuator3 SENSOR mySensor4 ACCELERATION LEADIN 0.1 LEADOUT -0.2 RELAX 0.3 VELOCITY LIMIT 5 VALUE MIN 1 MAX 20 INITIAL 2 JERK LIMIT 3");
+
+		startup.parse("BUILD NETWORK WITH mySensor4 myActuator3");
+
+		startup.parse("SET SENSOR mySensor4 VALUE 10");
+		startup.parse("GET SENSOR mySensor4 VALUE");
+	}
 	
 	public Startup() {
 		System.out.println("STARTUP");
@@ -66,8 +77,8 @@ public class Startup {
 
 		//startup.A1();
 		//startup.A2();
-		startup.B1();
-		//startup.B2();
+		//startup.B1();
+		startup.B2();
 		startup.parse("@EXIT");
 
 	}
