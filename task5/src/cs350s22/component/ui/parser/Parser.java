@@ -583,7 +583,7 @@ public class Parser {
 		boolean reporterFlag = false;
 		boolean watchdogFlag = false;
 		boolean mapperFlag = false;
-
+		int currList = -1; 
 		// The List of things to consider: Groups, Reporters, Watchdogs, Mapper
 		while (sc.hasNext()) {
 			
@@ -591,23 +591,42 @@ public class Parser {
 			System.out.println(curr);
 			// First check if it is any of the stars, if it is, set that to the current
 			if (curr.equals("GROUPS") || curr.equals("GROUP")) {
-				
+				currList = 0; 
 				currGroup = groups;
 
 			} else if (curr.equals("REPORTERS") || curr.equals("REPORTER")) {
+				currList = 1; 
 				currGroup = reportersID;
 
 			} else if (curr.equals("WATCHDOGS") || curr.equals("WATCHDOG")) {
+				currList = 2; 
 				currGroup = watchdogsID;
 
 			} else if (curr.equals("MAPPER")) {
+				currList = 3; 
 				currGroup = mapperID;
 
 			}
 			// If it's not any of the stars, it's a square
 			else {
-				currGroup.add(Identifier.make(curr));
+				
+				Identifier c_id = Identifier.make(curr);
+				if(currList == 0) {
+					groups.add(c_id); 
+				}
 
+				if(currList == 1) {
+					reportersID.add(c_id); 
+					
+				}
+				if(currList == 2) {
+					watchdogsID.add(c_id); 
+					
+				}
+				if(currList == 3) {
+					mapperID.add(c_id); 
+					
+				}
 			}
 		}
 
