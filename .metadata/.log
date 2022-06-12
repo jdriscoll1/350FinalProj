@@ -498,3 +498,1711 @@ Caused by: java.lang.ClassNotFoundException: org.eclipse.xtext.xbase.typesystem.
 	at org.eclipse.osgi.internal.loader.ModuleClassLoader.loadClass(ModuleClassLoader.java:171)
 	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:521)
 	... 46 more
+
+!ENTRY org.apache.log4j 4 0 2022-06-11 19:24:17.280
+!MESSAGE org.eclipse.xtext.service.CompoundModule  - java.lang.reflect.InvocationTargetException
+
+!STACK 0
+java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
+	at org.eclipse.xtext.service.MethodBasedModule.invokeMethod(MethodBasedModule.java:136)
+	at org.eclipse.xtext.service.MethodBasedModule.configure(MethodBasedModule.java:49)
+	at org.eclipse.xtext.service.CompoundModule.configure(CompoundModule.java:34)
+	at org.eclipse.xtext.service.AbstractGenericModule.configure(AbstractGenericModule.java:32)
+	at org.eclipse.xtext.service.DefaultRuntimeModule.configure(DefaultRuntimeModule.java:75)
+	at org.eclipse.xtend.core.AbstractXtendRuntimeModule.configure(AbstractXtendRuntimeModule.java:25)
+	at org.eclipse.xtend.core.XtendRuntimeModule.configure(XtendRuntimeModule.java:187)
+	at com.google.inject.spi.Elements$RecordingBinder.install(Elements.java:223)
+	at com.google.inject.spi.Elements.getElements(Elements.java:101)
+	at com.google.inject.spi.Elements.getElements(Elements.java:92)
+	at com.google.inject.util.Modules$RealOverriddenModuleBuilder$1.configure(Modules.java:152)
+	at com.google.inject.AbstractModule.configure(AbstractModule.java:59)
+	at com.google.inject.spi.Elements$RecordingBinder.install(Elements.java:223)
+	at com.google.inject.spi.Elements.getElements(Elements.java:101)
+	at com.google.inject.spi.Elements.getElements(Elements.java:92)
+	at com.google.inject.util.Modules$RealOverriddenModuleBuilder$1.configure(Modules.java:152)
+	at com.google.inject.AbstractModule.configure(AbstractModule.java:59)
+	at com.google.inject.spi.Elements$RecordingBinder.install(Elements.java:223)
+	at com.google.inject.spi.Elements.getElements(Elements.java:101)
+	at com.google.inject.internal.InjectorShell$Builder.build(InjectorShell.java:133)
+	at com.google.inject.internal.InternalInjectorCreator.build(InternalInjectorCreator.java:103)
+	at com.google.inject.Guice.createInjector(Guice.java:95)
+	at com.google.inject.Guice.createInjector(Guice.java:72)
+	at com.google.inject.Guice.createInjector(Guice.java:62)
+	at org.eclipse.xtend.ide.internal.XtendActivator.createInjector(XtendActivator.java:67)
+	at org.eclipse.xtend.ide.internal.XtendActivator.getInjector(XtendActivator.java:55)
+	at org.eclipse.xtend.ide.XtendExecutableExtensionFactory.getInjector(XtendExecutableExtensionFactory.java:26)
+	at org.eclipse.xtext.ui.guice.AbstractGuiceAwareExecutableExtensionFactory.create(AbstractGuiceAwareExecutableExtensionFactory.java:49)
+	at org.eclipse.core.internal.registry.ConfigurationElement.createExecutableExtension(ConfigurationElement.java:265)
+	at org.eclipse.core.internal.registry.ConfigurationElementHandle.createExecutableExtension(ConfigurationElementHandle.java:63)
+	at org.eclipse.ui.internal.console.PatternMatchListenerExtension.createDelegate(PatternMatchListenerExtension.java:83)
+	at org.eclipse.ui.internal.console.PatternMatchListener.<init>(PatternMatchListener.java:29)
+	at org.eclipse.ui.internal.console.ConsoleManager.createPatternMatchListeners(ConsoleManager.java:406)
+	at org.eclipse.ui.internal.console.ConsoleManager.addConsoles(ConsoleManager.java:209)
+	at org.eclipse.debug.internal.ui.views.console.ProcessConsoleManager$ConsoleCreation.run(ProcessConsoleManager.java:78)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: java.lang.reflect.InvocationTargetException
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.eclipse.xtext.service.MethodBasedModule.invokeMethod(MethodBasedModule.java:134)
+	... 35 more
+Caused by: java.lang.NoClassDefFoundError: org/eclipse/xtext/xbase/file/JavaIOFileSystemSupport
+	at org.eclipse.xtend.core.XtendRuntimeModule.bindFileHandleFactory(XtendRuntimeModule.java:220)
+	... 40 more
+
+!ENTRY org.apache.log4j 4 0 2022-06-11 19:24:17.284
+!MESSAGE org.eclipse.xtext.service.CompoundModule  - java.lang.reflect.InvocationTargetException
+
+!STACK 0
+java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
+	at org.eclipse.xtext.service.MethodBasedModule.invokeMethod(MethodBasedModule.java:136)
+	at org.eclipse.xtext.service.MethodBasedModule.configure(MethodBasedModule.java:49)
+	at org.eclipse.xtext.service.CompoundModule.configure(CompoundModule.java:34)
+	at org.eclipse.xtext.service.AbstractGenericModule.configure(AbstractGenericModule.java:32)
+	at org.eclipse.xtext.service.DefaultRuntimeModule.configure(DefaultRuntimeModule.java:75)
+	at org.eclipse.xtend.core.AbstractXtendRuntimeModule.configure(AbstractXtendRuntimeModule.java:25)
+	at org.eclipse.xtend.core.XtendRuntimeModule.configure(XtendRuntimeModule.java:187)
+	at com.google.inject.spi.Elements$RecordingBinder.install(Elements.java:223)
+	at com.google.inject.spi.Elements.getElements(Elements.java:101)
+	at com.google.inject.spi.Elements.getElements(Elements.java:92)
+	at com.google.inject.util.Modules$RealOverriddenModuleBuilder$1.configure(Modules.java:152)
+	at com.google.inject.AbstractModule.configure(AbstractModule.java:59)
+	at com.google.inject.spi.Elements$RecordingBinder.install(Elements.java:223)
+	at com.google.inject.spi.Elements.getElements(Elements.java:101)
+	at com.google.inject.spi.Elements.getElements(Elements.java:92)
+	at com.google.inject.util.Modules$RealOverriddenModuleBuilder$1.configure(Modules.java:152)
+	at com.google.inject.AbstractModule.configure(AbstractModule.java:59)
+	at com.google.inject.spi.Elements$RecordingBinder.install(Elements.java:223)
+	at com.google.inject.spi.Elements.getElements(Elements.java:101)
+	at com.google.inject.internal.InjectorShell$Builder.build(InjectorShell.java:133)
+	at com.google.inject.internal.InternalInjectorCreator.build(InternalInjectorCreator.java:103)
+	at com.google.inject.Guice.createInjector(Guice.java:95)
+	at com.google.inject.Guice.createInjector(Guice.java:72)
+	at com.google.inject.Guice.createInjector(Guice.java:62)
+	at org.eclipse.xtend.ide.internal.XtendActivator.createInjector(XtendActivator.java:67)
+	at org.eclipse.xtend.ide.internal.XtendActivator.getInjector(XtendActivator.java:55)
+	at org.eclipse.xtend.ide.XtendExecutableExtensionFactory.getInjector(XtendExecutableExtensionFactory.java:26)
+	at org.eclipse.xtext.ui.guice.AbstractGuiceAwareExecutableExtensionFactory.create(AbstractGuiceAwareExecutableExtensionFactory.java:49)
+	at org.eclipse.core.internal.registry.ConfigurationElement.createExecutableExtension(ConfigurationElement.java:265)
+	at org.eclipse.core.internal.registry.ConfigurationElementHandle.createExecutableExtension(ConfigurationElementHandle.java:63)
+	at org.eclipse.ui.internal.console.PatternMatchListenerExtension.createDelegate(PatternMatchListenerExtension.java:83)
+	at org.eclipse.ui.internal.console.PatternMatchListener.<init>(PatternMatchListener.java:29)
+	at org.eclipse.ui.internal.console.ConsoleManager.createPatternMatchListeners(ConsoleManager.java:406)
+	at org.eclipse.ui.internal.console.ConsoleManager.addConsoles(ConsoleManager.java:209)
+	at org.eclipse.debug.internal.ui.views.console.ProcessConsoleManager$ConsoleCreation.run(ProcessConsoleManager.java:78)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: java.lang.reflect.InvocationTargetException
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.eclipse.xtext.service.MethodBasedModule.invokeMethod(MethodBasedModule.java:134)
+	... 35 more
+Caused by: java.lang.NoClassDefFoundError: org/eclipse/xtext/xbase/annotations/validation/UnresolvedAnnotationTypeAwareMessageProducer
+	at org.eclipse.xtend.core.XtendRuntimeModule.bindILinkingDiagnosticMessageProvider(XtendRuntimeModule.java:133)
+	... 40 more
+
+!ENTRY org.apache.log4j 4 0 2022-06-11 19:24:17.288
+!MESSAGE org.eclipse.xtext.service.CompoundModule  - java.lang.reflect.InvocationTargetException
+
+!STACK 0
+java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
+	at org.eclipse.xtext.service.MethodBasedModule.invokeMethod(MethodBasedModule.java:136)
+	at org.eclipse.xtext.service.MethodBasedModule.configure(MethodBasedModule.java:49)
+	at org.eclipse.xtext.service.CompoundModule.configure(CompoundModule.java:34)
+	at org.eclipse.xtext.service.AbstractGenericModule.configure(AbstractGenericModule.java:32)
+	at org.eclipse.xtext.service.DefaultRuntimeModule.configure(DefaultRuntimeModule.java:75)
+	at org.eclipse.xtend.core.AbstractXtendRuntimeModule.configure(AbstractXtendRuntimeModule.java:25)
+	at org.eclipse.xtend.core.XtendRuntimeModule.configure(XtendRuntimeModule.java:187)
+	at com.google.inject.spi.Elements$RecordingBinder.install(Elements.java:223)
+	at com.google.inject.spi.Elements.getElements(Elements.java:101)
+	at com.google.inject.spi.Elements.getElements(Elements.java:92)
+	at com.google.inject.util.Modules$RealOverriddenModuleBuilder$1.configure(Modules.java:152)
+	at com.google.inject.AbstractModule.configure(AbstractModule.java:59)
+	at com.google.inject.spi.Elements$RecordingBinder.install(Elements.java:223)
+	at com.google.inject.spi.Elements.getElements(Elements.java:101)
+	at com.google.inject.spi.Elements.getElements(Elements.java:92)
+	at com.google.inject.util.Modules$RealOverriddenModuleBuilder$1.configure(Modules.java:152)
+	at com.google.inject.AbstractModule.configure(AbstractModule.java:59)
+	at com.google.inject.spi.Elements$RecordingBinder.install(Elements.java:223)
+	at com.google.inject.spi.Elements.getElements(Elements.java:101)
+	at com.google.inject.internal.InjectorShell$Builder.build(InjectorShell.java:133)
+	at com.google.inject.internal.InternalInjectorCreator.build(InternalInjectorCreator.java:103)
+	at com.google.inject.Guice.createInjector(Guice.java:95)
+	at com.google.inject.Guice.createInjector(Guice.java:72)
+	at com.google.inject.Guice.createInjector(Guice.java:62)
+	at org.eclipse.xtend.ide.internal.XtendActivator.createInjector(XtendActivator.java:67)
+	at org.eclipse.xtend.ide.internal.XtendActivator.getInjector(XtendActivator.java:55)
+	at org.eclipse.xtend.ide.XtendExecutableExtensionFactory.getInjector(XtendExecutableExtensionFactory.java:26)
+	at org.eclipse.xtext.ui.guice.AbstractGuiceAwareExecutableExtensionFactory.create(AbstractGuiceAwareExecutableExtensionFactory.java:49)
+	at org.eclipse.core.internal.registry.ConfigurationElement.createExecutableExtension(ConfigurationElement.java:265)
+	at org.eclipse.core.internal.registry.ConfigurationElementHandle.createExecutableExtension(ConfigurationElementHandle.java:63)
+	at org.eclipse.ui.internal.console.PatternMatchListenerExtension.createDelegate(PatternMatchListenerExtension.java:83)
+	at org.eclipse.ui.internal.console.PatternMatchListener.<init>(PatternMatchListener.java:29)
+	at org.eclipse.ui.internal.console.ConsoleManager.createPatternMatchListeners(ConsoleManager.java:406)
+	at org.eclipse.ui.internal.console.ConsoleManager.addConsoles(ConsoleManager.java:209)
+	at org.eclipse.debug.internal.ui.views.console.ProcessConsoleManager$ConsoleCreation.run(ProcessConsoleManager.java:78)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: java.lang.reflect.InvocationTargetException
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.eclipse.xtext.service.MethodBasedModule.invokeMethod(MethodBasedModule.java:134)
+	... 35 more
+Caused by: java.lang.NoClassDefFoundError: org/eclipse/xtext/common/types/descriptions/JvmTypesResourceDescriptionStrategy
+	at org.eclipse.xtend.core.XtendRuntimeModule.bindIDefaultResourceDescriptionStrategy(XtendRuntimeModule.java:106)
+	... 40 more
+
+!ENTRY org.apache.log4j 4 0 2022-06-11 19:24:17.291
+!MESSAGE org.eclipse.xtext.service.CompoundModule  - java.lang.reflect.InvocationTargetException
+
+!STACK 0
+java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
+	at org.eclipse.xtext.service.MethodBasedModule.invokeMethod(MethodBasedModule.java:136)
+	at org.eclipse.xtext.service.FreeModule.configure(FreeModule.java:22)
+	at org.eclipse.xtext.service.CompoundModule.configure(CompoundModule.java:34)
+	at org.eclipse.xtext.service.AbstractGenericModule.configure(AbstractGenericModule.java:32)
+	at org.eclipse.xtext.service.DefaultRuntimeModule.configure(DefaultRuntimeModule.java:75)
+	at org.eclipse.xtend.core.AbstractXtendRuntimeModule.configure(AbstractXtendRuntimeModule.java:25)
+	at org.eclipse.xtend.core.XtendRuntimeModule.configure(XtendRuntimeModule.java:187)
+	at com.google.inject.spi.Elements$RecordingBinder.install(Elements.java:223)
+	at com.google.inject.spi.Elements.getElements(Elements.java:101)
+	at com.google.inject.spi.Elements.getElements(Elements.java:92)
+	at com.google.inject.util.Modules$RealOverriddenModuleBuilder$1.configure(Modules.java:152)
+	at com.google.inject.AbstractModule.configure(AbstractModule.java:59)
+	at com.google.inject.spi.Elements$RecordingBinder.install(Elements.java:223)
+	at com.google.inject.spi.Elements.getElements(Elements.java:101)
+	at com.google.inject.spi.Elements.getElements(Elements.java:92)
+	at com.google.inject.util.Modules$RealOverriddenModuleBuilder$1.configure(Modules.java:152)
+	at com.google.inject.AbstractModule.configure(AbstractModule.java:59)
+	at com.google.inject.spi.Elements$RecordingBinder.install(Elements.java:223)
+	at com.google.inject.spi.Elements.getElements(Elements.java:101)
+	at com.google.inject.internal.InjectorShell$Builder.build(InjectorShell.java:133)
+	at com.google.inject.internal.InternalInjectorCreator.build(InternalInjectorCreator.java:103)
+	at com.google.inject.Guice.createInjector(Guice.java:95)
+	at com.google.inject.Guice.createInjector(Guice.java:72)
+	at com.google.inject.Guice.createInjector(Guice.java:62)
+	at org.eclipse.xtend.ide.internal.XtendActivator.createInjector(XtendActivator.java:67)
+	at org.eclipse.xtend.ide.internal.XtendActivator.getInjector(XtendActivator.java:55)
+	at org.eclipse.xtend.ide.XtendExecutableExtensionFactory.getInjector(XtendExecutableExtensionFactory.java:26)
+	at org.eclipse.xtext.ui.guice.AbstractGuiceAwareExecutableExtensionFactory.create(AbstractGuiceAwareExecutableExtensionFactory.java:49)
+	at org.eclipse.core.internal.registry.ConfigurationElement.createExecutableExtension(ConfigurationElement.java:265)
+	at org.eclipse.core.internal.registry.ConfigurationElementHandle.createExecutableExtension(ConfigurationElementHandle.java:63)
+	at org.eclipse.ui.internal.console.PatternMatchListenerExtension.createDelegate(PatternMatchListenerExtension.java:83)
+	at org.eclipse.ui.internal.console.PatternMatchListener.<init>(PatternMatchListener.java:29)
+	at org.eclipse.ui.internal.console.ConsoleManager.createPatternMatchListeners(ConsoleManager.java:406)
+	at org.eclipse.ui.internal.console.ConsoleManager.addConsoles(ConsoleManager.java:209)
+	at org.eclipse.debug.internal.ui.views.console.ProcessConsoleManager$ConsoleCreation.run(ProcessConsoleManager.java:78)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: java.lang.reflect.InvocationTargetException
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.eclipse.xtext.service.MethodBasedModule.invokeMethod(MethodBasedModule.java:134)
+	... 35 more
+Caused by: java.lang.NoClassDefFoundError: org/eclipse/xtext/xbase/file/WorkspaceConfig
+	at org.eclipse.xtend.core.XtendRuntimeModule.configureWorkspaceConfigContribution(XtendRuntimeModule.java:229)
+	... 40 more
+
+!ENTRY org.apache.log4j 4 0 2022-06-11 19:24:17.295
+!MESSAGE org.eclipse.xtext.service.CompoundModule  - java.lang.reflect.InvocationTargetException
+
+!STACK 0
+java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
+	at org.eclipse.xtext.service.MethodBasedModule.invokeMethod(MethodBasedModule.java:136)
+	at org.eclipse.xtext.service.MethodBasedModule.configure(MethodBasedModule.java:49)
+	at org.eclipse.xtext.service.CompoundModule.configure(CompoundModule.java:34)
+	at org.eclipse.xtext.service.AbstractGenericModule.configure(AbstractGenericModule.java:32)
+	at org.eclipse.xtext.service.DefaultRuntimeModule.configure(DefaultRuntimeModule.java:75)
+	at org.eclipse.xtend.core.AbstractXtendRuntimeModule.configure(AbstractXtendRuntimeModule.java:25)
+	at org.eclipse.xtend.core.XtendRuntimeModule.configure(XtendRuntimeModule.java:187)
+	at com.google.inject.spi.Elements$RecordingBinder.install(Elements.java:223)
+	at com.google.inject.spi.Elements.getElements(Elements.java:101)
+	at com.google.inject.spi.Elements.getElements(Elements.java:92)
+	at com.google.inject.util.Modules$RealOverriddenModuleBuilder$1.configure(Modules.java:152)
+	at com.google.inject.AbstractModule.configure(AbstractModule.java:59)
+	at com.google.inject.spi.Elements$RecordingBinder.install(Elements.java:223)
+	at com.google.inject.spi.Elements.getElements(Elements.java:101)
+	at com.google.inject.spi.Elements.getElements(Elements.java:92)
+	at com.google.inject.util.Modules$RealOverriddenModuleBuilder$1.configure(Modules.java:152)
+	at com.google.inject.AbstractModule.configure(AbstractModule.java:59)
+	at com.google.inject.spi.Elements$RecordingBinder.install(Elements.java:223)
+	at com.google.inject.spi.Elements.getElements(Elements.java:101)
+	at com.google.inject.internal.InjectorShell$Builder.build(InjectorShell.java:133)
+	at com.google.inject.internal.InternalInjectorCreator.build(InternalInjectorCreator.java:103)
+	at com.google.inject.Guice.createInjector(Guice.java:95)
+	at com.google.inject.Guice.createInjector(Guice.java:72)
+	at com.google.inject.Guice.createInjector(Guice.java:62)
+	at org.eclipse.xtend.ide.internal.XtendActivator.createInjector(XtendActivator.java:67)
+	at org.eclipse.xtend.ide.internal.XtendActivator.getInjector(XtendActivator.java:55)
+	at org.eclipse.xtend.ide.XtendExecutableExtensionFactory.getInjector(XtendExecutableExtensionFactory.java:26)
+	at org.eclipse.xtext.ui.guice.AbstractGuiceAwareExecutableExtensionFactory.create(AbstractGuiceAwareExecutableExtensionFactory.java:49)
+	at org.eclipse.core.internal.registry.ConfigurationElement.createExecutableExtension(ConfigurationElement.java:265)
+	at org.eclipse.core.internal.registry.ConfigurationElementHandle.createExecutableExtension(ConfigurationElementHandle.java:63)
+	at org.eclipse.ui.internal.console.PatternMatchListenerExtension.createDelegate(PatternMatchListenerExtension.java:83)
+	at org.eclipse.ui.internal.console.PatternMatchListener.<init>(PatternMatchListener.java:29)
+	at org.eclipse.ui.internal.console.ConsoleManager.createPatternMatchListeners(ConsoleManager.java:406)
+	at org.eclipse.ui.internal.console.ConsoleManager.addConsoles(ConsoleManager.java:209)
+	at org.eclipse.debug.internal.ui.views.console.ProcessConsoleManager$ConsoleCreation.run(ProcessConsoleManager.java:78)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: java.lang.reflect.InvocationTargetException
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.eclipse.xtext.service.MethodBasedModule.invokeMethod(MethodBasedModule.java:134)
+	... 35 more
+Caused by: java.lang.NoClassDefFoundError: org/eclipse/xtext/resource/IBatchLinkableResource
+	at org.eclipse.xtend.core.XtendRuntimeModule.bindXtextResource(XtendRuntimeModule.java:204)
+	... 40 more
+
+!ENTRY org.apache.log4j 4 0 2022-06-11 19:24:17.299
+!MESSAGE org.eclipse.xtext.service.CompoundModule  - java.lang.reflect.InvocationTargetException
+
+!STACK 0
+java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
+	at org.eclipse.xtext.service.MethodBasedModule.invokeMethod(MethodBasedModule.java:136)
+	at org.eclipse.xtext.service.MethodBasedModule.configure(MethodBasedModule.java:49)
+	at org.eclipse.xtext.service.CompoundModule.configure(CompoundModule.java:34)
+	at org.eclipse.xtext.service.AbstractGenericModule.configure(AbstractGenericModule.java:32)
+	at org.eclipse.xtext.service.DefaultRuntimeModule.configure(DefaultRuntimeModule.java:75)
+	at org.eclipse.xtend.core.AbstractXtendRuntimeModule.configure(AbstractXtendRuntimeModule.java:25)
+	at org.eclipse.xtend.core.XtendRuntimeModule.configure(XtendRuntimeModule.java:187)
+	at com.google.inject.spi.Elements$RecordingBinder.install(Elements.java:223)
+	at com.google.inject.spi.Elements.getElements(Elements.java:101)
+	at com.google.inject.spi.Elements.getElements(Elements.java:92)
+	at com.google.inject.util.Modules$RealOverriddenModuleBuilder$1.configure(Modules.java:152)
+	at com.google.inject.AbstractModule.configure(AbstractModule.java:59)
+	at com.google.inject.spi.Elements$RecordingBinder.install(Elements.java:223)
+	at com.google.inject.spi.Elements.getElements(Elements.java:101)
+	at com.google.inject.spi.Elements.getElements(Elements.java:92)
+	at com.google.inject.util.Modules$RealOverriddenModuleBuilder$1.configure(Modules.java:152)
+	at com.google.inject.AbstractModule.configure(AbstractModule.java:59)
+	at com.google.inject.spi.Elements$RecordingBinder.install(Elements.java:223)
+	at com.google.inject.spi.Elements.getElements(Elements.java:101)
+	at com.google.inject.internal.InjectorShell$Builder.build(InjectorShell.java:133)
+	at com.google.inject.internal.InternalInjectorCreator.build(InternalInjectorCreator.java:103)
+	at com.google.inject.Guice.createInjector(Guice.java:95)
+	at com.google.inject.Guice.createInjector(Guice.java:72)
+	at com.google.inject.Guice.createInjector(Guice.java:62)
+	at org.eclipse.xtend.ide.internal.XtendActivator.createInjector(XtendActivator.java:67)
+	at org.eclipse.xtend.ide.internal.XtendActivator.getInjector(XtendActivator.java:55)
+	at org.eclipse.xtend.ide.XtendExecutableExtensionFactory.getInjector(XtendExecutableExtensionFactory.java:26)
+	at org.eclipse.xtext.ui.guice.AbstractGuiceAwareExecutableExtensionFactory.create(AbstractGuiceAwareExecutableExtensionFactory.java:49)
+	at org.eclipse.core.internal.registry.ConfigurationElement.createExecutableExtension(ConfigurationElement.java:265)
+	at org.eclipse.core.internal.registry.ConfigurationElementHandle.createExecutableExtension(ConfigurationElementHandle.java:63)
+	at org.eclipse.ui.internal.console.PatternMatchListenerExtension.createDelegate(PatternMatchListenerExtension.java:83)
+	at org.eclipse.ui.internal.console.PatternMatchListener.<init>(PatternMatchListener.java:29)
+	at org.eclipse.ui.internal.console.ConsoleManager.createPatternMatchListeners(ConsoleManager.java:406)
+	at org.eclipse.ui.internal.console.ConsoleManager.addConsoles(ConsoleManager.java:209)
+	at org.eclipse.debug.internal.ui.views.console.ProcessConsoleManager$ConsoleCreation.run(ProcessConsoleManager.java:78)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: java.lang.reflect.InvocationTargetException
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.eclipse.xtext.service.MethodBasedModule.invokeMethod(MethodBasedModule.java:134)
+	... 35 more
+Caused by: java.lang.NoClassDefFoundError: org/eclipse/xtext/xbase/file/FileLocationsImpl
+	at org.eclipse.xtend.core.XtendRuntimeModule.bindFileLocations(XtendRuntimeModule.java:233)
+	... 40 more
+
+!ENTRY org.apache.log4j 4 0 2022-06-11 19:24:17.302
+!MESSAGE org.eclipse.xtext.service.CompoundModule  - java.lang.reflect.InvocationTargetException
+
+!STACK 0
+java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
+	at org.eclipse.xtext.service.MethodBasedModule.invokeMethod(MethodBasedModule.java:136)
+	at org.eclipse.xtext.service.MethodBasedModule.configure(MethodBasedModule.java:49)
+	at org.eclipse.xtext.service.CompoundModule.configure(CompoundModule.java:34)
+	at org.eclipse.xtext.service.AbstractGenericModule.configure(AbstractGenericModule.java:32)
+	at org.eclipse.xtext.service.DefaultRuntimeModule.configure(DefaultRuntimeModule.java:75)
+	at org.eclipse.xtend.core.AbstractXtendRuntimeModule.configure(AbstractXtendRuntimeModule.java:25)
+	at org.eclipse.xtend.core.XtendRuntimeModule.configure(XtendRuntimeModule.java:187)
+	at com.google.inject.spi.Elements$RecordingBinder.install(Elements.java:223)
+	at com.google.inject.spi.Elements.getElements(Elements.java:101)
+	at com.google.inject.spi.Elements.getElements(Elements.java:92)
+	at com.google.inject.util.Modules$RealOverriddenModuleBuilder$1.configure(Modules.java:152)
+	at com.google.inject.AbstractModule.configure(AbstractModule.java:59)
+	at com.google.inject.spi.Elements$RecordingBinder.install(Elements.java:223)
+	at com.google.inject.spi.Elements.getElements(Elements.java:101)
+	at com.google.inject.spi.Elements.getElements(Elements.java:92)
+	at com.google.inject.util.Modules$RealOverriddenModuleBuilder$1.configure(Modules.java:152)
+	at com.google.inject.AbstractModule.configure(AbstractModule.java:59)
+	at com.google.inject.spi.Elements$RecordingBinder.install(Elements.java:223)
+	at com.google.inject.spi.Elements.getElements(Elements.java:101)
+	at com.google.inject.internal.InjectorShell$Builder.build(InjectorShell.java:133)
+	at com.google.inject.internal.InternalInjectorCreator.build(InternalInjectorCreator.java:103)
+	at com.google.inject.Guice.createInjector(Guice.java:95)
+	at com.google.inject.Guice.createInjector(Guice.java:72)
+	at com.google.inject.Guice.createInjector(Guice.java:62)
+	at org.eclipse.xtend.ide.internal.XtendActivator.createInjector(XtendActivator.java:67)
+	at org.eclipse.xtend.ide.internal.XtendActivator.getInjector(XtendActivator.java:55)
+	at org.eclipse.xtend.ide.XtendExecutableExtensionFactory.getInjector(XtendExecutableExtensionFactory.java:26)
+	at org.eclipse.xtext.ui.guice.AbstractGuiceAwareExecutableExtensionFactory.create(AbstractGuiceAwareExecutableExtensionFactory.java:49)
+	at org.eclipse.core.internal.registry.ConfigurationElement.createExecutableExtension(ConfigurationElement.java:265)
+	at org.eclipse.core.internal.registry.ConfigurationElementHandle.createExecutableExtension(ConfigurationElementHandle.java:63)
+	at org.eclipse.ui.internal.console.PatternMatchListenerExtension.createDelegate(PatternMatchListenerExtension.java:83)
+	at org.eclipse.ui.internal.console.PatternMatchListener.<init>(PatternMatchListener.java:29)
+	at org.eclipse.ui.internal.console.ConsoleManager.createPatternMatchListeners(ConsoleManager.java:406)
+	at org.eclipse.ui.internal.console.ConsoleManager.addConsoles(ConsoleManager.java:209)
+	at org.eclipse.debug.internal.ui.views.console.ProcessConsoleManager$ConsoleCreation.run(ProcessConsoleManager.java:78)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: java.lang.reflect.InvocationTargetException
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.eclipse.xtext.service.MethodBasedModule.invokeMethod(MethodBasedModule.java:134)
+	... 35 more
+Caused by: java.lang.NoClassDefFoundError: org/eclipse/xtext/xbase/annotations/scoping/XbaseWithAnnotationsScopeProvider
+	at org.eclipse.xtend.core.XtendRuntimeModule.bindIScopeProvider(XtendRuntimeModule.java:123)
+	... 40 more
+
+!ENTRY org.apache.log4j 4 0 2022-06-11 19:24:17.305
+!MESSAGE org.eclipse.xtext.service.CompoundModule  - java.lang.reflect.InvocationTargetException
+
+!STACK 0
+java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
+	at org.eclipse.xtext.service.MethodBasedModule.invokeMethod(MethodBasedModule.java:136)
+	at org.eclipse.xtext.service.MethodBasedModule.configure(MethodBasedModule.java:49)
+	at org.eclipse.xtext.service.CompoundModule.configure(CompoundModule.java:34)
+	at org.eclipse.xtext.service.AbstractGenericModule.configure(AbstractGenericModule.java:32)
+	at org.eclipse.xtext.service.DefaultRuntimeModule.configure(DefaultRuntimeModule.java:75)
+	at org.eclipse.xtend.core.AbstractXtendRuntimeModule.configure(AbstractXtendRuntimeModule.java:25)
+	at org.eclipse.xtend.core.XtendRuntimeModule.configure(XtendRuntimeModule.java:187)
+	at com.google.inject.spi.Elements$RecordingBinder.install(Elements.java:223)
+	at com.google.inject.spi.Elements.getElements(Elements.java:101)
+	at com.google.inject.spi.Elements.getElements(Elements.java:92)
+	at com.google.inject.util.Modules$RealOverriddenModuleBuilder$1.configure(Modules.java:152)
+	at com.google.inject.AbstractModule.configure(AbstractModule.java:59)
+	at com.google.inject.spi.Elements$RecordingBinder.install(Elements.java:223)
+	at com.google.inject.spi.Elements.getElements(Elements.java:101)
+	at com.google.inject.spi.Elements.getElements(Elements.java:92)
+	at com.google.inject.util.Modules$RealOverriddenModuleBuilder$1.configure(Modules.java:152)
+	at com.google.inject.AbstractModule.configure(AbstractModule.java:59)
+	at com.google.inject.spi.Elements$RecordingBinder.install(Elements.java:223)
+	at com.google.inject.spi.Elements.getElements(Elements.java:101)
+	at com.google.inject.internal.InjectorShell$Builder.build(InjectorShell.java:133)
+	at com.google.inject.internal.InternalInjectorCreator.build(InternalInjectorCreator.java:103)
+	at com.google.inject.Guice.createInjector(Guice.java:95)
+	at com.google.inject.Guice.createInjector(Guice.java:72)
+	at com.google.inject.Guice.createInjector(Guice.java:62)
+	at org.eclipse.xtend.ide.internal.XtendActivator.createInjector(XtendActivator.java:67)
+	at org.eclipse.xtend.ide.internal.XtendActivator.getInjector(XtendActivator.java:55)
+	at org.eclipse.xtend.ide.XtendExecutableExtensionFactory.getInjector(XtendExecutableExtensionFactory.java:26)
+	at org.eclipse.xtext.ui.guice.AbstractGuiceAwareExecutableExtensionFactory.create(AbstractGuiceAwareExecutableExtensionFactory.java:49)
+	at org.eclipse.core.internal.registry.ConfigurationElement.createExecutableExtension(ConfigurationElement.java:265)
+	at org.eclipse.core.internal.registry.ConfigurationElementHandle.createExecutableExtension(ConfigurationElementHandle.java:63)
+	at org.eclipse.ui.internal.console.PatternMatchListenerExtension.createDelegate(PatternMatchListenerExtension.java:83)
+	at org.eclipse.ui.internal.console.PatternMatchListener.<init>(PatternMatchListener.java:29)
+	at org.eclipse.ui.internal.console.ConsoleManager.createPatternMatchListeners(ConsoleManager.java:406)
+	at org.eclipse.ui.internal.console.ConsoleManager.addConsoles(ConsoleManager.java:209)
+	at org.eclipse.debug.internal.ui.views.console.ProcessConsoleManager$ConsoleCreation.run(ProcessConsoleManager.java:78)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: java.lang.reflect.InvocationTargetException
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.eclipse.xtext.service.MethodBasedModule.invokeMethod(MethodBasedModule.java:134)
+	... 35 more
+Caused by: java.lang.NoClassDefFoundError: org/eclipse/xtext/xbase/typesystem/legacy/LegacyFeatureOverridesService
+	at org.eclipse.xtend.core.AbstractXtendRuntimeModule.bindFeatureOverridesService(AbstractXtendRuntimeModule.java:269)
+	... 40 more
+
+!ENTRY org.apache.log4j 4 0 2022-06-11 19:24:17.308
+!MESSAGE org.eclipse.xtext.service.CompoundModule  - java.lang.reflect.InvocationTargetException
+
+!STACK 0
+java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
+	at org.eclipse.xtext.service.MethodBasedModule.invokeMethod(MethodBasedModule.java:136)
+	at org.eclipse.xtext.service.MethodBasedModule.configure(MethodBasedModule.java:49)
+	at org.eclipse.xtext.service.CompoundModule.configure(CompoundModule.java:34)
+	at org.eclipse.xtext.service.AbstractGenericModule.configure(AbstractGenericModule.java:32)
+	at org.eclipse.xtext.service.DefaultRuntimeModule.configure(DefaultRuntimeModule.java:75)
+	at org.eclipse.xtend.core.AbstractXtendRuntimeModule.configure(AbstractXtendRuntimeModule.java:25)
+	at org.eclipse.xtend.core.XtendRuntimeModule.configure(XtendRuntimeModule.java:187)
+	at com.google.inject.spi.Elements$RecordingBinder.install(Elements.java:223)
+	at com.google.inject.spi.Elements.getElements(Elements.java:101)
+	at com.google.inject.spi.Elements.getElements(Elements.java:92)
+	at com.google.inject.util.Modules$RealOverriddenModuleBuilder$1.configure(Modules.java:152)
+	at com.google.inject.AbstractModule.configure(AbstractModule.java:59)
+	at com.google.inject.spi.Elements$RecordingBinder.install(Elements.java:223)
+	at com.google.inject.spi.Elements.getElements(Elements.java:101)
+	at com.google.inject.spi.Elements.getElements(Elements.java:92)
+	at com.google.inject.util.Modules$RealOverriddenModuleBuilder$1.configure(Modules.java:152)
+	at com.google.inject.AbstractModule.configure(AbstractModule.java:59)
+	at com.google.inject.spi.Elements$RecordingBinder.install(Elements.java:223)
+	at com.google.inject.spi.Elements.getElements(Elements.java:101)
+	at com.google.inject.internal.InjectorShell$Builder.build(InjectorShell.java:133)
+	at com.google.inject.internal.InternalInjectorCreator.build(InternalInjectorCreator.java:103)
+	at com.google.inject.Guice.createInjector(Guice.java:95)
+	at com.google.inject.Guice.createInjector(Guice.java:72)
+	at com.google.inject.Guice.createInjector(Guice.java:62)
+	at org.eclipse.xtend.ide.internal.XtendActivator.createInjector(XtendActivator.java:67)
+	at org.eclipse.xtend.ide.internal.XtendActivator.getInjector(XtendActivator.java:55)
+	at org.eclipse.xtend.ide.XtendExecutableExtensionFactory.getInjector(XtendExecutableExtensionFactory.java:26)
+	at org.eclipse.xtext.ui.guice.AbstractGuiceAwareExecutableExtensionFactory.create(AbstractGuiceAwareExecutableExtensionFactory.java:49)
+	at org.eclipse.core.internal.registry.ConfigurationElement.createExecutableExtension(ConfigurationElement.java:265)
+	at org.eclipse.core.internal.registry.ConfigurationElementHandle.createExecutableExtension(ConfigurationElementHandle.java:63)
+	at org.eclipse.ui.internal.console.PatternMatchListenerExtension.createDelegate(PatternMatchListenerExtension.java:83)
+	at org.eclipse.ui.internal.console.PatternMatchListener.<init>(PatternMatchListener.java:29)
+	at org.eclipse.ui.internal.console.ConsoleManager.createPatternMatchListeners(ConsoleManager.java:406)
+	at org.eclipse.ui.internal.console.ConsoleManager.addConsoles(ConsoleManager.java:209)
+	at org.eclipse.debug.internal.ui.views.console.ProcessConsoleManager$ConsoleCreation.run(ProcessConsoleManager.java:78)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: java.lang.reflect.InvocationTargetException
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.eclipse.xtext.service.MethodBasedModule.invokeMethod(MethodBasedModule.java:134)
+	... 35 more
+Caused by: java.lang.NoClassDefFoundError: org/eclipse/xtext/xbase/typesystem/legacy/LegacyTypeConformanceComputer
+	at org.eclipse.xtend.core.AbstractXtendRuntimeModule.bindTypeConformanceComputer(AbstractXtendRuntimeModule.java:194)
+	... 40 more
+
+!ENTRY org.apache.log4j 4 0 2022-06-11 19:24:17.311
+!MESSAGE org.eclipse.xtext.service.CompoundModule  - java.lang.reflect.InvocationTargetException
+
+!STACK 0
+java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
+	at org.eclipse.xtext.service.MethodBasedModule.invokeMethod(MethodBasedModule.java:136)
+	at org.eclipse.xtext.service.MethodBasedModule.configure(MethodBasedModule.java:49)
+	at org.eclipse.xtext.service.CompoundModule.configure(CompoundModule.java:34)
+	at org.eclipse.xtext.service.AbstractGenericModule.configure(AbstractGenericModule.java:32)
+	at org.eclipse.xtext.service.DefaultRuntimeModule.configure(DefaultRuntimeModule.java:75)
+	at org.eclipse.xtend.core.AbstractXtendRuntimeModule.configure(AbstractXtendRuntimeModule.java:25)
+	at org.eclipse.xtend.core.XtendRuntimeModule.configure(XtendRuntimeModule.java:187)
+	at com.google.inject.spi.Elements$RecordingBinder.install(Elements.java:223)
+	at com.google.inject.spi.Elements.getElements(Elements.java:101)
+	at com.google.inject.spi.Elements.getElements(Elements.java:92)
+	at com.google.inject.util.Modules$RealOverriddenModuleBuilder$1.configure(Modules.java:152)
+	at com.google.inject.AbstractModule.configure(AbstractModule.java:59)
+	at com.google.inject.spi.Elements$RecordingBinder.install(Elements.java:223)
+	at com.google.inject.spi.Elements.getElements(Elements.java:101)
+	at com.google.inject.spi.Elements.getElements(Elements.java:92)
+	at com.google.inject.util.Modules$RealOverriddenModuleBuilder$1.configure(Modules.java:152)
+	at com.google.inject.AbstractModule.configure(AbstractModule.java:59)
+	at com.google.inject.spi.Elements$RecordingBinder.install(Elements.java:223)
+	at com.google.inject.spi.Elements.getElements(Elements.java:101)
+	at com.google.inject.internal.InjectorShell$Builder.build(InjectorShell.java:133)
+	at com.google.inject.internal.InternalInjectorCreator.build(InternalInjectorCreator.java:103)
+	at com.google.inject.Guice.createInjector(Guice.java:95)
+	at com.google.inject.Guice.createInjector(Guice.java:72)
+	at com.google.inject.Guice.createInjector(Guice.java:62)
+	at org.eclipse.xtend.ide.internal.XtendActivator.createInjector(XtendActivator.java:67)
+	at org.eclipse.xtend.ide.internal.XtendActivator.getInjector(XtendActivator.java:55)
+	at org.eclipse.xtend.ide.XtendExecutableExtensionFactory.getInjector(XtendExecutableExtensionFactory.java:26)
+	at org.eclipse.xtext.ui.guice.AbstractGuiceAwareExecutableExtensionFactory.create(AbstractGuiceAwareExecutableExtensionFactory.java:49)
+	at org.eclipse.core.internal.registry.ConfigurationElement.createExecutableExtension(ConfigurationElement.java:265)
+	at org.eclipse.core.internal.registry.ConfigurationElementHandle.createExecutableExtension(ConfigurationElementHandle.java:63)
+	at org.eclipse.ui.internal.console.PatternMatchListenerExtension.createDelegate(PatternMatchListenerExtension.java:83)
+	at org.eclipse.ui.internal.console.PatternMatchListener.<init>(PatternMatchListener.java:29)
+	at org.eclipse.ui.internal.console.ConsoleManager.createPatternMatchListeners(ConsoleManager.java:406)
+	at org.eclipse.ui.internal.console.ConsoleManager.addConsoles(ConsoleManager.java:209)
+	at org.eclipse.debug.internal.ui.views.console.ProcessConsoleManager$ConsoleCreation.run(ProcessConsoleManager.java:78)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: java.lang.reflect.InvocationTargetException
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.eclipse.xtext.service.MethodBasedModule.invokeMethod(MethodBasedModule.java:134)
+	... 35 more
+Caused by: java.lang.NoClassDefFoundError: org/eclipse/xtext/xbase/typesystem/legacy/LegacyTypeArgumentContextProvider
+	at org.eclipse.xtend.core.AbstractXtendRuntimeModule.bindTypeArgumentContextProvider(AbstractXtendRuntimeModule.java:234)
+	... 40 more
+
+!ENTRY org.apache.log4j 4 0 2022-06-11 19:24:17.314
+!MESSAGE org.eclipse.xtext.service.CompoundModule  - java.lang.reflect.InvocationTargetException
+
+!STACK 0
+java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
+	at org.eclipse.xtext.service.MethodBasedModule.invokeMethod(MethodBasedModule.java:136)
+	at org.eclipse.xtext.service.MethodBasedModule.configure(MethodBasedModule.java:49)
+	at org.eclipse.xtext.service.CompoundModule.configure(CompoundModule.java:34)
+	at org.eclipse.xtext.service.AbstractGenericModule.configure(AbstractGenericModule.java:32)
+	at org.eclipse.xtext.service.DefaultRuntimeModule.configure(DefaultRuntimeModule.java:75)
+	at org.eclipse.xtend.core.AbstractXtendRuntimeModule.configure(AbstractXtendRuntimeModule.java:25)
+	at org.eclipse.xtend.core.XtendRuntimeModule.configure(XtendRuntimeModule.java:187)
+	at com.google.inject.spi.Elements$RecordingBinder.install(Elements.java:223)
+	at com.google.inject.spi.Elements.getElements(Elements.java:101)
+	at com.google.inject.spi.Elements.getElements(Elements.java:92)
+	at com.google.inject.util.Modules$RealOverriddenModuleBuilder$1.configure(Modules.java:152)
+	at com.google.inject.AbstractModule.configure(AbstractModule.java:59)
+	at com.google.inject.spi.Elements$RecordingBinder.install(Elements.java:223)
+	at com.google.inject.spi.Elements.getElements(Elements.java:101)
+	at com.google.inject.spi.Elements.getElements(Elements.java:92)
+	at com.google.inject.util.Modules$RealOverriddenModuleBuilder$1.configure(Modules.java:152)
+	at com.google.inject.AbstractModule.configure(AbstractModule.java:59)
+	at com.google.inject.spi.Elements$RecordingBinder.install(Elements.java:223)
+	at com.google.inject.spi.Elements.getElements(Elements.java:101)
+	at com.google.inject.internal.InjectorShell$Builder.build(InjectorShell.java:133)
+	at com.google.inject.internal.InternalInjectorCreator.build(InternalInjectorCreator.java:103)
+	at com.google.inject.Guice.createInjector(Guice.java:95)
+	at com.google.inject.Guice.createInjector(Guice.java:72)
+	at com.google.inject.Guice.createInjector(Guice.java:62)
+	at org.eclipse.xtend.ide.internal.XtendActivator.createInjector(XtendActivator.java:67)
+	at org.eclipse.xtend.ide.internal.XtendActivator.getInjector(XtendActivator.java:55)
+	at org.eclipse.xtend.ide.XtendExecutableExtensionFactory.getInjector(XtendExecutableExtensionFactory.java:26)
+	at org.eclipse.xtext.ui.guice.AbstractGuiceAwareExecutableExtensionFactory.create(AbstractGuiceAwareExecutableExtensionFactory.java:49)
+	at org.eclipse.core.internal.registry.ConfigurationElement.createExecutableExtension(ConfigurationElement.java:265)
+	at org.eclipse.core.internal.registry.ConfigurationElementHandle.createExecutableExtension(ConfigurationElementHandle.java:63)
+	at org.eclipse.ui.internal.console.PatternMatchListenerExtension.createDelegate(PatternMatchListenerExtension.java:83)
+	at org.eclipse.ui.internal.console.PatternMatchListener.<init>(PatternMatchListener.java:29)
+	at org.eclipse.ui.internal.console.ConsoleManager.createPatternMatchListeners(ConsoleManager.java:406)
+	at org.eclipse.ui.internal.console.ConsoleManager.addConsoles(ConsoleManager.java:209)
+	at org.eclipse.debug.internal.ui.views.console.ProcessConsoleManager$ConsoleCreation.run(ProcessConsoleManager.java:78)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: java.lang.reflect.InvocationTargetException
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.eclipse.xtext.service.MethodBasedModule.invokeMethod(MethodBasedModule.java:134)
+	... 35 more
+Caused by: java.lang.NoClassDefFoundError: org/eclipse/xtext/xbase/typesystem/legacy/LegacyVisibilityService
+	at org.eclipse.xtend.core.AbstractXtendRuntimeModule.bindVisibilityService(AbstractXtendRuntimeModule.java:264)
+	... 40 more
+
+!ENTRY org.apache.log4j 4 0 2022-06-11 19:24:17.317
+!MESSAGE org.eclipse.xtext.service.CompoundModule  - Type org.eclipse.xtext.xbase.typing.ITypeProvider not present
+
+!STACK 0
+java.lang.TypeNotPresentException: Type org.eclipse.xtext.xbase.typing.ITypeProvider not present
+	at java.base/sun.reflect.generics.factory.CoreReflectionFactory.makeNamedType(CoreReflectionFactory.java:117)
+	at java.base/sun.reflect.generics.visitor.Reifier.visitClassTypeSignature(Reifier.java:125)
+	at java.base/sun.reflect.generics.tree.ClassTypeSignature.accept(ClassTypeSignature.java:49)
+	at java.base/sun.reflect.generics.reflectiveObjects.LazyReflectiveObjectGenerator.reifyBounds(LazyReflectiveObjectGenerator.java:65)
+	at java.base/sun.reflect.generics.reflectiveObjects.WildcardTypeImpl.getUpperBounds(WildcardTypeImpl.java:105)
+	at org.eclipse.xtext.service.MethodBasedModule.getFirstTypeParameter(MethodBasedModule.java:106)
+	at org.eclipse.xtext.service.MethodBasedModule.getKeyType(MethodBasedModule.java:97)
+	at org.eclipse.xtext.service.MethodBasedModule.configure(MethodBasedModule.java:47)
+	at org.eclipse.xtext.service.CompoundModule.configure(CompoundModule.java:34)
+	at org.eclipse.xtext.service.AbstractGenericModule.configure(AbstractGenericModule.java:32)
+	at org.eclipse.xtext.service.DefaultRuntimeModule.configure(DefaultRuntimeModule.java:75)
+	at org.eclipse.xtend.core.AbstractXtendRuntimeModule.configure(AbstractXtendRuntimeModule.java:25)
+	at org.eclipse.xtend.core.XtendRuntimeModule.configure(XtendRuntimeModule.java:187)
+	at com.google.inject.spi.Elements$RecordingBinder.install(Elements.java:223)
+	at com.google.inject.spi.Elements.getElements(Elements.java:101)
+	at com.google.inject.spi.Elements.getElements(Elements.java:92)
+	at com.google.inject.util.Modules$RealOverriddenModuleBuilder$1.configure(Modules.java:152)
+	at com.google.inject.AbstractModule.configure(AbstractModule.java:59)
+	at com.google.inject.spi.Elements$RecordingBinder.install(Elements.java:223)
+	at com.google.inject.spi.Elements.getElements(Elements.java:101)
+	at com.google.inject.spi.Elements.getElements(Elements.java:92)
+	at com.google.inject.util.Modules$RealOverriddenModuleBuilder$1.configure(Modules.java:152)
+	at com.google.inject.AbstractModule.configure(AbstractModule.java:59)
+	at com.google.inject.spi.Elements$RecordingBinder.install(Elements.java:223)
+	at com.google.inject.spi.Elements.getElements(Elements.java:101)
+	at com.google.inject.internal.InjectorShell$Builder.build(InjectorShell.java:133)
+	at com.google.inject.internal.InternalInjectorCreator.build(InternalInjectorCreator.java:103)
+	at com.google.inject.Guice.createInjector(Guice.java:95)
+	at com.google.inject.Guice.createInjector(Guice.java:72)
+	at com.google.inject.Guice.createInjector(Guice.java:62)
+	at org.eclipse.xtend.ide.internal.XtendActivator.createInjector(XtendActivator.java:67)
+	at org.eclipse.xtend.ide.internal.XtendActivator.getInjector(XtendActivator.java:55)
+	at org.eclipse.xtend.ide.XtendExecutableExtensionFactory.getInjector(XtendExecutableExtensionFactory.java:26)
+	at org.eclipse.xtext.ui.guice.AbstractGuiceAwareExecutableExtensionFactory.create(AbstractGuiceAwareExecutableExtensionFactory.java:49)
+	at org.eclipse.core.internal.registry.ConfigurationElement.createExecutableExtension(ConfigurationElement.java:265)
+	at org.eclipse.core.internal.registry.ConfigurationElementHandle.createExecutableExtension(ConfigurationElementHandle.java:63)
+	at org.eclipse.ui.internal.console.PatternMatchListenerExtension.createDelegate(PatternMatchListenerExtension.java:83)
+	at org.eclipse.ui.internal.console.PatternMatchListener.<init>(PatternMatchListener.java:29)
+	at org.eclipse.ui.internal.console.ConsoleManager.createPatternMatchListeners(ConsoleManager.java:406)
+	at org.eclipse.ui.internal.console.ConsoleManager.addConsoles(ConsoleManager.java:209)
+	at org.eclipse.debug.internal.ui.views.console.ProcessConsoleManager$ConsoleCreation.run(ProcessConsoleManager.java:78)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: java.lang.ClassNotFoundException: org.eclipse.xtext.xbase.typing.ITypeProvider cannot be found by org.eclipse.xtend.core_2.4.3.v201309030823
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:516)
+	at org.eclipse.osgi.internal.loader.ModuleClassLoader.loadClass(ModuleClassLoader.java:171)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:521)
+	at java.base/java.lang.Class.forName0(Native Method)
+	at java.base/java.lang.Class.forName(Class.java:398)
+	at java.base/sun.reflect.generics.factory.CoreReflectionFactory.makeNamedType(CoreReflectionFactory.java:114)
+	... 41 more
+
+!ENTRY org.apache.log4j 4 0 2022-06-11 19:24:17.325
+!MESSAGE org.eclipse.xtext.service.CompoundModule  - java.lang.reflect.InvocationTargetException
+
+!STACK 0
+java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
+	at org.eclipse.xtext.service.MethodBasedModule.invokeMethod(MethodBasedModule.java:136)
+	at org.eclipse.xtext.service.MethodBasedModule.configure(MethodBasedModule.java:49)
+	at org.eclipse.xtext.service.CompoundModule.configure(CompoundModule.java:34)
+	at org.eclipse.xtext.service.AbstractGenericModule.configure(AbstractGenericModule.java:32)
+	at org.eclipse.xtext.ui.DefaultUiModule.configure(DefaultUiModule.java:125)
+	at com.google.inject.spi.Elements$RecordingBinder.install(Elements.java:223)
+	at com.google.inject.spi.Elements.getElements(Elements.java:101)
+	at com.google.inject.spi.Elements.getElements(Elements.java:92)
+	at com.google.inject.util.Modules$RealOverriddenModuleBuilder$1.configure(Modules.java:172)
+	at com.google.inject.AbstractModule.configure(AbstractModule.java:59)
+	at com.google.inject.spi.Elements$RecordingBinder.install(Elements.java:223)
+	at com.google.inject.spi.Elements.getElements(Elements.java:101)
+	at com.google.inject.internal.InjectorShell$Builder.build(InjectorShell.java:133)
+	at com.google.inject.internal.InternalInjectorCreator.build(InternalInjectorCreator.java:103)
+	at com.google.inject.Guice.createInjector(Guice.java:95)
+	at com.google.inject.Guice.createInjector(Guice.java:72)
+	at com.google.inject.Guice.createInjector(Guice.java:62)
+	at org.eclipse.xtend.ide.internal.XtendActivator.createInjector(XtendActivator.java:67)
+	at org.eclipse.xtend.ide.internal.XtendActivator.getInjector(XtendActivator.java:55)
+	at org.eclipse.xtend.ide.XtendExecutableExtensionFactory.getInjector(XtendExecutableExtensionFactory.java:26)
+	at org.eclipse.xtext.ui.guice.AbstractGuiceAwareExecutableExtensionFactory.create(AbstractGuiceAwareExecutableExtensionFactory.java:49)
+	at org.eclipse.core.internal.registry.ConfigurationElement.createExecutableExtension(ConfigurationElement.java:265)
+	at org.eclipse.core.internal.registry.ConfigurationElementHandle.createExecutableExtension(ConfigurationElementHandle.java:63)
+	at org.eclipse.ui.internal.console.PatternMatchListenerExtension.createDelegate(PatternMatchListenerExtension.java:83)
+	at org.eclipse.ui.internal.console.PatternMatchListener.<init>(PatternMatchListener.java:29)
+	at org.eclipse.ui.internal.console.ConsoleManager.createPatternMatchListeners(ConsoleManager.java:406)
+	at org.eclipse.ui.internal.console.ConsoleManager.addConsoles(ConsoleManager.java:209)
+	at org.eclipse.debug.internal.ui.views.console.ProcessConsoleManager$ConsoleCreation.run(ProcessConsoleManager.java:78)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: java.lang.reflect.InvocationTargetException
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.eclipse.xtext.service.MethodBasedModule.invokeMethod(MethodBasedModule.java:134)
+	... 28 more
+Caused by: java.lang.NoClassDefFoundError: org/eclipse/xtext/xbase/ui/file/EclipseFileSystemSupportImpl
+	at org.eclipse.xtend.ide.XtendUiModule.bindFileSystemSupport(XtendUiModule.java:429)
+	... 33 more
+
+!ENTRY org.apache.log4j 4 0 2022-06-11 19:24:17.329
+!MESSAGE org.eclipse.xtext.service.CompoundModule  - java.lang.reflect.InvocationTargetException
+
+!STACK 0
+java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
+	at org.eclipse.xtext.service.MethodBasedModule.invokeMethod(MethodBasedModule.java:136)
+	at org.eclipse.xtext.service.FreeModule.configure(FreeModule.java:22)
+	at org.eclipse.xtext.service.CompoundModule.configure(CompoundModule.java:34)
+	at org.eclipse.xtext.service.AbstractGenericModule.configure(AbstractGenericModule.java:32)
+	at org.eclipse.xtext.ui.DefaultUiModule.configure(DefaultUiModule.java:125)
+	at com.google.inject.spi.Elements$RecordingBinder.install(Elements.java:223)
+	at com.google.inject.spi.Elements.getElements(Elements.java:101)
+	at com.google.inject.spi.Elements.getElements(Elements.java:92)
+	at com.google.inject.util.Modules$RealOverriddenModuleBuilder$1.configure(Modules.java:172)
+	at com.google.inject.AbstractModule.configure(AbstractModule.java:59)
+	at com.google.inject.spi.Elements$RecordingBinder.install(Elements.java:223)
+	at com.google.inject.spi.Elements.getElements(Elements.java:101)
+	at com.google.inject.internal.InjectorShell$Builder.build(InjectorShell.java:133)
+	at com.google.inject.internal.InternalInjectorCreator.build(InternalInjectorCreator.java:103)
+	at com.google.inject.Guice.createInjector(Guice.java:95)
+	at com.google.inject.Guice.createInjector(Guice.java:72)
+	at com.google.inject.Guice.createInjector(Guice.java:62)
+	at org.eclipse.xtend.ide.internal.XtendActivator.createInjector(XtendActivator.java:67)
+	at org.eclipse.xtend.ide.internal.XtendActivator.getInjector(XtendActivator.java:55)
+	at org.eclipse.xtend.ide.XtendExecutableExtensionFactory.getInjector(XtendExecutableExtensionFactory.java:26)
+	at org.eclipse.xtext.ui.guice.AbstractGuiceAwareExecutableExtensionFactory.create(AbstractGuiceAwareExecutableExtensionFactory.java:49)
+	at org.eclipse.core.internal.registry.ConfigurationElement.createExecutableExtension(ConfigurationElement.java:265)
+	at org.eclipse.core.internal.registry.ConfigurationElementHandle.createExecutableExtension(ConfigurationElementHandle.java:63)
+	at org.eclipse.ui.internal.console.PatternMatchListenerExtension.createDelegate(PatternMatchListenerExtension.java:83)
+	at org.eclipse.ui.internal.console.PatternMatchListener.<init>(PatternMatchListener.java:29)
+	at org.eclipse.ui.internal.console.ConsoleManager.createPatternMatchListeners(ConsoleManager.java:406)
+	at org.eclipse.ui.internal.console.ConsoleManager.addConsoles(ConsoleManager.java:209)
+	at org.eclipse.debug.internal.ui.views.console.ProcessConsoleManager$ConsoleCreation.run(ProcessConsoleManager.java:78)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: java.lang.reflect.InvocationTargetException
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.eclipse.xtext.service.MethodBasedModule.invokeMethod(MethodBasedModule.java:134)
+	... 28 more
+Caused by: java.lang.NoClassDefFoundError: org/eclipse/xtext/xbase/file/WorkspaceConfig
+	at org.eclipse.xtend.ide.XtendUiModule.configureWorkspaceConfigContribution(XtendUiModule.java:433)
+	... 33 more
+
+!ENTRY org.apache.log4j 4 0 2022-06-11 19:24:17.345
+!MESSAGE org.eclipse.xtend.ide.internal.XtendActivator  - Failed to create injector for org.eclipse.xtend.core.Xtend
+
+
+!ENTRY org.apache.log4j 4 0 2022-06-11 19:24:17.349
+!MESSAGE org.eclipse.xtend.ide.internal.XtendActivator  - com.google.inject.internal.util.$ComputationException: java.lang.NoClassDefFoundError: org/eclipse/xtext/xbase/typesystem/override/ResolvedOperations
+
+!STACK 0
+com.google.inject.internal.util.$ComputationException: com.google.inject.internal.util.$ComputationException: java.lang.NoClassDefFoundError: org/eclipse/xtext/xbase/typesystem/override/ResolvedOperations
+	at com.google.inject.internal.util.$MapMaker$StrategyImpl.compute(MapMaker.java:553)
+	at com.google.inject.internal.util.$MapMaker$StrategyImpl.compute(MapMaker.java:419)
+	at com.google.inject.internal.util.$CustomConcurrentHashMap$ComputingImpl.get(CustomConcurrentHashMap.java:2041)
+	at com.google.inject.internal.FailableCache.get(FailableCache.java:50)
+	at com.google.inject.internal.ConstructorInjectorStore.get(ConstructorInjectorStore.java:49)
+	at com.google.inject.internal.ConstructorBindingImpl.initialize(ConstructorBindingImpl.java:125)
+	at com.google.inject.internal.InjectorImpl.initializeBinding(InjectorImpl.java:507)
+	at com.google.inject.internal.AbstractBindingProcessor$Processor$1.run(AbstractBindingProcessor.java:159)
+	at com.google.inject.internal.ProcessedBindingData.initializeBindings(ProcessedBindingData.java:44)
+	at com.google.inject.internal.InternalInjectorCreator.initializeStatically(InternalInjectorCreator.java:122)
+	at com.google.inject.internal.InternalInjectorCreator.build(InternalInjectorCreator.java:106)
+	at com.google.inject.Guice.createInjector(Guice.java:95)
+	at com.google.inject.Guice.createInjector(Guice.java:72)
+	at com.google.inject.Guice.createInjector(Guice.java:62)
+	at org.eclipse.xtend.ide.internal.XtendActivator.createInjector(XtendActivator.java:67)
+	at org.eclipse.xtend.ide.internal.XtendActivator.getInjector(XtendActivator.java:55)
+	at org.eclipse.xtend.ide.XtendExecutableExtensionFactory.getInjector(XtendExecutableExtensionFactory.java:26)
+	at org.eclipse.xtext.ui.guice.AbstractGuiceAwareExecutableExtensionFactory.create(AbstractGuiceAwareExecutableExtensionFactory.java:49)
+	at org.eclipse.core.internal.registry.ConfigurationElement.createExecutableExtension(ConfigurationElement.java:265)
+	at org.eclipse.core.internal.registry.ConfigurationElementHandle.createExecutableExtension(ConfigurationElementHandle.java:63)
+	at org.eclipse.ui.internal.console.PatternMatchListenerExtension.createDelegate(PatternMatchListenerExtension.java:83)
+	at org.eclipse.ui.internal.console.PatternMatchListener.<init>(PatternMatchListener.java:29)
+	at org.eclipse.ui.internal.console.ConsoleManager.createPatternMatchListeners(ConsoleManager.java:406)
+	at org.eclipse.ui.internal.console.ConsoleManager.addConsoles(ConsoleManager.java:209)
+	at org.eclipse.debug.internal.ui.views.console.ProcessConsoleManager$ConsoleCreation.run(ProcessConsoleManager.java:78)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: com.google.inject.internal.util.$ComputationException: java.lang.NoClassDefFoundError: org/eclipse/xtext/xbase/typesystem/override/ResolvedOperations
+	at com.google.inject.internal.util.$MapMaker$StrategyImpl.compute(MapMaker.java:553)
+	at com.google.inject.internal.util.$MapMaker$StrategyImpl.compute(MapMaker.java:419)
+	at com.google.inject.internal.util.$CustomConcurrentHashMap$ComputingImpl.get(CustomConcurrentHashMap.java:2041)
+	at com.google.inject.internal.FailableCache.get(FailableCache.java:50)
+	at com.google.inject.internal.MembersInjectorStore.get(MembersInjectorStore.java:65)
+	at com.google.inject.internal.ConstructorInjectorStore.createConstructor(ConstructorInjectorStore.java:73)
+	at com.google.inject.internal.ConstructorInjectorStore.access$000(ConstructorInjectorStore.java:28)
+	at com.google.inject.internal.ConstructorInjectorStore$1.create(ConstructorInjectorStore.java:36)
+	at com.google.inject.internal.ConstructorInjectorStore$1.create(ConstructorInjectorStore.java:32)
+	at com.google.inject.internal.FailableCache$1.apply(FailableCache.java:39)
+	at com.google.inject.internal.util.$MapMaker$StrategyImpl.compute(MapMaker.java:549)
+	... 25 more
+Caused by: java.lang.NoClassDefFoundError: org/eclipse/xtext/xbase/typesystem/override/ResolvedOperations
+	at java.base/java.lang.Class.getDeclaredMethods0(Native Method)
+	at java.base/java.lang.Class.privateGetDeclaredMethods(Class.java:3166)
+	at java.base/java.lang.Class.getDeclaredMethods(Class.java:2309)
+	at com.google.inject.spi.InjectionPoint.getInjectionPoints(InjectionPoint.java:662)
+	at com.google.inject.spi.InjectionPoint.forInstanceMethodsAndFields(InjectionPoint.java:356)
+	at com.google.inject.internal.MembersInjectorStore.createWithListeners(MembersInjectorStore.java:90)
+	at com.google.inject.internal.MembersInjectorStore.access$000(MembersInjectorStore.java:34)
+	at com.google.inject.internal.MembersInjectorStore$1.create(MembersInjectorStore.java:42)
+	at com.google.inject.internal.MembersInjectorStore$1.create(MembersInjectorStore.java:39)
+	at com.google.inject.internal.FailableCache$1.apply(FailableCache.java:39)
+	at com.google.inject.internal.util.$MapMaker$StrategyImpl.compute(MapMaker.java:549)
+	... 35 more
+Caused by: java.lang.ClassNotFoundException: org.eclipse.xtext.xbase.typesystem.override.ResolvedOperations cannot be found by org.eclipse.xtend.core_2.4.3.v201309030823
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:516)
+	at org.eclipse.osgi.internal.loader.ModuleClassLoader.loadClass(ModuleClassLoader.java:171)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:521)
+	... 46 more
+
+!ENTRY org.apache.log4j 4 0 2022-06-11 19:24:17.350
+!MESSAGE org.eclipse.xtend.ide.XtendExecutableExtensionFactory  - java.lang.RuntimeException: Failed to create injector for org.eclipse.xtend.core.Xtend
+
+
+!ENTRY org.eclipse.xtend.ide 4 0 2022-06-11 19:24:17.351
+!MESSAGE Failed to create injector for org.eclipse.xtend.core.Xtend ExtensionFactory: org.eclipse.xtend.ide.XtendExecutableExtensionFactory
+!STACK 0
+java.lang.RuntimeException: Failed to create injector for org.eclipse.xtend.core.Xtend
+	at org.eclipse.xtend.ide.internal.XtendActivator.createInjector(XtendActivator.java:71)
+	at org.eclipse.xtend.ide.internal.XtendActivator.getInjector(XtendActivator.java:55)
+	at org.eclipse.xtend.ide.XtendExecutableExtensionFactory.getInjector(XtendExecutableExtensionFactory.java:26)
+	at org.eclipse.xtext.ui.guice.AbstractGuiceAwareExecutableExtensionFactory.create(AbstractGuiceAwareExecutableExtensionFactory.java:49)
+	at org.eclipse.core.internal.registry.ConfigurationElement.createExecutableExtension(ConfigurationElement.java:265)
+	at org.eclipse.core.internal.registry.ConfigurationElementHandle.createExecutableExtension(ConfigurationElementHandle.java:63)
+	at org.eclipse.ui.internal.console.PatternMatchListenerExtension.createDelegate(PatternMatchListenerExtension.java:83)
+	at org.eclipse.ui.internal.console.PatternMatchListener.<init>(PatternMatchListener.java:29)
+	at org.eclipse.ui.internal.console.ConsoleManager.createPatternMatchListeners(ConsoleManager.java:406)
+	at org.eclipse.ui.internal.console.ConsoleManager.addConsoles(ConsoleManager.java:209)
+	at org.eclipse.debug.internal.ui.views.console.ProcessConsoleManager$ConsoleCreation.run(ProcessConsoleManager.java:78)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: com.google.inject.internal.util.$ComputationException: com.google.inject.internal.util.$ComputationException: java.lang.NoClassDefFoundError: org/eclipse/xtext/xbase/typesystem/override/ResolvedOperations
+	at com.google.inject.internal.util.$MapMaker$StrategyImpl.compute(MapMaker.java:553)
+	at com.google.inject.internal.util.$MapMaker$StrategyImpl.compute(MapMaker.java:419)
+	at com.google.inject.internal.util.$CustomConcurrentHashMap$ComputingImpl.get(CustomConcurrentHashMap.java:2041)
+	at com.google.inject.internal.FailableCache.get(FailableCache.java:50)
+	at com.google.inject.internal.ConstructorInjectorStore.get(ConstructorInjectorStore.java:49)
+	at com.google.inject.internal.ConstructorBindingImpl.initialize(ConstructorBindingImpl.java:125)
+	at com.google.inject.internal.InjectorImpl.initializeBinding(InjectorImpl.java:507)
+	at com.google.inject.internal.AbstractBindingProcessor$Processor$1.run(AbstractBindingProcessor.java:159)
+	at com.google.inject.internal.ProcessedBindingData.initializeBindings(ProcessedBindingData.java:44)
+	at com.google.inject.internal.InternalInjectorCreator.initializeStatically(InternalInjectorCreator.java:122)
+	at com.google.inject.internal.InternalInjectorCreator.build(InternalInjectorCreator.java:106)
+	at com.google.inject.Guice.createInjector(Guice.java:95)
+	at com.google.inject.Guice.createInjector(Guice.java:72)
+	at com.google.inject.Guice.createInjector(Guice.java:62)
+	at org.eclipse.xtend.ide.internal.XtendActivator.createInjector(XtendActivator.java:67)
+	... 11 more
+Caused by: com.google.inject.internal.util.$ComputationException: java.lang.NoClassDefFoundError: org/eclipse/xtext/xbase/typesystem/override/ResolvedOperations
+	at com.google.inject.internal.util.$MapMaker$StrategyImpl.compute(MapMaker.java:553)
+	at com.google.inject.internal.util.$MapMaker$StrategyImpl.compute(MapMaker.java:419)
+	at com.google.inject.internal.util.$CustomConcurrentHashMap$ComputingImpl.get(CustomConcurrentHashMap.java:2041)
+	at com.google.inject.internal.FailableCache.get(FailableCache.java:50)
+	at com.google.inject.internal.MembersInjectorStore.get(MembersInjectorStore.java:65)
+	at com.google.inject.internal.ConstructorInjectorStore.createConstructor(ConstructorInjectorStore.java:73)
+	at com.google.inject.internal.ConstructorInjectorStore.access$000(ConstructorInjectorStore.java:28)
+	at com.google.inject.internal.ConstructorInjectorStore$1.create(ConstructorInjectorStore.java:36)
+	at com.google.inject.internal.ConstructorInjectorStore$1.create(ConstructorInjectorStore.java:32)
+	at com.google.inject.internal.FailableCache$1.apply(FailableCache.java:39)
+	at com.google.inject.internal.util.$MapMaker$StrategyImpl.compute(MapMaker.java:549)
+	... 25 more
+Caused by: java.lang.NoClassDefFoundError: org/eclipse/xtext/xbase/typesystem/override/ResolvedOperations
+	at java.base/java.lang.Class.getDeclaredMethods0(Native Method)
+	at java.base/java.lang.Class.privateGetDeclaredMethods(Class.java:3166)
+	at java.base/java.lang.Class.getDeclaredMethods(Class.java:2309)
+	at com.google.inject.spi.InjectionPoint.getInjectionPoints(InjectionPoint.java:662)
+	at com.google.inject.spi.InjectionPoint.forInstanceMethodsAndFields(InjectionPoint.java:356)
+	at com.google.inject.internal.MembersInjectorStore.createWithListeners(MembersInjectorStore.java:90)
+	at com.google.inject.internal.MembersInjectorStore.access$000(MembersInjectorStore.java:34)
+	at com.google.inject.internal.MembersInjectorStore$1.create(MembersInjectorStore.java:42)
+	at com.google.inject.internal.MembersInjectorStore$1.create(MembersInjectorStore.java:39)
+	at com.google.inject.internal.FailableCache$1.apply(FailableCache.java:39)
+	at com.google.inject.internal.util.$MapMaker$StrategyImpl.compute(MapMaker.java:549)
+	... 35 more
+Caused by: java.lang.ClassNotFoundException: org.eclipse.xtext.xbase.typesystem.override.ResolvedOperations cannot be found by org.eclipse.xtend.core_2.4.3.v201309030823
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:516)
+	at org.eclipse.osgi.internal.loader.ModuleClassLoader.loadClass(ModuleClassLoader.java:171)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:521)
+	... 46 more
+
+!ENTRY org.apache.log4j 4 0 2022-06-11 19:48:51.349
+!MESSAGE org.eclipse.xtext.service.CompoundModule  - java.lang.reflect.InvocationTargetException
+
+!STACK 0
+java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
+	at org.eclipse.xtext.service.MethodBasedModule.invokeMethod(MethodBasedModule.java:136)
+	at org.eclipse.xtext.service.MethodBasedModule.configure(MethodBasedModule.java:49)
+	at org.eclipse.xtext.service.CompoundModule.configure(CompoundModule.java:34)
+	at org.eclipse.xtext.service.AbstractGenericModule.configure(AbstractGenericModule.java:32)
+	at org.eclipse.xtext.service.DefaultRuntimeModule.configure(DefaultRuntimeModule.java:75)
+	at org.eclipse.xtend.core.AbstractXtendRuntimeModule.configure(AbstractXtendRuntimeModule.java:25)
+	at org.eclipse.xtend.core.XtendRuntimeModule.configure(XtendRuntimeModule.java:187)
+	at com.google.inject.spi.Elements$RecordingBinder.install(Elements.java:223)
+	at com.google.inject.spi.Elements.getElements(Elements.java:101)
+	at com.google.inject.spi.Elements.getElements(Elements.java:92)
+	at com.google.inject.util.Modules$RealOverriddenModuleBuilder$1.configure(Modules.java:152)
+	at com.google.inject.AbstractModule.configure(AbstractModule.java:59)
+	at com.google.inject.spi.Elements$RecordingBinder.install(Elements.java:223)
+	at com.google.inject.spi.Elements.getElements(Elements.java:101)
+	at com.google.inject.spi.Elements.getElements(Elements.java:92)
+	at com.google.inject.util.Modules$RealOverriddenModuleBuilder$1.configure(Modules.java:152)
+	at com.google.inject.AbstractModule.configure(AbstractModule.java:59)
+	at com.google.inject.spi.Elements$RecordingBinder.install(Elements.java:223)
+	at com.google.inject.spi.Elements.getElements(Elements.java:101)
+	at com.google.inject.internal.InjectorShell$Builder.build(InjectorShell.java:133)
+	at com.google.inject.internal.InternalInjectorCreator.build(InternalInjectorCreator.java:103)
+	at com.google.inject.Guice.createInjector(Guice.java:95)
+	at com.google.inject.Guice.createInjector(Guice.java:72)
+	at com.google.inject.Guice.createInjector(Guice.java:62)
+	at org.eclipse.xtend.ide.internal.XtendActivator.createInjector(XtendActivator.java:67)
+	at org.eclipse.xtend.ide.internal.XtendActivator.getInjector(XtendActivator.java:55)
+	at org.eclipse.xtend.ide.XtendExecutableExtensionFactory.getInjector(XtendExecutableExtensionFactory.java:26)
+	at org.eclipse.xtext.ui.guice.AbstractGuiceAwareExecutableExtensionFactory.create(AbstractGuiceAwareExecutableExtensionFactory.java:49)
+	at org.eclipse.core.internal.registry.ConfigurationElement.createExecutableExtension(ConfigurationElement.java:265)
+	at org.eclipse.core.internal.registry.ConfigurationElementHandle.createExecutableExtension(ConfigurationElementHandle.java:63)
+	at org.eclipse.ui.internal.console.PatternMatchListenerExtension.createDelegate(PatternMatchListenerExtension.java:83)
+	at org.eclipse.ui.internal.console.PatternMatchListener.<init>(PatternMatchListener.java:29)
+	at org.eclipse.ui.internal.console.ConsoleManager.createPatternMatchListeners(ConsoleManager.java:406)
+	at org.eclipse.ui.internal.console.ConsoleManager.addConsoles(ConsoleManager.java:209)
+	at org.eclipse.debug.internal.ui.views.console.ProcessConsoleManager$ConsoleCreation.run(ProcessConsoleManager.java:78)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: java.lang.reflect.InvocationTargetException
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.eclipse.xtext.service.MethodBasedModule.invokeMethod(MethodBasedModule.java:134)
+	... 35 more
+Caused by: java.lang.NoClassDefFoundError: org/eclipse/xtext/xbase/file/JavaIOFileSystemSupport
+	at org.eclipse.xtend.core.XtendRuntimeModule.bindFileHandleFactory(XtendRuntimeModule.java:220)
+	... 40 more
+
+!ENTRY org.apache.log4j 4 0 2022-06-11 19:48:51.355
+!MESSAGE org.eclipse.xtext.service.CompoundModule  - java.lang.reflect.InvocationTargetException
+
+!STACK 0
+java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
+	at org.eclipse.xtext.service.MethodBasedModule.invokeMethod(MethodBasedModule.java:136)
+	at org.eclipse.xtext.service.MethodBasedModule.configure(MethodBasedModule.java:49)
+	at org.eclipse.xtext.service.CompoundModule.configure(CompoundModule.java:34)
+	at org.eclipse.xtext.service.AbstractGenericModule.configure(AbstractGenericModule.java:32)
+	at org.eclipse.xtext.service.DefaultRuntimeModule.configure(DefaultRuntimeModule.java:75)
+	at org.eclipse.xtend.core.AbstractXtendRuntimeModule.configure(AbstractXtendRuntimeModule.java:25)
+	at org.eclipse.xtend.core.XtendRuntimeModule.configure(XtendRuntimeModule.java:187)
+	at com.google.inject.spi.Elements$RecordingBinder.install(Elements.java:223)
+	at com.google.inject.spi.Elements.getElements(Elements.java:101)
+	at com.google.inject.spi.Elements.getElements(Elements.java:92)
+	at com.google.inject.util.Modules$RealOverriddenModuleBuilder$1.configure(Modules.java:152)
+	at com.google.inject.AbstractModule.configure(AbstractModule.java:59)
+	at com.google.inject.spi.Elements$RecordingBinder.install(Elements.java:223)
+	at com.google.inject.spi.Elements.getElements(Elements.java:101)
+	at com.google.inject.spi.Elements.getElements(Elements.java:92)
+	at com.google.inject.util.Modules$RealOverriddenModuleBuilder$1.configure(Modules.java:152)
+	at com.google.inject.AbstractModule.configure(AbstractModule.java:59)
+	at com.google.inject.spi.Elements$RecordingBinder.install(Elements.java:223)
+	at com.google.inject.spi.Elements.getElements(Elements.java:101)
+	at com.google.inject.internal.InjectorShell$Builder.build(InjectorShell.java:133)
+	at com.google.inject.internal.InternalInjectorCreator.build(InternalInjectorCreator.java:103)
+	at com.google.inject.Guice.createInjector(Guice.java:95)
+	at com.google.inject.Guice.createInjector(Guice.java:72)
+	at com.google.inject.Guice.createInjector(Guice.java:62)
+	at org.eclipse.xtend.ide.internal.XtendActivator.createInjector(XtendActivator.java:67)
+	at org.eclipse.xtend.ide.internal.XtendActivator.getInjector(XtendActivator.java:55)
+	at org.eclipse.xtend.ide.XtendExecutableExtensionFactory.getInjector(XtendExecutableExtensionFactory.java:26)
+	at org.eclipse.xtext.ui.guice.AbstractGuiceAwareExecutableExtensionFactory.create(AbstractGuiceAwareExecutableExtensionFactory.java:49)
+	at org.eclipse.core.internal.registry.ConfigurationElement.createExecutableExtension(ConfigurationElement.java:265)
+	at org.eclipse.core.internal.registry.ConfigurationElementHandle.createExecutableExtension(ConfigurationElementHandle.java:63)
+	at org.eclipse.ui.internal.console.PatternMatchListenerExtension.createDelegate(PatternMatchListenerExtension.java:83)
+	at org.eclipse.ui.internal.console.PatternMatchListener.<init>(PatternMatchListener.java:29)
+	at org.eclipse.ui.internal.console.ConsoleManager.createPatternMatchListeners(ConsoleManager.java:406)
+	at org.eclipse.ui.internal.console.ConsoleManager.addConsoles(ConsoleManager.java:209)
+	at org.eclipse.debug.internal.ui.views.console.ProcessConsoleManager$ConsoleCreation.run(ProcessConsoleManager.java:78)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: java.lang.reflect.InvocationTargetException
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.eclipse.xtext.service.MethodBasedModule.invokeMethod(MethodBasedModule.java:134)
+	... 35 more
+Caused by: java.lang.NoClassDefFoundError: org/eclipse/xtext/xbase/annotations/validation/UnresolvedAnnotationTypeAwareMessageProducer
+	at org.eclipse.xtend.core.XtendRuntimeModule.bindILinkingDiagnosticMessageProvider(XtendRuntimeModule.java:133)
+	... 40 more
+
+!ENTRY org.apache.log4j 4 0 2022-06-11 19:48:51.357
+!MESSAGE org.eclipse.xtext.service.CompoundModule  - java.lang.reflect.InvocationTargetException
+
+!STACK 0
+java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
+	at org.eclipse.xtext.service.MethodBasedModule.invokeMethod(MethodBasedModule.java:136)
+	at org.eclipse.xtext.service.MethodBasedModule.configure(MethodBasedModule.java:49)
+	at org.eclipse.xtext.service.CompoundModule.configure(CompoundModule.java:34)
+	at org.eclipse.xtext.service.AbstractGenericModule.configure(AbstractGenericModule.java:32)
+	at org.eclipse.xtext.service.DefaultRuntimeModule.configure(DefaultRuntimeModule.java:75)
+	at org.eclipse.xtend.core.AbstractXtendRuntimeModule.configure(AbstractXtendRuntimeModule.java:25)
+	at org.eclipse.xtend.core.XtendRuntimeModule.configure(XtendRuntimeModule.java:187)
+	at com.google.inject.spi.Elements$RecordingBinder.install(Elements.java:223)
+	at com.google.inject.spi.Elements.getElements(Elements.java:101)
+	at com.google.inject.spi.Elements.getElements(Elements.java:92)
+	at com.google.inject.util.Modules$RealOverriddenModuleBuilder$1.configure(Modules.java:152)
+	at com.google.inject.AbstractModule.configure(AbstractModule.java:59)
+	at com.google.inject.spi.Elements$RecordingBinder.install(Elements.java:223)
+	at com.google.inject.spi.Elements.getElements(Elements.java:101)
+	at com.google.inject.spi.Elements.getElements(Elements.java:92)
+	at com.google.inject.util.Modules$RealOverriddenModuleBuilder$1.configure(Modules.java:152)
+	at com.google.inject.AbstractModule.configure(AbstractModule.java:59)
+	at com.google.inject.spi.Elements$RecordingBinder.install(Elements.java:223)
+	at com.google.inject.spi.Elements.getElements(Elements.java:101)
+	at com.google.inject.internal.InjectorShell$Builder.build(InjectorShell.java:133)
+	at com.google.inject.internal.InternalInjectorCreator.build(InternalInjectorCreator.java:103)
+	at com.google.inject.Guice.createInjector(Guice.java:95)
+	at com.google.inject.Guice.createInjector(Guice.java:72)
+	at com.google.inject.Guice.createInjector(Guice.java:62)
+	at org.eclipse.xtend.ide.internal.XtendActivator.createInjector(XtendActivator.java:67)
+	at org.eclipse.xtend.ide.internal.XtendActivator.getInjector(XtendActivator.java:55)
+	at org.eclipse.xtend.ide.XtendExecutableExtensionFactory.getInjector(XtendExecutableExtensionFactory.java:26)
+	at org.eclipse.xtext.ui.guice.AbstractGuiceAwareExecutableExtensionFactory.create(AbstractGuiceAwareExecutableExtensionFactory.java:49)
+	at org.eclipse.core.internal.registry.ConfigurationElement.createExecutableExtension(ConfigurationElement.java:265)
+	at org.eclipse.core.internal.registry.ConfigurationElementHandle.createExecutableExtension(ConfigurationElementHandle.java:63)
+	at org.eclipse.ui.internal.console.PatternMatchListenerExtension.createDelegate(PatternMatchListenerExtension.java:83)
+	at org.eclipse.ui.internal.console.PatternMatchListener.<init>(PatternMatchListener.java:29)
+	at org.eclipse.ui.internal.console.ConsoleManager.createPatternMatchListeners(ConsoleManager.java:406)
+	at org.eclipse.ui.internal.console.ConsoleManager.addConsoles(ConsoleManager.java:209)
+	at org.eclipse.debug.internal.ui.views.console.ProcessConsoleManager$ConsoleCreation.run(ProcessConsoleManager.java:78)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: java.lang.reflect.InvocationTargetException
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.eclipse.xtext.service.MethodBasedModule.invokeMethod(MethodBasedModule.java:134)
+	... 35 more
+Caused by: java.lang.NoClassDefFoundError: org/eclipse/xtext/common/types/descriptions/JvmTypesResourceDescriptionStrategy
+	at org.eclipse.xtend.core.XtendRuntimeModule.bindIDefaultResourceDescriptionStrategy(XtendRuntimeModule.java:106)
+	... 40 more
+
+!ENTRY org.apache.log4j 4 0 2022-06-11 19:48:51.359
+!MESSAGE org.eclipse.xtext.service.CompoundModule  - java.lang.reflect.InvocationTargetException
+
+!STACK 0
+java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
+	at org.eclipse.xtext.service.MethodBasedModule.invokeMethod(MethodBasedModule.java:136)
+	at org.eclipse.xtext.service.FreeModule.configure(FreeModule.java:22)
+	at org.eclipse.xtext.service.CompoundModule.configure(CompoundModule.java:34)
+	at org.eclipse.xtext.service.AbstractGenericModule.configure(AbstractGenericModule.java:32)
+	at org.eclipse.xtext.service.DefaultRuntimeModule.configure(DefaultRuntimeModule.java:75)
+	at org.eclipse.xtend.core.AbstractXtendRuntimeModule.configure(AbstractXtendRuntimeModule.java:25)
+	at org.eclipse.xtend.core.XtendRuntimeModule.configure(XtendRuntimeModule.java:187)
+	at com.google.inject.spi.Elements$RecordingBinder.install(Elements.java:223)
+	at com.google.inject.spi.Elements.getElements(Elements.java:101)
+	at com.google.inject.spi.Elements.getElements(Elements.java:92)
+	at com.google.inject.util.Modules$RealOverriddenModuleBuilder$1.configure(Modules.java:152)
+	at com.google.inject.AbstractModule.configure(AbstractModule.java:59)
+	at com.google.inject.spi.Elements$RecordingBinder.install(Elements.java:223)
+	at com.google.inject.spi.Elements.getElements(Elements.java:101)
+	at com.google.inject.spi.Elements.getElements(Elements.java:92)
+	at com.google.inject.util.Modules$RealOverriddenModuleBuilder$1.configure(Modules.java:152)
+	at com.google.inject.AbstractModule.configure(AbstractModule.java:59)
+	at com.google.inject.spi.Elements$RecordingBinder.install(Elements.java:223)
+	at com.google.inject.spi.Elements.getElements(Elements.java:101)
+	at com.google.inject.internal.InjectorShell$Builder.build(InjectorShell.java:133)
+	at com.google.inject.internal.InternalInjectorCreator.build(InternalInjectorCreator.java:103)
+	at com.google.inject.Guice.createInjector(Guice.java:95)
+	at com.google.inject.Guice.createInjector(Guice.java:72)
+	at com.google.inject.Guice.createInjector(Guice.java:62)
+	at org.eclipse.xtend.ide.internal.XtendActivator.createInjector(XtendActivator.java:67)
+	at org.eclipse.xtend.ide.internal.XtendActivator.getInjector(XtendActivator.java:55)
+	at org.eclipse.xtend.ide.XtendExecutableExtensionFactory.getInjector(XtendExecutableExtensionFactory.java:26)
+	at org.eclipse.xtext.ui.guice.AbstractGuiceAwareExecutableExtensionFactory.create(AbstractGuiceAwareExecutableExtensionFactory.java:49)
+	at org.eclipse.core.internal.registry.ConfigurationElement.createExecutableExtension(ConfigurationElement.java:265)
+	at org.eclipse.core.internal.registry.ConfigurationElementHandle.createExecutableExtension(ConfigurationElementHandle.java:63)
+	at org.eclipse.ui.internal.console.PatternMatchListenerExtension.createDelegate(PatternMatchListenerExtension.java:83)
+	at org.eclipse.ui.internal.console.PatternMatchListener.<init>(PatternMatchListener.java:29)
+	at org.eclipse.ui.internal.console.ConsoleManager.createPatternMatchListeners(ConsoleManager.java:406)
+	at org.eclipse.ui.internal.console.ConsoleManager.addConsoles(ConsoleManager.java:209)
+	at org.eclipse.debug.internal.ui.views.console.ProcessConsoleManager$ConsoleCreation.run(ProcessConsoleManager.java:78)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: java.lang.reflect.InvocationTargetException
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.eclipse.xtext.service.MethodBasedModule.invokeMethod(MethodBasedModule.java:134)
+	... 35 more
+Caused by: java.lang.NoClassDefFoundError: org/eclipse/xtext/xbase/file/WorkspaceConfig
+	at org.eclipse.xtend.core.XtendRuntimeModule.configureWorkspaceConfigContribution(XtendRuntimeModule.java:229)
+	... 40 more
+
+!ENTRY org.apache.log4j 4 0 2022-06-11 19:48:51.362
+!MESSAGE org.eclipse.xtext.service.CompoundModule  - java.lang.reflect.InvocationTargetException
+
+!STACK 0
+java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
+	at org.eclipse.xtext.service.MethodBasedModule.invokeMethod(MethodBasedModule.java:136)
+	at org.eclipse.xtext.service.MethodBasedModule.configure(MethodBasedModule.java:49)
+	at org.eclipse.xtext.service.CompoundModule.configure(CompoundModule.java:34)
+	at org.eclipse.xtext.service.AbstractGenericModule.configure(AbstractGenericModule.java:32)
+	at org.eclipse.xtext.service.DefaultRuntimeModule.configure(DefaultRuntimeModule.java:75)
+	at org.eclipse.xtend.core.AbstractXtendRuntimeModule.configure(AbstractXtendRuntimeModule.java:25)
+	at org.eclipse.xtend.core.XtendRuntimeModule.configure(XtendRuntimeModule.java:187)
+	at com.google.inject.spi.Elements$RecordingBinder.install(Elements.java:223)
+	at com.google.inject.spi.Elements.getElements(Elements.java:101)
+	at com.google.inject.spi.Elements.getElements(Elements.java:92)
+	at com.google.inject.util.Modules$RealOverriddenModuleBuilder$1.configure(Modules.java:152)
+	at com.google.inject.AbstractModule.configure(AbstractModule.java:59)
+	at com.google.inject.spi.Elements$RecordingBinder.install(Elements.java:223)
+	at com.google.inject.spi.Elements.getElements(Elements.java:101)
+	at com.google.inject.spi.Elements.getElements(Elements.java:92)
+	at com.google.inject.util.Modules$RealOverriddenModuleBuilder$1.configure(Modules.java:152)
+	at com.google.inject.AbstractModule.configure(AbstractModule.java:59)
+	at com.google.inject.spi.Elements$RecordingBinder.install(Elements.java:223)
+	at com.google.inject.spi.Elements.getElements(Elements.java:101)
+	at com.google.inject.internal.InjectorShell$Builder.build(InjectorShell.java:133)
+	at com.google.inject.internal.InternalInjectorCreator.build(InternalInjectorCreator.java:103)
+	at com.google.inject.Guice.createInjector(Guice.java:95)
+	at com.google.inject.Guice.createInjector(Guice.java:72)
+	at com.google.inject.Guice.createInjector(Guice.java:62)
+	at org.eclipse.xtend.ide.internal.XtendActivator.createInjector(XtendActivator.java:67)
+	at org.eclipse.xtend.ide.internal.XtendActivator.getInjector(XtendActivator.java:55)
+	at org.eclipse.xtend.ide.XtendExecutableExtensionFactory.getInjector(XtendExecutableExtensionFactory.java:26)
+	at org.eclipse.xtext.ui.guice.AbstractGuiceAwareExecutableExtensionFactory.create(AbstractGuiceAwareExecutableExtensionFactory.java:49)
+	at org.eclipse.core.internal.registry.ConfigurationElement.createExecutableExtension(ConfigurationElement.java:265)
+	at org.eclipse.core.internal.registry.ConfigurationElementHandle.createExecutableExtension(ConfigurationElementHandle.java:63)
+	at org.eclipse.ui.internal.console.PatternMatchListenerExtension.createDelegate(PatternMatchListenerExtension.java:83)
+	at org.eclipse.ui.internal.console.PatternMatchListener.<init>(PatternMatchListener.java:29)
+	at org.eclipse.ui.internal.console.ConsoleManager.createPatternMatchListeners(ConsoleManager.java:406)
+	at org.eclipse.ui.internal.console.ConsoleManager.addConsoles(ConsoleManager.java:209)
+	at org.eclipse.debug.internal.ui.views.console.ProcessConsoleManager$ConsoleCreation.run(ProcessConsoleManager.java:78)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: java.lang.reflect.InvocationTargetException
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.eclipse.xtext.service.MethodBasedModule.invokeMethod(MethodBasedModule.java:134)
+	... 35 more
+Caused by: java.lang.NoClassDefFoundError: org/eclipse/xtext/resource/IBatchLinkableResource
+	at org.eclipse.xtend.core.XtendRuntimeModule.bindXtextResource(XtendRuntimeModule.java:204)
+	... 40 more
+
+!ENTRY org.apache.log4j 4 0 2022-06-11 19:48:51.366
+!MESSAGE org.eclipse.xtext.service.CompoundModule  - java.lang.reflect.InvocationTargetException
+
+!STACK 0
+java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
+	at org.eclipse.xtext.service.MethodBasedModule.invokeMethod(MethodBasedModule.java:136)
+	at org.eclipse.xtext.service.MethodBasedModule.configure(MethodBasedModule.java:49)
+	at org.eclipse.xtext.service.CompoundModule.configure(CompoundModule.java:34)
+	at org.eclipse.xtext.service.AbstractGenericModule.configure(AbstractGenericModule.java:32)
+	at org.eclipse.xtext.service.DefaultRuntimeModule.configure(DefaultRuntimeModule.java:75)
+	at org.eclipse.xtend.core.AbstractXtendRuntimeModule.configure(AbstractXtendRuntimeModule.java:25)
+	at org.eclipse.xtend.core.XtendRuntimeModule.configure(XtendRuntimeModule.java:187)
+	at com.google.inject.spi.Elements$RecordingBinder.install(Elements.java:223)
+	at com.google.inject.spi.Elements.getElements(Elements.java:101)
+	at com.google.inject.spi.Elements.getElements(Elements.java:92)
+	at com.google.inject.util.Modules$RealOverriddenModuleBuilder$1.configure(Modules.java:152)
+	at com.google.inject.AbstractModule.configure(AbstractModule.java:59)
+	at com.google.inject.spi.Elements$RecordingBinder.install(Elements.java:223)
+	at com.google.inject.spi.Elements.getElements(Elements.java:101)
+	at com.google.inject.spi.Elements.getElements(Elements.java:92)
+	at com.google.inject.util.Modules$RealOverriddenModuleBuilder$1.configure(Modules.java:152)
+	at com.google.inject.AbstractModule.configure(AbstractModule.java:59)
+	at com.google.inject.spi.Elements$RecordingBinder.install(Elements.java:223)
+	at com.google.inject.spi.Elements.getElements(Elements.java:101)
+	at com.google.inject.internal.InjectorShell$Builder.build(InjectorShell.java:133)
+	at com.google.inject.internal.InternalInjectorCreator.build(InternalInjectorCreator.java:103)
+	at com.google.inject.Guice.createInjector(Guice.java:95)
+	at com.google.inject.Guice.createInjector(Guice.java:72)
+	at com.google.inject.Guice.createInjector(Guice.java:62)
+	at org.eclipse.xtend.ide.internal.XtendActivator.createInjector(XtendActivator.java:67)
+	at org.eclipse.xtend.ide.internal.XtendActivator.getInjector(XtendActivator.java:55)
+	at org.eclipse.xtend.ide.XtendExecutableExtensionFactory.getInjector(XtendExecutableExtensionFactory.java:26)
+	at org.eclipse.xtext.ui.guice.AbstractGuiceAwareExecutableExtensionFactory.create(AbstractGuiceAwareExecutableExtensionFactory.java:49)
+	at org.eclipse.core.internal.registry.ConfigurationElement.createExecutableExtension(ConfigurationElement.java:265)
+	at org.eclipse.core.internal.registry.ConfigurationElementHandle.createExecutableExtension(ConfigurationElementHandle.java:63)
+	at org.eclipse.ui.internal.console.PatternMatchListenerExtension.createDelegate(PatternMatchListenerExtension.java:83)
+	at org.eclipse.ui.internal.console.PatternMatchListener.<init>(PatternMatchListener.java:29)
+	at org.eclipse.ui.internal.console.ConsoleManager.createPatternMatchListeners(ConsoleManager.java:406)
+	at org.eclipse.ui.internal.console.ConsoleManager.addConsoles(ConsoleManager.java:209)
+	at org.eclipse.debug.internal.ui.views.console.ProcessConsoleManager$ConsoleCreation.run(ProcessConsoleManager.java:78)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: java.lang.reflect.InvocationTargetException
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.eclipse.xtext.service.MethodBasedModule.invokeMethod(MethodBasedModule.java:134)
+	... 35 more
+Caused by: java.lang.NoClassDefFoundError: org/eclipse/xtext/xbase/file/FileLocationsImpl
+	at org.eclipse.xtend.core.XtendRuntimeModule.bindFileLocations(XtendRuntimeModule.java:233)
+	... 40 more
+
+!ENTRY org.apache.log4j 4 0 2022-06-11 19:48:51.371
+!MESSAGE org.eclipse.xtext.service.CompoundModule  - java.lang.reflect.InvocationTargetException
+
+!STACK 0
+java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
+	at org.eclipse.xtext.service.MethodBasedModule.invokeMethod(MethodBasedModule.java:136)
+	at org.eclipse.xtext.service.MethodBasedModule.configure(MethodBasedModule.java:49)
+	at org.eclipse.xtext.service.CompoundModule.configure(CompoundModule.java:34)
+	at org.eclipse.xtext.service.AbstractGenericModule.configure(AbstractGenericModule.java:32)
+	at org.eclipse.xtext.service.DefaultRuntimeModule.configure(DefaultRuntimeModule.java:75)
+	at org.eclipse.xtend.core.AbstractXtendRuntimeModule.configure(AbstractXtendRuntimeModule.java:25)
+	at org.eclipse.xtend.core.XtendRuntimeModule.configure(XtendRuntimeModule.java:187)
+	at com.google.inject.spi.Elements$RecordingBinder.install(Elements.java:223)
+	at com.google.inject.spi.Elements.getElements(Elements.java:101)
+	at com.google.inject.spi.Elements.getElements(Elements.java:92)
+	at com.google.inject.util.Modules$RealOverriddenModuleBuilder$1.configure(Modules.java:152)
+	at com.google.inject.AbstractModule.configure(AbstractModule.java:59)
+	at com.google.inject.spi.Elements$RecordingBinder.install(Elements.java:223)
+	at com.google.inject.spi.Elements.getElements(Elements.java:101)
+	at com.google.inject.spi.Elements.getElements(Elements.java:92)
+	at com.google.inject.util.Modules$RealOverriddenModuleBuilder$1.configure(Modules.java:152)
+	at com.google.inject.AbstractModule.configure(AbstractModule.java:59)
+	at com.google.inject.spi.Elements$RecordingBinder.install(Elements.java:223)
+	at com.google.inject.spi.Elements.getElements(Elements.java:101)
+	at com.google.inject.internal.InjectorShell$Builder.build(InjectorShell.java:133)
+	at com.google.inject.internal.InternalInjectorCreator.build(InternalInjectorCreator.java:103)
+	at com.google.inject.Guice.createInjector(Guice.java:95)
+	at com.google.inject.Guice.createInjector(Guice.java:72)
+	at com.google.inject.Guice.createInjector(Guice.java:62)
+	at org.eclipse.xtend.ide.internal.XtendActivator.createInjector(XtendActivator.java:67)
+	at org.eclipse.xtend.ide.internal.XtendActivator.getInjector(XtendActivator.java:55)
+	at org.eclipse.xtend.ide.XtendExecutableExtensionFactory.getInjector(XtendExecutableExtensionFactory.java:26)
+	at org.eclipse.xtext.ui.guice.AbstractGuiceAwareExecutableExtensionFactory.create(AbstractGuiceAwareExecutableExtensionFactory.java:49)
+	at org.eclipse.core.internal.registry.ConfigurationElement.createExecutableExtension(ConfigurationElement.java:265)
+	at org.eclipse.core.internal.registry.ConfigurationElementHandle.createExecutableExtension(ConfigurationElementHandle.java:63)
+	at org.eclipse.ui.internal.console.PatternMatchListenerExtension.createDelegate(PatternMatchListenerExtension.java:83)
+	at org.eclipse.ui.internal.console.PatternMatchListener.<init>(PatternMatchListener.java:29)
+	at org.eclipse.ui.internal.console.ConsoleManager.createPatternMatchListeners(ConsoleManager.java:406)
+	at org.eclipse.ui.internal.console.ConsoleManager.addConsoles(ConsoleManager.java:209)
+	at org.eclipse.debug.internal.ui.views.console.ProcessConsoleManager$ConsoleCreation.run(ProcessConsoleManager.java:78)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: java.lang.reflect.InvocationTargetException
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.eclipse.xtext.service.MethodBasedModule.invokeMethod(MethodBasedModule.java:134)
+	... 35 more
+Caused by: java.lang.NoClassDefFoundError: org/eclipse/xtext/xbase/annotations/scoping/XbaseWithAnnotationsScopeProvider
+	at org.eclipse.xtend.core.XtendRuntimeModule.bindIScopeProvider(XtendRuntimeModule.java:123)
+	... 40 more
+
+!ENTRY org.apache.log4j 4 0 2022-06-11 19:48:51.376
+!MESSAGE org.eclipse.xtext.service.CompoundModule  - java.lang.reflect.InvocationTargetException
+
+!STACK 0
+java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
+	at org.eclipse.xtext.service.MethodBasedModule.invokeMethod(MethodBasedModule.java:136)
+	at org.eclipse.xtext.service.MethodBasedModule.configure(MethodBasedModule.java:49)
+	at org.eclipse.xtext.service.CompoundModule.configure(CompoundModule.java:34)
+	at org.eclipse.xtext.service.AbstractGenericModule.configure(AbstractGenericModule.java:32)
+	at org.eclipse.xtext.service.DefaultRuntimeModule.configure(DefaultRuntimeModule.java:75)
+	at org.eclipse.xtend.core.AbstractXtendRuntimeModule.configure(AbstractXtendRuntimeModule.java:25)
+	at org.eclipse.xtend.core.XtendRuntimeModule.configure(XtendRuntimeModule.java:187)
+	at com.google.inject.spi.Elements$RecordingBinder.install(Elements.java:223)
+	at com.google.inject.spi.Elements.getElements(Elements.java:101)
+	at com.google.inject.spi.Elements.getElements(Elements.java:92)
+	at com.google.inject.util.Modules$RealOverriddenModuleBuilder$1.configure(Modules.java:152)
+	at com.google.inject.AbstractModule.configure(AbstractModule.java:59)
+	at com.google.inject.spi.Elements$RecordingBinder.install(Elements.java:223)
+	at com.google.inject.spi.Elements.getElements(Elements.java:101)
+	at com.google.inject.spi.Elements.getElements(Elements.java:92)
+	at com.google.inject.util.Modules$RealOverriddenModuleBuilder$1.configure(Modules.java:152)
+	at com.google.inject.AbstractModule.configure(AbstractModule.java:59)
+	at com.google.inject.spi.Elements$RecordingBinder.install(Elements.java:223)
+	at com.google.inject.spi.Elements.getElements(Elements.java:101)
+	at com.google.inject.internal.InjectorShell$Builder.build(InjectorShell.java:133)
+	at com.google.inject.internal.InternalInjectorCreator.build(InternalInjectorCreator.java:103)
+	at com.google.inject.Guice.createInjector(Guice.java:95)
+	at com.google.inject.Guice.createInjector(Guice.java:72)
+	at com.google.inject.Guice.createInjector(Guice.java:62)
+	at org.eclipse.xtend.ide.internal.XtendActivator.createInjector(XtendActivator.java:67)
+	at org.eclipse.xtend.ide.internal.XtendActivator.getInjector(XtendActivator.java:55)
+	at org.eclipse.xtend.ide.XtendExecutableExtensionFactory.getInjector(XtendExecutableExtensionFactory.java:26)
+	at org.eclipse.xtext.ui.guice.AbstractGuiceAwareExecutableExtensionFactory.create(AbstractGuiceAwareExecutableExtensionFactory.java:49)
+	at org.eclipse.core.internal.registry.ConfigurationElement.createExecutableExtension(ConfigurationElement.java:265)
+	at org.eclipse.core.internal.registry.ConfigurationElementHandle.createExecutableExtension(ConfigurationElementHandle.java:63)
+	at org.eclipse.ui.internal.console.PatternMatchListenerExtension.createDelegate(PatternMatchListenerExtension.java:83)
+	at org.eclipse.ui.internal.console.PatternMatchListener.<init>(PatternMatchListener.java:29)
+	at org.eclipse.ui.internal.console.ConsoleManager.createPatternMatchListeners(ConsoleManager.java:406)
+	at org.eclipse.ui.internal.console.ConsoleManager.addConsoles(ConsoleManager.java:209)
+	at org.eclipse.debug.internal.ui.views.console.ProcessConsoleManager$ConsoleCreation.run(ProcessConsoleManager.java:78)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: java.lang.reflect.InvocationTargetException
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.eclipse.xtext.service.MethodBasedModule.invokeMethod(MethodBasedModule.java:134)
+	... 35 more
+Caused by: java.lang.NoClassDefFoundError: org/eclipse/xtext/xbase/typesystem/legacy/LegacyFeatureOverridesService
+	at org.eclipse.xtend.core.AbstractXtendRuntimeModule.bindFeatureOverridesService(AbstractXtendRuntimeModule.java:269)
+	... 40 more
+
+!ENTRY org.apache.log4j 4 0 2022-06-11 19:48:51.379
+!MESSAGE org.eclipse.xtext.service.CompoundModule  - java.lang.reflect.InvocationTargetException
+
+!STACK 0
+java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
+	at org.eclipse.xtext.service.MethodBasedModule.invokeMethod(MethodBasedModule.java:136)
+	at org.eclipse.xtext.service.MethodBasedModule.configure(MethodBasedModule.java:49)
+	at org.eclipse.xtext.service.CompoundModule.configure(CompoundModule.java:34)
+	at org.eclipse.xtext.service.AbstractGenericModule.configure(AbstractGenericModule.java:32)
+	at org.eclipse.xtext.service.DefaultRuntimeModule.configure(DefaultRuntimeModule.java:75)
+	at org.eclipse.xtend.core.AbstractXtendRuntimeModule.configure(AbstractXtendRuntimeModule.java:25)
+	at org.eclipse.xtend.core.XtendRuntimeModule.configure(XtendRuntimeModule.java:187)
+	at com.google.inject.spi.Elements$RecordingBinder.install(Elements.java:223)
+	at com.google.inject.spi.Elements.getElements(Elements.java:101)
+	at com.google.inject.spi.Elements.getElements(Elements.java:92)
+	at com.google.inject.util.Modules$RealOverriddenModuleBuilder$1.configure(Modules.java:152)
+	at com.google.inject.AbstractModule.configure(AbstractModule.java:59)
+	at com.google.inject.spi.Elements$RecordingBinder.install(Elements.java:223)
+	at com.google.inject.spi.Elements.getElements(Elements.java:101)
+	at com.google.inject.spi.Elements.getElements(Elements.java:92)
+	at com.google.inject.util.Modules$RealOverriddenModuleBuilder$1.configure(Modules.java:152)
+	at com.google.inject.AbstractModule.configure(AbstractModule.java:59)
+	at com.google.inject.spi.Elements$RecordingBinder.install(Elements.java:223)
+	at com.google.inject.spi.Elements.getElements(Elements.java:101)
+	at com.google.inject.internal.InjectorShell$Builder.build(InjectorShell.java:133)
+	at com.google.inject.internal.InternalInjectorCreator.build(InternalInjectorCreator.java:103)
+	at com.google.inject.Guice.createInjector(Guice.java:95)
+	at com.google.inject.Guice.createInjector(Guice.java:72)
+	at com.google.inject.Guice.createInjector(Guice.java:62)
+	at org.eclipse.xtend.ide.internal.XtendActivator.createInjector(XtendActivator.java:67)
+	at org.eclipse.xtend.ide.internal.XtendActivator.getInjector(XtendActivator.java:55)
+	at org.eclipse.xtend.ide.XtendExecutableExtensionFactory.getInjector(XtendExecutableExtensionFactory.java:26)
+	at org.eclipse.xtext.ui.guice.AbstractGuiceAwareExecutableExtensionFactory.create(AbstractGuiceAwareExecutableExtensionFactory.java:49)
+	at org.eclipse.core.internal.registry.ConfigurationElement.createExecutableExtension(ConfigurationElement.java:265)
+	at org.eclipse.core.internal.registry.ConfigurationElementHandle.createExecutableExtension(ConfigurationElementHandle.java:63)
+	at org.eclipse.ui.internal.console.PatternMatchListenerExtension.createDelegate(PatternMatchListenerExtension.java:83)
+	at org.eclipse.ui.internal.console.PatternMatchListener.<init>(PatternMatchListener.java:29)
+	at org.eclipse.ui.internal.console.ConsoleManager.createPatternMatchListeners(ConsoleManager.java:406)
+	at org.eclipse.ui.internal.console.ConsoleManager.addConsoles(ConsoleManager.java:209)
+	at org.eclipse.debug.internal.ui.views.console.ProcessConsoleManager$ConsoleCreation.run(ProcessConsoleManager.java:78)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: java.lang.reflect.InvocationTargetException
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.eclipse.xtext.service.MethodBasedModule.invokeMethod(MethodBasedModule.java:134)
+	... 35 more
+Caused by: java.lang.NoClassDefFoundError: org/eclipse/xtext/xbase/typesystem/legacy/LegacyTypeConformanceComputer
+	at org.eclipse.xtend.core.AbstractXtendRuntimeModule.bindTypeConformanceComputer(AbstractXtendRuntimeModule.java:194)
+	... 40 more
+
+!ENTRY org.apache.log4j 4 0 2022-06-11 19:48:51.382
+!MESSAGE org.eclipse.xtext.service.CompoundModule  - java.lang.reflect.InvocationTargetException
+
+!STACK 0
+java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
+	at org.eclipse.xtext.service.MethodBasedModule.invokeMethod(MethodBasedModule.java:136)
+	at org.eclipse.xtext.service.MethodBasedModule.configure(MethodBasedModule.java:49)
+	at org.eclipse.xtext.service.CompoundModule.configure(CompoundModule.java:34)
+	at org.eclipse.xtext.service.AbstractGenericModule.configure(AbstractGenericModule.java:32)
+	at org.eclipse.xtext.service.DefaultRuntimeModule.configure(DefaultRuntimeModule.java:75)
+	at org.eclipse.xtend.core.AbstractXtendRuntimeModule.configure(AbstractXtendRuntimeModule.java:25)
+	at org.eclipse.xtend.core.XtendRuntimeModule.configure(XtendRuntimeModule.java:187)
+	at com.google.inject.spi.Elements$RecordingBinder.install(Elements.java:223)
+	at com.google.inject.spi.Elements.getElements(Elements.java:101)
+	at com.google.inject.spi.Elements.getElements(Elements.java:92)
+	at com.google.inject.util.Modules$RealOverriddenModuleBuilder$1.configure(Modules.java:152)
+	at com.google.inject.AbstractModule.configure(AbstractModule.java:59)
+	at com.google.inject.spi.Elements$RecordingBinder.install(Elements.java:223)
+	at com.google.inject.spi.Elements.getElements(Elements.java:101)
+	at com.google.inject.spi.Elements.getElements(Elements.java:92)
+	at com.google.inject.util.Modules$RealOverriddenModuleBuilder$1.configure(Modules.java:152)
+	at com.google.inject.AbstractModule.configure(AbstractModule.java:59)
+	at com.google.inject.spi.Elements$RecordingBinder.install(Elements.java:223)
+	at com.google.inject.spi.Elements.getElements(Elements.java:101)
+	at com.google.inject.internal.InjectorShell$Builder.build(InjectorShell.java:133)
+	at com.google.inject.internal.InternalInjectorCreator.build(InternalInjectorCreator.java:103)
+	at com.google.inject.Guice.createInjector(Guice.java:95)
+	at com.google.inject.Guice.createInjector(Guice.java:72)
+	at com.google.inject.Guice.createInjector(Guice.java:62)
+	at org.eclipse.xtend.ide.internal.XtendActivator.createInjector(XtendActivator.java:67)
+	at org.eclipse.xtend.ide.internal.XtendActivator.getInjector(XtendActivator.java:55)
+	at org.eclipse.xtend.ide.XtendExecutableExtensionFactory.getInjector(XtendExecutableExtensionFactory.java:26)
+	at org.eclipse.xtext.ui.guice.AbstractGuiceAwareExecutableExtensionFactory.create(AbstractGuiceAwareExecutableExtensionFactory.java:49)
+	at org.eclipse.core.internal.registry.ConfigurationElement.createExecutableExtension(ConfigurationElement.java:265)
+	at org.eclipse.core.internal.registry.ConfigurationElementHandle.createExecutableExtension(ConfigurationElementHandle.java:63)
+	at org.eclipse.ui.internal.console.PatternMatchListenerExtension.createDelegate(PatternMatchListenerExtension.java:83)
+	at org.eclipse.ui.internal.console.PatternMatchListener.<init>(PatternMatchListener.java:29)
+	at org.eclipse.ui.internal.console.ConsoleManager.createPatternMatchListeners(ConsoleManager.java:406)
+	at org.eclipse.ui.internal.console.ConsoleManager.addConsoles(ConsoleManager.java:209)
+	at org.eclipse.debug.internal.ui.views.console.ProcessConsoleManager$ConsoleCreation.run(ProcessConsoleManager.java:78)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: java.lang.reflect.InvocationTargetException
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.eclipse.xtext.service.MethodBasedModule.invokeMethod(MethodBasedModule.java:134)
+	... 35 more
+Caused by: java.lang.NoClassDefFoundError: org/eclipse/xtext/xbase/typesystem/legacy/LegacyTypeArgumentContextProvider
+	at org.eclipse.xtend.core.AbstractXtendRuntimeModule.bindTypeArgumentContextProvider(AbstractXtendRuntimeModule.java:234)
+	... 40 more
+
+!ENTRY org.apache.log4j 4 0 2022-06-11 19:48:51.388
+!MESSAGE org.eclipse.xtext.service.CompoundModule  - java.lang.reflect.InvocationTargetException
+
+!STACK 0
+java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
+	at org.eclipse.xtext.service.MethodBasedModule.invokeMethod(MethodBasedModule.java:136)
+	at org.eclipse.xtext.service.MethodBasedModule.configure(MethodBasedModule.java:49)
+	at org.eclipse.xtext.service.CompoundModule.configure(CompoundModule.java:34)
+	at org.eclipse.xtext.service.AbstractGenericModule.configure(AbstractGenericModule.java:32)
+	at org.eclipse.xtext.service.DefaultRuntimeModule.configure(DefaultRuntimeModule.java:75)
+	at org.eclipse.xtend.core.AbstractXtendRuntimeModule.configure(AbstractXtendRuntimeModule.java:25)
+	at org.eclipse.xtend.core.XtendRuntimeModule.configure(XtendRuntimeModule.java:187)
+	at com.google.inject.spi.Elements$RecordingBinder.install(Elements.java:223)
+	at com.google.inject.spi.Elements.getElements(Elements.java:101)
+	at com.google.inject.spi.Elements.getElements(Elements.java:92)
+	at com.google.inject.util.Modules$RealOverriddenModuleBuilder$1.configure(Modules.java:152)
+	at com.google.inject.AbstractModule.configure(AbstractModule.java:59)
+	at com.google.inject.spi.Elements$RecordingBinder.install(Elements.java:223)
+	at com.google.inject.spi.Elements.getElements(Elements.java:101)
+	at com.google.inject.spi.Elements.getElements(Elements.java:92)
+	at com.google.inject.util.Modules$RealOverriddenModuleBuilder$1.configure(Modules.java:152)
+	at com.google.inject.AbstractModule.configure(AbstractModule.java:59)
+	at com.google.inject.spi.Elements$RecordingBinder.install(Elements.java:223)
+	at com.google.inject.spi.Elements.getElements(Elements.java:101)
+	at com.google.inject.internal.InjectorShell$Builder.build(InjectorShell.java:133)
+	at com.google.inject.internal.InternalInjectorCreator.build(InternalInjectorCreator.java:103)
+	at com.google.inject.Guice.createInjector(Guice.java:95)
+	at com.google.inject.Guice.createInjector(Guice.java:72)
+	at com.google.inject.Guice.createInjector(Guice.java:62)
+	at org.eclipse.xtend.ide.internal.XtendActivator.createInjector(XtendActivator.java:67)
+	at org.eclipse.xtend.ide.internal.XtendActivator.getInjector(XtendActivator.java:55)
+	at org.eclipse.xtend.ide.XtendExecutableExtensionFactory.getInjector(XtendExecutableExtensionFactory.java:26)
+	at org.eclipse.xtext.ui.guice.AbstractGuiceAwareExecutableExtensionFactory.create(AbstractGuiceAwareExecutableExtensionFactory.java:49)
+	at org.eclipse.core.internal.registry.ConfigurationElement.createExecutableExtension(ConfigurationElement.java:265)
+	at org.eclipse.core.internal.registry.ConfigurationElementHandle.createExecutableExtension(ConfigurationElementHandle.java:63)
+	at org.eclipse.ui.internal.console.PatternMatchListenerExtension.createDelegate(PatternMatchListenerExtension.java:83)
+	at org.eclipse.ui.internal.console.PatternMatchListener.<init>(PatternMatchListener.java:29)
+	at org.eclipse.ui.internal.console.ConsoleManager.createPatternMatchListeners(ConsoleManager.java:406)
+	at org.eclipse.ui.internal.console.ConsoleManager.addConsoles(ConsoleManager.java:209)
+	at org.eclipse.debug.internal.ui.views.console.ProcessConsoleManager$ConsoleCreation.run(ProcessConsoleManager.java:78)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: java.lang.reflect.InvocationTargetException
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.eclipse.xtext.service.MethodBasedModule.invokeMethod(MethodBasedModule.java:134)
+	... 35 more
+Caused by: java.lang.NoClassDefFoundError: org/eclipse/xtext/xbase/typesystem/legacy/LegacyVisibilityService
+	at org.eclipse.xtend.core.AbstractXtendRuntimeModule.bindVisibilityService(AbstractXtendRuntimeModule.java:264)
+	... 40 more
+
+!ENTRY org.apache.log4j 4 0 2022-06-11 19:48:51.393
+!MESSAGE org.eclipse.xtext.service.CompoundModule  - Type org.eclipse.xtext.xbase.typing.ITypeProvider not present
+
+!STACK 0
+java.lang.TypeNotPresentException: Type org.eclipse.xtext.xbase.typing.ITypeProvider not present
+	at java.base/sun.reflect.generics.factory.CoreReflectionFactory.makeNamedType(CoreReflectionFactory.java:117)
+	at java.base/sun.reflect.generics.visitor.Reifier.visitClassTypeSignature(Reifier.java:125)
+	at java.base/sun.reflect.generics.tree.ClassTypeSignature.accept(ClassTypeSignature.java:49)
+	at java.base/sun.reflect.generics.reflectiveObjects.LazyReflectiveObjectGenerator.reifyBounds(LazyReflectiveObjectGenerator.java:65)
+	at java.base/sun.reflect.generics.reflectiveObjects.WildcardTypeImpl.getUpperBounds(WildcardTypeImpl.java:105)
+	at org.eclipse.xtext.service.MethodBasedModule.getFirstTypeParameter(MethodBasedModule.java:106)
+	at org.eclipse.xtext.service.MethodBasedModule.getKeyType(MethodBasedModule.java:97)
+	at org.eclipse.xtext.service.MethodBasedModule.configure(MethodBasedModule.java:47)
+	at org.eclipse.xtext.service.CompoundModule.configure(CompoundModule.java:34)
+	at org.eclipse.xtext.service.AbstractGenericModule.configure(AbstractGenericModule.java:32)
+	at org.eclipse.xtext.service.DefaultRuntimeModule.configure(DefaultRuntimeModule.java:75)
+	at org.eclipse.xtend.core.AbstractXtendRuntimeModule.configure(AbstractXtendRuntimeModule.java:25)
+	at org.eclipse.xtend.core.XtendRuntimeModule.configure(XtendRuntimeModule.java:187)
+	at com.google.inject.spi.Elements$RecordingBinder.install(Elements.java:223)
+	at com.google.inject.spi.Elements.getElements(Elements.java:101)
+	at com.google.inject.spi.Elements.getElements(Elements.java:92)
+	at com.google.inject.util.Modules$RealOverriddenModuleBuilder$1.configure(Modules.java:152)
+	at com.google.inject.AbstractModule.configure(AbstractModule.java:59)
+	at com.google.inject.spi.Elements$RecordingBinder.install(Elements.java:223)
+	at com.google.inject.spi.Elements.getElements(Elements.java:101)
+	at com.google.inject.spi.Elements.getElements(Elements.java:92)
+	at com.google.inject.util.Modules$RealOverriddenModuleBuilder$1.configure(Modules.java:152)
+	at com.google.inject.AbstractModule.configure(AbstractModule.java:59)
+	at com.google.inject.spi.Elements$RecordingBinder.install(Elements.java:223)
+	at com.google.inject.spi.Elements.getElements(Elements.java:101)
+	at com.google.inject.internal.InjectorShell$Builder.build(InjectorShell.java:133)
+	at com.google.inject.internal.InternalInjectorCreator.build(InternalInjectorCreator.java:103)
+	at com.google.inject.Guice.createInjector(Guice.java:95)
+	at com.google.inject.Guice.createInjector(Guice.java:72)
+	at com.google.inject.Guice.createInjector(Guice.java:62)
+	at org.eclipse.xtend.ide.internal.XtendActivator.createInjector(XtendActivator.java:67)
+	at org.eclipse.xtend.ide.internal.XtendActivator.getInjector(XtendActivator.java:55)
+	at org.eclipse.xtend.ide.XtendExecutableExtensionFactory.getInjector(XtendExecutableExtensionFactory.java:26)
+	at org.eclipse.xtext.ui.guice.AbstractGuiceAwareExecutableExtensionFactory.create(AbstractGuiceAwareExecutableExtensionFactory.java:49)
+	at org.eclipse.core.internal.registry.ConfigurationElement.createExecutableExtension(ConfigurationElement.java:265)
+	at org.eclipse.core.internal.registry.ConfigurationElementHandle.createExecutableExtension(ConfigurationElementHandle.java:63)
+	at org.eclipse.ui.internal.console.PatternMatchListenerExtension.createDelegate(PatternMatchListenerExtension.java:83)
+	at org.eclipse.ui.internal.console.PatternMatchListener.<init>(PatternMatchListener.java:29)
+	at org.eclipse.ui.internal.console.ConsoleManager.createPatternMatchListeners(ConsoleManager.java:406)
+	at org.eclipse.ui.internal.console.ConsoleManager.addConsoles(ConsoleManager.java:209)
+	at org.eclipse.debug.internal.ui.views.console.ProcessConsoleManager$ConsoleCreation.run(ProcessConsoleManager.java:78)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: java.lang.ClassNotFoundException: org.eclipse.xtext.xbase.typing.ITypeProvider cannot be found by org.eclipse.xtend.core_2.4.3.v201309030823
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:516)
+	at org.eclipse.osgi.internal.loader.ModuleClassLoader.loadClass(ModuleClassLoader.java:171)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:521)
+	at java.base/java.lang.Class.forName0(Native Method)
+	at java.base/java.lang.Class.forName(Class.java:398)
+	at java.base/sun.reflect.generics.factory.CoreReflectionFactory.makeNamedType(CoreReflectionFactory.java:114)
+	... 41 more
+
+!ENTRY org.apache.log4j 4 0 2022-06-11 19:48:51.402
+!MESSAGE org.eclipse.xtext.service.CompoundModule  - java.lang.reflect.InvocationTargetException
+
+!STACK 0
+java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
+	at org.eclipse.xtext.service.MethodBasedModule.invokeMethod(MethodBasedModule.java:136)
+	at org.eclipse.xtext.service.MethodBasedModule.configure(MethodBasedModule.java:49)
+	at org.eclipse.xtext.service.CompoundModule.configure(CompoundModule.java:34)
+	at org.eclipse.xtext.service.AbstractGenericModule.configure(AbstractGenericModule.java:32)
+	at org.eclipse.xtext.ui.DefaultUiModule.configure(DefaultUiModule.java:125)
+	at com.google.inject.spi.Elements$RecordingBinder.install(Elements.java:223)
+	at com.google.inject.spi.Elements.getElements(Elements.java:101)
+	at com.google.inject.spi.Elements.getElements(Elements.java:92)
+	at com.google.inject.util.Modules$RealOverriddenModuleBuilder$1.configure(Modules.java:172)
+	at com.google.inject.AbstractModule.configure(AbstractModule.java:59)
+	at com.google.inject.spi.Elements$RecordingBinder.install(Elements.java:223)
+	at com.google.inject.spi.Elements.getElements(Elements.java:101)
+	at com.google.inject.internal.InjectorShell$Builder.build(InjectorShell.java:133)
+	at com.google.inject.internal.InternalInjectorCreator.build(InternalInjectorCreator.java:103)
+	at com.google.inject.Guice.createInjector(Guice.java:95)
+	at com.google.inject.Guice.createInjector(Guice.java:72)
+	at com.google.inject.Guice.createInjector(Guice.java:62)
+	at org.eclipse.xtend.ide.internal.XtendActivator.createInjector(XtendActivator.java:67)
+	at org.eclipse.xtend.ide.internal.XtendActivator.getInjector(XtendActivator.java:55)
+	at org.eclipse.xtend.ide.XtendExecutableExtensionFactory.getInjector(XtendExecutableExtensionFactory.java:26)
+	at org.eclipse.xtext.ui.guice.AbstractGuiceAwareExecutableExtensionFactory.create(AbstractGuiceAwareExecutableExtensionFactory.java:49)
+	at org.eclipse.core.internal.registry.ConfigurationElement.createExecutableExtension(ConfigurationElement.java:265)
+	at org.eclipse.core.internal.registry.ConfigurationElementHandle.createExecutableExtension(ConfigurationElementHandle.java:63)
+	at org.eclipse.ui.internal.console.PatternMatchListenerExtension.createDelegate(PatternMatchListenerExtension.java:83)
+	at org.eclipse.ui.internal.console.PatternMatchListener.<init>(PatternMatchListener.java:29)
+	at org.eclipse.ui.internal.console.ConsoleManager.createPatternMatchListeners(ConsoleManager.java:406)
+	at org.eclipse.ui.internal.console.ConsoleManager.addConsoles(ConsoleManager.java:209)
+	at org.eclipse.debug.internal.ui.views.console.ProcessConsoleManager$ConsoleCreation.run(ProcessConsoleManager.java:78)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: java.lang.reflect.InvocationTargetException
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.eclipse.xtext.service.MethodBasedModule.invokeMethod(MethodBasedModule.java:134)
+	... 28 more
+Caused by: java.lang.NoClassDefFoundError: org/eclipse/xtext/xbase/ui/file/EclipseFileSystemSupportImpl
+	at org.eclipse.xtend.ide.XtendUiModule.bindFileSystemSupport(XtendUiModule.java:429)
+	... 33 more
+
+!ENTRY org.apache.log4j 4 0 2022-06-11 19:48:51.407
+!MESSAGE org.eclipse.xtext.service.CompoundModule  - java.lang.reflect.InvocationTargetException
+
+!STACK 0
+java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
+	at org.eclipse.xtext.service.MethodBasedModule.invokeMethod(MethodBasedModule.java:136)
+	at org.eclipse.xtext.service.FreeModule.configure(FreeModule.java:22)
+	at org.eclipse.xtext.service.CompoundModule.configure(CompoundModule.java:34)
+	at org.eclipse.xtext.service.AbstractGenericModule.configure(AbstractGenericModule.java:32)
+	at org.eclipse.xtext.ui.DefaultUiModule.configure(DefaultUiModule.java:125)
+	at com.google.inject.spi.Elements$RecordingBinder.install(Elements.java:223)
+	at com.google.inject.spi.Elements.getElements(Elements.java:101)
+	at com.google.inject.spi.Elements.getElements(Elements.java:92)
+	at com.google.inject.util.Modules$RealOverriddenModuleBuilder$1.configure(Modules.java:172)
+	at com.google.inject.AbstractModule.configure(AbstractModule.java:59)
+	at com.google.inject.spi.Elements$RecordingBinder.install(Elements.java:223)
+	at com.google.inject.spi.Elements.getElements(Elements.java:101)
+	at com.google.inject.internal.InjectorShell$Builder.build(InjectorShell.java:133)
+	at com.google.inject.internal.InternalInjectorCreator.build(InternalInjectorCreator.java:103)
+	at com.google.inject.Guice.createInjector(Guice.java:95)
+	at com.google.inject.Guice.createInjector(Guice.java:72)
+	at com.google.inject.Guice.createInjector(Guice.java:62)
+	at org.eclipse.xtend.ide.internal.XtendActivator.createInjector(XtendActivator.java:67)
+	at org.eclipse.xtend.ide.internal.XtendActivator.getInjector(XtendActivator.java:55)
+	at org.eclipse.xtend.ide.XtendExecutableExtensionFactory.getInjector(XtendExecutableExtensionFactory.java:26)
+	at org.eclipse.xtext.ui.guice.AbstractGuiceAwareExecutableExtensionFactory.create(AbstractGuiceAwareExecutableExtensionFactory.java:49)
+	at org.eclipse.core.internal.registry.ConfigurationElement.createExecutableExtension(ConfigurationElement.java:265)
+	at org.eclipse.core.internal.registry.ConfigurationElementHandle.createExecutableExtension(ConfigurationElementHandle.java:63)
+	at org.eclipse.ui.internal.console.PatternMatchListenerExtension.createDelegate(PatternMatchListenerExtension.java:83)
+	at org.eclipse.ui.internal.console.PatternMatchListener.<init>(PatternMatchListener.java:29)
+	at org.eclipse.ui.internal.console.ConsoleManager.createPatternMatchListeners(ConsoleManager.java:406)
+	at org.eclipse.ui.internal.console.ConsoleManager.addConsoles(ConsoleManager.java:209)
+	at org.eclipse.debug.internal.ui.views.console.ProcessConsoleManager$ConsoleCreation.run(ProcessConsoleManager.java:78)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: java.lang.reflect.InvocationTargetException
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.eclipse.xtext.service.MethodBasedModule.invokeMethod(MethodBasedModule.java:134)
+	... 28 more
+Caused by: java.lang.NoClassDefFoundError: org/eclipse/xtext/xbase/file/WorkspaceConfig
+	at org.eclipse.xtend.ide.XtendUiModule.configureWorkspaceConfigContribution(XtendUiModule.java:433)
+	... 33 more
+
+!ENTRY org.apache.log4j 4 0 2022-06-11 19:48:51.423
+!MESSAGE org.eclipse.xtend.ide.internal.XtendActivator  - Failed to create injector for org.eclipse.xtend.core.Xtend
+
+
+!ENTRY org.apache.log4j 4 0 2022-06-11 19:48:51.428
+!MESSAGE org.eclipse.xtend.ide.internal.XtendActivator  - com.google.inject.internal.util.$ComputationException: java.lang.NoClassDefFoundError: org/eclipse/xtext/xbase/typesystem/override/ResolvedOperations
+
+!STACK 0
+com.google.inject.internal.util.$ComputationException: com.google.inject.internal.util.$ComputationException: java.lang.NoClassDefFoundError: org/eclipse/xtext/xbase/typesystem/override/ResolvedOperations
+	at com.google.inject.internal.util.$MapMaker$StrategyImpl.compute(MapMaker.java:553)
+	at com.google.inject.internal.util.$MapMaker$StrategyImpl.compute(MapMaker.java:419)
+	at com.google.inject.internal.util.$CustomConcurrentHashMap$ComputingImpl.get(CustomConcurrentHashMap.java:2041)
+	at com.google.inject.internal.FailableCache.get(FailableCache.java:50)
+	at com.google.inject.internal.ConstructorInjectorStore.get(ConstructorInjectorStore.java:49)
+	at com.google.inject.internal.ConstructorBindingImpl.initialize(ConstructorBindingImpl.java:125)
+	at com.google.inject.internal.InjectorImpl.initializeBinding(InjectorImpl.java:507)
+	at com.google.inject.internal.AbstractBindingProcessor$Processor$1.run(AbstractBindingProcessor.java:159)
+	at com.google.inject.internal.ProcessedBindingData.initializeBindings(ProcessedBindingData.java:44)
+	at com.google.inject.internal.InternalInjectorCreator.initializeStatically(InternalInjectorCreator.java:122)
+	at com.google.inject.internal.InternalInjectorCreator.build(InternalInjectorCreator.java:106)
+	at com.google.inject.Guice.createInjector(Guice.java:95)
+	at com.google.inject.Guice.createInjector(Guice.java:72)
+	at com.google.inject.Guice.createInjector(Guice.java:62)
+	at org.eclipse.xtend.ide.internal.XtendActivator.createInjector(XtendActivator.java:67)
+	at org.eclipse.xtend.ide.internal.XtendActivator.getInjector(XtendActivator.java:55)
+	at org.eclipse.xtend.ide.XtendExecutableExtensionFactory.getInjector(XtendExecutableExtensionFactory.java:26)
+	at org.eclipse.xtext.ui.guice.AbstractGuiceAwareExecutableExtensionFactory.create(AbstractGuiceAwareExecutableExtensionFactory.java:49)
+	at org.eclipse.core.internal.registry.ConfigurationElement.createExecutableExtension(ConfigurationElement.java:265)
+	at org.eclipse.core.internal.registry.ConfigurationElementHandle.createExecutableExtension(ConfigurationElementHandle.java:63)
+	at org.eclipse.ui.internal.console.PatternMatchListenerExtension.createDelegate(PatternMatchListenerExtension.java:83)
+	at org.eclipse.ui.internal.console.PatternMatchListener.<init>(PatternMatchListener.java:29)
+	at org.eclipse.ui.internal.console.ConsoleManager.createPatternMatchListeners(ConsoleManager.java:406)
+	at org.eclipse.ui.internal.console.ConsoleManager.addConsoles(ConsoleManager.java:209)
+	at org.eclipse.debug.internal.ui.views.console.ProcessConsoleManager$ConsoleCreation.run(ProcessConsoleManager.java:78)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: com.google.inject.internal.util.$ComputationException: java.lang.NoClassDefFoundError: org/eclipse/xtext/xbase/typesystem/override/ResolvedOperations
+	at com.google.inject.internal.util.$MapMaker$StrategyImpl.compute(MapMaker.java:553)
+	at com.google.inject.internal.util.$MapMaker$StrategyImpl.compute(MapMaker.java:419)
+	at com.google.inject.internal.util.$CustomConcurrentHashMap$ComputingImpl.get(CustomConcurrentHashMap.java:2041)
+	at com.google.inject.internal.FailableCache.get(FailableCache.java:50)
+	at com.google.inject.internal.MembersInjectorStore.get(MembersInjectorStore.java:65)
+	at com.google.inject.internal.ConstructorInjectorStore.createConstructor(ConstructorInjectorStore.java:73)
+	at com.google.inject.internal.ConstructorInjectorStore.access$000(ConstructorInjectorStore.java:28)
+	at com.google.inject.internal.ConstructorInjectorStore$1.create(ConstructorInjectorStore.java:36)
+	at com.google.inject.internal.ConstructorInjectorStore$1.create(ConstructorInjectorStore.java:32)
+	at com.google.inject.internal.FailableCache$1.apply(FailableCache.java:39)
+	at com.google.inject.internal.util.$MapMaker$StrategyImpl.compute(MapMaker.java:549)
+	... 25 more
+Caused by: java.lang.NoClassDefFoundError: org/eclipse/xtext/xbase/typesystem/override/ResolvedOperations
+	at java.base/java.lang.Class.getDeclaredMethods0(Native Method)
+	at java.base/java.lang.Class.privateGetDeclaredMethods(Class.java:3166)
+	at java.base/java.lang.Class.getDeclaredMethods(Class.java:2309)
+	at com.google.inject.spi.InjectionPoint.getInjectionPoints(InjectionPoint.java:662)
+	at com.google.inject.spi.InjectionPoint.forInstanceMethodsAndFields(InjectionPoint.java:356)
+	at com.google.inject.internal.MembersInjectorStore.createWithListeners(MembersInjectorStore.java:90)
+	at com.google.inject.internal.MembersInjectorStore.access$000(MembersInjectorStore.java:34)
+	at com.google.inject.internal.MembersInjectorStore$1.create(MembersInjectorStore.java:42)
+	at com.google.inject.internal.MembersInjectorStore$1.create(MembersInjectorStore.java:39)
+	at com.google.inject.internal.FailableCache$1.apply(FailableCache.java:39)
+	at com.google.inject.internal.util.$MapMaker$StrategyImpl.compute(MapMaker.java:549)
+	... 35 more
+Caused by: java.lang.ClassNotFoundException: org.eclipse.xtext.xbase.typesystem.override.ResolvedOperations cannot be found by org.eclipse.xtend.core_2.4.3.v201309030823
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:516)
+	at org.eclipse.osgi.internal.loader.ModuleClassLoader.loadClass(ModuleClassLoader.java:171)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:521)
+	... 46 more
+
+!ENTRY org.apache.log4j 4 0 2022-06-11 19:48:51.430
+!MESSAGE org.eclipse.xtend.ide.XtendExecutableExtensionFactory  - java.lang.RuntimeException: Failed to create injector for org.eclipse.xtend.core.Xtend
+
+
+!ENTRY org.eclipse.xtend.ide 4 0 2022-06-11 19:48:51.431
+!MESSAGE Failed to create injector for org.eclipse.xtend.core.Xtend ExtensionFactory: org.eclipse.xtend.ide.XtendExecutableExtensionFactory
+!STACK 0
+java.lang.RuntimeException: Failed to create injector for org.eclipse.xtend.core.Xtend
+	at org.eclipse.xtend.ide.internal.XtendActivator.createInjector(XtendActivator.java:71)
+	at org.eclipse.xtend.ide.internal.XtendActivator.getInjector(XtendActivator.java:55)
+	at org.eclipse.xtend.ide.XtendExecutableExtensionFactory.getInjector(XtendExecutableExtensionFactory.java:26)
+	at org.eclipse.xtext.ui.guice.AbstractGuiceAwareExecutableExtensionFactory.create(AbstractGuiceAwareExecutableExtensionFactory.java:49)
+	at org.eclipse.core.internal.registry.ConfigurationElement.createExecutableExtension(ConfigurationElement.java:265)
+	at org.eclipse.core.internal.registry.ConfigurationElementHandle.createExecutableExtension(ConfigurationElementHandle.java:63)
+	at org.eclipse.ui.internal.console.PatternMatchListenerExtension.createDelegate(PatternMatchListenerExtension.java:83)
+	at org.eclipse.ui.internal.console.PatternMatchListener.<init>(PatternMatchListener.java:29)
+	at org.eclipse.ui.internal.console.ConsoleManager.createPatternMatchListeners(ConsoleManager.java:406)
+	at org.eclipse.ui.internal.console.ConsoleManager.addConsoles(ConsoleManager.java:209)
+	at org.eclipse.debug.internal.ui.views.console.ProcessConsoleManager$ConsoleCreation.run(ProcessConsoleManager.java:78)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: com.google.inject.internal.util.$ComputationException: com.google.inject.internal.util.$ComputationException: java.lang.NoClassDefFoundError: org/eclipse/xtext/xbase/typesystem/override/ResolvedOperations
+	at com.google.inject.internal.util.$MapMaker$StrategyImpl.compute(MapMaker.java:553)
+	at com.google.inject.internal.util.$MapMaker$StrategyImpl.compute(MapMaker.java:419)
+	at com.google.inject.internal.util.$CustomConcurrentHashMap$ComputingImpl.get(CustomConcurrentHashMap.java:2041)
+	at com.google.inject.internal.FailableCache.get(FailableCache.java:50)
+	at com.google.inject.internal.ConstructorInjectorStore.get(ConstructorInjectorStore.java:49)
+	at com.google.inject.internal.ConstructorBindingImpl.initialize(ConstructorBindingImpl.java:125)
+	at com.google.inject.internal.InjectorImpl.initializeBinding(InjectorImpl.java:507)
+	at com.google.inject.internal.AbstractBindingProcessor$Processor$1.run(AbstractBindingProcessor.java:159)
+	at com.google.inject.internal.ProcessedBindingData.initializeBindings(ProcessedBindingData.java:44)
+	at com.google.inject.internal.InternalInjectorCreator.initializeStatically(InternalInjectorCreator.java:122)
+	at com.google.inject.internal.InternalInjectorCreator.build(InternalInjectorCreator.java:106)
+	at com.google.inject.Guice.createInjector(Guice.java:95)
+	at com.google.inject.Guice.createInjector(Guice.java:72)
+	at com.google.inject.Guice.createInjector(Guice.java:62)
+	at org.eclipse.xtend.ide.internal.XtendActivator.createInjector(XtendActivator.java:67)
+	... 11 more
+Caused by: com.google.inject.internal.util.$ComputationException: java.lang.NoClassDefFoundError: org/eclipse/xtext/xbase/typesystem/override/ResolvedOperations
+	at com.google.inject.internal.util.$MapMaker$StrategyImpl.compute(MapMaker.java:553)
+	at com.google.inject.internal.util.$MapMaker$StrategyImpl.compute(MapMaker.java:419)
+	at com.google.inject.internal.util.$CustomConcurrentHashMap$ComputingImpl.get(CustomConcurrentHashMap.java:2041)
+	at com.google.inject.internal.FailableCache.get(FailableCache.java:50)
+	at com.google.inject.internal.MembersInjectorStore.get(MembersInjectorStore.java:65)
+	at com.google.inject.internal.ConstructorInjectorStore.createConstructor(ConstructorInjectorStore.java:73)
+	at com.google.inject.internal.ConstructorInjectorStore.access$000(ConstructorInjectorStore.java:28)
+	at com.google.inject.internal.ConstructorInjectorStore$1.create(ConstructorInjectorStore.java:36)
+	at com.google.inject.internal.ConstructorInjectorStore$1.create(ConstructorInjectorStore.java:32)
+	at com.google.inject.internal.FailableCache$1.apply(FailableCache.java:39)
+	at com.google.inject.internal.util.$MapMaker$StrategyImpl.compute(MapMaker.java:549)
+	... 25 more
+Caused by: java.lang.NoClassDefFoundError: org/eclipse/xtext/xbase/typesystem/override/ResolvedOperations
+	at java.base/java.lang.Class.getDeclaredMethods0(Native Method)
+	at java.base/java.lang.Class.privateGetDeclaredMethods(Class.java:3166)
+	at java.base/java.lang.Class.getDeclaredMethods(Class.java:2309)
+	at com.google.inject.spi.InjectionPoint.getInjectionPoints(InjectionPoint.java:662)
+	at com.google.inject.spi.InjectionPoint.forInstanceMethodsAndFields(InjectionPoint.java:356)
+	at com.google.inject.internal.MembersInjectorStore.createWithListeners(MembersInjectorStore.java:90)
+	at com.google.inject.internal.MembersInjectorStore.access$000(MembersInjectorStore.java:34)
+	at com.google.inject.internal.MembersInjectorStore$1.create(MembersInjectorStore.java:42)
+	at com.google.inject.internal.MembersInjectorStore$1.create(MembersInjectorStore.java:39)
+	at com.google.inject.internal.FailableCache$1.apply(FailableCache.java:39)
+	at com.google.inject.internal.util.$MapMaker$StrategyImpl.compute(MapMaker.java:549)
+	... 35 more
+Caused by: java.lang.ClassNotFoundException: org.eclipse.xtext.xbase.typesystem.override.ResolvedOperations cannot be found by org.eclipse.xtend.core_2.4.3.v201309030823
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:516)
+	at org.eclipse.osgi.internal.loader.ModuleClassLoader.loadClass(ModuleClassLoader.java:171)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:521)
+	... 46 more

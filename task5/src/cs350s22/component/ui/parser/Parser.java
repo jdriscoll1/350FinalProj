@@ -467,91 +467,97 @@ public class Parser {
 
 	//G1 Reporter Commands
 	
-	//CREATE REPORTER CHANGE already accounted for 
-	private void G1(Scanner sc) {
-		System.out.println("YO MAMA");
-		boolean areGroups = false;
-		//CHANGE
-		Identifier ID = Identifier.make(sc.next());
-		//NOTIFY
+	//CREATE REPORTER already accounted for 
+	private void REPORTERcommands(Scanner sc) {
+		
+		//Change or Frequency 
+		boolean isChange = sc.next().equals("CHANGE");
+		
+		//id
+		Identifier id = Identifier.make(sc.next()); 
+		
+		//NOTIFY 
 		sc.next();
-		//IDS
-		sc.next();
-
-		//get the list of ids to notify
-		ArrayList<Identifier> ids = new ArrayList<Identifier>();
-		ArrayList<Identifier> groups = new ArrayList<Identifier>();
-
-		//Adding IDs or Groups to the lists
-		String scannerItem = sc.next();
-		while( (!scannerItem.equals("GROUPS")) && (!scannerItem.equals("DELTA")) ) {
-			ids.add(Identifier.make(scannerItem));
-			scannerItem = sc.next();
-		}
-
-		if(scannerItem.equals("GROUPS")) {
-			scannerItem = sc.next();
-			while(!scannerItem.equals("DELTA")) {
-				groups.add(Identifier.make(scannerItem));
-				scannerItem = sc.next();
+		
+		int currList = -1;
+		
+		List<Identifier> ids = new ArrayList<Identifier>();
+		List<Identifier> groups = new ArrayList<Identifier>(); 
+		
+		
+		while(sc.hasNext()) {
+			String curr = sc.next(); 
+			//Star 1: ids
+			if(curr.equals("ID") || curr.equals("IDS")) {
+				currList = 0; 
+				
 			}
-			areGroups = true;
-		}
-
-		//get the delta value
-		scannerItem = sc.next();
-		int delta = Integer.parseInt(scannerItem);
-
-		//add with or without groups
-		ReporterChange reporterChange = (areGroups) ? new ReporterChange(ids, groups, delta) : new ReporterChange(ids, delta);
-
-		parserHelper.getSymbolTableReporter().add(ID, reporterChange);
-
-		//add to the symbol table
-		System.out.println("THIS IS IS A TEST OF THE TESTING SYSTEM");
-	}
-
-	//G2 Reporter Commands
-	private void G2(Scanner sc) {
-		boolean areGroups = false;
-		//FREQUENCY
-		Identifier ID = Identifier.make(sc.next());
-		System.out.println(ID.toString());
-		//NOTIFY
-		sc.next();
-		//IDS
-		sc.next();
-
-		//get the list of ids to notify
-		ArrayList<Identifier> ids = new ArrayList<Identifier>();
-		ArrayList<Identifier> groups = new ArrayList<Identifier>();
-
-		//Adding IDs or Groups to the lists
-		String scannerItem = sc.next();
-		while( (!scannerItem.equals("GROUPS")) && (!scannerItem.equals("FREQUENCY")) ) {
-			ids.add(Identifier.make(scannerItem));
-			scannerItem = sc.next();
-		}
-
-		if(scannerItem.equals("GROUPS")) {
-			scannerItem = sc.next();
-			while(!scannerItem.equals("FREQUENCY")) {
-				groups.add(Identifier.make(scannerItem));
-				scannerItem = sc.next();
+			//Star 2: groups 
+			else if(curr.equals("GROUP") || curr.equals("GROUPS")) {
+				currList = 1; 
+				
+				
 			}
+			
+			//Star 3: DELTA --> break case
+			else if(curr.equals("DELTA") || curr.equals("FREQUENCY")) {
+				break; 
+				
+			}
+			//Now it's a square
+			else {
+				Identifier squareID = Identifier.make(curr); 
+				if(currList == 0) {
+					
+					ids.add(squareID);
+				}
+				else {
+					groups.add(squareID);
+					
+				}
+				
+				
+			}
+			
+
+		//End stars & Squares loop 
 		}
-
-		//get the frequency value
-		scannerItem = sc.next();
-		int frequency = Integer.parseInt(scannerItem);
-
-		//add with or without groups
-		ReporterFrequency reporterFrequency = (areGroups) ? new ReporterFrequency(ids, groups, frequency) : new ReporterFrequency(ids, frequency);
-		parserHelper.getSymbolTableReporter().add(ID, reporterFrequency);
-
-		//add to the symbol table
-		System.out.println("Frequency has changed with " + frequency);
-	}
+		
+		int value = sc.nextInt(); 
+		
+		SymbolTable<A_Reporter> reporterTable = parserHelper.getSymbolTableReporter(); 
+		A_Reporter r = null; 
+		//Create the change reporter
+		if(isChange) {
+			ReporterChange rc = null; 
+			if(groups.size() > 0) {
+				rc = new ReporterChange(ids, groups, value); 
+			}
+			else {
+				rc = new ReporterChange(ids, value); 
+				
+			}
+			r = rc; 
+		}
+		//Create the frequency reporter
+		else {
+			ReporterFrequency rf = null; 
+			if(groups.size() > 0) {
+				rf = new ReporterFrequency(ids, groups, value); 
+			}
+			else {
+				rf = new ReporterFrequency(ids, value); 
+				
+			}
+			r = rf; 
+			
+		}
+		
+		
+		reporterTable.add(id, r);
+		System.out.println("\n\nNewly Created Reporter: " + reporterTable.get(id) + "\n\n");
+		
+}
 
 
 	// Create Sensor (Speed | Position)
@@ -847,14 +853,7 @@ public class Parser {
 	                        MAPPERcommands(sc);
 	                        break;
 	                    case "REPORTER":
-							switch(sc.next()) {
-								case "CHANGE":
-									G1(sc);
-									break;
-								case "FREQUENCY":
-									G2(sc);
-									break;
-							}
+							REPORTERcommands(sc);
 	                        break;
 	                    case "SENSOR":
 	                        H1(sc); 

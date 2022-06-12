@@ -16,7 +16,7 @@ public class Startup {
 	public static void A1() throws Exception {
 
 		//Create the mapper
-		startup.parse("CREATE MAPPER map1 EQUATION PASSTHROUGH");
+		//startup.parse("CREATE MAPPER map1 EQUATION PASSTHROUGH");
 
 		//create a watchdog
 		startup.parse("CREATE REPORTER FREQUENCY myReporter1 NOTIFY ID cli FREQUENCY 3");
