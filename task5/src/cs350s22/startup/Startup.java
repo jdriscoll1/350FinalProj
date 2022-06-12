@@ -53,6 +53,22 @@ public class Startup {
 		startup.parse("GET SENSOR mySensor3 VALUE");
 	}
 	
+	public static void F1() throws Exception {
+		 startup.parse("CREATE REPORTER FREQUENCY myReporter1 NOTIFY ID cli FREQUENCY 3");
+
+	      startup.parse("CREATE SENSOR POSITION mySensor1"); // add  REPORTERS myReporter1
+	      
+	      startup.parse("CREATE ACTUATOR LINEAR myActuator1 SENSOR mySensor1 ACCELERATION LEADIN 0.1 LEADOUT -0.2 RELAX 0.3 VELOCITY LIMIT 5 VALUE MIN 1 MAX 20 INITIAL 2 JERK LIMIT 3");
+	      
+	      startup.parse("BUILD NETWORK WITH COMPONENT myActuator1");
+	      	
+	      startup.parse("SEND MESSAGE PING");
+	      
+	      
+
+		
+	}
+	
 	public Startup() {
 		System.out.println("STARTUP");
 	}
@@ -64,10 +80,7 @@ public class Startup {
 
 		startup.parse("@CONFIGURE LOG a.txt DOT SEQUENCE b.txt NETWORK c.txt XML d.txt");
 
-		//startup.A1();
-		//startup.A2();
-		startup.B1();
-		//startup.B2();
+		startup.F1(); 
 		startup.parse("@EXIT");
 
 	}
