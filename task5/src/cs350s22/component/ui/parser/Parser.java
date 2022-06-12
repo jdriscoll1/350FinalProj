@@ -398,10 +398,62 @@ public class Parser {
 		System.out.println(c.getTick());
 	}
 
-	// F1 Network Commands
-	private void F1(Scanner sc) {
-
-		//COMPONENT
+	// F1 Network Commands: BUILD NETWORK 
+	private void F1(Scanner sc) throws Exception {
+		//WITH 
+		sc.next(); 
+		
+		//COMPONENTS
+		sc.next(); 
+		
+		List<Identifier> components = new ArrayList<Identifier>();
+		
+		//Until there is nothing left :(
+		while(sc.hasNext()) {
+			String curr = sc.next(); 
+			Identifier id = Identifier.make(curr); 
+			components.add(id); 
+			
+			
+		}
+		
+		//Executing
+		SymbolTable<A_Controller> controlTable = parserHelper.getSymbolTableController(); 
+		SymbolTable<A_Actuator> actTable = parserHelper.getSymbolTableActuator(); 
+		SymbolTable<A_Sensor> sensorTable = parserHelper.getSymbolTableSensor(); 
+		for(Identifier id : components) {
+			A_Component c = null; 
+			
+			//Check control table
+			try {
+				c =controlTable.get(id); 
+				
+				
+			}
+			catch(Exception e0){
+				//Check actuator table
+				try {
+					c = actTable.get(id); 
+					
+				}
+				catch(Exception e1) {
+					c = controlTable.get(id); 
+					//Check sensor table
+					try {
+						c = sensorTable.get(id); 
+					}
+						catch(Exception e2) {
+							throw new Exception("ID not found");
+							
+						
+						
+					}
+				}
+				
+			}
+			controlTable.get(id); 
+		}
+		/*
 		String s = sc.next();
 		switch(s) {
 			case ("COMPONENT"):
@@ -462,6 +514,7 @@ public class Parser {
 				}
 				break;
 		}
+		*/
 	}
 
 
@@ -839,7 +892,7 @@ public class Parser {
 
 	
  
-	  public void parse() throws IOException, ParseException, InterruptedException {
+	  public void parse() throws Exception {
 
 	    	//makes it so we seperate words from empty spaces (" ")
 	        this.userInput = this.commandtext;
@@ -1000,11 +1053,7 @@ public class Parser {
 	            	System.out.println(userInput);
 	                switch(sc.next()) {
 	                    case "NETWORK":
-							//WITH
-							sc.next();
-							//COMPONENT
 							F1(sc);
-
 	                        break;
 	                }
 	                break;
