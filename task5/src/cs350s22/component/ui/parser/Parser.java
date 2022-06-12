@@ -221,54 +221,60 @@ public class Parser {
 	private void MAPPERcommands(Scanner sc) throws IOException {// MAPPER command also C1 C2 C3 C4
 		// create mapper
 		SymbolTable<A_Mapper> mapperTable = parserHelper.getSymbolTableMapper();
-		Identifier ID = Identifier.make(sc.next());
-
-		// C 1-3
-		if (sc.next().matches("EQUATION")) {
-			String PLEASE_RENAME_THIS_KELSEY_OR_KEVIN = sc.next();
-			if (PLEASE_RENAME_THIS_KELSEY_OR_KEVIN.matches("PASSTHROUGH")) {
-				EquationPassthrough passMapper = new EquationPassthrough();
-				MapperEquation eqautionMapper = new MapperEquation(passMapper);
-				mapperTable.add(ID, eqautionMapper);
-			} else if (PLEASE_RENAME_THIS_KELSEY_OR_KEVIN.matches("SCALE")) {
-				int value = sc.nextInt();
-
-				EquationScaled scaleMapper = new EquationScaled(value);
-				MapperEquation equationMapper = new MapperEquation(scaleMapper);
-				mapperTable.add(ID, equationMapper);
-			} else if (PLEASE_RENAME_THIS_KELSEY_OR_KEVIN.matches("NORMALIZE")) {
-				int value1 = sc.nextInt();
-				int value2 = sc.nextInt();
-
-				EquationNormalized normalizeMapper = new EquationNormalized(value1, value2);
-				MapperEquation equationMapper = new MapperEquation(normalizeMapper);
-				mapperTable.add(ID, equationMapper);
+		Identifier id = Identifier.make(sc.next());
+		boolean isEquation = sc.next().equals("EQUATION");
+		
+		A_Mapper mapper = null; 
+		//C1-C3
+		if(isEquation) {
+			
+			String s1 = sc.next(); 
+			//C1 
+			if(s1.equals("PASSTHROUGH")) {
+				EquationPassthrough eq = new EquationPassthrough(); 
+				mapper = new MapperEquation(eq); 
+ 
+			}
+			
+			//C2
+			else if(s1.equals("SCALE")) {
+				double scaleVal = sc.nextDouble(); 
+				EquationScaled eq = new EquationScaled(scaleVal); 
+				mapper = new MapperEquation(eq); 
 				
 			}
-		}
-		// C4
-		else if (sc.next().matches("INTERPOLATION")) {
-			if (sc.next().matches("LINEAR")) {
-				sc.next();
-				String definition = sc.next();
-				Filespec filespec = new Filespec(definition);
-				A_MapLoader map = new MapLoader(filespec);
-				InterpolationMap interpolationMap = map.load();
-				InterpolatorLinear interpolatorLinear = new InterpolatorLinear(interpolationMap);
-				MapperInterpolation mapperInterpolation = new MapperInterpolation(interpolatorLinear);
-				mapperTable.add(ID, mapperInterpolation);
+			//C3
+			else if(s1.equals("NORMALIZE")) {
+				double v1 = sc.nextDouble(); 
+				double v2 = sc.nextDouble(); 
+				EquationNormalized eq = new EquationNormalized(v1, v2); 
+				mapper = new MapperEquation(eq); 
+				
 			}
-			if (sc.next().matches("SPLINE")) {
-				sc.next();
-				String definition = sc.next();
-				Filespec filespec = new Filespec(definition);
-				A_MapLoader map = new MapLoader(filespec);
-				InterpolationMap interpolationMap = map.load();
-				InterpolatorSpline interpolatorSpline = new InterpolatorSpline(interpolationMap);
-				MapperInterpolation mapperInterpolation = new MapperInterpolation(interpolatorSpline);
-				mapperTable.add(ID, mapperInterpolation);
-			}
+			mapperTable.add(id, mapper);			
 		}
+		
+		//C4
+		else {
+			//INTERPOLATION 
+			boolean isLinear = sc.next().equals("LINEAR"); 
+			
+			//DEFINITION
+			sc.next(); 
+			
+			String file = sc.next(); 
+			Filespec filespec = new Filespec(file); 
+			MapLoader mapLoader = new MapLoader(filespec);
+			InterpolationMap iMap = mapLoader.load();
+			MapperInterpolation mapperInterpolation = new MapperInterpolation
+					(isLinear ? new InterpolatorLinear(iMap) : new InterpolatorSpline(iMap));
+			
+			mapperTable.add(id, mapperInterpolation);
+			
+		}
+		
+		
+		
 	}
 
 	// Sends out a ping from the command line interface
@@ -418,7 +424,7 @@ public class Parser {
 				//get the sensor
 				Identifier ID2 = Identifier.make(sc.next());
 				if(sensorTable.contains(ID2)) {
-					A_Component component2 = sensorTable.get(ID);
+					A_Component component2 = sensorTable.get(ID2);
 					parserHelper.getControllerMaster().addComponent(component2);
 					System.out.println("Sensor " + component2.getID() + "  has been added");
 					System.out.println(parserHelper.getNetwork().generateXML());

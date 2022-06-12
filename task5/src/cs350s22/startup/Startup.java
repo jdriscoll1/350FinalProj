@@ -1,3 +1,4 @@
+
 package cs350s22.startup;
 
 import cs350s22.component.ui.parser.A_ParserHelper;
@@ -13,7 +14,7 @@ public class Startup {
 
 	//Goal: create a linear actuator with some configurations 
 	public static void A1() throws Exception {
-		
+
 		//Create the mapper
 		startup.parse("CREATE MAPPER map1 EQUATION PASSTHROUGH");
 
@@ -29,12 +30,10 @@ public class Startup {
 		//create the sensors (SPEED and POSITION)
 		startup.parse("CREATE SENSOR POSITION positionSensor1 REPORTERS reporter1 MAPPER map1");
 		//startup.parse("CREATE SENSOR SPEED speedSensor1 WATCHDOGS watchdog1 MAPPER map1");
-		
+
 		//create network
 		startup.parse("BUILD NETWORK WITH COMPONENT act1 positionSensor1");
 
-	
-		
 		//change the position to 15
 		startup.parse("SEND MESSAGE ID act1 POSITION REQUEST 15");
 		startup.parse("@CLOCK WAIT FOR .2");
