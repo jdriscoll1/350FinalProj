@@ -35,6 +35,7 @@ public class Startup {
 	      startup.parse("SEND MESSAGE ID myActuator1 POSITION REQUEST 20");
 	      startup.parse("@CLOCK WAIT FOR 0.5");
 	      startup.parse("SEND MESSAGE ID myActuator1 POSITION REPORT");
+	      startup.parse("SEND MESSAGE ID myActuator1 POSITION REQUEST 15");
 	     
 	      startup.parse("@EXIT");    
 	      

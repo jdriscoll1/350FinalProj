@@ -291,25 +291,24 @@ public class Parser {
 		
 
 		// All the ids & groups
-		ArrayList<Identifier> currList = new ArrayList<Identifier>();
 		ArrayList<Identifier> ids = new ArrayList<Identifier>();
 		ArrayList<Identifier> groups = new ArrayList<Identifier>();
 
 		// The current word being parsed
 		String curr = "";
-		
+		int currList = 0; 
 		//Stars & Squares
 		while(sc.hasNext()) {
 			curr = sc.next(); 
 			//Star: ID
 			if(curr.equals("ID") || curr.equals("IDS")) {
-				currList = ids;
+				currList = 0;
 				
 			}
 			
 			//Star: 
 			else if(curr.equals("GROUP") || curr.equals("GROUPS")) {
-				currList = groups; 
+				currList = 1; 
 				
 			}
 			//exit star 
@@ -319,8 +318,14 @@ public class Parser {
 			}
 			//Square 
 			else {
-				
-				currList.add(Identifier.make(curr)); 
+				Identifier id = Identifier.make(curr); 
+				if(currList == 0) {
+					ids.add(id); 
+				}
+				else if(currList == 1) {
+					groups.add(id); 
+					
+				}
 				
 			}
 			
@@ -344,20 +349,23 @@ public class Parser {
 		
 		if(isRequest) {
 			if(ids.size() > 0) {
-				
+				System.out.println("Does this work?");
 				cli.issueMessage(new MessageActuatorRequestPosition(ids, value)); 
 				
 			}
 			if(groups.size() > 0) {
+				System.out.println("Does this work??");
 				cli.issueMessage(new MessageActuatorRequestPosition(groups, value, 0)); 
 			}
 			
 		}
 		else {
 			if(ids.size() > 0) {
+				System.out.println("Does this work???");
 				cli.issueMessage(new MessageActuatorReportPosition(ids)); 
 			}
 			if(groups.size() > 0) {
+				System.out.println("Does this work????");
 				cli.issueMessage(new MessageActuatorReportPosition(groups, 0)); 
 			}
 			
