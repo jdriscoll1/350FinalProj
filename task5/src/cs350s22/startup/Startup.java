@@ -97,10 +97,10 @@ public class Startup {
 	public static void E1() throws Exception{
 		 
 		 //Create a reporter
-		 startup.parse("CREATE REPORTER FREQUENCY myReporter1 NOTIFY ID cli FREQUENCY 10");
+		 startup.parse("CREATE REPORTER FREQUENCY myReporter1 NOTIFY ID cli FREQUENCY 5");
 
 		//Create le watchdog 
-		startup.parse("CREATE WATCHDOG NOTCH myWatchdog1 MODE INSTANTANEOUS THRESHOLD LOW 10 HIGH 14");
+		startup.parse("CREATE WATCHDOG BAND myWatchdog1 MODE INSTANTANEOUS THRESHOLD LOW 3 HIGH 12");
 		
 		//Create Sensr
 		startup.parse("CREATE SENSOR POSITION mySensor4 GROUP myGroup1 REPORTER myReporter1 WATCHDOG myWatchdog1");
@@ -180,7 +180,7 @@ public class Startup {
 
 		startup.parse("@CONFIGURE LOG a.txt DOT SEQUENCE b.txt NETWORK c.txt XML d.txt");
 
-		startup.D2(); 
+		startup.E1(); 
 		startup.parse("@EXIT");
 
 
