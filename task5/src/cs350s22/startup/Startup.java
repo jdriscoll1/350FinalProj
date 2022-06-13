@@ -134,6 +134,40 @@ public class Startup {
 	      startup.parse("SEND MESSAGE PING");	
 	      
 	}
+
+	public static void C1() throws Exception {
+		//For each, add the mapper to mySensor2 from B.2. Show that the raw value from the sensor is appropriately mapped.
+
+		startup.parse("CREATE REPORTER FREQUENCY myReporter2 NOTIFY ID cli2 FREQUENCY 3");
+
+		startup.parse("CREATE MAPPER myMapper1 EQUATION PASSTHROUGH");
+
+		startup.parse("CREATE WATCHDOG BAND myWatchdog1 MODE INSTANTANEOUS THRESHOLD LOW 0 HIGH 20");
+
+		startup.parse("CREATE SENSOR POSITION mySensor5 GROUP myGroup1 REPORTER myReporter2 WATCHDOG myWatchdog1 MAPPER myMapper1");
+
+		startup.parse("BUILD NETWORK WITH COMPONENT mySensor5");
+
+		startup.parse("SET SENSOR mySensor5 VALUE 10");
+		startup.parse("GET SENSOR mySensor5 VALUE");
+	}
+
+	public static void C2() throws Exception {
+		//For each, add the mapper to mySensor2 from B.2. Show that the raw value from the sensor is appropriately mapped.
+
+		startup.parse("CREATE REPORTER FREQUENCY myReporter3 NOTIFY ID cli3 FREQUENCY 3");
+
+		startup.parse("CREATE MAPPER myMapper2 EQUATION SCALE 5");
+
+		startup.parse("CREATE WATCHDOG BAND myWatchdog2 mode INSTANTANEOUS THRESHOLD LOW 0 HIGH 20");
+
+		startup.parse("CREATE SENSOR POSITION mySensor6 GROUP myGroup2 REPORTER myReporter3 WATCHDOG myWatchdog2 MAPPER myMapper2");
+
+		startup.parse("BUILD NETWORK WITH COMPONENT mySensor6");
+
+		startup.parse("SET SENSOR mySensor6 VALUE 10");
+		startup.parse("GET SENSOR mySensor6 VALUE");
+	}
 	
 	public Startup() {
 		System.out.println("STARTUP");
