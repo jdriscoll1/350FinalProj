@@ -14,7 +14,7 @@ public class Startup {
 	//Goal: create a linear actuator with some configurations 
 	public static void A1() throws Exception {
 
-		startup.parse("CREATE ACTUATOR LINEAR myActuator1 SENSOR adasd ACCELERATION LEADIN 0.1 LEADOUT -0.2 RELAX 0.3 VELOCITY LIMIT 5 VALUE MIN 1 MAX 20 INITIAL 2 JERK LIMIT 3");
+		startup.parse("CREATE ACTUATOR LINEAR myActuator1 ACCELERATION LEADIN 0.1 LEADOUT -0.2 RELAX 0.3 VELOCITY LIMIT 5 VALUE MIN 1 MAX 20 INITIAL 2 JERK LIMIT 3");
 
 		startup.parse("BUILD NETWORK WITH COMPONENT myActuator1");
 
@@ -64,20 +64,43 @@ public class Startup {
 		startup.parse("GET SENSOR mySensor4 VALUE");
 	}
 	
-	public static void F1() throws Exception {
+	//Instantaneous Band Watchdog
+	public static void H1() throws Exception{
+		 //Create a reporter
+		 startup.parse("CREATE REPORTER FREQUENCY myReporter1 NOTIFY ID cli FREQUENCY 3");
 
+		//Create le watchdog 
+		startup.parse("CREATE WATCHDOG NOTCH myWatchdog1 MODE INSTANTANEOUS THRESHOLD LOW -5 HIGH 20");
+		
+		//Create Senosr
+		startup.parse("CREATE SENSOR POSITION mySensor4 GROUP myGroup1 REPORTER myReporter1 WATCHDOG myWatchdog1");
+		
+		//What do we need to check if a watchdog
+		startup.parse("CREATE ACTUATOR LINEAR myActuator1 SENSOR mySensor4 ACCELERATION LEADIN 0.1 LEADOUT -0.2 RELAX 0.3 VELOCITY LIMIT 5 VALUE MIN 1 MAX 20 INITIAL 2 JERK LIMIT 3");
 
-	     
+		//Build the network
+		startup.parse("BUILD NETWORK WITH COMPONENT myActuator1");
+		
+		startup.parse("SEND MESSAGE ID myActuator1 POSITION REQUEST 15");
 	      
+	    startup.parse("@CLOCK WAIT FOR 0.5");
+	      
+	    startup.parse("SEND MESSAGE ID myActuator1 POSITION REPORT");
+	     
+	    startup.parse("@EXIT");   
+
+
+		
+	}
+	
+	//Send Message Ping
+	public static void F1() throws Exception {
 	      startup.parse("CREATE ACTUATOR LINEAR myActuator1 ACCELERATION LEADIN 0.1 LEADOUT -0.2 RELAX 0.3 VELOCITY LIMIT 5 VALUE MIN 1 MAX 20 INITIAL 2 JERK LIMIT 3");
 	      
 	      startup.parse("BUILD NETWORK WITH COMPONENT myActuator1");
 	      	
-	      startup.parse("SEND MESSAGE PING");
+	      startup.parse("SEND MESSAGE PING");	
 	      
-	      
-
-		
 	}
 	
 	public Startup() {
@@ -91,7 +114,7 @@ public class Startup {
 
 		startup.parse("@CONFIGURE LOG a.txt DOT SEQUENCE b.txt NETWORK c.txt XML d.txt");
 
-		startup.F1(); 
+		startup.H1(); 
 		startup.parse("@EXIT");
 
 

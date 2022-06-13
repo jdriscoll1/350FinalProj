@@ -525,7 +525,7 @@ public class Parser {
 		
 		
 		reporterTable.add(id, r);
-		System.out.println("\n\nNewly Created Reporter: " + reporterTable.get(id) + "\n\n");
+	
 		
 }
 
@@ -566,7 +566,7 @@ public class Parser {
 		while (sc.hasNext()) {
 			
 			String curr = sc.next();
-			System.out.println(curr);
+	
 			// First check if it is any of the stars, if it is, set that to the current
 			if (curr.equals("GROUPS") || curr.equals("GROUP")) {
 				currList = 0; 
@@ -822,7 +822,6 @@ public class Parser {
 
 		Identifier tableID = Identifier.make(id);
 		table.add(tableID, w);
-	
 
 	}
 
@@ -861,9 +860,6 @@ public class Parser {
 	                    case "WATCHDOG":
 	                        I(sc); 
 	                        break;
-
-	                    default:
-	                        System.out.println("not valid first word");
 	                }
 	                break;
 	            case "SEND": 
@@ -878,8 +874,7 @@ public class Parser {
 	                        	
 	                        }
 	                        break;
-	                    default:
-	                        System.out.println("not valid first word");
+	               
 	                }
 	                break;
 	            case "@CLOCK": 
