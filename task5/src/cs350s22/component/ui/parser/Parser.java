@@ -54,99 +54,87 @@ import cs350s22.test.ActuatorPrototype;
 import cs350s22.test.MySensor;
 
 public class Parser {
-		
-    private final A_ParserHelper parserHelper;
-    private final String commandtext;
-    private String userInput; 
-    
-    public Parser(A_ParserHelper parserHelper, String commandtext) throws IOException {
-        //not sure if we need this
-        this.parserHelper = parserHelper;
-        this.commandtext = commandtext;
+
+	private final A_ParserHelper parserHelper;
+	private final String commandtext;
+	private String userInput;
+
+	public Parser(A_ParserHelper parserHelper, String commandtext) throws IOException {
+		// not sure if we need this
+		this.parserHelper = parserHelper;
+		this.commandtext = commandtext;
 		this.userInput = "";
-    }
-   
-    //Write out the Pseudo code and comit that change
-    //TODO: Complete this command
-    private void A1(Scanner sc) {
-    	
+	}
 
-    	//Our goal is to create an actuator with identifer id and optional membership in groups and optional embedded sensors id based on values 
-    	//crrate an actuator object that takes in:
-    	
-    	//We have to be able to parse the command and know its parameters 
-    	
-    	//1) Get the sensors by calling get() with id on SymbolTable<A_Sensor>
-    		//Q: How do we call Symbol Table? 
-    	 
-    	
-    	//Let's make a parser
-    	
-    	 
-    	 //List<Identifier> groups = null; //Optional 
-		 double accelerationLeadin = 0.0; 
-		 double accelerationLeadout = 0.0;
-		 double accelerationRelax = 0.0;
-		 double velocityLimit = 0.0;
-		 double velocityInitial = 0.0;
-		 double valueMin = 0.0;
-		 double valueMax = 0.0;
-		 double inflectionJerkThreshold = 0;
-		 //List<A_Sensor> sensors = null; //Optional
-	     //String[] command = this.userInput.split(" ");
+	// Write out the Pseudo code and comit that change
+	// TODO: Complete this command
+	private void A1(Scanner sc) {
+
+		// Our goal is to create an actuator with identifer id and optional membership
+		// in groups and optional embedded sensors id based on values
+		// crrate an actuator object that takes in:
+
+		// We have to be able to parse the command and know its parameters
+
+		// 1) Get the sensors by calling get() with id on SymbolTable<A_Sensor>
+		// Q: How do we call Symbol Table?
+
+		// Let's make a parser
+
+		// List<Identifier> groups = null; //Optional
+		double accelerationLeadin = 0.0;
+		double accelerationLeadout = 0.0;
+		double accelerationRelax = 0.0;
+		double velocityLimit = 0.0;
+		double velocityInitial = 0.0;
+		double valueMin = 0.0;
+		double valueMax = 0.0;
+		double inflectionJerkThreshold = 0;
+		// List<A_Sensor> sensors = null; //Optional
+		// String[] command = this.userInput.split(" ");
 //	     Identifier ID = Identifier.make(sc.next());
-	     List<Identifier> group = new ArrayList<Identifier>(); 
-	     List<Identifier> currGroup = new ArrayList<Identifier>(); 
-	     List<Identifier> sensorsID = new ArrayList<Identifier>(); 
+		List<Identifier> group = new ArrayList<Identifier>();
+		List<Identifier> currGroup = new ArrayList<Identifier>();
+		List<Identifier> sensorsID = new ArrayList<Identifier>();
 
-	 	// Check if it is a linear or rotary access
+		// Check if it is a linear or rotary access
 		boolean isLinear = sc.next().equals("LINEAR");
 
 		Identifier id = Identifier.make(sc.next());
-		
-		
-		
-			
-			
-			
 
-		
-		
 		// Stars & Square Loop
 		while (sc.hasNext()) {
-				
+
 			String curr = sc.next();
 
-			//Star: GROUP or GROUPS 
+			// Star: GROUP or GROUPS
 			if (curr.equals("GROUPS") || curr.equals("GROUP")) {
 				currGroup = group;
-	
+
 			}
-			//Star: SENSOR or SENSORS 
+			// Star: SENSOR or SENSORS
 			else if (curr.matches("SENSORS") || curr.matches("SENSOR")) {
-				currGroup = sensorsID; 
+				currGroup = sensorsID;
 			}
 			// If it reaches ACCELERATION{
 			// break
 			else if (curr.matches("ACCELERATION")) {
 				break;
 			}
-			//Square 
+			// Square
 			else {
 				currGroup.add(Identifier.make(curr));
-				
-				
-				
+
 			}
 			// Add it to the list
 		}
 
 		if (sc.next().matches("LEADIN")) {
 			accelerationLeadin = Double.parseDouble(sc.next());
-		} 
+		}
 		if (sc.next().matches("LEADOUT")) {
 			accelerationLeadout = Double.parseDouble(sc.next());
-		} 
+		}
 
 		if (sc.next().matches("RELAX")) {
 			accelerationRelax = Double.parseDouble(sc.next());
@@ -155,46 +143,43 @@ public class Parser {
 		if (sc.next().matches("VELOCITY")) {
 			if (sc.next().matches("LIMIT")) {
 				velocityLimit = Double.parseDouble(sc.next());
-			} 
-		} 
+			}
+		}
 		if (sc.next().matches("VALUE")) {
 			if (sc.next().matches("MIN")) {
 				valueMin = Double.parseDouble(sc.next());
-			} 
-		} 
+			}
+		}
 		if (sc.next().matches("MAX")) {
 			valueMax = Double.parseDouble(sc.next());
-		} 
+		}
 		if (sc.next().matches("INITIAL")) {
 			velocityInitial = Double.parseDouble(sc.next());
-		} 
+		}
 		if (sc.next().matches("JERK")) {
 			if (sc.next().matches("LIMIT")) {
 				inflectionJerkThreshold = Double.parseDouble(sc.next());
-			} 
-		} 
-		
-		List<A_Sensor> sensors = new ArrayList<A_Sensor>(); 
-		SymbolTable<A_Sensor> symbolTable = parserHelper.getSymbolTableSensor(); 
-		
-		for(Identifier s : sensorsID) {
-			
-			
-			//What is Sensor vs currsensor vs sensors
-			sensors.add(symbolTable.get(s));
-			
+			}
 		}
-		
-		
-		//FIX SENSOR DATA TYPE
-		ActuatorPrototype actuator = new ActuatorPrototype(id, group, accelerationLeadin, accelerationLeadout, accelerationRelax, velocityLimit, velocityInitial, valueMin, valueMax, inflectionJerkThreshold, sensors);
+
+		List<A_Sensor> sensors = new ArrayList<A_Sensor>();
+		SymbolTable<A_Sensor> symbolTable = parserHelper.getSymbolTableSensor();
+
+		for (Identifier s : sensorsID) {
+
+			// What is Sensor vs currsensor vs sensors
+			sensors.add(symbolTable.get(s));
+
+		}
+
+		// FIX SENSOR DATA TYPE
+		ActuatorPrototype actuator = new ActuatorPrototype(id, group, accelerationLeadin, accelerationLeadout,
+				accelerationRelax, velocityLimit, velocityInitial, valueMin, valueMax, inflectionJerkThreshold,
+				sensors);
 		parserHelper.getSymbolTableActuator().add(id, actuator);
-		//Actuator Incomplete
+		// Actuator Incomplete
 
 	}
-    
-
-	
 
 	// TO DO: REPLACE sc.next with pre-declared string (ask Kevin for clarification)
 	private void MAPPERcommands(Scanner sc) throws IOException {// MAPPER command also C1 C2 C3 C4
@@ -202,58 +187,56 @@ public class Parser {
 		SymbolTable<A_Mapper> mapperTable = parserHelper.getSymbolTableMapper();
 		Identifier id = Identifier.make(sc.next());
 		boolean isEquation = sc.next().equals("EQUATION");
-		
-		A_Mapper mapper = null; 
-		//C1-C3
-		if(isEquation) {
-			
-			String s1 = sc.next(); 
-			//C1 
-			if(s1.equals("PASSTHROUGH")) {
-				EquationPassthrough eq = new EquationPassthrough(); 
-				mapper = new MapperEquation(eq); 
- 
+
+		A_Mapper mapper = null;
+		// C1-C3
+		if (isEquation) {
+
+			String s1 = sc.next();
+			// C1
+			if (s1.equals("PASSTHROUGH")) {
+				EquationPassthrough eq = new EquationPassthrough();
+				mapper = new MapperEquation(eq);
+
 			}
-			
-			//C2
-			else if(s1.equals("SCALE")) {
-				double scaleVal = sc.nextDouble(); 
-				EquationScaled eq = new EquationScaled(scaleVal); 
-				mapper = new MapperEquation(eq); 
-				
+
+			// C2
+			else if (s1.equals("SCALE")) {
+				double scaleVal = sc.nextDouble();
+				EquationScaled eq = new EquationScaled(scaleVal);
+				mapper = new MapperEquation(eq);
+
 			}
-			//C3
-			else if(s1.equals("NORMALIZE")) {
-				double v1 = sc.nextDouble(); 
-				double v2 = sc.nextDouble(); 
-				EquationNormalized eq = new EquationNormalized(v1, v2); 
-				mapper = new MapperEquation(eq); 
-				
+			// C3
+			else if (s1.equals("NORMALIZE")) {
+				double v1 = sc.nextDouble();
+				double v2 = sc.nextDouble();
+				EquationNormalized eq = new EquationNormalized(v1, v2);
+				mapper = new MapperEquation(eq);
+
 			}
-			mapperTable.add(id, mapper);			
+			mapperTable.add(id, mapper);
 		}
-		
-		//C4
+
+		// C4
 		else {
-			//INTERPOLATION 
-			boolean isLinear = sc.next().equals("LINEAR"); 
-			
-			//DEFINITION
-			sc.next(); 
-			
-			String file = sc.next(); 
-			Filespec filespec = new Filespec(file); 
+			// INTERPOLATION
+			boolean isLinear = sc.next().equals("LINEAR");
+
+			// DEFINITION
+			sc.next();
+
+			String file = sc.next();
+			Filespec filespec = new Filespec(file);
 			MapLoader mapLoader = new MapLoader(filespec);
 			InterpolationMap iMap = mapLoader.load();
-			MapperInterpolation mapperInterpolation = new MapperInterpolation
-					(isLinear ? new InterpolatorLinear(iMap) : new InterpolatorSpline(iMap));
-			
+			MapperInterpolation mapperInterpolation = new MapperInterpolation(
+					isLinear ? new InterpolatorLinear(iMap) : new InterpolatorSpline(iMap));
+
 			mapperTable.add(id, mapperInterpolation);
-			
+
 		}
-		
-		
-		
+
 	}
 
 	// Sends out a ping from the command line interface
@@ -263,10 +246,8 @@ public class Parser {
 		cli.issueMessage(ping);
 	}
 
-	// SEND MESSAGE Already Accounted For 
+	// SEND MESSAGE Already Accounted For
 	private void D2_3(Scanner sc) {
-		
-		
 
 		// All the ids & groups
 		ArrayList<Identifier> ids = new ArrayList<Identifier>();
@@ -274,85 +255,78 @@ public class Parser {
 
 		// The current word being parsed
 		String curr = "";
-		int currList = 0; 
-		//Stars & Squares
-		while(sc.hasNext()) {
-			curr = sc.next(); 
-			//Star: ID
-			if(curr.equals("ID") || curr.equals("IDS")) {
+		int currList = 0;
+		// Stars & Squares
+		while (sc.hasNext()) {
+			curr = sc.next();
+			// Star: ID
+			if (curr.equals("ID") || curr.equals("IDS")) {
 				currList = 0;
-				
+
 			}
-			
-			//Star: 
-			else if(curr.equals("GROUP") || curr.equals("GROUPS")) {
-				currList = 1; 
-				
+
+			// Star:
+			else if (curr.equals("GROUP") || curr.equals("GROUPS")) {
+				currList = 1;
+
 			}
-			//exit star 
-			else if(curr.equals("POSITION")) {
-				break; 
-				
+			// exit star
+			else if (curr.equals("POSITION")) {
+				break;
+
 			}
-			//Square 
+			// Square
 			else {
-				Identifier id = Identifier.make(curr); 
-				if(currList == 0) {
-					ids.add(id); 
+				Identifier id = Identifier.make(curr);
+				if (currList == 0) {
+					ids.add(id);
+				} else if (currList == 1) {
+					groups.add(id);
+
 				}
-				else if(currList == 1) {
-					groups.add(id); 
-					
-				}
-				
+
 			}
-			
+
 		}
-		
-		//Grab the Command Line Interface 
+
+		// Grab the Command Line Interface
 		CommandLineInterface cli = parserHelper.getCommandLineInterface();
-		
-	
-		//is Request 
+
+		// is Request
 		boolean isRequest = (sc.next().equals("REQUEST"));
-		double value = 0; 
-		
-		//Another way of saying is Request
-		if(sc.hasNextDouble()) {
+		double value = 0;
+
+		// Another way of saying is Request
+		if (sc.hasNextDouble()) {
 			value = sc.nextDouble();
 		}
 
 		// Create Message Actuator
 
-		
-		if(isRequest) {
-			if(ids.size() > 0) {
+		if (isRequest) {
+			if (ids.size() > 0) {
 
-				cli.issueMessage(new MessageActuatorRequestPosition(ids, value)); 
-				
-			}
-			if(groups.size() > 0) {
+				cli.issueMessage(new MessageActuatorRequestPosition(ids, value));
 
-				cli.issueMessage(new MessageActuatorRequestPosition(groups, value, 0)); 
 			}
-			
+			if (groups.size() > 0) {
+
+				cli.issueMessage(new MessageActuatorRequestPosition(groups, value, 0));
+			}
+
+		} else {
+			if (ids.size() > 0) {
+
+				cli.issueMessage(new MessageActuatorReportPosition(ids));
+			}
+			if (groups.size() > 0) {
+
+				cli.issueMessage(new MessageActuatorReportPosition(groups, 0));
+			}
+
 		}
-		else {
-			if(ids.size() > 0) {
 
-				cli.issueMessage(new MessageActuatorReportPosition(ids)); 
-			}
-			if(groups.size() > 0) {
-
-				cli.issueMessage(new MessageActuatorReportPosition(groups, 0)); 
-			}
-			
-			
-		}
-		
 	}
-	
-
 
 	private void E6(Scanner sc) throws IOException {
 		// LOG
@@ -385,150 +359,135 @@ public class Parser {
 		parserHelper.output(String.valueOf(c.getTick()));
 	}
 
-	// F1 Network Commands: BUILD NETWORK 
+	// F1 Network Commands: BUILD NETWORK
 	private void F1(Scanner sc) throws Exception {
-		//WITH 
-		sc.next(); 
-		
-		//COMPONENTS
-		sc.next(); 
-		
+		// WITH
+		sc.next();
+
+		// COMPONENTS
+		sc.next();
+
 		List<Identifier> components = new ArrayList<Identifier>();
-		
-		//Until there is nothing left :(
-		while(sc.hasNext()) {
-			String curr = sc.next(); 
-			Identifier id = Identifier.make(curr); 
-			components.add(id); 
-			
-			
+
+		// Until there is nothing left :(
+		while (sc.hasNext()) {
+			String curr = sc.next();
+			Identifier id = Identifier.make(curr);
+			components.add(id);
+
 		}
-		
-		List<A_Component> controllerList = new ArrayList<A_Component>(); 
-		//Executing
-		SymbolTable<A_Controller> controlTable = parserHelper.getSymbolTableController(); 
-		SymbolTable<A_Actuator> actTable = parserHelper.getSymbolTableActuator(); 
-		SymbolTable<A_Sensor> sensorTable = parserHelper.getSymbolTableSensor(); 
-		for(Identifier id : components) {
-			A_Component c = null; 
-			String idStr = id.toString(); 
-			if(idStr.toLowerCase().contains("act")) {
-				c = actTable.get(id); 
-				
+
+		List<A_Component> controllerList = new ArrayList<A_Component>();
+		// Executing
+		SymbolTable<A_Controller> controlTable = parserHelper.getSymbolTableController();
+		SymbolTable<A_Actuator> actTable = parserHelper.getSymbolTableActuator();
+		SymbolTable<A_Sensor> sensorTable = parserHelper.getSymbolTableSensor();
+		for (Identifier id : components) {
+			A_Component c = null;
+			String idStr = id.toString();
+			if (idStr.toLowerCase().contains("act")) {
+				c = actTable.get(id);
+
+			} else if (idStr.toLowerCase().contains("sens")) {
+				c = sensorTable.get(id);
+			} else if (idStr.toLowerCase().contains("cont") || idStr.toLowerCase().contains("ctrl")) {
+				c = controlTable.get(id);
+
 			}
-			else if(idStr.toLowerCase().contains("sens")) {
-				c = sensorTable.get(id); 
-			}
-			else if(idStr.toLowerCase().contains("cont") || idStr.toLowerCase().contains("ctrl")) {
-				c = controlTable.get(id); 
-				
-			}				
-			controllerList.add(c); 
+			controllerList.add(c);
 		}
-		A_ControllerForwarding ctrlForwarding = parserHelper.getControllerMaster(); 
+		A_ControllerForwarding ctrlForwarding = parserHelper.getControllerMaster();
 		ctrlForwarding.addComponents(controllerList);
-		
+
 		parserHelper.getNetwork().generateXML();
 		parserHelper.getNetwork().writeOutput();
-	
-		
+
 	}
 
+	// G1 Reporter Commands
 
-	//G1 Reporter Commands
-	
-	//CREATE REPORTER already accounted for 
+	// CREATE REPORTER already accounted for
 	private void REPORTERcommands(Scanner sc) {
-		
-		//Change or Frequency 
+
+		// Change or Frequency
 		boolean isChange = sc.next().equals("CHANGE");
-		
-		//id
-		Identifier id = Identifier.make(sc.next()); 
-		
-		//NOTIFY 
+
+		// id
+		Identifier id = Identifier.make(sc.next());
+
+		// NOTIFY
 		sc.next();
-		
+
 		int currList = -1;
-		
+
 		List<Identifier> ids = new ArrayList<Identifier>();
-		List<Identifier> groups = new ArrayList<Identifier>(); 
-		
-		
-		while(sc.hasNext()) {
-			String curr = sc.next(); 
-			//Star 1: ids
-			if(curr.equals("ID") || curr.equals("IDS")) {
-				currList = 0; 
-				
+		List<Identifier> groups = new ArrayList<Identifier>();
+
+		while (sc.hasNext()) {
+			String curr = sc.next();
+			// Star 1: ids
+			if (curr.equals("ID") || curr.equals("IDS")) {
+				currList = 0;
+
 			}
-			//Star 2: groups 
-			else if(curr.equals("GROUP") || curr.equals("GROUPS")) {
-				currList = 1; 
-				
-				
+			// Star 2: groups
+			else if (curr.equals("GROUP") || curr.equals("GROUPS")) {
+				currList = 1;
+
 			}
-			
-			//Star 3: DELTA --> break case
-			else if(curr.equals("DELTA") || curr.equals("FREQUENCY")) {
-				break; 
-				
+
+			// Star 3: DELTA --> break case
+			else if (curr.equals("DELTA") || curr.equals("FREQUENCY")) {
+				break;
+
 			}
-			//Now it's a square
+			// Now it's a square
 			else {
-				Identifier squareID = Identifier.make(curr); 
-				if(currList == 0) {
-					
+				Identifier squareID = Identifier.make(curr);
+				if (currList == 0) {
+
 					ids.add(squareID);
-				}
-				else {
+				} else {
 					groups.add(squareID);
-					
+
 				}
-				
-				
-			}
-			
 
-		//End stars & Squares loop 
-		}
-		
-		int value = sc.nextInt(); 
-		
-		SymbolTable<A_Reporter> reporterTable = parserHelper.getSymbolTableReporter(); 
-		A_Reporter r = null; 
-		//Create the change reporter
-		if(isChange) {
-			ReporterChange rc = null; 
-			if(groups.size() > 0) {
-				rc = new ReporterChange(ids, groups, value); 
 			}
-			else {
-				rc = new ReporterChange(ids, value); 
-				
-			}
-			r = rc; 
+
+			// End stars & Squares loop
 		}
-		//Create the frequency reporter
+
+		int value = sc.nextInt();
+
+		SymbolTable<A_Reporter> reporterTable = parserHelper.getSymbolTableReporter();
+		A_Reporter r = null;
+		// Create the change reporter
+		if (isChange) {
+			ReporterChange rc = null;
+			if (groups.size() > 0) {
+				rc = new ReporterChange(ids, groups, value);
+			} else {
+				rc = new ReporterChange(ids, value);
+
+			}
+			r = rc;
+		}
+		// Create the frequency reporter
 		else {
-			ReporterFrequency rf = null; 
-			if(groups.size() > 0) {
-				rf = new ReporterFrequency(ids, groups, value); 
-			}
-			else {
-				rf = new ReporterFrequency(ids, value); 
-				
-			}
-			r = rf; 
-			
-		}
-		
-		
-		reporterTable.add(id, r);
-	
-		
-}
+			ReporterFrequency rf = null;
+			if (groups.size() > 0) {
+				rf = new ReporterFrequency(ids, groups, value);
+			} else {
+				rf = new ReporterFrequency(ids, value);
 
+			}
+			r = rf;
+
+		}
+
+		reporterTable.add(id, r);
+
+	}
 
 	// Create Sensor (Speed | Position)
 	private void H1(Scanner sc) {
@@ -561,49 +520,49 @@ public class Parser {
 		boolean reporterFlag = false;
 		boolean watchdogFlag = false;
 		boolean mapperFlag = false;
-		int currList = -1; 
+		int currList = -1;
 		// The List of things to consider: Groups, Reporters, Watchdogs, Mapper
 		while (sc.hasNext()) {
-			
+
 			String curr = sc.next();
-	
+
 			// First check if it is any of the stars, if it is, set that to the current
 			if (curr.equals("GROUPS") || curr.equals("GROUP")) {
-				currList = 0; 
+				currList = 0;
 				currGroup = groups;
 
 			} else if (curr.equals("REPORTERS") || curr.equals("REPORTER")) {
-				currList = 1; 
+				currList = 1;
 				currGroup = reportersID;
 
 			} else if (curr.equals("WATCHDOGS") || curr.equals("WATCHDOG")) {
-				currList = 2; 
+				currList = 2;
 				currGroup = watchdogsID;
 
 			} else if (curr.equals("MAPPER")) {
-				currList = 3; 
+				currList = 3;
 				currGroup = mapperID;
 
 			}
 			// If it's not any of the stars, it's a square
 			else {
-				
+
 				Identifier c_id = Identifier.make(curr);
-				if(currList == 0) {
-					groups.add(c_id); 
+				if (currList == 0) {
+					groups.add(c_id);
 				}
 
-				if(currList == 1) {
-					reportersID.add(c_id); 
-					
+				if (currList == 1) {
+					reportersID.add(c_id);
+
 				}
-				if(currList == 2) {
-					watchdogsID.add(c_id); 
-					
+				if (currList == 2) {
+					watchdogsID.add(c_id);
+
 				}
-				if(currList == 3) {
-					mapperID.add(c_id); 
-					
+				if (currList == 3) {
+					mapperID.add(c_id);
+
 				}
 			}
 		}
@@ -612,95 +571,85 @@ public class Parser {
 		SymbolTable<A_Reporter> reporterTable = parserHelper.getSymbolTableReporter();
 		SymbolTable<A_Watchdog> watchdogTable = parserHelper.getSymbolTableWatchdog();
 		SymbolTable<A_Mapper> mapperTable = parserHelper.getSymbolTableMapper();
-	
+
 		// List of reporters
 		List<A_Reporter> reporters = new ArrayList<A_Reporter>();
 		for (Identifier r_id : reportersID) {
 			// Get the reporter
 			A_Reporter r = reporterTable.get(r_id);
 			reporters.add(r);
-	
+
 		}
-	
+
 		// List of watchdogs
 		List<A_Watchdog> watchdogs = new ArrayList<A_Watchdog>();
 		for (Identifier w_id : watchdogsID) {
 			// Get the reporter
 			A_Watchdog w = watchdogTable.get(w_id);
 			watchdogs.add(w);
-	
+
 		}
 		// List of mappers
 		A_Mapper mapper = null;
-	
+
 		if (!mapperID.isEmpty()) {
 			mapper = mapperTable.get(mapperID.get(0));
-	
+
 		}
-		
-	
+
 		// Create the new Sensor
 		SymbolTable<A_Sensor> sensorTable = parserHelper.getSymbolTableSensor();
-		MySensor s = null; 
-		//Constructor 1: groups is not there
-		if(groups.size() == 0) {
-			s = new MySensor(id); 
-			
-			
-		}
-		else if(groups.size() > 0 && reporters.size() > 0 && watchdogs.size() > 0 && mapper == null) {
-			s = new MySensor(id, groups, reporters, watchdogs); 
-		}
-		else if(groups.size() > 0 && reporters.size() > 0 && watchdogs.size() > 0 && mapper != null) {
-			s = new MySensor(id, groups, reporters, watchdogs, mapper); 
-			
+		MySensor s = null;
+		// Constructor 1: groups is not there
+		if (groups.size() == 0) {
+			s = new MySensor(id);
+
+		} else if (groups.size() > 0 && reporters.size() > 0 && watchdogs.size() > 0 && mapper == null) {
+			s = new MySensor(id, groups, reporters, watchdogs);
+		} else if (groups.size() > 0 && reporters.size() > 0 && watchdogs.size() > 0 && mapper != null) {
+			s = new MySensor(id, groups, reporters, watchdogs, mapper);
+
 		}
 
 		sensorTable.add(id, s);
 
-
-
 	}
-	
-	
-	//Sets a sensors value 
+
+	// Sets a sensors value
 	private void H2(Scanner sc) {
-		
-		//Parsing
-		//id
-		String idStr = sc.next(); 
-		Identifier id = Identifier.make(idStr); 
-		
-		//VALUE
-		sc.next(); 
-		
-		double value = sc.nextDouble(); 
-		
-		//Execution
-		SymbolTable<A_Sensor> sensorTable = parserHelper.getSymbolTableSensor(); 
-		A_Sensor sensor = sensorTable.get(id); 
+
+		// Parsing
+		// id
+		String idStr = sc.next();
+		Identifier id = Identifier.make(idStr);
+
+		// VALUE
+		sc.next();
+
+		double value = sc.nextDouble();
+
+		// Execution
+		SymbolTable<A_Sensor> sensorTable = parserHelper.getSymbolTableSensor();
+		A_Sensor sensor = sensorTable.get(id);
 		sensor.setValue(value);
 	}
-	
-	//GET SENSOR 
+
+	// GET SENSOR
 	private void H3(Scanner sc) {
-		
-		//Parsing
-		String idStr = sc.next(); 
+
+		// Parsing
+		String idStr = sc.next();
 		Identifier id = Identifier.make(idStr);
-		//VALUE 
+		// VALUE
 		sc.next();
-		
-		//Execution
-		SymbolTable<A_Sensor> sensorTable = parserHelper.getSymbolTableSensor(); 
-		A_Sensor sensor = sensorTable.get(id); 
-		parserHelper.output(sensor.toString()); 
-		
-		
-		
-		
-		
+
+		// Execution
+		SymbolTable<A_Sensor> sensorTable = parserHelper.getSymbolTableSensor();
+		A_Sensor sensor = sensorTable.get(id);
+		parserHelper.output(sensor.toString());
+
 	}
+
 	// Create a watchdog
 	private void I(Scanner sc) {
 		// The watchdog's id
@@ -825,171 +774,163 @@ public class Parser {
 
 	}
 
-	
- 
-	  public void parse() throws Exception {
+	public void parse() throws Exception {
 
-	    	//makes it so we seperate words from empty spaces (" ")
-	        this.userInput = this.commandtext;
-	        String[] command = this.userInput.split(" ");
+		// makes it so we seperate words from empty spaces (" ")
+		this.userInput = this.commandtext;
+		String[] command = this.userInput.split(" ");
 
-	        //switch statement
-	        //for each command starter (first word)
-	       
-	       	Scanner sc = new Scanner(this.userInput);
-	       
-	       	//Takes the first word 
-	        switch (sc.next()) {
-	        	//if the first word is create
-	            case "CREATE": 
-	                switch(sc.next()) {
-	                
-	                	//Situation A1 - if the first word is actuator 
-	                    case "ACTUATOR":
-	                        A1(sc);
-	                        break;
-	                    case "MAPPER":
-	                        MAPPERcommands(sc);
-	                        break;
-	                    case "REPORTER":
-							REPORTERcommands(sc);
-	                        break;
-	                    case "SENSOR":
-	                        H1(sc); 
-	                        break;
-	                    case "WATCHDOG":
-	                        I(sc); 
-	                        break;
-	                }
-	                break;
-	            case "SEND": 
-	                switch(sc.next()) {
-	                    case "MESSAGE":
-	                    	String next = sc.next(); 
-	                        if(next.equals("PING")) {
-	                        	D1(); 
-	                        }
-	                        else {
-	                        	D2_3(sc); 
-	                        	
-	                        }
-	                        break;
-	               
-	                }
-	                break;
-	            case "@CLOCK": 
-	            	if(sc.hasNext()) {
-		                switch(sc.next()) {
-							//E1
-		                    case "PAUSE":
-		                    	Clock c1 = Clock.getInstance(); 
-		                    	c1.isActive(false);
-		                        break;
-		                    case "RESUME":
-		                    	Clock c2 = Clock.getInstance(); 
-		                    	c2.isActive(true);
-		                        break;
-		                    //E2
-		                    case "ONESTEP":
-		                        //Get the instance of a clock
-		                        Clock c3 = Clock.getInstance();
-		                        //if the clock is not active
-		                        if(!c3.isActive()) {
-		                            //if there's another one
-		                            if(sc.hasNext()) {
-		                                String count = sc.next();
-		                                //Does the one step command work?
-										c3.onestep(Integer.parseInt(count));
-		                            }
-		                            else {
-		                                //Increment by one
-										c3.onestep(1);
-		                            }
-		                        }
-		                        break;
-		                    //E3
-		                    case "SET":
-		                    	//Rate
-		                    	sc.next();
-		                    	String value = sc.next(); 
-		                    	Clock c4 = Clock.getInstance();
-								c4.setRate(Integer.parseInt(value));
-		                        break;
-		                    default:
-		
-		                    case "WAIT":
-								switch(sc.next()) {
-									case "FOR":
-										String seconds = sc.next();
-										Clock c5 = Clock.getInstance();
-										c5.waitFor(Double.parseDouble(seconds));
-										break;
-									case "UNTIL":
-										String seconds2 = sc.next();
-										Clock c6 = Clock.getInstance();
-										c6.waitUntil(Double.parseDouble(seconds2));
-										break;
-								}
-		                }  
-	                
-	            	}
-	            	 //Command E7 @CLOCK
-	                else {
-	                	E7();
-	                }
-	                break;
+		// switch statement
+		// for each command starter (first word)
 
-	            case "@EXIT": 
-	       
-	            	parserHelper.exit();
-	                break;
+		Scanner sc = new Scanner(this.userInput);
 
-	            case "@RUN": 
+		// Takes the first word
+		switch (sc.next()) {
+		// if the first word is create
+		case "CREATE":
+			switch (sc.next()) {
 
-	            	parserHelper.run(sc.next());
+			// Situation A1 - if the first word is actuator
+			case "ACTUATOR":
+				A1(sc);
+				break;
+			case "MAPPER":
+				MAPPERcommands(sc);
+				break;
+			case "REPORTER":
+				REPORTERcommands(sc);
+				break;
+			case "SENSOR":
+				H1(sc);
+				break;
+			case "WATCHDOG":
+				I(sc);
+				break;
+			}
+			break;
+		case "SEND":
+			switch (sc.next()) {
+			case "MESSAGE":
+				String next = sc.next();
+				if (next.equals("PING")) {
+					D1();
+				} else {
+					D2_3(sc);
 
-	                break;
+				}
+				break;
 
-	            case "@CONFIGURE": 
-	                switch(sc.next()) {
-	                    case "LOG":
-	                        E6(sc); 
-	                        break;
-	                  
-	                }
-	                break;
-	            case "SET":
-	            	switch(sc.next()) {
-	            		case "SENSOR":
-	            			H2(sc); 
-	            			break; 
-	            	
-	            	}
-	            	break; 
-	            	
-	            case "GET": 
-	            	switch(sc.next()) {
-	            		case "SENSOR":
-	            			H3(sc); 
-	            			break; 
-	            	
-	            	}
-	            	break; 
-	            
-	            case "BUILD": 
-	                switch(sc.next()) {
-	                    case "NETWORK":
-							F1(sc);
-	                        break;
-	                }
-	                break;
+			}
+			break;
+		case "@CLOCK":
+			if (sc.hasNext()) {
+				switch (sc.next()) {
+				// E1
+				case "PAUSE":
+					Clock c1 = Clock.getInstance();
+					c1.isActive(false);
+					break;
+				case "RESUME":
+					Clock c2 = Clock.getInstance();
+					c2.isActive(true);
+					break;
+				// E2
+				case "ONESTEP":
+					// Get the instance of a clock
+					Clock c3 = Clock.getInstance();
+					// if the clock is not active
+					if (!c3.isActive()) {
+						// if there's another one
+						if (sc.hasNext()) {
+							String count = sc.next();
+							// Does the one step command work?
+							c3.onestep(Integer.parseInt(count));
+						} else {
+							// Increment by one
+							c3.onestep(1);
+						}
+					}
+					break;
+				// E3
+				case "SET":
+					// Rate
+					sc.next();
+					String value = sc.next();
+					Clock c4 = Clock.getInstance();
+					c4.setRate(Integer.parseInt(value));
+					break;
+				default:
 
-	                   
+				case "WAIT":
+					switch (sc.next()) {
+					case "FOR":
+						String seconds = sc.next();
+						Clock c5 = Clock.getInstance();
+						c5.waitFor(Double.parseDouble(seconds));
+						break;
+					case "UNTIL":
+						String seconds2 = sc.next();
+						Clock c6 = Clock.getInstance();
+						c6.waitUntil(Double.parseDouble(seconds2));
+						break;
+					}
+				}
 
-	        }
-	        sc.close(); 
-	    }
-	  
+			}
+			// Command E7 @CLOCK
+			else {
+				E7();
+			}
+			break;
+
+		case "@EXIT":
+
+			parserHelper.exit();
+			break;
+
+		case "@RUN":
+
+			parserHelper.run(sc.next());
+
+			break;
+
+		case "@CONFIGURE":
+			switch (sc.next()) {
+			case "LOG":
+				E6(sc);
+				break;
+
+			}
+			break;
+		case "SET":
+			switch (sc.next()) {
+			case "SENSOR":
+				H2(sc);
+				break;
+
+			}
+			break;
+
+		case "GET":
+			switch (sc.next()) {
+			case "SENSOR":
+				H3(sc);
+				break;
+
+			}
+			break;
+
+		case "BUILD":
+			switch (sc.next()) {
+			case "NETWORK":
+				F1(sc);
+				break;
+			}
+			break;
+
+		}
+		sc.close();
+	}
 
 }
-
