@@ -146,7 +146,7 @@ public class Startup {
 
 		startup.parse("@CONFIGURE LOG a.txt DOT SEQUENCE b.txt NETWORK c.txt XML d.txt");
 
-		startup.H1(); 
+		startup.D2(); 
 		startup.parse("@EXIT");
 
 
