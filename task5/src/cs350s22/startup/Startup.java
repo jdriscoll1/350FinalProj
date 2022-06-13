@@ -67,10 +67,10 @@ public class Startup {
 	//Instantaneous Band Watchdog
 	public static void H1() throws Exception{
 		 //Create a reporter
-		 startup.parse("CREATE REPORTER FREQUENCY myReporter1 NOTIFY ID cli FREQUENCY 3");
+		 startup.parse("CREATE REPORTER FREQUENCY myReporter1 NOTIFY ID cli FREQUENCY 5");
 
 		//Create le watchdog 
-		startup.parse("CREATE WATCHDOG NOTCH myWatchdog1 MODE INSTANTANEOUS THRESHOLD LOW -5 HIGH 20");
+		startup.parse("CREATE WATCHDOG NOTCH myWatchdog1 MODE INSTANTANEOUS THRESHOLD LOW 10 HIGH 14");
 		
 		//Create Senosr
 		startup.parse("CREATE SENSOR POSITION mySensor4 GROUP myGroup1 REPORTER myReporter1 WATCHDOG myWatchdog1");
@@ -82,7 +82,9 @@ public class Startup {
 		startup.parse("BUILD NETWORK WITH COMPONENT myActuator1");
 		
 		startup.parse("SEND MESSAGE ID myActuator1 POSITION REQUEST 15");
-	      
+	    startup.parse("@CLOCK WAIT FOR 0.2");  
+	    startup.parse("GET SENSOR mySensor4 VALUE");
+		
 	    startup.parse("@CLOCK WAIT FOR 0.5");
 	      
 	    startup.parse("SEND MESSAGE ID myActuator1 POSITION REPORT");
